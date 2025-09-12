@@ -808,7 +808,7 @@ const Header = () => {
             </div>
           ) : (
              <Button onClick={() => setPage('login')} className="py-2 px-4">
-                Login <LogInIcon className="w-5 h-5" />
+               Login <LogInIcon className="w-5 h-5" />
              </Button>
           )}
         </div>
@@ -903,15 +903,15 @@ const featureSlides = [
                 <p className="text-gray-400 text-sm mb-4">Personalized Mind Map</p>
                  <div className="w-full p-2 bg-teal-600 text-white rounded text-center text-sm">Science Stream</div>
                  <div className="flex justify-around mt-2">
-                         <div className="w-px h-4 bg-gray-700"></div>
-                         <div className="w-px h-4 bg-gray-700"></div>
+                           <div className="w-px h-4 bg-gray-700"></div>
+                           <div className="w-px h-4 bg-gray-700"></div>
                  </div>
                  <div className="flex justify-around">
-                         <div className="w-[80%] mx-auto border-t-2 border-gray-700"></div>
+                           <div className="w-[80%] mx-auto border-t-2 border-gray-700"></div>
                  </div>
                  <div className="flex justify-around text-center text-xs mt-2">
-                         <div className="p-1 bg-gray-900/50 rounded">PCM</div>
-                         <div className="p-1 bg-gray-900/50 rounded">PCB</div>
+                           <div className="p-1 bg-gray-900/50 rounded">PCM</div>
+                           <div className="p-1 bg-gray-900/50 rounded">PCB</div>
                  </div>
             </div>
         )
@@ -1081,7 +1081,7 @@ const FloatingCareerTags = () => {
 
 const HomePage = () => {
     const { setPage } = useNavigation();
-   
+    
     const subheadlineText = "Navigate from confusion to clarity. Personalized guidance for Class 10 & 12 students in India.";
 
     const textRevealVariant = {
@@ -1107,7 +1107,7 @@ const HomePage = () => {
                         <br/>
                         <span className="overflow-hidden inline-block"><motion.span className="inline-block text-teal-400" variants={textRevealVariant} initial="hidden" animate="visible" transition={{delay: 0.15}}>Crossroads of Career.</motion.span></span>
                     </h1>
-                   
+                    
                     <AnimatedWords 
                         text={subheadlineText} 
                         el="p" 
@@ -1126,7 +1126,7 @@ const HomePage = () => {
                     </motion.div>
                 </div>
             </section>
-           
+            
             {/* How it works - REBUILT */}
             <section className="bg-black">
                 <div className="container mx-auto px-6 text-center pt-20">
@@ -1135,7 +1135,7 @@ const HomePage = () => {
                 </div>
                 <ScrollingFeature />
             </section>
-           
+            
              {/* Mentors Section */}
             <AnimatedSection className="py-20 bg-gray-950">
                 <div className="container mx-auto px-6">
@@ -1148,7 +1148,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </AnimatedSection>
-           
+            
              {/* Testimonials */}
             <AnimatedSection className="py-20 bg-black">
                 <div className="container mx-auto px-6">
@@ -1161,6 +1161,10 @@ const HomePage = () => {
                     </div>
                 </div>
             </AnimatedSection>
+            
+            <div className="text-center py-10 bg-black text-teal-400 font-semibold">
+                Built by Team Vision Coders at AKGEC
+            </div>
 
         </div>
     );
@@ -1174,7 +1178,7 @@ const MentorProfileCard = ({ mentor, index }) => {
         hidden: { opacity: 0, y: 50 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut", delay: index * 0.15 } }
     };
-   
+    
     return (
         <motion.div
             ref={ref}
@@ -1201,7 +1205,7 @@ const TestimonialCard = ({ quote, name, class: studentClass, index }) => {
         hidden: { opacity: 0, y: 30 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut", delay: index * 0.2 } }
     };
-   
+    
     return (
         <motion.div
             ref={ref}
@@ -1236,7 +1240,7 @@ const LoginPage = () => {
             alert("Please enter email and password.");
         }
     };
-   
+    
     return (
         <div className="flex-grow flex items-center justify-center bg-gray-950 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
@@ -1285,7 +1289,7 @@ const SignupPage = () => {
             alert("Please fill all fields.");
         }
     };
-   
+    
     return (
         <div className="flex-grow flex items-center justify-center bg-gray-950 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
@@ -1603,7 +1607,7 @@ const PathwaysPage = () => {
                         Start Class 10 Quiz
                     </Button>
                 </Card>
-               
+                
                 {/* Class 12 Card */}
                 <Card className="p-8">
                     <h2 className="text-3xl font-bold text-gray-100 mb-4 text-center">Class 12 Students</h2>
@@ -1622,7 +1626,7 @@ const PathwaysPage = () => {
 const QuizPage = () => {
     const { quizType, setPage, setQuizResult } = useNavigation();
     const { user, updateUserProfile } = useAuth();
-   
+    
     const quiz = quizType.level === 'class10' ? mockQuizData.class10 : mockQuizData.class12[quizType.stream];
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -1652,7 +1656,7 @@ const QuizPage = () => {
         });
 
         const result = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
-       
+        
         const quizRecord = {
             date: new Date().toISOString(),
             type: `${quizType.level} - ${quizType.stream || ''}`,
@@ -1663,7 +1667,7 @@ const QuizPage = () => {
         setQuizResult(result);
         setPage('results');
     };
-   
+    
     const currentQuestion = quiz.questions[currentQuestionIndex];
     const progress = ((currentQuestionIndex + 1) / quiz.questions.length) * 100;
 
@@ -1672,7 +1676,7 @@ const QuizPage = () => {
             <Card className="w-full max-w-2xl p-8">
                 <h1 className="text-2xl font-bold text-center text-gray-100 mb-2">{quiz.title}</h1>
                 <p className="text-center text-gray-400 mb-6">Question {currentQuestionIndex + 1} of {quiz.questions.length}</p>
-               
+                
                 {/* Progress Bar */}
                 <div className="w-full bg-gray-800 rounded-full h-2 mb-8">
                     <div className="bg-teal-600 h-2 rounded-full" style={{ width: `${progress}%`, transition: 'width 0.3s ease-in-out' }}></div>
@@ -1723,7 +1727,7 @@ const ResultsPage = () => {
             data = mockFieldMindMapData[streamKey];
             title = `Interactive Map for ${streamKey}`;
         }
-       
+        
         setCurrentMapData(data);
         setCurrentMapTitle(title);
         setInteractiveMapOpen(true);
@@ -1735,7 +1739,7 @@ const ResultsPage = () => {
         setAiContent('');
 
         const systemPrompt = "You are a friendly and encouraging career counselor for Indian students. Your goal is to provide clear, detailed, and inspiring information based on their aptitude test results. Structure your response clearly using headings (like **Heading**) and bullet points (like * item).";
-       
+        
         let userQuery = "";
         if (quizType.level === 'class10') {
             userQuery = `I am a Class 10 student in India, and my aptitude quiz suggests I should pursue the ${quizResult} stream. Please provide a comprehensive overview of this stream. Cover the following aspects:\n1. **Core Subjects**: What are the main subjects?\n2. **Subject Combinations**: What are the different groups (e.g., PCM, PCB for Science)?\n3. **Degree Courses**: What popular degrees can I pursue after 12th grade?\n4. **Career Paths**: What are some traditional and emerging career options?\n5. **Key Skills**: What skills should I focus on developing?`;
@@ -1762,7 +1766,7 @@ const ResultsPage = () => {
 
             const result = await response.json();
             const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-           
+            
             if (text) {
                 setAiContent(text);
             } else {
@@ -1787,13 +1791,13 @@ const ResultsPage = () => {
                     {quizResult}
                 </div>
             </div>
-           
+            
              <div className="text-center mb-12">
                  <Button onClick={() => openMapForStream(quizResult)}>
-                     <CompassIcon /> 
-                     {quizType.level === 'class10' 
-                         ? 'Explore Interactive Stream Map' 
-                         : 'Explore Interactive Career Map'}
+                    <CompassIcon /> 
+                    {quizType.level === 'class10' 
+                        ? 'Explore Interactive Stream Map' 
+                        : 'Explore Interactive Career Map'}
                  </Button>
             </div>
 
@@ -1830,7 +1834,7 @@ const ResultsPage = () => {
                     </AnimatePresence>
                 </div>
             )}
-           
+            
             {/* --- NEW SECTION: "Explore other career options" for Class 12 --- */}
             {quizType.level === 'class12' && (
                 <div className="text-center mb-12">
@@ -1879,7 +1883,7 @@ const ResultsPage = () => {
                         <p className="text-gray-400 mt-2">Our AI is crafting your personalized guide...</p>
                     </div>
                 )}
-               
+                
                 {aiContent && !isLoadingAi && (
                     <div className="mt-8 p-6 bg-gray-950 rounded-lg border border-gray-800 text-left whitespace-pre-wrap font-sans text-gray-300">
                         {aiContent.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-teal-400">$1</strong>').split('* ').map((part, i) => i > 0 ? <p key={i} className="ml-4 before:content-[\'•\'] before:mr-2">{part}</p> : <div key={i} dangerouslySetInnerHTML={{__html: part.replace(/\n/g, '<br />')}} />)}
@@ -1904,7 +1908,7 @@ const ResultsPage = () => {
 
 const MindMapNode = ({ node, isRoot = false }) => {
     const hasChildren = node.children && node.children.length > 0;
-   
+    
     return (
       <div className={`flex ${isRoot ? 'justify-center' : 'items-start'} my-2`}>
         {!isRoot && <div className="w-8 h-px bg-gray-700 mt-5 mr-2"></div>}
@@ -1945,7 +1949,7 @@ const InteractiveMindMapNode = ({ node, level = 0, parentId = 'root' }) => {
             setIsExpanded(!isExpanded);
         }
     };
-   
+    
     return (
         <motion.div 
             className="relative flex items-center my-2"
@@ -1964,7 +1968,7 @@ const InteractiveMindMapNode = ({ node, level = 0, parentId = 'root' }) => {
                 {hasChildren && <span className="mr-2">{isExpanded ? '−' : '+'}</span>}
                 {node.name}
             </motion.div>
-           
+            
             <AnimatePresence>
                 {isExpanded && hasChildren && (
                     <motion.div 
@@ -2023,7 +2027,7 @@ const CollegesPage = () => {
     const [filters, setFilters] = useState({ search: '', location: '', exam: '' });
     const [currentPage, setCurrentPage] = useState(1);
     const collegesPerPage = 4;
-   
+    
     useEffect(() => {
         let result = colleges.filter(college => 
             college.name.toLowerCase().includes(filters.search.toLowerCase()) &&
@@ -2033,16 +2037,16 @@ const CollegesPage = () => {
         setFilteredColleges(result);
         setCurrentPage(1); // Reset to first page on filter change
     }, [filters, colleges]);
-   
+    
     const uniqueLocations = [...new Set(mockColleges.map(c => c.location))];
     const uniqueExams = [...new Set(mockColleges.flatMap(c => c.exams))];
-   
+    
     // Pagination logic
     const indexOfLastCollege = currentPage * collegesPerPage;
     const indexOfFirstCollege = indexOfLastCollege - collegesPerPage;
     const currentColleges = filteredColleges.slice(indexOfFirstCollege, indexOfLastCollege);
     const totalPages = Math.ceil(filteredColleges.length / collegesPerPage);
-   
+    
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     const handleCollegeSelect = (id) => {
@@ -2055,7 +2059,7 @@ const CollegesPage = () => {
             <div className="container mx-auto px-6 py-12">
                 <h1 className="text-4xl font-bold text-center text-teal-400 mb-4">Find Your College</h1>
                 <p className="text-lg text-center text-gray-400 mb-8">Filter through our directory of verified institutions.</p>
-               
+                
                 {/* Filters */}
                 <div className="bg-gray-900 p-6 rounded-lg border border-gray-800 mb-8 grid md:grid-cols-3 gap-4">
                     <input 
@@ -2073,7 +2077,7 @@ const CollegesPage = () => {
                         {uniqueExams.map(exam => <option key={exam} value={exam}>{exam}</option>)}
                     </select>
                 </div>
-               
+                
                 {/* College Listings */}
                 <div className="grid md:grid-cols-2 gap-8">
                     {currentColleges.length > 0 ? currentColleges.map(college => (
@@ -2161,13 +2165,13 @@ const CollegeDetailPage = () => {
                 <Button onClick={() => setPage('colleges')} variant="secondary" className="mb-8">
                     &larr; Back to Colleges
                 </Button>
-               
+                
                 <div className="grid lg:grid-cols-3 gap-8">
                     <div className="lg:col-span-2">
                         <img src={college.image.replace('600x400', '1200x600')} alt={college.name} className="w-full h-auto object-cover rounded-lg mb-6 shadow-2xl"/>
                         <h1 className="text-4xl font-bold text-teal-400 mb-2">{college.name}</h1>
                         <p className="text-lg text-gray-400 mb-6">{college.location}</p>
-                       
+                        
                         <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
                             <h2 className="text-2xl font-bold text-gray-100 mb-4">Courses & Speciality</h2>
                             <p className="text-gray-300 mb-4"><strong>Speciality:</strong> {college.specialty}</p>
@@ -2178,7 +2182,7 @@ const CollegeDetailPage = () => {
                             </div>
                         </div>
                     </div>
-                   
+                    
                     <div className="lg:col-span-1">
                         <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 sticky top-24">
                             <h3 className="text-2xl font-bold text-gray-100 mb-4">Key Info</h3>
@@ -2213,7 +2217,7 @@ const MentorsPage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isAiChatOpen, setIsAiChatOpen] = useState(false);
     const { user, updateUserProfile } = useAuth();
-   
+    
     const openBookingModal = (mentor) => {
         if(!user) {
             alert("Please log in to book a session.");
@@ -2240,7 +2244,7 @@ const MentorsPage = () => {
             <div className="container mx-auto px-6 py-12">
                 <h1 className="text-4xl font-bold text-center text-teal-400 mb-4">Connect with Mentors</h1>
                 <p className="text-lg text-center text-gray-400 mb-12">Get one-on-one guidance from experienced students and alumni.</p>
-               
+                
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <Card className="sm:col-span-2 lg:col-span-4 bg-teal-900/20 border-teal-800 p-6 flex flex-col md:flex-row items-center justify-between gap-6">
                         <div>
@@ -2256,7 +2260,7 @@ const MentorsPage = () => {
                     ))}
                 </div>
             </div>
-           
+            
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Book a Session">
                 {selectedMentor && (
                     <div>
@@ -2335,7 +2339,7 @@ const AiMentorChatModal = ({ isOpen, onClose }) => {
 
             const result = await response.json();
             const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-           
+            
             if (text) {
                 setMessages(prev => [...prev, { sender: 'ai', text }]);
             } else {
@@ -2413,7 +2417,7 @@ const DashboardPage = () => {
         <div className="flex-grow bg-black">
             <div className="container mx-auto px-6 py-12">
                 <h1 className="text-4xl font-bold text-teal-400 mb-8">Welcome, {user.name}!</h1>
-               
+                
                 <div className="grid lg:grid-cols-3 gap-8">
                     {/* Main content */}
                     <div className="lg:col-span-2 space-y-8">
@@ -2431,7 +2435,7 @@ const DashboardPage = () => {
                                )}
                             </div>
                         </DashboardSection>
-                       
+                        
                         {/* Upcoming Sessions */}
                         <DashboardSection title="Upcoming Mentorship Sessions">
                             {user.sessions && user.sessions.length > 0 ? (
@@ -2480,7 +2484,7 @@ const DashboardPage = () => {
                                 <button className="text-sm text-teal-500 hover:underline mt-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 rounded px-1">Edit Profile</button>
                             </div>
                         </DashboardSection>
-                       
+                        
                         {/* Bookmarked Colleges - Feature to be implemented */}
                         <DashboardSection title="Bookmarked Colleges">
                             <p className="text-gray-400 bg-gray-800 p-4 rounded-lg border border-gray-700">You haven't bookmarked any colleges yet.</p>
@@ -2561,11 +2565,11 @@ const useNavigation = () => useContext(NavigationContext);
 const App = () => {
     const { page } = useNavigation();
     const { loading, isAuthenticated } = useAuth();
-   
+    
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [page]);
-   
+    
     if (loading) {
         return <div className="h-screen w-screen flex items-center justify-center bg-gray-950"><LoadingSpinner/></div>
     }
@@ -2574,10 +2578,10 @@ const App = () => {
         // Unprotected mentor routes
         if (page === 'mentorLogin' || page === 'mentorRegistration' || page === 'mentorSuccess') {
              switch(page) {
-                case 'mentorLogin': return <MentorLoginPage />;
-                case 'mentorRegistration': return <MentorRegistrationPage />;
-                case 'mentorSuccess': return <MentorSuccessPage />;
-                default: return <HomePage />;
+                 case 'mentorLogin': return <MentorLoginPage />;
+                 case 'mentorRegistration': return <MentorRegistrationPage />;
+                 case 'mentorSuccess': return <MentorSuccessPage />;
+                 default: return <HomePage />;
              }
         }
         
@@ -2586,7 +2590,7 @@ const App = () => {
         if (protectedRoutes.includes(page) && !isAuthenticated) {
             return <LoginPage />;
         }
-       
+        
         switch (page) {
             case 'login': return <LoginPage />;
             case 'signup': return <SignupPage />;
@@ -2634,7 +2638,7 @@ export default function NextStepGuideApp() {
                 .custom-cursor-area, .custom-cursor-area * {
                     cursor: none;
                 }
-               
+                
                 .bg-grid-pattern {
                     background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
                     background-size: 2rem 2rem;
