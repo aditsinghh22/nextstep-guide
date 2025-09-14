@@ -334,6 +334,7 @@ const mockColleges = [
 const mockCollegeMentors = {
   1: [ // IIT Delhi
     {
+      id: 1, // Link to mockMentors
       name: "Akash Singh",
       status: "Alumnus, Class of 2021",
       branch: "Mechanical Engineering",
@@ -345,6 +346,7 @@ const mockCollegeMentors = {
       image: "https://i.pravatar.cc/150?u=akash"
     },
     {
+      id: null, // Example of a review without a bookable mentor profile
       name: "Priya Sharma",
       status: "4th Year Student",
       branch: "Textile Technology",
@@ -358,6 +360,7 @@ const mockCollegeMentors = {
   ],
   2: [ // AIIMS Delhi
     {
+      id: 2, // Link to mockMentors
       name: "Dr. Sameer Joshi",
       status: "Alumnus, Class of 2018",
       branch: "MBBS",
@@ -369,6 +372,7 @@ const mockCollegeMentors = {
       image: "https://i.pravatar.cc/150?u=sameer"
     },
     {
+      id: null,
       name: "Anjali Menon",
       status: "4th Year Student",
       branch: "MBBS",
@@ -382,6 +386,7 @@ const mockCollegeMentors = {
   ],
   3: [ // St. Stephen's College
     {
+        id: null,
         name: "Arjun Khanna",
         status: "Alumnus, Class of 2020",
         branch: "B.A. Economics",
@@ -393,6 +398,7 @@ const mockCollegeMentors = {
         image: "https://i.pravatar.cc/150?u=arjun"
     },
     {
+        id: null,
         name: "Meera Das",
         status: "3rd Year Student",
         branch: "B.Sc. Physics",
@@ -406,6 +412,7 @@ const mockCollegeMentors = {
   ],
     4: [ // IIM Ahmedabad
     {
+      id: 3, // Link to mockMentors
       name: "Nikhil Batra",
       status: "Alumnus, Class of 2019",
       branch: "PGP in Management",
@@ -417,6 +424,7 @@ const mockCollegeMentors = {
       image: "https://i.pravatar.cc/150?u=nikhil"
     },
     {
+      id: null,
       name: "Riya Desai",
       status: "2nd Year Student",
       branch: "PGP in Management",
@@ -430,6 +438,7 @@ const mockCollegeMentors = {
   ],
   5: [ // NLSIU Bangalore
     {
+        id: 4, // Link to mockMentors
         name: "Aditya Verma",
         status: "5th Year Student",
         branch: "B.A. LL.B. (Hons.)",
@@ -441,6 +450,7 @@ const mockCollegeMentors = {
         image: "https://i.pravatar.cc/150?u=aditya"
     },
     {
+        id: null,
         name: "Sanjana Iyer",
         status: "Alumna, Class of 2022",
         branch: "B.A. LL.B. (Hons.)",
@@ -454,6 +464,7 @@ const mockCollegeMentors = {
   ],
   6: [ // Christ University
     {
+        id: null,
         name: "David Mathews",
         status: "4th Year Student",
         branch: "B.Tech CSE",
@@ -465,6 +476,7 @@ const mockCollegeMentors = {
         image: "https://i.pravatar.cc/150?u=david"
     },
     {
+        id: null,
         name: "Aisha Khan",
         status: "Alumna, Class of 2023",
         branch: "B.A. Journalism",
@@ -479,16 +491,24 @@ const mockCollegeMentors = {
 };
 
 const mockMentors = [
-  { id: 1, name: "Ananya Sharma", college: "IIT Delhi", field: "Computer Science", rating: 4.9, reviews: 82, image: "https://i.pravatar.cc/150?u=ananya" },
-  { id: 2, name: "Rohan Verma", college: "AIIMS Delhi", field: "Medicine", rating: 4.8, reviews: 65, image: "https://i.pravatar.cc/150?u=rohan" },
-  { id: 3, name: "Priya Singh", college: "IIM Ahmedabad", field: "Business Management", rating: 4.9, reviews: 95, image: "https://i.pravatar.cc/150?u=priya" },
-  { id: 4, name: "Vikram Rathore", college: "NLSIU Bangalore", field: "Law", rating: 4.7, reviews: 50, image: "https://i.pravatar.cc/150?u=vikram" },
+  { id: 1, name: "Ananya Sharma", college: "IIT Delhi", field: "Computer Science", rating: 4.9, reviews: 82, image: "https://i.pravatar.cc/150?u=ananya", availability: { days: ["Monday", "Wednesday", "Friday"], time: "5 PM - 8 PM IST" } },
+  { id: 2, name: "Rohan Verma", college: "AIIMS Delhi", field: "Medicine", rating: 4.8, reviews: 65, image: "https://i.pravatar.cc/150?u=rohan", availability: { days: ["Saturday", "Sunday"], time: "10 AM - 1 PM IST" } },
+  { id: 3, name: "Priya Singh", college: "IIM Ahmedabad", field: "Business Management", rating: 4.9, reviews: 95, image: "https://i.pravatar.cc/150?u=priya", availability: { days: ["Tuesday", "Thursday"], time: "7 PM - 9 PM IST" } },
+  { id: 4, name: "Vikram Rathore", college: "NLSIU Bangalore", field: "Law", rating: 4.7, reviews: 50, image: "https://i.pravatar.cc/150?u=vikram", availability: { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], time: "6 PM - 7 PM IST" } },
 ];
 
 const mockTestimonials = [
     { quote: "NextStepGuide was a game-changer for me. I was so confused after my 10th boards, but the quiz pointed me towards Commerce, and I've never looked back!", name: "Aarav Gupta", class: "Class 11, Mumbai" },
     { quote: "The AI Mentor is surprisingly helpful for quick questions. For deeper doubts, booking a session with a senior from my dream college was invaluable.", name: "Sneha Reddy", class: "Class 12, Hyderabad" },
     { quote: "I thought I knew I wanted to do engineering, but the Class 12 quiz helped me narrow it down to Computer Science. The detailed career path info was excellent.", name: "Rohan Patel", class: "First Year B.Tech Student" },
+];
+
+const mockUpcomingEvents = [
+    { date: "Oct 15, 2025", title: "JEE Advanced 2026 Registration Opens", description: "Registration for the next Joint Entrance Examination (Advanced) begins." },
+    { date: "Nov 01, 2025", title: "CAT 2025 Admit Card Release", description: "Common Admission Test (CAT) admit cards will be available for download." },
+    { date: "Nov 26, 2025", title: "CAT 2025 Exam Date", description: "The national-level management entrance examination will be conducted." },
+    { date: "Dec 10, 2025", title: "NEET UG 2026 Counselling Round 1 Starts", description: "The first round of counselling for undergraduate medical seats begins." },
+    { date: "Jan 05, 2026", title: "CLAT 2026 Application Deadline", description: "Last day to submit applications for the Common Law Admission Test." },
 ];
 
 const whyGraduationData = [
@@ -533,6 +553,7 @@ const ThumbsUpIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" he
 const ThumbsDownIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 14V2"/><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22h0a3.13 3.13 0 0 1-3-3.88Z"/></svg>;
 const SchoolIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m4 6 8-4 8 4"/><path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2"/><path d="M14 22v-4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4"/><path d="M18 5v17"/><path d="M6 5v17"/><path d="M12 5v6"/></svg>;
 const BriefcaseIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>;
+const CalendarIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>;
 
 // --- CUSTOM CURSOR COMPONENT ---
 const CustomCursor = () => {
@@ -625,15 +646,20 @@ const AuthProvider = ({ children }) => {
     setTimeout(() => setLoading(false), 500);
   }, []);
 
-  const login = (userData) => {
+  const login = (userData, userType = 'student') => {
     const fakeUser = {
       name: userData.name || "Student",
       email: userData.email,
+      userType: userType, // 'student' or 'mentor'
       level: null, // 'class10' or 'class12'
       stream: null, // For class 12
       quizHistory: [],
       bookmarks: [],
-      sessions: []
+      sessions: [],
+      sessionRequests: userType === 'mentor' ? [
+          { studentName: "Rohan Patel", studentImage: "https://i.pravatar.cc/150?u=rohanp", date: new Date().toLocaleDateString(), status: 'Pending' },
+          { studentName: "Sneha Reddy", studentImage: "https://i.pravatar.cc/150?u=sneha", date: new Date().toLocaleDateString(), status: 'Pending' }
+      ] : [],
     };
     setUser(fakeUser);
     localStorage.setItem('careerPathUser', JSON.stringify(fakeUser));
@@ -681,6 +707,7 @@ const DataProvider = ({ children }) => {
         }
 
         const newMentorReview = {
+            id: mockMentors.length + 1, // Create a new ID
             name: reviewData.name,
             status: reviewData.academicYear === 'Pass Out' ? `Alumnus` : `${reviewData.academicYear} Year Student`,
             branch: reviewData.qualifications,
@@ -691,6 +718,23 @@ const DataProvider = ({ children }) => {
             reviewText: reviewData.reviewText,
             image: `https://i.pravatar.cc/150?u=${reviewData.name.replace(/\s+/g, '')}` // Generate a unique avatar
         };
+
+        const newMentorProfile = {
+            id: newMentorReview.id,
+            name: reviewData.name,
+            college: reviewData.college,
+            field: reviewData.qualifications,
+            rating: 5.0, // Default new mentor rating
+            reviews: 1,
+            image: newMentorReview.image,
+            availability: {
+                days: reviewData.availability.days,
+                time: reviewData.availability.time
+            }
+        };
+
+        // This is a mock update. In a real app, this would be an API call.
+        mockMentors.push(newMentorProfile);
 
         setCollegeMentors(prevMentors => {
             const updatedMentors = { ...prevMentors };
@@ -808,7 +852,7 @@ const Header = () => {
             </div>
           ) : (
              <Button onClick={() => setPage('login')} className="py-2 px-4">
-               Login <LogInIcon className="w-5 h-5" />
+                Login <LogInIcon className="w-5 h-5" />
              </Button>
           )}
         </div>
@@ -864,153 +908,47 @@ const AnimatedSection = ({ children, className = '', delay = 0 }) => {
 
 // --- PAGE COMPONENTS ---
 
-const featureSlides = [
-    {
-        title: "Discover Your Aptitude",
-        description: "Take our quick, insightful quiz to understand your unique strengths and interests. We analyze your responses to recommend the stream that best fits your personality and skills.",
-        visual: (
-            <div className="w-full h-full bg-gray-800 rounded-lg p-4 border border-gray-700 text-sm">
-                <div className="w-full h-8 bg-gray-900 rounded mb-4 flex items-center px-2 gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                </div>
-                <h3 className="font-bold text-teal-300 text-lg mb-2">Aptitude & Interest Quiz</h3>
-                <p className="text-gray-400 text-sm mb-4">Question 1 of 5</p>
-                <div className="w-full bg-gray-700 rounded-full h-1.5 mb-4">
-                    <div className="bg-teal-500 h-1.5 rounded-full" style={{width: '20%'}}></div>
-                </div>
-                <p className="font-semibold text-gray-200 mb-4">Which activity do you enjoy the most?</p>
-                <div className="space-y-2">
-                    <div className="w-full p-2 bg-gray-900/50 rounded text-gray-300 border-2 border-teal-500">Solving complex math problems</div>
-                    <div className="w-full p-2 bg-gray-900/50 rounded text-gray-300 border border-gray-700">Analyzing historical events</div>
-                    <div className="w-full p-2 bg-gray-900/50 rounded text-gray-300 border border-gray-700">Understanding how businesses work</div>
-                </div>
-            </div>
-        )
-    },
-    {
-        title: "Explore Your Pathways",
-        description: "Receive a personalized roadmap of streams, courses, and potential careers. Our AI-powered insights and visual mind maps make complex information easy to understand.",
-        visual: (
-             <div className="w-full h-full bg-gray-800 rounded-lg p-4 border border-gray-700 text-sm">
-                 <div className="w-full h-8 bg-gray-900 rounded mb-4 flex items-center px-2 gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                </div>
-                <h3 className="font-bold text-teal-300 text-lg mb-2">Your Recommended Path: Science</h3>
-                <p className="text-gray-400 text-sm mb-4">Personalized Mind Map</p>
-                 <div className="w-full p-2 bg-teal-600 text-white rounded text-center text-sm">Science Stream</div>
-                 <div className="flex justify-around mt-2">
-                           <div className="w-px h-4 bg-gray-700"></div>
-                           <div className="w-px h-4 bg-gray-700"></div>
-                 </div>
-                 <div className="flex justify-around">
-                           <div className="w-[80%] mx-auto border-t-2 border-gray-700"></div>
-                 </div>
-                 <div className="flex justify-around text-center text-xs mt-2">
-                           <div className="p-1 bg-gray-900/50 rounded">PCM</div>
-                           <div className="p-1 bg-gray-900/50 rounded">PCB</div>
-                 </div>
-            </div>
-        )
-    },
-    {
-        title: "Connect With Mentors",
-        description: "Chat with our AI mentor for instant answers or book one-on-one sessions with experienced seniors from top universities to get real-world advice.",
-        visual: (
-             <div className="w-full h-full bg-gray-800 rounded-lg p-4 border border-gray-700 text-sm">
-                 <div className="w-full h-8 bg-gray-900 rounded mb-4 flex items-center px-2 gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                </div>
-                 <h3 className="font-bold text-teal-300 text-lg mb-2">Find a Mentor</h3>
-                 <div className="bg-gray-900/50 p-2 rounded-lg flex items-center gap-3">
-                    <img src="https://i.pravatar.cc/150?u=ananya" alt="Ananya Sharma" className="w-12 h-12 rounded-full" />
-                    <div>
-                        <p className="font-bold text-gray-200">Ananya Sharma</p>
-                        <p className="text-sm text-gray-400">IIT Delhi</p>
-                    </div>
-                 </div>
-                  <div className="bg-gray-900/50 p-2 rounded-lg flex items-center gap-3 mt-2 opacity-70">
-                    <img src="https://i.pravatar.cc/150?u=rohan" alt="Rohan Verma" className="w-12 h-12 rounded-full" />
-                    <div>
-                        <p className="font-bold text-gray-200">Rohan Verma</p>
-                        <p className="text-sm text-gray-400">AIIMS Delhi</p>
-                    </div>
-                 </div>
-            </div>
-        )
-    }
-];
+const HowItWorksStep = ({ stepNumber, title, description, imageUrl, imageSide = 'right' }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, amount: 0.4 });
 
-const ScrollingFeature = () => {
-    const featureRef = useRef(null);
-    const { scrollYProgress } = useScroll({ target: featureRef, offset: ["start start", "end end"] });
-
-    const [activeSlide, setActiveSlide] = useState(0);
-
-    useEffect(() => {
-        // Subscribe to scroll progress changes
-        const unsubscribe = scrollYProgress.on("change", (latest) => {
-            const slidesCount = featureSlides.length;
-            const newActiveSlide = Math.min(slidesCount - 1, Math.floor(latest * slidesCount));
-            if (newActiveSlide !== activeSlide) {
-                setActiveSlide(newActiveSlide);
-            }
-        });
-        return () => unsubscribe(); // Cleanup subscription on unmount
-    }, [scrollYProgress, activeSlide]);
+    const textVariants = {
+        hidden: { opacity: 0, x: imageSide === 'right' ? -50 : 50 },
+        visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } }
+    };
+    
+    const imageVariants = {
+        hidden: { opacity: 0, x: imageSide === 'right' ? 50 : -50 },
+        visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } }
+    };
 
     return (
-        <div ref={featureRef} className="relative h-[300vh]">
-            <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-                <div className="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-                    {/* Left side: Text content */}
-                    <div className="relative h-96">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={activeSlide}
-                                className="absolute inset-0 flex flex-col justify-center"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                transition={{ duration: 0.4, ease: "easeInOut" }}
-                            >
-                                <div className="flex items-center gap-2 text-teal-400 font-bold mb-3">
-                                    <CheckCircleIcon />
-                                    <span>STEP {activeSlide + 1}</span>
-                                </div>
-                                <h3 className="text-3xl font-bold text-gray-100 mb-4">{featureSlides[activeSlide].title}</h3>
-                                <p className="text-lg text-gray-400">{featureSlides[activeSlide].description}</p>
-                            </motion.div>
-                        </AnimatePresence>
-                    </div>
-
-                    {/* Right side: Visuals */}
-                    <div className="relative w-full h-[50vh] max-h-[500px] hidden md:block">
-                        {featureSlides.map((slide, index) => (
-                             <motion.div
-                                 key={index}
-                                 className="absolute inset-0"
-                                 animate={{
-                                     opacity: activeSlide === index ? 1 : 0.3,
-                                     scale: activeSlide === index ? 1 : 0.95,
-                                     y: (index - activeSlide) * 20
-                                 }}
-                                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                            >
-                                 {slide.visual}
-                            </motion.div>
-                        ))}
-                    </div>
+        <div ref={ref} className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+            <motion.div 
+                className={`flex flex-col justify-center ${imageSide === 'left' ? 'md:order-last' : ''}`}
+                variants={textVariants}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+            >
+                <div className="mb-4">
+                    <span className="inline-block px-4 py-1.5 bg-teal-900/50 text-teal-300 font-bold rounded-full border border-teal-800">
+                        Step {stepNumber}
+                    </span>
                 </div>
-            </div>
+                <h3 className="text-3xl font-bold text-gray-100 mb-4">{title}</h3>
+                <p className="text-lg text-gray-400">{description}</p>
+            </motion.div>
+            <motion.div 
+                className="flex items-center justify-center"
+                variants={imageVariants}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+            >
+                <img src={imageUrl} alt={title} className="rounded-lg shadow-2xl shadow-teal-950/20 w-full h-auto object-cover border-2 border-gray-800"/>
+            </motion.div>
         </div>
     );
-}
+};
 
 const AnimatedWords = ({ text, el: Wrapper = "p", className, variants, stagger }) => {
     const words = text.split(" ");
@@ -1081,7 +1019,7 @@ const FloatingCareerTags = () => {
 
 const HomePage = () => {
     const { setPage } = useNavigation();
-    
+   
     const subheadlineText = "Navigate from confusion to clarity. Personalized guidance for Class 10 & 12 students in India.";
 
     const textRevealVariant = {
@@ -1107,7 +1045,7 @@ const HomePage = () => {
                         <br/>
                         <span className="overflow-hidden inline-block"><motion.span className="inline-block text-teal-400" variants={textRevealVariant} initial="hidden" animate="visible" transition={{delay: 0.15}}>Crossroads of Career.</motion.span></span>
                     </h1>
-                    
+                   
                     <AnimatedWords 
                         text={subheadlineText} 
                         el="p" 
@@ -1126,16 +1064,40 @@ const HomePage = () => {
                     </motion.div>
                 </div>
             </section>
-            
-            {/* How it works - REBUILT */}
-            <section className="bg-black">
-                <div className="container mx-auto px-6 text-center pt-20">
-                    <h2 className="text-4xl font-bold text-teal-400 mb-4">A Clear Path in 3 Simple Steps</h2>
-                    <p className="text-lg text-gray-500 mb-12 max-w-2xl mx-auto">We've streamlined the complex process of career discovery into a journey you can trust.</p>
+           
+            {/* How it works - NEW 3-STEP PROCESS */}
+            <section className="bg-black py-20">
+                <div className="container mx-auto px-6">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl font-bold text-teal-400 mb-4">A Clear Path in 3 Simple Steps</h2>
+                        <p className="text-lg text-gray-500 max-w-2xl mx-auto">We've streamlined the complex process of career discovery into a journey you can trust.</p>
+                    </div>
+                    <div className="space-y-20 md:space-y-28">
+                        <HowItWorksStep
+                            stepNumber={1}
+                            title="Discover Your Aptitude"
+                            description="Take our quick, insightful quiz to understand your unique strengths and interests. We analyze your responses to recommend the stream that best fits your personality and skills."
+                            imageUrl="https://placehold.co/600x400/131314/ffffff?text=Aptitude+Quiz"
+                            imageSide="right"
+                        />
+                        <HowItWorksStep
+                            stepNumber={2}
+                            title="Explore Your Pathways"
+                            description="Receive a personalized roadmap of streams, courses, and potential careers. Our AI-powered insights and visual mind maps make complex information easy to understand."
+                            imageUrl="https://placehold.co/600x400/131314/ffffff?text=Career+Roadmap"
+                            imageSide="left"
+                        />
+                        <HowItWorksStep
+                            stepNumber={3}
+                            title="Connect with Mentors & Colleges"
+                            description="Chat with our AI mentor, book one-on-one sessions with experienced seniors, and browse our detailed college directory to find your perfect fit."
+                            imageUrl="https://placehold.co/600x400/131314/ffffff?text=Mentors+%26+Colleges"
+                            imageSide="right"
+                        />
+                    </div>
                 </div>
-                <ScrollingFeature />
             </section>
-            
+           
              {/* Mentors Section */}
             <AnimatedSection className="py-20 bg-gray-950">
                 <div className="container mx-auto px-6">
@@ -1148,7 +1110,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </AnimatedSection>
-            
+           
              {/* Testimonials */}
             <AnimatedSection className="py-20 bg-black">
                 <div className="container mx-auto px-6">
@@ -1161,10 +1123,6 @@ const HomePage = () => {
                     </div>
                 </div>
             </AnimatedSection>
-            
-            <div className="text-center py-10 bg-black text-teal-400 font-semibold">
-                Built by Team Vision Coders at AKGEC
-            </div>
 
         </div>
     );
@@ -1178,7 +1136,7 @@ const MentorProfileCard = ({ mentor, index }) => {
         hidden: { opacity: 0, y: 50 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut", delay: index * 0.15 } }
     };
-    
+   
     return (
         <motion.div
             ref={ref}
@@ -1205,7 +1163,7 @@ const TestimonialCard = ({ quote, name, class: studentClass, index }) => {
         hidden: { opacity: 0, y: 30 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut", delay: index * 0.2 } }
     };
-    
+   
     return (
         <motion.div
             ref={ref}
@@ -1240,7 +1198,7 @@ const LoginPage = () => {
             alert("Please enter email and password.");
         }
     };
-    
+   
     return (
         <div className="flex-grow flex items-center justify-center bg-gray-950 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
@@ -1289,7 +1247,7 @@ const SignupPage = () => {
             alert("Please fill all fields.");
         }
     };
-    
+   
     return (
         <div className="flex-grow flex items-center justify-center bg-gray-950 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
@@ -1480,9 +1438,11 @@ const MentorLoginPage = () => {
 const MentorRegistrationPage = () => {
     const { addMentorReview } = useData();
     const { setPage, mentorFlowState } = useNavigation();
+    const { login } = useAuth();
     const [formData, setFormData] = useState({
         name: '', age: '', gender: '', college: '', qualifications: '',
-        job: '', cgpa: '', reviewTitle: '', reviewText: ''
+        job: '', cgpa: '', reviewTitle: '', reviewText: '',
+        availability: { days: [], time: '' }
     });
 
     const handleChange = (e) => {
@@ -1490,11 +1450,30 @@ const MentorRegistrationPage = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
+    const handleAvailabilityChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        setFormData(prev => {
+            const newAvailability = { ...prev.availability };
+            if (type === 'checkbox') {
+                if (checked) {
+                    newAvailability.days.push(name);
+                } else {
+                    newAvailability.days = newAvailability.days.filter(day => day !== name);
+                }
+            } else {
+                newAvailability.time = value;
+            }
+            return { ...prev, availability: newAvailability };
+        });
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const success = addMentorReview({ ...formData, academicYear: mentorFlowState.academicYear });
         if (success) {
-            setPage('mentorSuccess');
+            // Automatically log the new mentor in and redirect to their dashboard
+            login({ name: formData.name, email: `${formData.name.split(' ')[0].toLowerCase()}@mentor.com` }, 'mentor');
+            setPage('dashboard');
         }
     };
 
@@ -1525,6 +1504,23 @@ const MentorRegistrationPage = () => {
                         {mentorFlowState.academicYear === 'Pass Out' && (
                            <InputField name="job" label="Current Job (if any)" value={formData.job} onChange={handleChange} placeholder="e.g., Software Engineer at Google" />
                         )}
+
+                        <div className="pt-6 border-t border-gray-800">
+                             <h2 className="text-xl font-semibold text-gray-200 mb-4">Set Your Availability</h2>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-300 mb-2">Available Days</label>
+                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                    {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map(day => (
+                                        <label key={day} className={`block text-center p-2 border-2 rounded-lg cursor-pointer transition-colors ${formData.availability.days.includes(day) ? 'bg-teal-600 border-teal-500' : 'bg-gray-800 border-gray-700 hover:border-gray-600'}`}>
+                                            <input type="checkbox" name={day} checked={formData.availability.days.includes(day)} onChange={handleAvailabilityChange} className="hidden" />
+                                            {day.substring(0,3)}
+                                        </label>
+                                    ))}
+                                </div>
+                            </div>
+                             <InputField name="time" label="Available Time Slot" value={formData.availability.time} onChange={handleAvailabilityChange} placeholder="e.g., 5 PM - 7 PM IST" required className="mt-4" />
+                        </div>
+
 
                         <div className="pt-6 border-t border-gray-800">
                              <h2 className="text-xl font-semibold text-gray-200 mb-4">Your College Review</h2>
@@ -1607,7 +1603,7 @@ const PathwaysPage = () => {
                         Start Class 10 Quiz
                     </Button>
                 </Card>
-                
+               
                 {/* Class 12 Card */}
                 <Card className="p-8">
                     <h2 className="text-3xl font-bold text-gray-100 mb-4 text-center">Class 12 Students</h2>
@@ -1626,7 +1622,7 @@ const PathwaysPage = () => {
 const QuizPage = () => {
     const { quizType, setPage, setQuizResult } = useNavigation();
     const { user, updateUserProfile } = useAuth();
-    
+   
     const quiz = quizType.level === 'class10' ? mockQuizData.class10 : mockQuizData.class12[quizType.stream];
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -1656,7 +1652,7 @@ const QuizPage = () => {
         });
 
         const result = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
-        
+       
         const quizRecord = {
             date: new Date().toISOString(),
             type: `${quizType.level} - ${quizType.stream || ''}`,
@@ -1667,7 +1663,7 @@ const QuizPage = () => {
         setQuizResult(result);
         setPage('results');
     };
-    
+   
     const currentQuestion = quiz.questions[currentQuestionIndex];
     const progress = ((currentQuestionIndex + 1) / quiz.questions.length) * 100;
 
@@ -1676,7 +1672,7 @@ const QuizPage = () => {
             <Card className="w-full max-w-2xl p-8">
                 <h1 className="text-2xl font-bold text-center text-gray-100 mb-2">{quiz.title}</h1>
                 <p className="text-center text-gray-400 mb-6">Question {currentQuestionIndex + 1} of {quiz.questions.length}</p>
-                
+               
                 {/* Progress Bar */}
                 <div className="w-full bg-gray-800 rounded-full h-2 mb-8">
                     <div className="bg-teal-600 h-2 rounded-full" style={{ width: `${progress}%`, transition: 'width 0.3s ease-in-out' }}></div>
@@ -1727,7 +1723,7 @@ const ResultsPage = () => {
             data = mockFieldMindMapData[streamKey];
             title = `Interactive Map for ${streamKey}`;
         }
-        
+       
         setCurrentMapData(data);
         setCurrentMapTitle(title);
         setInteractiveMapOpen(true);
@@ -1739,7 +1735,7 @@ const ResultsPage = () => {
         setAiContent('');
 
         const systemPrompt = "You are a friendly and encouraging career counselor for Indian students. Your goal is to provide clear, detailed, and inspiring information based on their aptitude test results. Structure your response clearly using headings (like **Heading**) and bullet points (like * item).";
-        
+       
         let userQuery = "";
         if (quizType.level === 'class10') {
             userQuery = `I am a Class 10 student in India, and my aptitude quiz suggests I should pursue the ${quizResult} stream. Please provide a comprehensive overview of this stream. Cover the following aspects:\n1. **Core Subjects**: What are the main subjects?\n2. **Subject Combinations**: What are the different groups (e.g., PCM, PCB for Science)?\n3. **Degree Courses**: What popular degrees can I pursue after 12th grade?\n4. **Career Paths**: What are some traditional and emerging career options?\n5. **Key Skills**: What skills should I focus on developing?`;
@@ -1766,7 +1762,7 @@ const ResultsPage = () => {
 
             const result = await response.json();
             const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-            
+           
             if (text) {
                 setAiContent(text);
             } else {
@@ -1791,13 +1787,13 @@ const ResultsPage = () => {
                     {quizResult}
                 </div>
             </div>
-            
+           
              <div className="text-center mb-12">
                  <Button onClick={() => openMapForStream(quizResult)}>
-                    <CompassIcon /> 
-                    {quizType.level === 'class10' 
-                        ? 'Explore Interactive Stream Map' 
-                        : 'Explore Interactive Career Map'}
+                     <CompassIcon /> 
+                     {quizType.level === 'class10' 
+                         ? 'Explore Interactive Stream Map' 
+                         : 'Explore Interactive Career Map'}
                  </Button>
             </div>
 
@@ -1834,7 +1830,7 @@ const ResultsPage = () => {
                     </AnimatePresence>
                 </div>
             )}
-            
+           
             {/* --- NEW SECTION: "Explore other career options" for Class 12 --- */}
             {quizType.level === 'class12' && (
                 <div className="text-center mb-12">
@@ -1862,7 +1858,7 @@ const ResultsPage = () => {
                                         >
                                             {field}
                                         </Button>
-                                ))}
+                                    ))}
                             </motion.div>
                         )}
                     </AnimatePresence>
@@ -1883,7 +1879,7 @@ const ResultsPage = () => {
                         <p className="text-gray-400 mt-2">Our AI is crafting your personalized guide...</p>
                     </div>
                 )}
-                
+               
                 {aiContent && !isLoadingAi && (
                     <div className="mt-8 p-6 bg-gray-950 rounded-lg border border-gray-800 text-left whitespace-pre-wrap font-sans text-gray-300">
                         {aiContent.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-teal-400">$1</strong>').split('* ').map((part, i) => i > 0 ? <p key={i} className="ml-4 before:content-[\'•\'] before:mr-2">{part}</p> : <div key={i} dangerouslySetInnerHTML={{__html: part.replace(/\n/g, '<br />')}} />)}
@@ -1908,7 +1904,7 @@ const ResultsPage = () => {
 
 const MindMapNode = ({ node, isRoot = false }) => {
     const hasChildren = node.children && node.children.length > 0;
-    
+   
     return (
       <div className={`flex ${isRoot ? 'justify-center' : 'items-start'} my-2`}>
         {!isRoot && <div className="w-8 h-px bg-gray-700 mt-5 mr-2"></div>}
@@ -1949,7 +1945,7 @@ const InteractiveMindMapNode = ({ node, level = 0, parentId = 'root' }) => {
             setIsExpanded(!isExpanded);
         }
     };
-    
+   
     return (
         <motion.div 
             className="relative flex items-center my-2"
@@ -1968,7 +1964,7 @@ const InteractiveMindMapNode = ({ node, level = 0, parentId = 'root' }) => {
                 {hasChildren && <span className="mr-2">{isExpanded ? '−' : '+'}</span>}
                 {node.name}
             </motion.div>
-            
+           
             <AnimatePresence>
                 {isExpanded && hasChildren && (
                     <motion.div 
@@ -2027,7 +2023,7 @@ const CollegesPage = () => {
     const [filters, setFilters] = useState({ search: '', location: '', exam: '' });
     const [currentPage, setCurrentPage] = useState(1);
     const collegesPerPage = 4;
-    
+   
     useEffect(() => {
         let result = colleges.filter(college => 
             college.name.toLowerCase().includes(filters.search.toLowerCase()) &&
@@ -2037,16 +2033,16 @@ const CollegesPage = () => {
         setFilteredColleges(result);
         setCurrentPage(1); // Reset to first page on filter change
     }, [filters, colleges]);
-    
+   
     const uniqueLocations = [...new Set(mockColleges.map(c => c.location))];
     const uniqueExams = [...new Set(mockColleges.flatMap(c => c.exams))];
-    
+   
     // Pagination logic
     const indexOfLastCollege = currentPage * collegesPerPage;
     const indexOfFirstCollege = indexOfLastCollege - collegesPerPage;
     const currentColleges = filteredColleges.slice(indexOfFirstCollege, indexOfLastCollege);
     const totalPages = Math.ceil(filteredColleges.length / collegesPerPage);
-    
+   
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     const handleCollegeSelect = (id) => {
@@ -2059,7 +2055,7 @@ const CollegesPage = () => {
             <div className="container mx-auto px-6 py-12">
                 <h1 className="text-4xl font-bold text-center text-teal-400 mb-4">Find Your College</h1>
                 <p className="text-lg text-center text-gray-400 mb-8">Filter through our directory of verified institutions.</p>
-                
+               
                 {/* Filters */}
                 <div className="bg-gray-900 p-6 rounded-lg border border-gray-800 mb-8 grid md:grid-cols-3 gap-4">
                     <input 
@@ -2077,7 +2073,7 @@ const CollegesPage = () => {
                         {uniqueExams.map(exam => <option key={exam} value={exam}>{exam}</option>)}
                     </select>
                 </div>
-                
+               
                 {/* College Listings */}
                 <div className="grid md:grid-cols-2 gap-8">
                     {currentColleges.length > 0 ? currentColleges.map(college => (
@@ -2124,8 +2120,21 @@ const CollegeCard = ({ college, onSelect }) => (
 
 const MentorReviewCard = ({ mentor }) => {
     const isPositive = mentor.reviewType === 'positive';
+    const { setPage, setSelectedMentorId } = useNavigation();
+
+    const handleBookSession = (e) => {
+        e.stopPropagation(); // Prevent the main card click event if the button is clicked
+        if (mentor.id) {
+            setSelectedMentorId(mentor.id);
+            setPage('mentors'); // Navigate to mentors page which will open the modal
+        } else {
+            // Optionally, handle cases where there's no bookable mentor profile
+            alert("This mentor profile is not available for booking sessions.");
+        }
+    };
+
     return (
-        <div className={`bg-gray-900 border ${isPositive ? 'border-green-800/50' : 'border-red-800/50'} rounded-lg p-6 shadow-lg`}>
+        <div className={`bg-gray-900 border ${isPositive ? 'border-green-800/50' : 'border-red-800/50'} rounded-lg p-6 shadow-lg flex flex-col`}>
             <div className="flex items-start gap-4 mb-4">
                 <img src={mentor.image} alt={mentor.name} className="w-20 h-20 rounded-full border-2 border-gray-700"/>
                 <div>
@@ -2143,8 +2152,15 @@ const MentorReviewCard = ({ mentor }) => {
                     {isPositive ? <ThumbsUpIcon /> : <ThumbsDownIcon />}
                     <span>{mentor.reviewTitle}</span>
                 </h5>
-                <p className="text-gray-300 italic">"{mentor.reviewText}"</p>
+                <p className="text-gray-300 italic flex-grow">"{mentor.reviewText}"</p>
             </div>
+             {mentor.id && (
+                <div className="mt-4 pt-4 border-t border-gray-800 text-center">
+                    <Button onClick={handleBookSession} variant="outline" className="w-full sm:w-auto">
+                        Book Session with {mentor.name.split(' ')[0]}
+                    </Button>
+                </div>
+            )}
         </div>
     );
 };
@@ -2165,13 +2181,13 @@ const CollegeDetailPage = () => {
                 <Button onClick={() => setPage('colleges')} variant="secondary" className="mb-8">
                     &larr; Back to Colleges
                 </Button>
-                
+               
                 <div className="grid lg:grid-cols-3 gap-8">
                     <div className="lg:col-span-2">
                         <img src={college.image.replace('600x400', '1200x600')} alt={college.name} className="w-full h-auto object-cover rounded-lg mb-6 shadow-2xl"/>
                         <h1 className="text-4xl font-bold text-teal-400 mb-2">{college.name}</h1>
                         <p className="text-lg text-gray-400 mb-6">{college.location}</p>
-                        
+                       
                         <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
                             <h2 className="text-2xl font-bold text-gray-100 mb-4">Courses & Speciality</h2>
                             <p className="text-gray-300 mb-4"><strong>Speciality:</strong> {college.specialty}</p>
@@ -2182,7 +2198,7 @@ const CollegeDetailPage = () => {
                             </div>
                         </div>
                     </div>
-                    
+                   
                     <div className="lg:col-span-1">
                         <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 sticky top-24">
                             <h3 className="text-2xl font-bold text-gray-100 mb-4">Key Info</h3>
@@ -2217,7 +2233,19 @@ const MentorsPage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isAiChatOpen, setIsAiChatOpen] = useState(false);
     const { user, updateUserProfile } = useAuth();
-    
+    const { selectedMentorId, setSelectedMentorId } = useNavigation();
+
+    // Effect to open modal if navigated with a pre-selected mentor ID
+    useEffect(() => {
+        if (selectedMentorId) {
+            const mentorToBook = mockMentors.find(m => m.id === selectedMentorId);
+            if (mentorToBook) {
+                openBookingModal(mentorToBook);
+                setSelectedMentorId(null); // Reset after use
+            }
+        }
+    }, [selectedMentorId]);
+   
     const openBookingModal = (mentor) => {
         if(!user) {
             alert("Please log in to book a session.");
@@ -2232,11 +2260,11 @@ const MentorsPage = () => {
             mentorName: selectedMentor.name,
             field: selectedMentor.field,
             date: new Date().toLocaleDateString(),
-            status: 'Upcoming'
+            status: 'Pending with Mentor'
         };
         updateUserProfile({ sessions: [...user.sessions, newSession] });
         setIsModalOpen(false);
-        alert(`Session with ${selectedMentor.name} booked successfully!`);
+        alert(`Session request sent to ${selectedMentor.name}! You'll be notified upon confirmation.`);
     };
 
     return (
@@ -2244,7 +2272,7 @@ const MentorsPage = () => {
             <div className="container mx-auto px-6 py-12">
                 <h1 className="text-4xl font-bold text-center text-teal-400 mb-4">Connect with Mentors</h1>
                 <p className="text-lg text-center text-gray-400 mb-12">Get one-on-one guidance from experienced students and alumni.</p>
-                
+               
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <Card className="sm:col-span-2 lg:col-span-4 bg-teal-900/20 border-teal-800 p-6 flex flex-col md:flex-row items-center justify-between gap-6">
                         <div>
@@ -2260,7 +2288,7 @@ const MentorsPage = () => {
                     ))}
                 </div>
             </div>
-            
+           
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Book a Session">
                 {selectedMentor && (
                     <div>
@@ -2272,8 +2300,13 @@ const MentorsPage = () => {
                                 <p className="text-gray-400">{selectedMentor.field} @ {selectedMentor.college}</p>
                             </div>
                         </div>
-                        <p className="text-gray-300 mb-6">A confirmation email with available time slots will be sent to your registered email address.</p>
-                        <Button onClick={handleBooking} className="w-full">Confirm Booking</Button>
+                        <div className="text-gray-300 mb-6 bg-gray-900/50 p-4 rounded-lg border border-gray-700">
+                           <p className="font-semibold text-gray-200 mb-2">Mentor's Availability:</p>
+                           <p><strong>Days:</strong> {selectedMentor.availability.days.join(', ')}</p>
+                           <p><strong>Time:</strong> {selectedMentor.availability.time}</p>
+                        </div>
+                        <p className="text-gray-400 text-sm mb-6">You will be able to choose a specific time slot after the mentor confirms your request.</p>
+                        <Button onClick={handleBooking} className="w-full">Send Session Request</Button>
                     </div>
                 )}
             </Modal>
@@ -2339,7 +2372,7 @@ const AiMentorChatModal = ({ isOpen, onClose }) => {
 
             const result = await response.json();
             const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-            
+           
             if (text) {
                 setMessages(prev => [...prev, { sender: 'ai', text }]);
             } else {
@@ -2413,11 +2446,15 @@ const DashboardPage = () => {
         );
     }
 
+    if (user.userType === 'mentor') {
+        return <MentorDashboardPage />;
+    }
+
     return (
         <div className="flex-grow bg-black">
             <div className="container mx-auto px-6 py-12">
                 <h1 className="text-4xl font-bold text-teal-400 mb-8">Welcome, {user.name}!</h1>
-                
+               
                 <div className="grid lg:grid-cols-3 gap-8">
                     {/* Main content */}
                     <div className="lg:col-span-2 space-y-8">
@@ -2435,7 +2472,7 @@ const DashboardPage = () => {
                                )}
                             </div>
                         </DashboardSection>
-                        
+                       
                         {/* Upcoming Sessions */}
                         <DashboardSection title="Upcoming Mentorship Sessions">
                             {user.sessions && user.sessions.length > 0 ? (
@@ -2446,7 +2483,7 @@ const DashboardPage = () => {
                                             <p className="font-semibold text-gray-100">{session.mentorName} ({session.field})</p>
                                             <p className="text-sm text-gray-400">Booked on {session.date}</p>
                                         </div>
-                                        <span className="text-sm bg-green-900/50 text-green-300 px-3 py-1 rounded-full">{session.status}</span>
+                                        <span className={`text-sm px-3 py-1 rounded-full ${session.status === 'Upcoming' ? 'bg-green-900/50 text-green-300' : 'bg-yellow-900/50 text-yellow-300'}`}>{session.status}</span>
                                     </li>
                                 ))}
                                 </ul>
@@ -2484,7 +2521,27 @@ const DashboardPage = () => {
                                 <button className="text-sm text-teal-500 hover:underline mt-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 rounded px-1">Edit Profile</button>
                             </div>
                         </DashboardSection>
-                        
+                       
+                         {/* NEW: Upcoming Dates Timeline */}
+                        <DashboardSection title="Important Dates">
+                            <div className="space-y-4">
+                                {mockUpcomingEvents.map((event, index) => (
+                                <div key={index} className="flex gap-4">
+                                    <div className="flex flex-col items-center">
+                                        <div className="w-10 h-10 rounded-full bg-teal-600/20 border border-teal-800 flex-shrink-0 flex items-center justify-center font-bold text-teal-300 text-xs">
+                                             {event.date.split(',')[0]}
+                                        </div>
+                                        {index < mockUpcomingEvents.length - 1 && <div className="w-px h-full bg-gray-700"></div>}
+                                    </div>
+                                    <div>
+                                        <p className="font-semibold text-gray-200">{event.title}</p>
+                                        <p className="text-sm text-gray-400">{event.description}</p>
+                                    </div>
+                                </div>
+                                ))}
+                            </div>
+                        </DashboardSection>
+
                         {/* Bookmarked Colleges - Feature to be implemented */}
                         <DashboardSection title="Bookmarked Colleges">
                             <p className="text-gray-400 bg-gray-800 p-4 rounded-lg border border-gray-700">You haven't bookmarked any colleges yet.</p>
@@ -2502,6 +2559,74 @@ const DashboardSection = ({ title, children }) => (
         {children}
     </Card>
 );
+
+// --- NEW MENTOR DASHBOARD PAGE ---
+const MentorDashboardPage = () => {
+    const { user, updateUserProfile } = useAuth();
+    const [requests, setRequests] = useState(user.sessionRequests);
+
+    const handleRequest = (studentName, action) => {
+        setRequests(prev => prev.map(req => 
+            req.studentName === studentName ? { ...req, status: action } : req
+        ));
+        // In a real app, you'd also update the user object persistently
+    };
+
+    return (
+        <div className="flex-grow bg-black">
+            <div className="container mx-auto px-6 py-12">
+                <h1 className="text-4xl font-bold text-teal-400 mb-8">Mentor Dashboard</h1>
+                <div className="grid lg:grid-cols-3 gap-8">
+                    {/* Main Content: Session Requests */}
+                    <div className="lg:col-span-2">
+                        <DashboardSection title="Session Requests">
+                           {requests.filter(r => r.status === 'Pending').length > 0 ? (
+                                <ul className="space-y-4">
+                                    {requests.filter(r => r.status === 'Pending').map((req, i) => (
+                                        <li key={i} className="bg-gray-800 p-4 rounded-lg border border-gray-700 flex flex-col sm:flex-row justify-between items-center gap-4">
+                                            <div className="flex items-center gap-4">
+                                                <img src={req.studentImage} alt={req.studentName} className="w-12 h-12 rounded-full" />
+                                                <div>
+                                                    <p className="font-semibold text-gray-100">{req.studentName}</p>
+                                                    <p className="text-sm text-gray-400">Requested on {req.date}</p>
+                                                </div>
+                                            </div>
+                                            <div className="flex gap-3">
+                                                <Button onClick={() => handleRequest(req.studentName, 'Accepted')} className="bg-green-600 hover:bg-green-500 focus-visible:ring-green-500 px-4 py-2 text-sm">Accept</Button>
+                                                <Button onClick={() => handleRequest(req.studentName, 'Declined')} variant="secondary" className="bg-red-600 hover:bg-red-500 focus-visible:ring-red-500 px-4 py-2 text-sm">Decline</Button>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                           ) : (
+                                <p className="text-gray-400">No pending session requests.</p>
+                           )}
+                        </DashboardSection>
+                    </div>
+                    {/* Sidebar */}
+                     <div className="space-y-8">
+                        <DashboardSection title="Profile">
+                            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-gray-300">
+                                <p><strong>Name:</strong> {user.name}</p>
+                                <p><strong>Email:</strong> {user.email}</p>
+                            </div>
+                        </DashboardSection>
+                        <DashboardSection title="Request History">
+                             <ul className="space-y-3">
+                                {requests.filter(r => r.status !== 'Pending').map((req, i) => (
+                                    <li key={i} className="bg-gray-800/50 p-3 rounded-lg flex justify-between items-center border border-gray-700/50">
+                                        <p className="font-medium text-gray-300">{req.studentName}</p>
+                                        <span className={`text-xs font-bold px-2 py-1 rounded-full ${req.status === 'Accepted' ? 'bg-green-900/50 text-green-300' : 'bg-red-900/50 text-red-300'}`}>{req.status}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </DashboardSection>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 // This is a mock admin panel, in reality it would have robust controls.
 const AdminPage = () => {
@@ -2538,6 +2663,7 @@ const NavigationProvider = ({ children }) => {
     const [quizType, setQuizType] = useState(null); // { level: 'class10' } or { level: 'class12', stream: 'Science' }
     const [quizResult, setQuizResult] = useState(null);
     const [selectedCollegeId, setSelectedCollegeId] = useState(null);
+    const [selectedMentorId, setSelectedMentorId] = useState(null); // For booking from college page
     const [mentorFlowState, setMentorFlowState] = useState(null); // For mentor registration flow data
 
     const contextValue = {
@@ -2549,6 +2675,8 @@ const NavigationProvider = ({ children }) => {
         setQuizResult,
         selectedCollegeId,
         setSelectedCollegeId,
+        selectedMentorId,
+        setSelectedMentorId,
         mentorFlowState,
         setMentorFlowState,
     };
@@ -2565,11 +2693,11 @@ const useNavigation = () => useContext(NavigationContext);
 const App = () => {
     const { page } = useNavigation();
     const { loading, isAuthenticated } = useAuth();
-    
+   
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [page]);
-    
+   
     if (loading) {
         return <div className="h-screen w-screen flex items-center justify-center bg-gray-950"><LoadingSpinner/></div>
     }
@@ -2578,10 +2706,10 @@ const App = () => {
         // Unprotected mentor routes
         if (page === 'mentorLogin' || page === 'mentorRegistration' || page === 'mentorSuccess') {
              switch(page) {
-                 case 'mentorLogin': return <MentorLoginPage />;
-                 case 'mentorRegistration': return <MentorRegistrationPage />;
-                 case 'mentorSuccess': return <MentorSuccessPage />;
-                 default: return <HomePage />;
+                case 'mentorLogin': return <MentorLoginPage />;
+                case 'mentorRegistration': return <MentorRegistrationPage />;
+                case 'mentorSuccess': return <MentorSuccessPage />;
+                default: return <HomePage />;
              }
         }
         
@@ -2590,7 +2718,7 @@ const App = () => {
         if (protectedRoutes.includes(page) && !isAuthenticated) {
             return <LoginPage />;
         }
-        
+       
         switch (page) {
             case 'login': return <LoginPage />;
             case 'signup': return <SignupPage />;
@@ -2638,7 +2766,7 @@ export default function NextStepGuideApp() {
                 .custom-cursor-area, .custom-cursor-area * {
                     cursor: none;
                 }
-                
+               
                 .bg-grid-pattern {
                     background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
                     background-size: 2rem 2rem;
@@ -2669,3 +2797,4 @@ export default function NextStepGuideApp() {
         </>
     );
 };
+
