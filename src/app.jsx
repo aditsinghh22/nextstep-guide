@@ -23,21 +23,57 @@ const mockQuizData = {
         { id: 'q2', text: "Do you enjoy building things with your hands or with code?", options: [{ text: "With my hands", field: "Mechanical/Civil Engineering" }, { text: "With code", field: "Computer Science" }] },
         { id: 'q3', text: "Are you fascinated by the human body and medicine?", options: [{ text: "Yes, deeply", field: "Medical Field" }, { text: "Not particularly", field: "Non-Medical Fields" }] },
         { id: 'q4', text: "Do you prefer working on large-scale projects or intricate systems?", options: [{ text: "Large-scale projects", field: "Civil Engineering" }, { text: "Intricate systems", field: "Electronics/Software" }] },
-      ]
-    },
+      { id: 'q5', text: "Do you enjoy solving abstract problems or tangible real-world issues?", options: [{ text: "Abstract problems", field: "Mathematics/Theoretical Physics" }, { text: "Real-world issues", field: "Engineering/Applied Sciences" }] },
+      {  id: 'q6',text: "Would you rather analyze data or design user experiences?",options: [{text: "Analyze data", field: "Data Science/Statistics" }, { text: "Design user experiences", field: "UI/UX Design" }]},
+      {id: "q7",text: "Do you like experimenting in a lab or conducting research through reading and writing?",options: [{ text: "Experimenting in a lab", field: "Chemistry/Biology" },{ text: "Reading and writing research",  field:"SocialSciences  Humanities" }]},
+     {id: "q8",text: "Are you more interested in studying weather patterns or investigating chemical reactions?",options: [{ text: "Studying weather patterns", field: "Meteorology/Atmospheric Science" },{ text: "Investigating chemical reactions", field: "Chemical Engineering/Physical Chemistry" }]},
+      { id: "q9",  text: "Do you prefer working with machines or living organisms?", options: [{ text: "Machines", field: "Robotics" }, { text: "Living organisms", field: "Biotechnology/Biology" }] },
+      { id: "q10", text: "Would you rather invent new technologies or improve existing ones?", options: [{ text: "Invent new technologies", field: "R&D/Innovation" }, { text: "Improve existing ones", field: "Industrial Engineering/Quality Control" }] },
+     {id: "q12",text: "Do you enjoy working with numbers and detailed data?",options: [ { text: "Yes, I like analyzing and interpreting data", field: "Research/Data Analysis" }, { text: "No, I prefer tasks that involve communication or leadership", field: "Communication field" } ]},
+
+      { id: "q12", text: "Would you enjoy exploring space or exploring the ocean?", options: [{ text: "Space", field: "Astrophysics/Aerospace Engineering" }, { text: "Ocean", field: "Marine Biology/Oceanography" }] },
+      { id: "q13", text: "Do you prefer working with numbers or with people?", options: [{ text: "Numbers", field: "Statistics/Data Science" }, { text: "People", field: "Healthcare/Teaching/Counseling" }] },
+      { id: "q14", text: "Do you enjoy debugging code or diagnosing biological symptoms?", options: [{ text: "Debugging code", field: "Software Engineering" }, { text: "Diagnosing symptoms", field: "Medical Field" }] },
+      { id: "q15", text: "Would you rather develop sustainable technologies or treat diseases?", options: [{ text: "Sustainable technologies", field: "Environmental Engineering/Renewable Energy" }, { text: "Treat diseases", field: "Medicine/Pharmaceutical Sciences" }] },
+     ]},
     'Commerce': {
         title: "Class 12 Commerce - Career Mapping Quiz",
         questions: [
             { id: 'q1', text: "Are you more interested in managing money or managing people?", options: [{ text: "Managing money", field: "Finance/Accounting" }, { text: "Managing people", field: "Human Resources/Management" }] },
             { id: 'q2', text: "Do you enjoy analyzing data to find trends or persuading people?", options: [{ text: "Analyzing data", field: "Data Analysis/Finance" }, { text: "Persuading people", field: "Marketing/Sales" }] },
-        ]
-    },
+        {id: "q3",text: "Would you prefer working in a corporate office or running your own business?", options: [{ text: "Corporate office", field: "Corporate Jobs/Management" },{ text: "Own business", field: "Entrepreneurship" }]},
+        {id: "q4",text: "Are you more comfortable with numbers or words?", options: [{ text: "Numbers", field: "Accounting/Finance/Economics" },{ text: "Words", field: "Marketing/Business Communication/Law" }]},
+        {id: "q5",text: "Would you rather audit financial statements or recruit new employees?", options: [{ text: "Audit financial statements", field: "Chartered Accountancy/Auditing" },{ text: "Recruit employees", field: "Human Resources/Talent Management" }]},
+         {id: "q6",text: "Do you enjoy understanding laws and regulations or developing creative brand ideas?", options: [{ text: "Laws and regulations", field: "Corporate Law/Compliance" },{ text: "Creative brand ideas", field: "Marketing/Advertising" }]},
+         {id: "q7",text: "Are you more drawn to national business or international business?", options: [ { text: "National business", field: "Domestic Business/Startups" },{ text: "International business", field: "Global Trade/International Business" }]},
+         {id: "q8",text: "Which excites you more: stock market trends or company leadership styles?", options: [{ text: "Stock market trends", field: "Stock Trading/Investment Banking" },{ text: "Leadership styles", field: "Organizational Behavior/Management" }]},
+        {id: "q9",text: "Would you rather prepare tax returns or design marketing campaigns?",options: [{ text: "Prepare tax returns", field: "Taxation/Accounting" },{ text: "Design marketing campaigns", field: "Marketing/Advertising" } ]},
+{id: "q10",text: "Do you enjoy negotiating deals or managing company finances?",options: [ { text: "Negotiating deals", field: "Sales/Business Development" },{ text: "Managing company finances", field: "Financial Management/Accounting" }]},
+{id: "q11",text: "Are you interested in studying consumer behavior or financial risk assessment?", options: [{ text: "Consumer behavior", field: "Marketing/Consumer Research" },{ text: "Financial risk assessment", field: "Risk Management/Finance" }]},
+{id: "q12",text: "Would you prefer to work in a startup environment or a well-established corporation?",options: [{ text: "Startup environment", field: "Entrepreneurship/Startups" },{ text: "Well-established corporation", field: "Corporate Jobs/Management" }]},
+{id: "q13",text: "Do you like working with spreadsheets and budgets or organizing company events?",options: [{ text: "Spreadsheets and budgets", field: "Accounting/Finance" },{ text: "Organizing events", field: "Human Resources/Corporate Communication" }]},
+{id: "q14", text: "Are you more interested in stock market investing or brand strategy?",options: [ { text: "Stock market investing", field: "Investment Banking/Stock Trading" }, { text: "Brand strategy", field: "Marketing/Brand Management" }]},
+{id: "q15",text: "Would you enjoy conducting market research or auditing company finances?",options: [{ text: "Conducting market research", field: "Marketing Research/Analytics" },{ text: "Auditing company finances", field: "Auditing/Accounting" } ]},
+]},
     'Arts': {
         title: "Class 12 Arts - Career Mapping Quiz",
         questions: [
             { id: 'q1', text: "Are you more drawn to visual expression or written expression?", options: [{ text: "Visual expression", field: "Design/Fine Arts" }, { text: "Written expression", field: "Journalism/Writing" }] },
             { id: 'q2', text: "Do you want to understand societal structures or individual human behavior?", options: [{ text: "Societal structures", field: "Sociology/Civil Services" }, { text: "Individual behavior", field: "Psychology" }] },
-        ]
+             {id: "q3",text: "Are you interested in studying history and cultures or exploringphilosophy and ideas?", options: [{ text: "History and cultures", field: "History/Archaeology" },{ text: "Philosophy and ideas", field: "Philosophy/Political Science" }]},
+    {id: "q4",text: "Do you enjoy performing on stage or working behind the scenes in production?",options: [{ text: "Performing on stage", field: "Theatre/Performing Arts" },{ text: "Behind the scenes", field: "Film/Media Production" }]},
+  {id: "q5",text: "Would you rather create art with your hands or direct others in creative projects?",options: [{ text: "Create art", field: "Fine Arts/Crafts" },{ text: "Direct creative projects", field: "Creative Direction/Media Management" }]},
+  { id: "q6", text: "Are you more passionate about storytelling through words or through images?", options: [ { text: "Words", field: "Literature/Creative Writing" }, { text: "Images", field: "Photography/Graphic Design" } ] },
+  {id: "q7",text: "Do you enjoy debating ideas or organizing community events?",options: [{ text: "Debating ideas", field: "Law/Political Science" },{ text: "Organizing events", field: "Public Relations/Event Management" }]},
+  {id: "q8",text: "Would you prefer researching cultural traditions or analyzing human communication?",options: [{ text: "Researching cultural traditions", field: "Anthropology/Cultural Studies" },{ text: "Analyzing communication", field: "Linguistics/Mass Communication" }]},
+  {id: "q9",text: "Are you interested in working with music or writing scripts for films and plays?",options: [{ text: "Working with music", field: "Music/Performing Arts" },{ text: "Writing scripts", field: "Screenwriting/Playwriting" }]},
+  {id: "q10",text: "Do you prefer analyzing political systems or helping people with social services?",options: [{ text: "Analyzing political systems", field: "Political Science/International Relations" },{ text: "Helping people", field: "Social Work/Counseling" }]},
+  {id: "q11",text: "Would you enjoy creating digital art or researching historical texts?",options: [{ text: "Creating digital art", field: "Digital Media/Graphic Design" },{ text: "Researching historical texts", field: "History/Archival Studies" }]},
+  {id: "q12",text: "Are you more interested in philosophy or in studying languages?",options: [{ text: "Philosophy", field: "Philosophy/Ethics" },{ text: "Languages", field: "Linguistics/Foreign Languages" }]},
+  {id: "q13",text: "Do you enjoy writing poetry or organizing social campaigns?",options: [{ text: "Writing poetry", field: "Creative Writing/Poetry" },{ text: "Organizing campaigns", field: "Social Activism/NGOs" }]},
+  {id: "q14",text: "Would you rather study media trends or explore classical literature?",options: [{ text: "Media trends", field: "Mass Communication/Media Studies" },{ text: "Classical literature", field: "Literature/Classics" }]},
+  {id: "q15",text: "Are you more interested in fashion design or in cultural anthropology?",options: [{ text: "Fashion design", field: "Fashion Design/Textiles" },{ text: "Cultural anthropology", field: "Anthropology/Cultural Studies" }]},
+]
     }
   }
 };
