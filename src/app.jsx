@@ -5,7 +5,7 @@ import axios from 'axios'; // Make sure this import is at the top with the other
 // --- API HELPER ---
 // A centralized place to configure axios, especially for our backend URL.
 const api = axios.create({
-    baseURL: 'http://localhost:5000/api', // The base URL for all our backend requests
+    baseURL: 'https://nextstep-guide.onrender.com', // The base URL for all our backend requests
 });
 
 // --- MOCK DATA ---
