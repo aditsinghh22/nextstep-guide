@@ -3433,5 +3433,3 @@ export default function NextStepGuideApp() {
         </>
     );
 };
-
-
