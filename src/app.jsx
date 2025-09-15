@@ -671,19 +671,63 @@ const whyGraduationData = [
     }
 ];
 
+const mockEbooksData = {
+    class10: [
+        { subject: "Mathematics", name: "Mathematics Textbook", url: "https://ncert.nic.in/textbook.php?jemh1=0-15" },
+        { subject: "Science", name: "Science Textbook", url: "https://ncert.nic.in/textbook.php?jesc1=0-16" },
+        { subject: "Social Science", name: "History: India and the Contemporary World – II", url: "https://ncert.nic.in/textbook.php?jess3=0-8" },
+        { subject: "Social Science", name: "Geography: Contemporary India – II", url: "https://ncert.nic.in/textbook.php?jess2=0-7" },
+        { subject: "Social Science", name: "Political Science: Democratic Politics – II", url: "https://ncert.nic.in/textbook.php?jess4=0-8" },
+        { subject: "Social Science", name: "Economics: Understanding Economic Development", url: "https://ncert.nic.in/textbook.php?jess1=0-5" },
+        { subject: "English", name: "First Flight", url: "https://ncert.nic.in/textbook.php?jeen1=0-11" },
+        { subject: "English", name: "Footprints Without Feet", url: "https://ncert.nic.in/textbook.php?jeft1=0-10" },
+    ],
+    class12: {
+        "Science Stream": [
+            { subject: "Physics", name: "Physics Part I", url: "https://ncert.nic.in/textbook.php?leph1=0-8" },
+            { subject: "Physics", name: "Physics Part II", url: "https://ncert.nic.in/textbook.php?leph2=0-7" },
+            { subject: "Chemistry", name: "Chemistry Part I", url: "https://ncert.nic.in/textbook.php?lech1=0-9" },
+            { subject: "Chemistry", name: "Chemistry Part II", url: "https://ncert.nic.in/textbook.php?lech2=0-7" },
+            { subject: "Biology", name: "Biology", url: "https://ncert.nic.in/textbook.php?lebo1=0-16" },
+            { subject: "Mathematics", name: "Mathematics Part I", url: "https://ncert.nic.in/textbook.php?lemh1=0-6" },
+            { subject: "Mathematics", name: "Mathematics Part II", url: "https://ncert.nic.in/textbook.php?lemh2=0-7" },
+        ],
+        "Commerce Stream": [
+            { subject: "Accountancy", name: "Accountancy Part I", url: "https://ncert.nic.in/textbook.php?leac1=0-7" },
+            { subject: "Accountancy", name: "Accountancy Part II", url: "https://ncert.nic.in/textbook.php?leac2=0-6" },
+            { subject: "Business Studies", name: "Business Studies Part I", url: "https://ncert.nic.in/textbook.php?lebs1=0-8" },
+            { subject: "Business Studies", name: "Business Studies Part II", url: "https://ncert.nic.in/textbook.php?lebs2=0-4" },
+            { subject: "Economics", name: "Introductory Microeconomics", url: "https://ncert.nic.in/textbook.php?leec1=0-6" },
+            { subject: "Economics", name: "Introductory Macroeconomics", url: "https://ncert.nic.in/textbook.php?leec2=0-6" },
+        ],
+        "Arts / Humanities Stream": [
+            { subject: "History", name: "Themes in Indian History Part I", url: "https://ncert.nic.in/textbook.php?lehs1=0-4" },
+            { subject: "History", name: "Themes in Indian History Part II", url: "https://ncert.nic.in/textbook.php?lehs2=0-5" },
+            { subject: "History", name: "Themes in Indian History Part III", url: "https://ncert.nic.in/textbook.php?lehs3=0-6" },
+            { subject: "Political Science", name: "Contemporary World Politics", url: "https://ncert.nic.in/textbook.php?leps1=0-9" },
+            { subject: "Political Science", name: "Politics in India Since Independence", url: "https://ncert.nic.in/textbook.php?leps2=0-9" },
+            { subject: "Geography", name: "Fundamentals of Human Geography", url: "https://ncert.nic.in/textbook.php?legy1=0-10" },
+            { subject: "Geography", name: "India: People and Economy", url: "https://ncert.nic.in/textbook.php?legy2=0-12" },
+            { subject: "Psychology", name: "Psychology", url: "https://ncert.nic.in/textbook.php?lepy1=0-9" },
+            { subject: "English", name: "Flamingo", url: "https://ncert.nic.in/textbook.php?lefl1=0-14" },
+            { subject: "English", name: "Vistas", url: "https://ncert.nic.in/textbook.php?levs1=0-8" },
+        ]
+    }
+};
+
 const mockScholarships = [
  {
  "name": "Prime Minister’s Special Scholarship Scheme (PM-USP/PMSSS)",
  "eligibility": "Class 12 pass-outs from J&K and Ladakh joining professional courses via AICTE counselling.",
- "category": ["General", "J&K", "UG"],
+ "category": ["General", "J&K", "UG", "Government", "Vocational/Skill-based"],
  "benefits": "Covers tuition fees + maintenance allowance for students studying outside J&K.",
- "application_link": "https://www.aicte-india.org/PMSSS",
+ "application_link": "https://www.aicte-india.org/",
  "status_source": "https://scholarships.gov.in/"
  },
  {
  "name": "NSP Pre-Matric Scholarship (SC/ST/OBC/Minority)",
  "eligibility": "Students up to Class 10 belonging to SC/ST/OBC/Minority categories.",
- "category": ["Class 10", "SC", "ST", "OBC", "Minority"],
+ "category": ["Class 10", "SC", "ST", "OBC", "Minority", "Government", "General"],
  "benefits": "Covers admission fees, tuition, books, and maintenance.",
  "application_link": "https://scholarships.gov.in/",
  "status_source": "https://scholarships.gov.in/"
@@ -691,7 +735,7 @@ const mockScholarships = [
  {
  "name": "NSP Post-Matric Scholarship (SC/ST/OBC/Minority)",
  "eligibility": "Students after Class 10 or 12 from SC/ST/OBC/Minority categories continuing higher education.",
- "category": ["Class 12", "SC", "ST", "OBC", "Minority"],
+ "category": ["Class 12", "SC", "ST", "OBC", "Minority", "Government", "General"],
  "benefits": "Tuition fees, maintenance allowance, and exam fees.",
  "application_link": "https://scholarships.gov.in/",
  "status_source": "https://scholarships.gov.in/"
@@ -699,55 +743,39 @@ const mockScholarships = [
  {
  "name": "CBSE Single Girl Child Scholarship",
  "eligibility": "Class 10 pass CBSE school girl students meeting academic criteria.",
- "category": ["Girls", "Class 10"],
+ "category": ["Girls", "Class 10", "Government", "General"],
  "benefits": "Scholarship to continue studies in Class 11 & 12.",
  "application_link": "https://www.cbse.gov.in/",
  "status_source": "https://www.cbse.gov.in/"
  },
  {
- "name": "AICTE Pragati Scholarship",
- "eligibility": "Girl students admitted in first year of technical diploma/degree courses.",
- "category": ["Girls", "Technical", "UG"],
+ "name": "AICTE Pragati Scholarship (for Girls)",
+ "eligibility": "Girl students admitted in first year of technical diploma/degree courses; family income ≤ ₹8,00,000 p.a.",
+ "category": ["Girls", "Technical", "UG", "Government", "STEM", "Vocational/Skill-based"],
  "benefits": "Up to ₹50,000 per annum for tuition, books, and other expenses.",
- "application_link": "https://www.aicte-pragati-saksham.gov.in/",
- "status_source": "https://scholarships.gov.in/"
+ "application_link": "https://www.aicte-india.org/",
+ "status_source": "https://www.aicte-india.org/schemes/students-development-schemes"
  },
  {
- "name": "AICTE Saksham Scholarship",
- "eligibility": "Differently-abled students admitted in first year of technical diploma/degree courses.",
- "category": ["Disabled", "Technical", "UG"],
+ "name": "AICTE Saksham Scholarship (for Differently-abled)",
+ "eligibility": "Differently-abled students with ≥40% disability entering technical diploma/degree; family income ≤ ₹8,00,000 p.a.",
+ "category": ["Disabled", "Technical", "UG", "Government", "STEM", "Vocational/Skill-based"],
  "benefits": "Up to ₹50,000 per annum.",
- "application_link": "https://www.aicte-pragati-saksham.gov.in/",
- "status_source": "https://scholarships.gov.in/"
+ "application_link": "https://www.aicte-india.org/",
+ "status_source": "https://www.aicte-india.org/schemes/students-development-schemes"
  },
  {
  "name": "J&K UT Special Scholarship Scheme (JKSSS)",
  "eligibility": "Students of J&K applying for UG programs within UT or outside.",
- "category": ["J&K", "UG"],
+ "category": ["J&K", "UG", "Government", "General"],
  "benefits": "Supports tuition & hostel expenses for higher education.",
  "application_link": "https://scholarships.gov.in/",
  "status_source": "https://scholarships.gov.in/"
  },
  {
- "name": "Special Scholarship Scheme for Students of UTs of J&K & Ladakh (SSS J&KL)",
- "eligibility": "Class 12 pass-outs who secure admission outside J&K/Ladakh via AICTE counselling.",
- "category": ["J&K", "UG", "Professional"],
- "benefits": "Scholarship for general, professional, and medical streams.",
- "application_link": "https://www.aicte-india.org/",
- "status_source": "https://scholarships.gov.in/"
- },
- {
- "name": "J&K Govt Educational Scholarship (Artisan/Handicrafts Dept.)",
- "eligibility": "Children of registered artisans/weavers in J&K.",
- "category": ["J&K", "Class 10", "Class 12"],
- "benefits": "Fixed scholarships for school & professional studies.",
- "application_link": "http://handicraftsjk.nic.in/",
- "status_source": "http://handicraftsjk.nic.in/"
- },
- {
  "name": "JKBOSE NMMS Scholarship",
  "eligibility": "Class 8 students from Govt schools; continues through Class 12 for meritorious low-income students.",
- "category": ["Class 10", "Class 12", "Minority", "SC", "ST", "OBC"],
+ "category": ["Class 10", "Class 12", "Minority", "SC", "ST", "OBC", "Government", "General"],
  "benefits": "₹12,000 per year till Class 12.",
  "application_link": "https://jkbose.nic.in/",
  "status_source": "https://jkbose.nic.in/"
@@ -755,35 +783,59 @@ const mockScholarships = [
  {
  "name": "Dr. Ambedkar Post-Matric Scholarship (EBC)",
  "eligibility": "Economically Backward Class students after Class 12.",
- "category": ["Class 12", "EBC"],
+ "category": ["Class 12", "EBC", "Government", "General"],
  "benefits": "Covers tuition and maintenance allowance.",
  "application_link": "https://scholarships.gov.in/",
  "status_source": "https://scholarships.gov.in/"
  },
  {
- "name": "Tata Capital Pankh Scholarship",
- "eligibility": "SC/ST students after 12th; low-income families.",
- "category": ["SC", "ST", "Class 12"],
- "benefits": "Financial support for UG courses.",
- "application_link": "https://www.buddy4study.com/",
- "status_source": "https://www.buddy4study.com/"
- },
- {
- "name": "Begum Hazrat Mahal Scholarship",
+ "name": "Begum Hazrat Mahal National Scholarship",
  "eligibility": "Minority girl students (Class 9 to 12 and beyond).",
- "category": ["Girls", "Minority", "Class 10", "Class 12"],
+ "category": ["Girls", "Minority", "Class 10", "Class 12", "Government", "General"],
  "benefits": "Financial support for girl students in higher education.",
  "application_link": "https://scholarships.gov.in/",
- "status_source": "https://scholarships.gov.in/"
+ "status_source": "https://maef.nic.in/"
  },
  {
- "name": "Dakshana Scholarship",
+ "name": "Dakshana Scholarship for IIT/NEET Coaching",
  "eligibility": "Meritorious but economically weak students aiming for IIT/NEET after Class 10 or 12.",
  "category": ["Class 10", "Class 12", "STEM"],
- "benefits": "Free coaching, residential support, and study material.",
- "application_link": "https://www.dakshana.org/",
- "status_source": "https://www.dakshana.org/"
- }
+ "benefits": "Free one-year residential coaching, including lodging and food.",
+ "application_link": "https://dakshana.org/",
+ "status_source": "https://dakshana.org/"
+ },
+ {
+    "name": "Tribal Affairs Department (J&K) — ST Student Scholarships",
+    "eligibility": "Scheduled Tribe (ST) students in J&K (pre-matric & post-matric levels)",
+    "category": ["ST", "J&K", "Class 10", "Class 12", "Government", "General"],
+    "benefits": "Financial assistance for various educational expenses.",
+    "application_link": "https://jktribals.nic.in/",
+    "status_source": "https://jktribals.nic.in/"
+  },
+  {
+    "name": "Dr. Ambedkar Pre & Post-Matric Scholarship for DNTs (J&K)",
+    "eligibility": "Denotified, Nomadic & Semi-Nomadic Tribes (DNTs) of J&K; family income ≤ ₹2,50,000 p.a.",
+    "category": ["J&K", "Class 10", "Class 12", "Government", "General"],
+    "benefits": "Maintenance allowance, tuition fees, and other non-refundable fees.",
+    "application_link": "https://socialwelfare.jk.gov.in/",
+    "status_source": "https://socialwelfare.jk.gov.in/"
+  },
+  {
+    "name": "EBC Post-Matric Scholarship (J&K)",
+    "eligibility": "EBC category students of J&K; family income ≤ ₹2,50,000 p.a.",
+    "category": ["EBC", "J&K", "Class 12", "Government", "General"],
+    "benefits": "Reimbursement of non-refundable fees and maintenance allowance.",
+    "application_link": "https://socialwelfare.jk.gov.in/",
+    "status_source": "https://socialwelfare.jk.gov.in/"
+  },
+  {
+    "name": "GCW Parade Jammu — College-level Scholarships",
+    "eligibility": "Students at Govt College For Women Parade Jammu (Minorities, SC, ST, OBC, orphans, BPL, etc.)",
+    "category": ["Minority", "SC", "ST", "OBC", "Girls", "J&K", "UG", "Government", "General"],
+    "benefits": "Financial aid via NSP, Central Sponsored Schemes, and JK Govt Social Welfare.",
+    "application_link": "https://gcwparade.in/",
+    "status_source": "https://gcwparade.in/"
+  }
 ];
 
 
@@ -1098,6 +1150,7 @@ const Header = () => {
           <NavItem onClick={() => setPage('colleges')}>Colleges</NavItem>
           <NavItem onClick={() => setPage('mentors')}>Mentors</NavItem>
           <NavItem onClick={() => setPage('scholarships')}>Scholarships</NavItem>
+          <NavItem onClick={() => setPage('ebooks')}>eBooks</NavItem>
         </div>
         <div>
           {isAuthenticated ? (
@@ -1856,31 +1909,88 @@ const MentorSuccessPage = () => {
 
 // --- END OF MENTOR FLOW COMPONENTS ---
 
+const EbooksPage = () => {
+    const { setPage } = useNavigation();
+    const { class10, class12 } = mockEbooksData;
+
+    const EbookCard = ({ book }) => (
+        <Card className="p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-center sm:text-left">
+                <p className="text-xs text-teal-400 font-semibold">{book.subject}</p>
+                <h4 className="font-bold text-gray-100">{book.name}</h4>
+            </div>
+            <Button 
+                onClick={() => window.open(book.url, '_blank')} 
+                variant="outline" 
+                className="w-full sm:w-auto flex-shrink-0 px-4 py-2 text-sm"
+            >
+                Download Page
+            </Button>
+        </Card>
+    );
+
+    return (
+        <div className="flex-grow bg-black">
+            <div className="container mx-auto px-6 py-12">
+                <Button onClick={() => setPage('home')} variant="secondary" className="mb-8">
+                    &larr; Back to Home
+                </Button>
+                <div className="text-center">
+                    <h1 className="text-4xl font-bold text-teal-400 mb-4">Free NCERT e-Books</h1>
+                    <p className="text-lg text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Click on any book to go to the official NCERT download page where you can get the full PDF.
+                    </p>
+                </div>
+
+                {/* Class 10 eBooks */}
+                <div className="mb-16">
+                    <h2 className="text-3xl font-bold text-gray-100 mb-6 border-b-2 border-teal-800 pb-2">📘 Class 10 Books</h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {class10.map(book => <EbookCard key={book.name} book={book} />)}
+                    </div>
+                </div>
+
+                {/* Class 12 eBooks */}
+                <div>
+                    <h2 className="text-3xl font-bold text-gray-100 mb-6 border-b-2 border-teal-800 pb-2">📗 Class 12 Books</h2>
+                    <div className="space-y-12">
+                        {Object.entries(class12).map(([streamName, books]) => (
+                            <div key={streamName}>
+                                <h3 className="text-2xl font-semibold text-teal-400 mb-4">{streamName}</h3>
+                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {books.map(book => <EbookCard key={book.name} book={book} />)}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const ScholarshipsPage = () => {
     const { setPage } = useNavigation();
     const [scholarships, setScholarships] = useState(mockScholarships);
     const [filteredScholarships, setFilteredScholarships] = useState(mockScholarships);
     const [filters, setFilters] = useState({
         class: 'All',
-        region: 'All',
         category: 'All',
         courseType: 'All',
     });
 
     const filterOptions = {
         class: ['All', 'Class 10', 'Class 12'],
-        region: ['All', 'J&K'],
         category: ['All', 'SC', 'ST', 'OBC', 'Minority', 'Girls', 'Disabled', 'General', 'EBC'],
-        courseType: ['All', 'Technical', 'UG', 'Professional', 'STEM'],
+        courseType: ['All', 'STEM', 'Commerce', 'Government', 'Arts & Humanities', 'Vocational/Skill-based', 'General'],
     };
 
     useEffect(() => {
         let result = scholarships.filter(scholarship => {
             const classMatch = filters.class === 'All' || scholarship.category.includes(filters.class);
-            const regionMatch = filters.region === 'All' || scholarship.category.includes(filters.region);
             const categoryMatch = filters.category === 'All' || scholarship.category.includes(filters.category);
             const courseTypeMatch = filters.courseType === 'All' || scholarship.category.includes(filters.courseType);
-            return classMatch && regionMatch && categoryMatch && courseTypeMatch;
+            return classMatch && categoryMatch && courseTypeMatch;
         });
         setFilteredScholarships(result);
     }, [filters, scholarships]);
@@ -1917,7 +2027,6 @@ const ScholarshipsPage = () => {
                 {/* Filters */}
                 <div className="bg-gray-900 p-6 rounded-lg border border-gray-800 mb-8 flex flex-wrap gap-4">
                     <FilterDropdown name="class" label="Class" options={filterOptions.class} />
-                    <FilterDropdown name="region" label="Region" options={filterOptions.region} />
                     <FilterDropdown name="category" label="Category" options={filterOptions.category} />
                     <FilterDropdown name="courseType" label="Course Type" options={filterOptions.courseType} />
                 </div>
@@ -2514,27 +2623,52 @@ const CollegesPage = () => {
     );
 };
 
-const CollegeCard = ({ college, onSelect }) => (
-    <Card className="cursor-pointer group" onClick={() => onSelect(college.id)}>
-        <div className="h-48 bg-gray-950 flex items-center justify-center overflow-hidden">
-            {/* Use photoUrl from Google, and a fallback for database colleges */}
-            <img src={college.photoUrl || college.image} alt={college.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
-        </div>
-        <div className="p-6">
-            <h3 className="text-xl font-bold mb-2 text-gray-100">{college.name}</h3>
-            {/* Use address from Google, and a fallback for database colleges */}
-            <p className="text-gray-400 mb-2 text-sm">{college.address || college.location}</p>
-            <div className="flex items-center mb-4">
-                <StarIcon/>
-                <span className="ml-1 text-yellow-400 font-bold">{college.rating}</span>
-                {/* Only show total ratings if it exists (it comes from Google) */}
-                {college.totalRatings && <span className="text-gray-500 text-sm ml-2">({college.totalRatings} reviews)</span>}
+const CollegeCard = ({ college, onSelect }) => {
+    const { user, updateUserProfile, isAuthenticated } = useAuth();
+    const collegeId = college.id; // Google's Place ID
+    const isBookmarked = user?.bookmarks?.includes(collegeId);
+
+    const handleBookmark = (e) => {
+        e.stopPropagation();
+        if (!isAuthenticated) { 
+            alert('Please log in to bookmark colleges.');
+            return;
+        }
+        const currentBookmarks = user.bookmarks || [];
+        const newBookmarks = isBookmarked
+            ? currentBookmarks.filter(id => id !== collegeId)
+            : [...currentBookmarks, collegeId];
+        updateUserProfile({ bookmarks: newBookmarks });
+    };
+
+    return (
+        <Card className="cursor-pointer group relative" onClick={() => onSelect(collegeId)}>
+            {isAuthenticated && (
+                <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={handleBookmark}
+                    className={`absolute top-3 right-3 z-10 p-2 bg-black/50 rounded-full transition-colors ${isBookmarked ? 'text-teal-400' : 'text-white'}`}
+                    aria-label="Bookmark college"
+                >
+                    <BookmarkIcon filled={isBookmarked} />
+                </motion.button>
+            )}
+            <div className="h-48 bg-gray-950 flex items-center justify-center overflow-hidden">
+                <img src={college.image} alt={college.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
             </div>
-             {/* Only show exams if it exists (it comes from our database) */}
-            {college.exams && <p className="text-sm text-gray-400"><strong>Exams:</strong> {college.exams.join(', ')}</p>}
-        </div>
-    </Card>
-);
+            <div className="p-6">
+                <h3 className="text-xl font-bold mb-2 text-gray-100">{college.name}</h3>
+                <p className="text-gray-400 mb-2 text-sm">{college.location}</p>
+                <div className="flex items-center mb-4">
+                    <StarIcon/>
+                    <span className="ml-1 text-yellow-400 font-bold">{college.rating || 'N/A'}</span>
+                    {college.totalRatings && <span className="text-gray-500 text-sm ml-2">({college.totalRatings} reviews)</span>}
+                </div>
+            </div>
+        </Card>
+    );
+};
 
 const MentorReviewCard = ({ mentor }) => {
     const isPositive = mentor.reviewType === 'positive';
@@ -2584,6 +2718,7 @@ const MentorReviewCard = ({ mentor }) => {
 
 const CollegeDetailPage = () => {
     const { selectedCollegeId, setPage } = useNavigation();
+    const { user, updateUserProfile, isAuthenticated } = useAuth(); // FIX: Added this line to get user context
     const [college, setCollege] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -2595,7 +2730,6 @@ const CollegeDetailPage = () => {
             setLoading(true);
             setError('');
             try {
-                // The API call is the same, but the data it returns is now perfectly formatted!
                 const res = await api.get(`/places/details?placeId=${selectedCollegeId}`);
                 setCollege(res.data);
             } catch (err) {
@@ -2618,6 +2752,20 @@ const CollegeDetailPage = () => {
         return <div className="flex-grow flex items-center justify-center">College details could not be loaded.</div>;
     }
 
+    const isBookmarked = user?.bookmarks?.includes(college.id);
+
+    const handleBookmark = () => {
+        if (!isAuthenticated) { 
+            alert('Please log in to bookmark colleges.');
+            return;
+        }
+        const currentBookmarks = user.bookmarks || [];
+        const newBookmarks = isBookmarked
+            ? currentBookmarks.filter(id => id !== college.id)
+            : [...currentBookmarks, college.id];
+        updateUserProfile({ bookmarks: newBookmarks });
+    };
+
     return (
        <div className="flex-grow bg-black">
             <div className="container mx-auto px-6 py-12">
@@ -2627,8 +2775,18 @@ const CollegeDetailPage = () => {
                 <div className="grid lg:grid-cols-3 gap-8">
                     <div className="lg:col-span-2">
                         <img src={college.image} alt={college.name} className="w-full h-auto object-cover rounded-lg mb-6 shadow-2xl"/>
-                        <h1 className="text-4xl font-bold text-teal-400 mb-2">{college.name}</h1>
-                        <p className="text-lg text-gray-400 mb-6">{college.location}</p>
+                        <div className="flex justify-between items-start">
+                            <div>
+                                <h1 className="text-4xl font-bold text-teal-400 mb-2">{college.name}</h1>
+                                <p className="text-lg text-gray-400 mb-6">{college.location}</p>
+                            </div>
+                            {isAuthenticated && (
+                                <Button onClick={handleBookmark} variant="secondary" className="flex-shrink-0">
+                                    <BookmarkIcon filled={isBookmarked} />
+                                    {isBookmarked ? 'Bookmarked' : 'Bookmark'}
+                                </Button>
+                            )}
+                        </div>
                         <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
                             <h2 className="text-2xl font-bold text-gray-100 mb-4">Courses & Speciality (Sample)</h2>
                             <p className="text-gray-300 mb-4"><strong>Speciality:</strong> {college.specialty}</p>
@@ -3304,6 +3462,7 @@ const App = () => {
             case 'collegeDetail': return <CollegeDetailPage />;
             case 'mentors': return <MentorsPage />;
             case 'scholarships': return <ScholarshipsPage />;
+            case 'ebooks': return <EbooksPage />;
             case 'dashboard': return <DashboardPage />;
             case 'admin': return <AdminPage />; // In a real app, this would be role-protected
             case 'home':
@@ -3402,3 +3561,10 @@ export default function NextStepGuideApp() {
         </>
     );
 };
+
+
+
+
+
+
+

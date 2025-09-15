@@ -43,7 +43,7 @@ router.get('/colleges', async (req, res) => {
     }
 });
 
-// --- UPDATED DETAILS ROUTE BELOW ---
+// --- NEW ROUTE ADDED BELOW ---
 
 // @route   GET /api/places/details
 // @desc    Get detailed information for a specific place using its Place ID
@@ -69,7 +69,6 @@ router.get('/details', async (req, res) => {
 
         const details = response.data.result;
         
-        // --- THIS IS THE NEW LOGIC ---
         // We now process the data here and build the photo URL on the backend
         const formattedDetails = {
             id: placeId,
