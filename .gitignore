@@ -1,3 +1,12 @@
-node_modules
-dist
-.env
+# Dependencies in ANY folder (frontend, backend, etc.)
+**/node_modules/
+
+# Production build folders from frontend or backend
+**/dist/
+**/build/
+
+# Specifically ignore the .env file inside the backend folder
+backend/.env
+
+# Log files
+*.log
