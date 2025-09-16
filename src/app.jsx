@@ -19,362 +19,859 @@ const mockQuizData = {
     'Science': {
       title: "Class 12 Science - Career Mapping Quiz",
       questions: [
-        { id: 'q1', text: "Are you more interested in the theoretical 'why' or the practical 'how'?", options: [{ text: "Theoretical 'why'", field: "Research/Academia" }, { text: "Practical 'how'", field: "Engineering" }] },
-        { id: 'q2', text: "Do you enjoy building things with your hands or with code?", options: [{ text: "With my hands", field: "Mechanical/Civil Engineering" }, { text: "With code", field: "Computer Science" }] },
-        { id: 'q3', text: "Are you fascinated by the human body and medicine?", options: [{ text: "Yes, deeply", field: "Medical Field" }, { text: "Not particularly", field: "Non-Medical Fields" }] },
-        { id: 'q4', text: "Do you prefer working on large-scale projects or intricate systems?", options: [{ text: "Large-scale projects", field: "Civil Engineering" }, { text: "Intricate systems", field: "Electronics/Software" }] },
-      { id: 'q5', text: "Do you enjoy solving abstract problems or tangible real-world issues?", options: [{ text: "Abstract problems", field: "Mathematics/Theoretical Physics" }, { text: "Real-world issues", field: "Engineering/Applied Sciences" }] },
-      {  id: 'q6',text: "Would you rather analyze data or design user experiences?",options: [{text: "Analyze data", field: "Data Science/Statistics" }, { text: "Design user experiences", field: "UI/UX Design" }]},
-      {id: "q7",text: "Do you like experimenting in a lab or conducting research through reading and writing?",options: [{ text: "Experimenting in a lab", field: "Chemistry/Biology" },{ text: "Reading and writing research",  field:"SocialSciences  Humanities" }]},
-     {id: "q8",text: "Are you more interested in studying weather patterns or investigating chemical reactions?",options: [{ text: "Studying weather patterns", field: "Meteorology/Atmospheric Science" },{ text: "Investigating chemical reactions", field: "Chemical Engineering/Physical Chemistry" }]},
-      { id: "q9",  text: "Do you prefer working with machines or living organisms?", options: [{ text: "Machines", field: "Robotics" }, { text: "Living organisms", field: "Biotechnology/Biology" }] },
-      { id: "q10", text: "Would you rather invent new technologies or improve existing ones?", options: [{ text: "Invent new technologies", field: "R&D/Innovation" }, { text: "Improve existing ones", field: "Industrial Engineering/Quality Control" }] },
-     {id: "q12",text: "Do you enjoy working with numbers and detailed data?",options: [ { text: "Yes, I like analyzing and interpreting data", field: "Research/Data Analysis" }, { text: "No, I prefer tasks that involve communication or leadership", field: "Communication field" } ]},
-
-      { id: "q12", text: "Would you enjoy exploring space or exploring the ocean?", options: [{ text: "Space", field: "Astrophysics/Aerospace Engineering" }, { text: "Ocean", field: "Marine Biology/Oceanography" }] },
-      { id: "q13", text: "Do you prefer working with numbers or with people?", options: [{ text: "Numbers", field: "Statistics/Data Science" }, { text: "People", field: "Healthcare/Teaching/Counseling" }] },
-      { id: "q14", text: "Do you enjoy debugging code or diagnosing biological symptoms?", options: [{ text: "Debugging code", field: "Software Engineering" }, { text: "Diagnosing symptoms", field: "Medical Field" }] },
-      { id: "q15", text: "Would you rather develop sustainable technologies or treat diseases?", options: [{ text: "Sustainable technologies", field: "Environmental Engineering/Renewable Energy" }, { text: "Treat diseases", field: "Medicine/Pharmaceutical Sciences" }] },
+        { id: 'q1', text: "Are you more interested in the theoretical 'why' or the practical 'how'?", options: [{ text: "Theoretical 'why'", field: "Scientific & Data Research" }, { text: "Practical 'how'", field: "Engineering & Technology" }] },
+        { id: 'q2', text: "Do you enjoy building things with your hands or with code?", options: [{ text: "With my hands", field: "Science & Engineering / Applied Sciences" }, { text: "With code", field: "Software Development & IT" }] },
+        { id: 'q3', text: "Are you fascinated by the human body and medicine?", options: [{ text: "Yes, deeply", field: "Medicine & Pharmacy" }, { text: "Not particularly", field: "Engineering & Technology" }] },
+        { id: 'q4', text: "Do you prefer working on large-scale projects or intricate systems?", options: [{ text: "Large-scale projects", field: "Engineering & Technology" }, { text: "Intricate systems", field: "Software Development & IT" }] },
+        { id: 'q5', text: "Do you enjoy solving abstract problems or tangible real-world issues?", options: [{ text: "Abstract problems", field: "Mathematics & Physics" }, { text: "Real-world issues", field: "Science & Engineering / Applied Sciences" }] },
+        { id: 'q6', text: "Would you rather analyze data or design user experiences?",options: [{text: "Analyze data", field: "Data Science & Analytics" }, { text: "Design user experiences", field: "Design & Human-Computer Interaction" }]},
+        { id: "q7", text: "Do you like experimenting in a lab or conducting research through reading and writing?",options: [{ text: "Experimenting in a lab", field: "Chemistry & Life Sciences" },{ text: "Reading and writing research",  field:"Scientific & Data Research" }]},
+        { id: "q8", text: "Are you more interested in studying weather patterns or investigating chemical reactions?",options: [{ text: "Studying weather patterns", field: "Earth & Atmospheric Sciences" },{ text: "Investigating chemical reactions", field: "Chemical & Process Engineering" }]},
+        { id: "q9",  text: "Do you prefer working with machines or living organisms?", options: [{ text: "Machines", field: "Robotics & Automation" }, { text: "Living organisms", field: "Biotechnology & Life Sciences" }] },
+        { id: "q10", text: "Would you rather invent new technologies or improve existing ones?", options: [{ text: "Invent new technologies", field: "Innovation & Technology Development" }, { text: "Improve existing ones", field: "Industrial & Manufacturing Engineering" }] },
+        { id: "q12", text: "Do you enjoy working with numbers and detailed data?",options: [ { text: "Yes, I like analyzing and interpreting data", field: "Scientific & Data Research" }, { text: "No, I prefer tasks that involve communication or leadership", field: "Communication & Media Technologies" } ]},
+        { id: "q12", text: "Would you enjoy exploring space or exploring the ocean?", options: [{ text: "Space", field: "Space Science & Aerospace" }, { text: "Ocean", field: "Marine & Environmental Sciences" }] },
+        { id: "q13", text: "Do you prefer working with numbers or with people?", options: [{ text: "Numbers", field: "Quantitative & Data Analytics" }, { text: "People", field: "Healthcare & Education" }] },
+        { id: "q14", text: "Do you enjoy debugging code or diagnosing biological symptoms?", options: [{ text: "Debugging code", field: "Software Development & IT" }, { text: "Diagnosing symptoms", field: "Medicine & Pharmacy" }] },
+        { id: "q15", text: "Would you rather develop sustainable technologies or treat diseases?", options: [{ text: "Sustainable technologies", field: "Environmental & Renewable Technologies" }, { text: "Treat diseases", field: "Medicine & Pharmacy" }] },
      ]},
     'Commerce': {
         title: "Class 12 Commerce - Career Mapping Quiz",
         questions: [
-            { id: 'q1', text: "Are you more interested in managing money or managing people?", options: [{ text: "Managing money", field: "Finance/Accounting" }, { text: "Managing people", field: "Human Resources/Management" }] },
-            { id: 'q2', text: "Do you enjoy analyzing data to find trends or persuading people?", options: [{ text: "Analyzing data", field: "Data Analysis/Finance" }, { text: "Persuading people", field: "Marketing/Sales" }] },
-        {id: "q3",text: "Would you prefer working in a corporate office or running your own business?", options: [{ text: "Corporate office", field: "Corporate Jobs/Management" },{ text: "Own business", field: "Entrepreneurship" }]},
-        {id: "q4",text: "Are you more comfortable with numbers or words?", options: [{ text: "Numbers", field: "Accounting/Finance/Economics" },{ text: "Words", field: "Marketing/Business Communication/Law" }]},
-        {id: "q5",text: "Would you rather audit financial statements or recruit new employees?", options: [{ text: "Audit financial statements", field: "Chartered Accountancy/Auditing" },{ text: "Recruit employees", field: "Human Resources/Talent Management" }]},
-         {id: "q6",text: "Do you enjoy understanding laws and regulations or developing creative brand ideas?", options: [{ text: "Laws and regulations", field: "Corporate Law/Compliance" },{ text: "Creative brand ideas", field: "Marketing/Advertising" }]},
-         {id: "q7",text: "Are you more drawn to national business or international business?", options: [ { text: "National business", field: "Domestic Business/Startups" },{ text: "International business", field: "Global Trade/International Business" }]},
-         {id: "q8",text: "Which excites you more: stock market trends or company leadership styles?", options: [{ text: "Stock market trends", field: "Stock Trading/Investment Banking" },{ text: "Leadership styles", field: "Organizational Behavior/Management" }]},
-        {id: "q9",text: "Would you rather prepare tax returns or design marketing campaigns?",options: [{ text: "Prepare tax returns", field: "Taxation/Accounting" },{ text: "Design marketing campaigns", field: "Marketing/Advertising" } ]},
-{id: "q10",text: "Do you enjoy negotiating deals or managing company finances?",options: [ { text: "Negotiating deals", field: "Sales/Business Development" },{ text: "Managing company finances", field: "Financial Management/Accounting" }]},
-{id: "q11",text: "Are you interested in studying consumer behavior or financial risk assessment?", options: [{ text: "Consumer behavior", field: "Marketing/Consumer Research" },{ text: "Financial risk assessment", field: "Risk Management/Finance" }]},
-{id: "q12",text: "Would you prefer to work in a startup environment or a well-established corporation?",options: [{ text: "Startup environment", field: "Entrepreneurship/Startups" },{ text: "Well-established corporation", field: "Corporate Jobs/Management" }]},
-{id: "q13",text: "Do you like working with spreadsheets and budgets or organizing company events?",options: [{ text: "Spreadsheets and budgets", field: "Accounting/Finance" },{ text: "Organizing events", field: "Human Resources/Corporate Communication" }]},
-{id: "q14", text: "Are you more interested in stock market investing or brand strategy?",options: [ { text: "Stock market investing", field: "Investment Banking/Stock Trading" }, { text: "Brand strategy", field: "Marketing/Brand Management" }]},
-{id: "q15",text: "Would you enjoy conducting market research or auditing company finances?",options: [{ text: "Conducting market research", field: "Marketing Research/Analytics" },{ text: "Auditing company finances", field: "Auditing/Accounting" } ]},
-]},
+            { id: 'q1', text: "Are you more interested in managing money or managing people?", options: [{ text: "Managing money", field: "Accounting & Financial Analysis" }, { text: "Managing people", field: "HR & Organizational Development" }] },
+            { id: 'q2', text: "Do you enjoy analyzing data to find trends or persuading people?", options: [{ text: "Analyzing data", field: "Financial Risk & Analysis" }, { text: "Persuading people", field: "Sales & Business Growth" }] },
+            {id: "q3",text: "Would you prefer working in a corporate office or running your own business?", options: [{ text: "Corporate office", field: "Corporate & Business Management" },{ text: "Own business", field: "Startups & Entrepreneurship" }]},
+            {id: "q4",text: "Are you more comfortable with numbers or words?", options: [{ text: "Numbers", field: "Accounting & Financial Analysis" },{ text: "Words", field: "Marketing & Corporate Communication" }]},
+            {id: "q5",text: "Would you rather audit financial statements or recruit new employees?", options: [{ text: "Audit financial statements", field: "Auditing & Financial Compliance" },{ text: "Recruit employees", field: "HR & Organizational Development" }]},
+            {id: "q6",text: "Do you enjoy understanding laws and regulations or developing creative brand ideas?", options: [{ text: "Laws and regulations", field: "Law & Corporate Governance" },{ text: "Creative brand ideas", field: "Marketing & Brand Strategy" }]},
+            {id: "q7",text: "Are you more drawn to national business or international business?", options: [ { text: "National business", field: "Entrepreneurship & Small Business" },{ text: "International business", field: "International Business & Trade" }]},
+            {id: "q8",text: "Which excites you more: stock market trends or company leadership styles?", options: [{ text: "Stock market trends", field: "Investment & Capital Markets" },{ text: "Leadership styles", field: "Management & Leadership Studies" }]},
+            {id: "q9",text: "Would you rather prepare tax returns or design marketing campaigns?",options: [{ text: "Prepare tax returns", field: "Taxation & Accounting" },{ text: "Design marketing campaigns", field: "Marketing & Brand Strategy" } ]},
+            {id: "q10",text: "Do you enjoy negotiating deals or managing company finances?",options: [ { text: "Negotiating deals", field: "Sales & Business Growth" },{ text: "Managing company finances", field: "Finance & Management" }]},
+            {id: "q11",text: "Are you interested in studying consumer behavior or financial risk assessment?", options: [{ text: "Consumer behavior", field: "Marketing Analytics & Research" },{ text: "Financial risk assessment", field: "Financial Risk & Analysis" }]},
+            {id: "q12",text: "Would you prefer to work in a startup environment or a well-established corporation?",options: [{ text: "Startup environment", field: "Startups & Entrepreneurship" },{ text: "Well-established corporation", field: "Corporate & Business Management" }]},
+            {id: "q13",text: "Do you like working with spreadsheets and budgets or organizing company events?",options: [{ text: "Spreadsheets and budgets", field: "Accounting & Financial Analysis" },{ text: "Organizing events", field: "HR & Communication" }]},
+            {id: "q14", text: "Are you more interested in stock market investing or brand strategy?",options: [ { text: "Stock market investing", field: "Finance & Investment" }, { text: "Brand strategy", field: "Marketing & Brand Strategy" }]},
+            {id: "q15",text: "Would you enjoy conducting market research or auditing company finances?",options: [{ text: "Conducting market research", field: "Marketing Analytics & Insights" },{ text: "Auditing company finances", field: "Auditing & Financial Compliance" } ]},
+        ]},
     'Arts': {
         title: "Class 12 Arts - Career Mapping Quiz",
         questions: [
-            { id: 'q1', text: "Are you more drawn to visual expression or written expression?", options: [{ text: "Visual expression", field: "Design/Fine Arts" }, { text: "Written expression", field: "Journalism/Writing" }] },
-            { id: 'q2', text: "Do you want to understand societal structures or individual human behavior?", options: [{ text: "Societal structures", field: "Sociology/Civil Services" }, { text: "Individual behavior", field: "Psychology" }] },
-             {id: "q3",text: "Are you interested in studying history and cultures or exploringphilosophy and ideas?", options: [{ text: "History and cultures", field: "History/Archaeology" },{ text: "Philosophy and ideas", field: "Philosophy/Political Science" }]},
-    {id: "q4",text: "Do you enjoy performing on stage or working behind the scenes in production?",options: [{ text: "Performing on stage", field: "Theatre/Performing Arts" },{ text: "Behind the scenes", field: "Film/Media Production" }]},
-  {id: "q5",text: "Would you rather create art with your hands or direct others in creative projects?",options: [{ text: "Create art", field: "Fine Arts/Crafts" },{ text: "Direct creative projects", field: "Creative Direction/Media Management" }]},
-  { id: "q6", text: "Are you more passionate about storytelling through words or through images?", options: [ { text: "Words", field: "Literature/Creative Writing" }, { text: "Images", field: "Photography/Graphic Design" } ] },
-  {id: "q7",text: "Do you enjoy debating ideas or organizing community events?",options: [{ text: "Debating ideas", field: "Law/Political Science" },{ text: "Organizing events", field: "Public Relations/Event Management" }]},
-  {id: "q8",text: "Would you prefer researching cultural traditions or analyzing human communication?",options: [{ text: "Researching cultural traditions", field: "Anthropology/Cultural Studies" },{ text: "Analyzing communication", field: "Linguistics/Mass Communication" }]},
-  {id: "q9",text: "Are you interested in working with music or writing scripts for films and plays?",options: [{ text: "Working with music", field: "Music/Performing Arts" },{ text: "Writing scripts", field: "Screenwriting/Playwriting" }]},
-  {id: "q10",text: "Do you prefer analyzing political systems or helping people with social services?",options: [{ text: "Analyzing political systems", field: "Political Science/International Relations" },{ text: "Helping people", field: "Social Work/Counseling" }]},
-  {id: "q11",text: "Would you enjoy creating digital art or researching historical texts?",options: [{ text: "Creating digital art", field: "Digital Media/Graphic Design" },{ text: "Researching historical texts", field: "History/Archival Studies" }]},
-  {id: "q12",text: "Are you more interested in philosophy or in studying languages?",options: [{ text: "Philosophy", field: "Philosophy/Ethics" },{ text: "Languages", field: "Linguistics/Foreign Languages" }]},
-  {id: "q13",text: "Do you enjoy writing poetry or organizing social campaigns?",options: [{ text: "Writing poetry", field: "Creative Writing/Poetry" },{ text: "Organizing campaigns", field: "Social Activism/NGOs" }]},
-  {id: "q14",text: "Would you rather study media trends or explore classical literature?",options: [{ text: "Media trends", field: "Mass Communication/Media Studies" },{ text: "Classical literature", field: "Literature/Classics" }]},
-  {id: "q15",text: "Are you more interested in fashion design or in cultural anthropology?",options: [{ text: "Fashion design", field: "Fashion Design/Textiles" },{ text: "Cultural anthropology", field: "Anthropology/Cultural Studies" }]},
-]
+            { id: 'q1', text: "Are you more drawn to visual expression or written expression?", options: [{ text: "Visual expression", field: "Visual Arts & Crafts" }, { text: "Written expression", field: "Literature & Writing" }] },
+            { id: 'q2', text: "Do you want to understand societal structures or individual human behavior?", options: [{ text: "Societal structures", field: "Politics & International Studies" }, { text: "Individual behavior", field: "Social Work & Counseling" }] },
+            {id: "q3",text: "Are you interested in studying history and cultures or exploringphilosophy and ideas?", options: [{ text: "History and cultures", field: "History & Archaeology" },{ text: "Philosophy and ideas", field: "Philosophy & Political Studies" }]},
+            {id: "q4",text: "Do you enjoy performing on stage or working behind the scenes in production?",options: [{ text: "Performing on stage", field: "Performing Arts & Theatre" },{ text: "Behind the scenes", field: "Film & Media Production" }]},
+            {id: "q5",text: "Would you rather create art with your hands or direct others in creative projects?",options: [{ text: "Create art", field: "Visual Arts & Crafts" },{ text: "Direct creative projects", field: "Creative & Media Management" }]},
+            { id: "q6", text: "Are you more passionate about storytelling through words or through images?", options: [ { text: "Words", field: "Literature & Creative Writing" }, { text: "Images", field: "Visual Media & Design" } ] },
+            {id: "q7",text: "Do you enjoy debating ideas or organizing community events?",options: [{ text: "Debating ideas", field: "Law & Political Studies" },{ text: "Organizing events", field: "PR & Event Management" }]},
+            {id: "q8",text: "Would you prefer researching cultural traditions or analyzing human communication?",options: [{ text: "Researching cultural traditions", field: "Anthropology & Culture" },{ text: "Analyzing communication", field: "Linguistics & Communication Studies" }]},
+            {id: "q9",text: "Are you interested in working with music or writing scripts for films and plays?",options: [{ text: "Working with music", field: "Music & Performing Arts" },{ text: "Writing scripts", field: "Writing & Script Development" }]},
+            {id: "q10",text: "Do you prefer analyzing political systems or helping people with social services?",options: [{ text: "Analyzing political systems", field: "Politics & International Studies" },{ text: "Helping people", field: "Social Work & Counseling" }]},
+            {id: "q11",text: "Would you enjoy creating digital art or researching historical texts?",options: [{ text: "Creating digital art", field: "Digital Media & Design" },{ text: "Researching historical texts", field: "History & Archival Research" }]},
+            {id: "q12",text: "Are you more interested in philosophy or in studying languages?",options: [{ text: "Philosophy", field: "Philosophy & Ethics" },{ text: "Languages", field: "Linguistics & Language Studies" }]},
+            {id: "q13",text: "Do you enjoy writing poetry or organizing social campaigns?",options: [{ text: "Writing poetry", field: "Literature & Creative Writing" },{ text: "Organizing campaigns", field: "Social Activism & NGO Work" }]},
+            {id: "q14",text: "Would you rather study media trends or explore classical literature?",options: [{ text: "Media trends", field: "Media & Communication Studies" },{ text: "Classical literature", field: "Literature & Classical Studies" }]},
+            {id: "q15",text: "Are you more interested in fashion design or in cultural anthropology?",options: [{ text: "Fashion design", field: "Fashion & Textile Design" },{ text: "Cultural anthropology", field: "Anthropology & Culture" }]},
+        ]
     }
   }
 };
 
 const mockMindMapData = {
     Science: {
-        name: 'Science Stream',
+        title: 'Science Stream',
         description: 'The Science stream opens doors to careers in engineering, medicine, research, and technology. It is ideal for students with strong analytical and problem-solving skills.',
         children: [
-            { name: 'PCM (Physics, Chemistry, Maths)', description: 'Focuses on non-medical sciences, primarily for engineering, architecture, and technology fields.', children: [
-                { name: 'B.Tech/B.E.', description: 'The primary undergraduate degree for becoming an engineer across various specializations.', children: [{name: 'Software Engineer', description: 'Creates software applications for computers and mobile devices.'}, {name: 'Mechanical Engineer', description: 'Designs and builds machines and mechanical systems.'}, {name: 'Civil Engineer', description: 'Designs and oversees construction of infrastructure like roads and buildings.'}] },
-                { name: 'B.Arch', description: 'A 5-year undergraduate degree to become a licensed architect.', children: [{name: 'Architect', description: 'Designs buildings and urban landscapes.'}] },
-                { name: 'B.Sc in Physics/Maths', description: 'A 3-year degree focusing on fundamental scientific principles.', children: [{name: 'Researcher', description: 'Conducts experiments and analysis to advance knowledge.'}, {name: 'Data Scientist', description: 'Uses statistical methods to analyze and interpret complex data.'}] }
+            { title: 'PCM (Physics, Chemistry, Maths)', description: 'Focuses on non-medical sciences, primarily for engineering, architecture, and technology fields.', children: [
+                { title: 'B.Tech/B.E.', description: 'The primary undergraduate degree for becoming an engineer across various specializations.', children: [{title: 'Software Engineer', description: 'Creates software applications for computers and mobile devices.'}, {title: 'Mechanical Engineer', description: 'Designs and builds machines and mechanical systems.'}, {title: 'Civil Engineer', description: 'Designs and oversees construction of infrastructure like roads and buildings.'}] },
+                { title: 'B.Arch', description: 'A 5-year undergraduate degree to become a licensed architect.', children: [{title: 'Architect', description: 'Designs buildings and urban landscapes.'}] },
+                { title: 'B.Sc in Physics/Maths', description: 'A 3-year degree focusing on fundamental scientific principles.', children: [{title: 'Researcher', description: 'Conducts experiments and analysis to advance knowledge.'}, {title: 'Data Scientist', description: 'Uses statistical methods to analyze and interpret complex data.'}] }
             ]},
-            { name: 'PCB (Physics, Chemistry, Biology)', description: 'Focuses on medical and biological sciences, preparing for careers in healthcare and life sciences.', children: [
-                { name: 'MBBS/BDS', description: 'Professional degrees required to become a doctor or dentist.', children: [{name: 'Doctor', description: 'Diagnoses and treats illnesses and injuries.'}, {name: 'Dentist', description: 'Focuses on oral health, diagnosing and treating dental issues.'}] },
-                { name: 'B.Pharm', description: 'A degree focused on the science of medicines and their effects.', children: [{name: 'Pharmacist', description: 'Dispenses medications and advises on their safe use.'}] },
-                { name: 'B.Sc in Biology/Zoology', description: 'A foundational degree in life sciences.', children: [{name: 'Biotechnologist', description: 'Uses biological systems to develop products and technologies.'}] }
+            { title: 'PCB (Physics, Chemistry, Biology)', description: 'Focuses on medical and biological sciences, preparing for careers in healthcare and life sciences.', children: [
+                { title: 'MBBS/BDS', description: 'Professional degrees required to become a doctor or dentist.', children: [{title: 'Doctor', description: 'Diagnoses and treats illnesses and injuries.'}, {title: 'Dentist', description: 'Focuses on oral health, diagnosing and treating dental issues.'}] },
+                { title: 'B.Pharm', description: 'A degree focused on the science of medicines and their effects.', children: [{title: 'Pharmacist', description: 'Dispenses medications and advises on their safe use.'}] },
+                { title: 'B.Sc in Biology/Zoology', description: 'A foundational degree in life sciences.', children: [{title: 'Biotechnologist', description: 'Uses biological systems to develop products and technologies.'}] }
             ]},
-            { name: 'PCMB', description: 'A versatile combination for students keeping options open in both engineering and medical fields.', children: [{name: 'Versatile options in both Engineering and Medical', description: 'Allows eligibility for both JEE and NEET, offering a wide range of career choices.'}]}
+            { title: 'PCMB', description: 'A versatile combination for students keeping options open in both engineering and medical fields.', children: [{title: 'Versatile options in both Engineering and Medical', description: 'Allows eligibility for both JEE and NEET, offering a wide range of career choices.'}]}
         ]
     },
     Commerce: {
-        name: 'Commerce Stream',
+        title: 'Commerce Stream',
         description: 'The Commerce stream is for students interested in business, finance, and economics. It builds a strong foundation for careers in the corporate world.',
         children: [
-            { name: 'With Maths', description: 'Combining Commerce with Maths opens up analytical and finance-heavy career paths like economics and investment banking.', children: [
-                { name: 'B.Com (Hons.)', description: 'A specialized commerce degree, often a prerequisite for professional courses.', children: [{name: 'CA/CS', description: 'Professional certifications for Chartered Accountancy and Company Secretary roles.'}, {name: 'Investment Banker', description: 'Manages financial assets and raises capital for corporations.'}] },
-                { name: 'Economics (Hons.)', description: 'A rigorous degree focusing on economic theory and analysis.', children: [{name: 'Economist', description: 'Studies the production and distribution of resources, goods, and services.'}, {name: 'Policy Analyst', description: 'Researches and analyzes policies for governments and organizations.'}] },
-                { name: 'BBA/BMS', description: 'A degree focused on business administration and management principles.', children: [{name: 'Business Manager', description: 'Oversees operations and makes strategic decisions for a company.'}] }
+            { title: 'With Maths', description: 'Combining Commerce with Maths opens up analytical and finance-heavy career paths like economics and investment banking.', children: [
+                { title: 'B.Com (Hons.)', description: 'A specialized commerce degree, often a prerequisite for professional courses.', children: [{title: 'CA/CS', description: 'Professional certifications for Chartered Accountancy and Company Secretary roles.'}, {title: 'Investment Banker', description: 'Manages financial assets and raises capital for corporations.'}] },
+                { title: 'Economics (Hons.)', description: 'A rigorous degree focusing on economic theory and analysis.', children: [{title: 'Economist', description: 'Studies the production and distribution of resources, goods, and services.'}, {title: 'Policy Analyst', description: 'Researches and analyzes policies for governments and organizations.'}] },
+                { title: 'BBA/BMS', description: 'A degree focused on business administration and management principles.', children: [{title: 'Business Manager', description: 'Oversees operations and makes strategic decisions for a company.'}] }
             ]},
-            { name: 'Without Maths', description: 'Focuses on theoretical aspects of commerce, business, and law.', children: [
-                { name: 'B.Com (Prog.)', description: 'A general commerce degree suitable for accounting and administrative roles.', children: [{name: 'Accountant', description: 'Manages financial records for businesses.'}] },
-                { name: 'Company Secretary', description: 'A professional course focusing on corporate law and governance.', children: [{name: 'Corporate Lawyer', description: 'Specializes in legal matters related to business and commerce.'}] }
+            { title: 'Without Maths', description: 'Focuses on theoretical aspects of commerce, business, and law.', children: [
+                { title: 'B.Com (Prog.)', description: 'A general commerce degree suitable for accounting and administrative roles.', children: [{title: 'Accountant', description: 'Manages financial records for businesses.'}] },
+                { title: 'Company Secretary', description: 'A professional course focusing on corporate law and governance.', children: [{title: 'Corporate Lawyer', description: 'Specializes in legal matters related to business and commerce.'}] }
             ]}
         ]
     },
     Arts: {
-        name: 'Arts/Humanities Stream',
+        title: 'Arts/Humanities Stream',
         description: 'The Arts stream offers a diverse range of subjects, focusing on human society, culture, and expression. It is ideal for creative and analytical minds.',
         children: [
-            { name: 'Core Subjects', description: 'These subjects explore history, society, and human behavior, leading to careers in civil services, journalism, and academia.', children: [
-                { name: 'BA in History/Pol Science', description: 'Degrees that provide a deep understanding of the past and political systems.', children: [{name: 'Civil Services (IAS/IPS)', description: 'Prestigious government roles responsible for public administration and law enforcement.'}, {name: 'Journalist', description: 'Gathers, writes, and reports news for various media.'}] },
-                { name: 'BA in Psychology/Sociology', description: 'Degrees focused on understanding individual and group behavior.', children: [{name: 'Psychologist', description: 'Studies the human mind and behavior, providing counseling and therapy.'}, {name: 'Social Worker', description: 'Works to improve the lives of individuals and communities.'}] },
-                { name: 'BA in Fine Arts', description: 'A degree for aspiring artists and designers to hone their creative skills.', children: [{name: 'Designer', description: 'Creates visual concepts for various industries.'}, {name: 'Artist', description: 'Creates works of art through painting, sculpture, or other media.'}] }
+            { title: 'Core Subjects', description: 'These subjects explore history, society, and human behavior, leading to careers in civil services, journalism, and academia.', children: [
+                { title: 'BA in History/Pol Science', description: 'Degrees that provide a deep understanding of the past and political systems.', children: [{title: 'Civil Services (IAS/IPS)', description: 'Prestigious government roles responsible for public administration and law enforcement.'}, {title: 'Journalist', description: 'Gathers, writes, and reports news for various media.'}] },
+                { title: 'BA in Psychology/Sociology', description: 'Degrees focused on understanding individual and group behavior.', children: [{title: 'Psychologist', description: 'Studies the human mind and behavior, providing counseling and therapy.'}, {title: 'Social Worker', description: 'Works to improve the lives of individuals and communities.'}] },
+                { title: 'BA in Fine Arts', description: 'A degree for aspiring artists and designers to hone their creative skills.', children: [{title: 'Designer', description: 'Creates visual concepts for various industries.'}, {title: 'Artist', description: 'Creates works of art through painting, sculpture, or other media.'}] }
             ]},
-            { name: 'Vocational Subjects', description: 'These are skill-oriented courses that prepare students for specific professions like law and hospitality.', children: [
-                { name: 'Law (Integrated BA-LLB)', description: 'A 5-year program combining Arts and Law degrees.', children: [{name: 'Lawyer', description: 'Represents clients in legal matters and provides legal advice.'}] },
-                { name: 'Hotel Management', description: 'A course that prepares students for careers in the hospitality industry.', children: [{name: 'Hospitality Manager', description: 'Manages operations in hotels, resorts, and restaurants.'}] }
+            { title: 'Vocational Subjects', description: 'These are skill-oriented courses that prepare students for specific professions like law and hospitality.', children: [
+                { title: 'Law (Integrated BA-LLB)', description: 'A 5-year program combining Arts and Law degrees.', children: [{title: 'Lawyer', description: 'Represents clients in legal matters and provides legal advice.'}] },
+                { title: 'Hotel Management', description: 'A course that prepares students for careers in the hospitality industry.', children: [{title: 'Hospitality Manager', description: 'Manages operations in hotels, resorts, and restaurants.'}] }
             ]}
         ]
     }
 };
 
-// NEW: Detailed mind map data for Class 12 fields
-const mockFieldMindMapData = {
-    // --- SCIENCE FIELDS ---
-    'Research/Academia': {
-        name: 'Research & Academia',
-        description: 'For those passionate about discovery, teaching, and pushing the boundaries of knowledge. It involves deep study and a commitment to lifelong learning.',
+// NEW: Detailed mind map data for Class 12 fields from user
+const mindMapData = {
+    sci_eng_applied: {
+        title: 'Science & Engineering / Applied Sciences',
+        description: 'This broad field focuses on applying scientific principles to design, build, and maintain structures, machines, and systems.',
         children: [
-            { name: 'Educational Path', description: 'The typical academic journey to become a researcher, involving advanced degrees and specialization.', children: [
-                { name: 'B.Sc. (Physics, Chemistry, Maths, etc.)', description: "A 3-year undergraduate science degree, the foundation for further studies." },
-                { name: 'M.Sc. in Specialization', description: "A 2-year postgraduate degree to gain expertise in a specific scientific subject." },
-                { name: 'Ph.D. (Doctorate)', description: 'The highest academic degree, involving original research and a thesis.', children: [
-                    { name: 'Post-Doctoral Fellowship', description: 'Temporary research positions after a Ph.D. to gain more experience.' }
-                ]}
-            ]},
-            { name: 'Career Roles', description: 'Potential job roles for those who complete the academic path in research.', children: [
-                { name: 'University Professor', description: 'Teaches and conducts research at a university.' },
-                { name: 'Research Scientist (ISRO, DRDO, CSIR)', description: 'Works in government organizations on scientific and technological projects.' },
-                { name: 'Data Scientist', description: 'Analyzes large datasets to extract meaningful insights.' },
-                { name: 'Product R&D Specialist', description: 'Works in companies to research and develop new products.' }
-            ]},
-            { name: 'Key Skills', description: 'Essential skills required to succeed in a research-oriented career.', children: [{name: 'Analytical Thinking', description: 'The ability to deconstruct complex problems.'}, {name: 'Patience & Persistence', description: 'Research often involves long periods of work with incremental progress.'}, {name: 'Publication Writing', description: 'The skill of communicating research findings effectively.'}] }
-        ]
-    },
-    'Engineering': {
-        name: 'General Engineering',
-        description: 'A broad field that applies scientific principles to design, build, and maintain structures, machines, and systems. It has numerous specializations.',
-        children: [
-            { name: 'Core Branches', description: 'The foundational branches of engineering that cover a wide range of applications.', children: [
-                { name: 'Computer Science', description: 'Focuses on software, computation, and information processing.', children: [{name: 'Software Dev', description: 'Creating applications and systems.'}, {name: 'AI/ML', description: 'Developing intelligent systems.'}] },
-                { name: 'Mechanical Engineering', description: 'Deals with machinery, thermodynamics, and robotics.', children: [{name: 'Automotive', description: 'Designing and manufacturing vehicles.'}, {name: 'Robotics', description: 'Creating automated machines.'}] },
-                { name: 'Civil Engineering', description: 'Involves designing and constructing infrastructure.', children: [{name: 'Infrastructure', description: 'Building roads, bridges, dams.'}, {name: 'Environmental', description: 'Solving environmental problems.'}] },
-                { name: 'Electrical & Electronics', description: 'Focuses on electricity, electronics, and electromagnetism.', children: [{name: 'VLSI Design', description: 'Designing integrated circuits.'}, {name: 'Power Systems', description: 'Managing electrical power generation and distribution.'}] },
-            ]},
-            { name: 'Top Entrance Exams', description: 'The key competitive exams for admission into top engineering colleges in India.', children: [{name: 'JEE Main & Advanced', description: 'For IITs, NITs, and other top colleges.'}, {name: 'BITSAT', description: 'For BITS Pilani campuses.'}, {name: 'VITEEE', description: 'For Vellore Institute of Technology.'}, {name: 'State CETs', description: 'State-level engineering entrance exams.'}] },
-            { name: 'Top Colleges', description: 'Premier institutions known for their quality engineering education and research.', children: [{name: 'IITs', description: 'Indian Institutes of Technology.'}, {name: 'NITs', description: 'National Institutes of Technology.'}, {name: 'BITS Pilani', description: 'Birla Institute of Technology and Science.'}] }
-        ]
-    },
-    'Mechanical/Civil Engineering': {
-        name: 'Mechanical & Civil Engineering',
-        description: 'Two core engineering branches focused on building the physical world, from machines to massive infrastructure projects.',
-        children: [
-            { name: 'Mechanical', description: 'The branch dealing with the design, construction, and use of machines.', children: [
-                { name: 'Specializations', description: 'Areas of focus within Mechanical Engineering.', children: [{name: 'Automobile Engg.', description: 'Focuses on vehicle design.'}, {name: 'Aerospace Engg.', description: 'Deals with aircraft and spacecraft.'}, {name: 'Robotics', description: 'The science of designing and building robots.'}, {name: 'Mechatronics', description: 'A blend of mechanics and electronics.'}] },
-                { name: 'Job Roles', description: 'Common careers for mechanical engineers.', children: [{name: 'Design Engineer', description: 'Creates blueprints for mechanical devices.'}, {name: 'Manufacturing Engineer', description: 'Optimizes production processes.'}, {name: 'Project Manager', description: 'Oversees engineering projects from start to finish.'}] }
-            ]},
-            { name: 'Civil', description: 'The branch responsible for public works and infrastructure.', children: [
-                { name: 'Specializations', description: 'Areas of focus within Civil Engineering.', children: [{name: 'Structural Engg.', description: 'Focuses on the framework of structures.'}, {name: 'Transportation Engg.', description: 'Deals with planning and designing transport systems.'}, {name: 'Urban Planning', description: 'Focuses on the development of cities and towns.'}] },
-                { name: 'Job Roles', description: 'Common careers for civil engineers.', children: [{name: 'Site Engineer', description: 'Manages construction activities on site.'}, {name: 'Consultant', description: 'Provides expert advice on construction projects.'}, {name: 'Government Contracts (PWD, NHAI)', description: 'Works on public infrastructure projects.'}] }
+            { title: 'Key Disciplines', description: 'Core areas within this field.', children: [
+                { title: 'Mechanical Engineering', description: 'Deals with machinery and mechanical systems.' },
+                { title: 'Civil Engineering', description: 'Focuses on infrastructure like buildings and bridges.' },
+                { title: 'Electrical Engineering', description: 'Works with electricity and electronics.' }
             ]}
         ]
     },
-    'Computer Science': {
-        name: 'Computer Science',
-        description: 'The study of computers and computational systems. It is a rapidly evolving field with high demand for skilled professionals.',
-        children: [
-            { name: 'Domains', description: 'Major areas of specialization within Computer Science.', children: [
-                { name: 'Software Development', description: 'The process of creating software.', children: [{name: 'Frontend', description: 'Develops the user interface.'}, {name: 'Backend', description: 'Manages the server, database, and logic.'}, {name: 'Full Stack', description: 'Works on both frontend and backend.'}] },
-                { name: 'AI & Machine Learning', description: 'Developing systems that can learn and make decisions.', children: [{name: 'Data Scientist', description: 'Analyzes data to find insights.'}, {name: 'ML Engineer', description: 'Builds and deploys machine learning models.'}] },
-                { name: 'Cybersecurity', description: 'Protecting computer systems and networks from threats.', children: [{name: 'Ethical Hacker', description: 'Tests systems for vulnerabilities.'}, {name: 'Security Analyst', description: 'Monitors and protects against cyber threats.'}] },
-                { name: 'Cloud Computing', description: 'Delivering computing services over the internet.', children: [{name: 'DevOps Engineer', description: 'Manages software development and IT operations.'}, {name: 'Cloud Architect', description: 'Designs cloud infrastructure.'}] }
-            ]},
-            { name: 'Top Skills', description: 'Key technical skills required for a successful career in CS.', children: [{name: 'Programming (Python, Java, JS)', description: 'Writing code to create software.'}, {name: 'Data Structures & Algorithms', description: 'Fundamental concepts for efficient problem-solving.'}, {name: 'System Design', description: 'Architecting large-scale software systems.'}] },
-            { name: 'Career Path', description: 'A typical progression for a software engineer.', children: [{name: 'SDE-1', description: 'Entry-level software development engineer.'}, {name: 'SDE-2', description: 'Mid-level engineer with more experience.'}, {name: 'Lead Engineer', description: 'Leads a small team of engineers.'}, {name: 'Engineering Manager', description: 'Manages teams and projects.'}] }
-        ]
-    },
-    'Medical Field': {
-        name: 'Medical Field',
-        description: 'Dedicated to the science of healing, this field involves diagnosing, treating, and preventing diseases to improve human health.',
-        children: [
-            { name: 'Core Degrees', description: 'The primary professional degrees to enter the medical and healthcare sector.', children: [
-                { name: 'MBBS (Doctor)', description: 'The undergraduate degree to become a medical doctor.', children: [{name: 'MD/MS (Specialization)', description: 'Postgraduate degrees for specialization.'}, {name: 'Surgeon', description: 'Performs operations.'}, {name: 'General Physician', description: 'Provides primary healthcare.'}] },
-                { name: 'BDS (Dentist)', description: 'The undergraduate degree for dentistry.' },
-                { name: 'BAMS (Ayurveda)', description: 'Focuses on traditional Indian medicine.' },
-                { name: 'BHMS (Homeopathy)', description: 'Focuses on alternative homeopathic medicine.' },
-            ]},
-            { name: 'Allied Fields', description: 'Supporting roles in the healthcare industry that are crucial for patient care.', children: [
-                { name: 'B.Pharm (Pharmacist)', description: 'Deals with the preparation and dispensing of drugs.' },
-                { name: 'B.Sc. Nursing', description: 'Focuses on patient care and nursing administration.' },
-                { name: 'Physiotherapy (BPT)', description: 'Helps patients recover from injury or illness through physical methods.' }
-            ]},
-            { name: 'Entrance Exam', description: 'The single, national-level entrance exam for most medical courses in India.', children: [{name: 'NEET (National Eligibility cum Entrance Test)', description: 'Required for admission to MBBS, BDS, and other medical courses.'}] }
-        ]
-    },
-     'Non-Medical Fields': {
-        name: 'Non-Medical Science Fields',
-        description: 'For students who enjoy science but are not interested in medicine. These fields apply scientific principles in diverse areas like research, technology, and design.',
-        children: [
-            { name: 'Pure Sciences', description: 'Focus on fundamental research and understanding the natural world.', children: [
-                { name: 'B.Sc. Physics', description: 'Studies matter, energy, and their interactions.', children: [{name: 'Astrophysicist', description: 'Studies celestial objects.'}, {name: 'Researcher', description: 'Conducts scientific experiments.'}] },
-                { name: 'B.Sc. Chemistry', description: 'Studies the properties and composition of substances.', children: [{name: 'Pharmaceuticals', description: 'Develops new drugs.'}, {name: 'Quality Control', description: 'Ensures product quality in industries.'}] },
-                { name: 'B.Sc. Mathematics', description: 'The study of numbers, quantity, and space.', children: [{name: 'Data Analyst', description: 'Uses math to analyze data.'}, {name: 'Actuarial Science', description: 'Assesses financial risks.'}] }
-            ]},
-            { name: 'Other Options', description: 'Alternative career paths for science students beyond traditional research.', children: [
-                { name: 'B.Arch (Architecture)', description: 'The art and science of designing buildings.' },
-                { name: 'BCA (Computer Applications)', description: 'A degree focused on software and computer applications.' },
-                { name: 'Merchant Navy', description: 'A career involving commercial sea transport.' }
+    eng_tech: {
+        title: 'Engineering & Technology',
+        description: 'A vast area that encompasses the creation and application of technological solutions to real-world problems.',
+         children: [
+            { title: 'Key Disciplines', description: 'Core areas within this field.', children: [
+                { title: 'Computer Science', description: 'Focuses on software and computation.' },
+                { title: 'Information Technology', description: 'Manages and supports IT infrastructure.' },
+                { title: 'Electronics & Communication', description: 'Deals with electronic circuits and communication systems.' }
             ]}
         ]
     },
-    'Civil Engineering': {
-        name: 'Civil Engineering',
-        description: 'This engineering discipline deals with the design, construction, and maintenance of the physical and naturally built environment, including public works like roads, bridges, and dams.',
+    sw_dev_it: {
+        title: 'Software Development & IT',
+        description: 'Covers the creation, maintenance, and management of software and information systems.',
         children: [
-            { name: 'Specializations', description: 'Key areas of focus within the broad field of Civil Engineering.', children: [
-                { name: 'Structural Engineering', description: 'Focuses on the design and analysis of structures that support or resist loads.', children: [{name: 'Building Design', description: 'Designing residential and commercial buildings.'}, {name: 'Bridge Design', description: 'Designing bridges for roads and railways.'}] },
-                { name: 'Geotechnical Engineering', description: 'Studies the behavior of earth materials.', children: [{name: 'Soil & Foundation Analysis', description: 'Ensuring stable foundations for structures.'}] },
-                { name: 'Transportation Engineering', description: 'Concerned with the safe and efficient movement of people and goods.', children: [{name: 'Highway Design', description: 'Planning and designing roads.'}, {name: 'Traffic Management', description: 'Optimizing traffic flow.'}] },
-                { name: 'Environmental Engineering', description: 'Focuses on improving and protecting the environment.', children: [{name: 'Water Treatment', description: 'Designing systems for clean water.'}, {name: 'Waste Management', description: 'Managing solid and hazardous waste.'}] }
-            ]},
-            { name: 'Job Roles', description: 'Common career paths for Civil Engineering graduates.', children: [{name: 'Site Engineer', description: 'Manages daily operations on a construction site.'}, {name: 'Project Manager', description: 'Oversees the entire construction project.'}, {name: 'Urban Planner', description: 'Designs layouts for cities and towns.'}, {name: 'Govt. Engineer (PWD, CPWD)', description: 'Works for public works departments.'}] }
+            {
+                title: 'Academics',
+                description: 'Educational paths to enter the field of software and IT.',
+                children: [
+                    {
+                        title: 'B.Tech in CS/IT',
+                        description: 'A 4-year engineering degree focused on core computer science principles.',
+                        children: [
+                            { title: 'Core Subjects', description: 'The foundational courses in a computer science degree.', children: [ { title: 'Data Structures & Algorithms', description: 'Fundamental concepts for organizing and processing data efficiently.' }, { title: 'Database Management Systems', description: 'Software for creating and managing databases to ensure data is accessible.' }, { title: 'Operating Systems', description: 'Core software that manages all hardware and software resources on a computer.' } ] },
+                            { title: 'Job Roles', description: 'Common careers for graduates with a B.Tech in CS/IT.', children: [ { title: 'Software Engineer', description: 'Designs, develops, tests, and maintains software applications.' }, { title: 'Backend Developer', description: 'Focuses on the server-side of applications, including databases and APIs.' }, { title: 'Systems Engineer', description: 'Manages and supports an organization\'s IT infrastructure.' } ] }
+                        ]
+                    },
+                    {
+                        title: 'BCA (Bachelor of Computer Applications)',
+                        description: 'A 3-year degree focused on software application development.',
+                        children: [
+                             { title: 'Core Subjects', description: 'Key courses in a BCA program.', children: [{ title: 'Web Development', description: 'The process of building and maintaining websites and web applications.' }, {title: 'Object-Oriented Programming', description: 'A programming style based on the concept of "objects" containing data and code.'}] },
+                             { title: 'Job Roles', description: 'Typical entry-level jobs for BCA graduates.', children: [{ title: 'Web Developer', description: 'Builds and maintains the front-end and back-end of websites.' }, { title: 'Application Support Specialist', description: 'Provides technical support for software applications.' }] }
+                        ]
+                    },
+                ]
+            },
+            {
+                title: 'Skills',
+                description: 'Essential technical and soft skills for a successful career.',
+                children: [
+                    { title: 'Technical Skills', description: 'Practical, hands-on abilities required for the job.', children: [ { title: 'Programming Languages (Python, Java, JS)', description: 'Core tools for writing instructions for computers to execute.' }, { title: 'Frameworks & Libraries (React, Node.js)', description: 'Pre-written code that helps developers build applications faster.' }, { title: 'Databases (SQL, NoSQL)', description: 'Systems for storing, managing, and retrieving organized information.' } ] },
+                    { title: 'Soft Skills', description: 'Interpersonal qualities that help you succeed in the workplace.', children: [ { title: 'Problem-Solving', description: 'The ability to identify issues and implement effective solutions.' }, { title: 'Team Collaboration', description: 'Working effectively with others to achieve a common goal.' }, { title: 'Communication', description: 'Clearly conveying ideas and information to others.' } ] }
+                ]
+            },
+            {
+                title: 'Future Scope',
+                description: 'Paths for career advancement and growth.',
+                children: [
+                    { title: 'Higher Studies', description: 'Advanced degrees to deepen your expertise.', children: [ { title: 'M.Tech in CS/IT', description: 'A master\'s degree focused on advanced technical specialization.' }, { title: 'MS in Computer Science', description: 'A research-oriented master\'s program, often pursued internationally.' }, { title: 'MBA in IT Management', description: 'Combines technical knowledge with business leadership skills.' } ] },
+                    { title: 'Emerging Trends', description: 'The next wave of technologies shaping the future of IT.', children: [ { title: 'Artificial Intelligence & Generative AI', description: 'Creating systems that can learn, reason, and generate new content.' }, { title: 'Quantum Computing', description: 'Using quantum mechanics to solve problems too complex for classical computers.' }, { title: 'DevSecOps', description: 'Integrating security practices into the software development lifecycle.' } ] }
+                ]
+            }
         ]
     },
-    'Electronics/Software': {
-        name: 'Electronics & Software',
-        description: 'A field that combines hardware (electronics) and software to create smart devices and systems, from smartphones to complex automation.',
+    data_science: {
+        title: 'Data Science & Analytics',
+        description: 'Extracting insights and knowledge from data using scientific methods, processes, algorithms, and systems.',
         children: [
-            { name: 'Electronics Core', description: 'Focuses on the hardware components, circuits, and communication systems.', children: [
-                { name: 'B.Tech in ECE', description: 'Bachelor of Technology in Electronics and Communication Engineering.', children: [{name: 'VLSI Design', description: 'Designing microchips.'}, {name: 'Embedded Systems', description: 'Programming hardware-specific software.'}, {name: 'Telecommunications', description: 'Working on communication networks.'}] },
-                { name: 'Job Roles', description: 'Careers primarily in hardware.', children: [{name: 'Hardware Engineer', description: 'Designs physical components.'}, {name: 'Network Engineer', description: 'Manages communication networks.'}] }
-            ]},
-            { name: 'Software Core', description: 'Focuses on the programming and applications that run on hardware.', children: [
-                 { name: 'B.Tech in CSE/IT', description: 'Bachelor of Technology in Computer Science or Information Technology.', children: [{name: 'Software Development', description: 'Creating software applications.'}, {name: 'Data Science', description: 'Analyzing data for insights.'}, {name: 'Cybersecurity', description: 'Protecting digital systems.'}] },
-                 { name: 'Job Roles', description: 'Careers primarily in software.', children: [{name: 'Software Engineer', description: 'Builds and maintains software.'}, {name: 'DevOps Engineer', description: 'Manages development and operations.'}, {name: 'QA Engineer', description: 'Tests software for quality.'}] }
-            ]},
-            { name: 'Intersection', description: 'Fields where hardware and software are deeply integrated.', children: [{name: 'IoT (Internet of Things)', description: 'Connecting everyday devices to the internet.'}, {name: 'Robotics & Automation', description: 'Creating robots that perform tasks autonomously.'}] }
+            {
+                title: 'Academics',
+                description: 'Educational pathways for a career in data science.',
+                children: [
+                    { title: 'B.Tech in Data Science/AI', description: 'An engineering degree focused on data science principles.', children: [ { title: 'Core Subjects', description: 'Fundamental courses for a data science degree.', children: [ { title: 'Statistics & Probability', description: 'The mathematical foundation for understanding data and uncertainty.' }, { title: 'Machine Learning', description: 'Algorithms that allow computers to learn from data without being explicitly programmed.' }, { title: 'Big Data Tech', description: 'Technologies for handling massive datasets that are too large for traditional software.' } ] }, { title: 'Job Roles', description: 'Common careers for data science graduates.', children: [ { title: 'Data Scientist', description: 'Uses data to solve complex problems and build predictive models.' }, { title: 'ML Engineer', description: 'Builds and deploys machine learning models at scale.' } ] } ] },
+                    { title: 'B.Sc. in Statistics', description: 'A degree focused on the collection, analysis, and interpretation of data.', children: [ { title: 'Core Subjects', description: 'Key courses in a statistics program.', children: [{title: 'Probability Theory', description: 'The branch of mathematics concerning numerical descriptions of how likely an event is to occur.'}, {title: 'Statistical Inference', description: 'The process of using data analysis to infer properties of an underlying probability distribution.'}] }, { title: 'Job Roles', description: 'Typical entry-level jobs for statistics graduates.', children: [ { title: 'Data Analyst', description: 'Examines data sets to identify trends and draw conclusions.' }, { title: 'BI Analyst', description: 'Focuses on using data to help businesses make better decisions.' } ] } ] }
+                ]
+            },
+            {
+                title: 'Skills',
+                description: 'Essential capabilities for a data science professional.',
+                children: [
+                    { title: 'Technical Skills', description: 'The tools and technologies used in data science.', children: [ { title: 'Python (Pandas, Scikit-learn)', description: 'A versatile programming language with powerful libraries for data analysis.' }, { title: 'R Programming', description: 'A language specifically designed for statistical computing and graphics.' }, { title: 'SQL', description: 'The standard language for managing and querying relational databases.' }, { title: 'Data Visualization (Tableau)', description: 'Tools for creating visual representations of data to communicate insights.' } ] },
+                    { title: 'Soft Skills', description: 'Personal attributes that are key to success in data science.', children: [ { title: 'Analytical Mindset', description: 'The ability to deconstruct problems and think in a structured way.' }, { title: 'Business Acumen', description: 'Understanding how a business operates and makes money.' }, { title: 'Storytelling', description: 'The ability to communicate complex data insights in a clear and compelling narrative.' } ] }
+                ]
+            },
+            {
+                title: 'Future Scope',
+                description: 'Opportunities for growth and specialization in data science.',
+                children: [
+                    { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'M.Sc./M.Tech in Data Science', description: 'A master\'s program focused on advanced data science techniques.' }, { title: 'PhD in a specialized domain', description: 'The highest academic degree, focused on original research in an area like AI or bioinformatics.' } ] },
+                    { title: 'Emerging Trends', description: 'Future directions of the data science field.', children: [ { title: 'Deep Learning', description: 'A subfield of machine learning based on artificial neural networks.' }, { title: 'Explainable AI (XAI)', description: 'AI models whose decisions can be easily understood by humans.' }, { title: 'MLOps', description: 'Practices for the deployment and maintenance of machine learning models in production.' } ] }
+                ]
+            }
         ]
     },
-    // --- COMMERCE FIELDS ---
-    'Finance/Accounting': {
-        name: 'Finance & Accounting',
-        description: 'The backbone of any business, this field deals with managing money, investments, and financial records to ensure an organization\'s health and profitability.',
+    design_hci: {
+        title: 'Design & Human-Computer Interaction',
+        description: 'Focuses on designing interfaces between people (users) and computers.',
         children: [
-            { name: 'Professional Courses', description: 'Highly respected certifications that offer specialized skills and career paths.', children: [
-                { name: 'Chartered Accountancy (CA)', description: 'A qualification for professional accountants.', children: [{name: 'Auditing', description: 'Verifying financial records.'}, {name: 'Taxation', description: 'Advising on tax matters.'}] },
-                { name: 'Company Secretary (CS)', description: 'An expert in corporate law and governance.', children: [{name: 'Corporate Law', description: 'Ensuring legal compliance.'}] },
-                { name: 'CFA (Chartered Financial Analyst)', description: 'A globally recognized investment management credential.', children: [{name: 'Investment Management', description: 'Managing investment portfolios.'}] }
-            ]},
-            { name: 'Degree Courses', description: 'Undergraduate degrees that build a strong foundation in finance and commerce.', children: [
-                { name: 'B.Com (Hons.)', description: 'A specialized commerce degree.' },
-                { name: 'BBA in Finance', description: 'A business degree with a focus on finance.' }
-            ]},
-            { name: 'Job Roles', description: 'Common careers in the finance and accounting sector.', children: [{name: 'Accountant', description: 'Maintains financial records.'}, {name: 'Financial Advisor', description: 'Helps individuals and companies manage their finances.'}, {name: 'Investment Banker', description: 'Raises capital for corporations and governments.'}] }
+            { title: 'Academics', description: 'Educational routes into the HCI and design field.', children: [ { title: 'B.Des in UX/UI', description: 'A bachelor\'s degree in design focused on User Experience and User Interface.', children: [ { title: 'Core Subjects', description: 'Key topics in a UX/UI design curriculum.', children: [ { title: 'User Research', description: 'Understanding user behaviors, needs, and motivations through observation and feedback.' }, { title: 'Interaction Design', description: 'Designing the interaction between users and products.' }, { title: 'Information Architecture', description: 'Organizing and structuring content in an effective and sustainable way.' } ] }, { title: 'Job Roles', description: 'Common careers for design graduates.', children: [ { title: 'UX Designer', description: 'Focuses on the overall feel and experience of a product.' }, { title: 'UI Designer', description: 'Focuses on the visual layout and look of a product\'s interface.' }, { title: 'Product Designer', description: 'A broad role covering both UX and UI, often with a focus on business goals.' } ] } ] } ] },
+            { title: 'Skills', description: 'The key abilities required for a design professional.', children: [ { title: 'Technical Skills', description: 'Software and tools of the trade for designers.', children: [ { title: 'Figma, Sketch, Adobe XD', description: 'Industry-standard software for designing and prototyping user interfaces.' }, { title: 'Prototyping Tools (InVision, Marvel)', description: 'Tools to create interactive mockups of a product before development.' }, { title: 'HTML/CSS Basics', description: 'Fundamental understanding of web technologies to design effectively.' } ] }, { title: 'Soft Skills', description: 'Essential interpersonal skills for designers.', children: [ { title: 'Empathy', description: 'The ability to understand and share the feelings of the user.' }, { title: 'Visual Communication', description: 'Effectively conveying ideas and information through visual elements.' }, { title: 'User Feedback Analysis', description: 'The ability to interpret and act on feedback from users.' } ] } ] },
+            { title: 'Future Scope', description: 'Where the field of design and HCI is heading.', children: [ { title: 'Higher Studies', description: 'Advanced education in design.', children: [ { title: 'M.Des in Interaction Design', description: 'A master\'s degree focused on the theory and practice of interaction design.' } ] }, { title: 'Emerging Trends', description: 'The future of human-computer interaction.', children: [ { title: 'Voice User Interfaces (VUI)', description: 'Designing interactions based on voice commands, like for Alexa or Siri.' }, { title: 'AR/VR Design', description: 'Designing immersive experiences for Augmented and Virtual Reality.' }, { title: 'Inclusive Design', description: 'Designing products that are accessible to and usable by as many people as possible.' } ] } ] }
         ]
     },
-    'Human Resources/Management': {
-        name: 'HR & Management',
-        description: 'This field focuses on the people and processes within an organization. HR manages the workforce, while management oversees strategy and operations.',
+    industrial_manufacturing: {
+        title: 'Industrial & Manufacturing Engineering',
+        description: 'Deals with the optimization of complex processes, systems, or organizations.',
         children: [
-            { name: 'Educational Path', description: 'The typical academic route to a career in HR or management.', children: [
-                { name: 'BBA / BMS', description: 'Undergraduate business degrees.' },
-                { name: 'MBA (HR/General Mgmt)', description: 'A postgraduate degree for leadership roles, with entrance exams like CAT and XAT.', children: [{name: 'CAT', description: 'Common Admission Test for IIMs.'}, {name: 'XAT', description: 'Xavier Aptitude Test for XLRI.'}] }
-            ]},
-            { name: 'HR Roles', description: 'Careers focused on managing an organization\'s employees.', children: [{name: 'Talent Acquisition', description: 'Recruiting and hiring new employees.'}, {name: 'HR Business Partner', description: 'Aligns HR strategy with business goals.'}, {name: 'Compensation Analyst', description: 'Manages salary and benefits programs.'}] },
-            { name: 'Management Roles', description: 'Careers focused on overseeing business operations and strategy.', children: [{name: 'Management Consultant', description: 'Advises companies on improving performance.'}, {name: 'Project Manager', description: 'Leads projects to successful completion.'}, {name: 'Business Operations Manager', description: 'Ensures the smooth running of the company.'}] }
+            { title: 'Academics', description: 'The educational foundation for this field.', children: [ { title: 'B.E./B.Tech in Industrial/Manufacturing Eng.', description: 'An engineering degree focused on optimizing complex processes.', children: [ { title: 'Core Subjects', description: 'Key courses in an industrial engineering program.', children: [ { title: 'Operations Research', description: 'Using mathematical models to optimize business processes.' }, { title: 'Supply Chain Management', description: 'Managing the flow of goods and services from source to customer.' }, { title: 'Quality Control', description: 'Ensuring products meet a defined set of quality criteria.' } ] }, { title: 'Job Roles', description: 'Potential careers for graduates.', children: [ { title: 'Process Engineer', description: 'Designs and implements processes to improve efficiency.' }, { title: 'Supply Chain Analyst', description: 'Analyzes and optimizes a company\'s supply chain.' }, { title: 'Quality Assurance Manager', description: 'Ensures products consistently meet quality standards.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for industrial and manufacturing engineers.', children: [ { title: 'Technical Skills', description: 'Key technical competencies.', children: [ { title: 'Six Sigma, Lean Manufacturing', description: 'Methodologies for process improvement and waste reduction.' }, { title: 'CAD/CAM Software', description: 'Software for designing and manufacturing products.' }, { title: 'ERP Systems', description: 'Software that manages a company\'s main business processes.' } ] }, { title: 'Soft Skills', description: 'Important interpersonal attributes.', children: [ { title: 'Systems Thinking', description: 'Understanding how different parts of a system interact.' }, { title: 'Project Management', description: 'Planning and executing projects to meet specific goals.' }, { title: 'Analytical Skills', description: 'The ability to collect and analyze information to solve problems.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of industrial and manufacturing engineering.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for career progression.', children: [ { title: 'M.Tech in Industrial Eng.', description: 'A master\'s focused on advanced industrial engineering topics.' }, { title: 'MBA in Operations', description: 'Combines engineering knowledge with business management.' } ] }, { title: 'Emerging Trends', description: 'Upcoming technologies in the field.', children: [ { title: 'Smart Manufacturing (Industry 4.0)', description: 'The integration of digital technology into manufacturing.' }, { title: 'Digital Twins', description: 'A virtual model of a physical object or system.' }, { title: '3D Printing', description: 'Creating three-dimensional objects from a digital file.' } ] } ] }
         ]
     },
-    'Data Analysis/Finance': {
-        name: 'Data Analysis & Finance',
-        description: 'A hybrid field that uses data to make smarter financial decisions. It combines statistical analysis with financial knowledge to identify trends and opportunities.',
+    marine_environmental: {
+        title: 'Marine & Environmental Sciences',
+        description: 'The study of the ocean, its ecosystems, and the impact of human activities on the environment.',
         children: [
-            { name: 'Educational Path', description: 'Degrees that provide the necessary quantitative and analytical skills.', children: [
-                { name: 'B.Com (Hons.)', description: 'Commerce degree with a strong foundation.' },
-                { name: 'B.Sc. Statistics', description: 'Degree focused on statistical methods.' },
-                { name: 'Economics (Hons.)', description: 'Degree with a focus on economic analysis.' }
-            ]},
-            { name: 'Key Skills', description: 'The essential tools and techniques for a data-driven finance career.', children: [{name: 'SQL', description: 'For managing data in databases.'}, {name: 'Python/R', description: 'For statistical analysis and modeling.'}, {name: 'Excel', description: 'For data manipulation and visualization.'}, {name: 'Financial Modeling', description: 'For forecasting financial performance.'}] },
-            { name: 'Job Roles', description: 'Careers that sit at the intersection of data and finance.', children: [{name: 'Data Analyst', description: 'Interprets data to solve business problems.'}, {name: 'Financial Analyst', description: 'Analyzes financial data to guide investment decisions.'}, {name: 'Business Analyst', description: 'Identifies business needs and finds solutions.'}, {name: 'Market Research Analyst', description: 'Studies market conditions to examine potential sales.'}] }
+            { title: 'Academics', description: 'How to get into marine and environmental sciences.', children: [ { title: 'B.Sc in Marine Biology/Environmental Sci.', description: 'A science degree focused on marine or environmental systems.', children: [ { title: 'Core Subjects', description: 'Key subjects in the curriculum.', children: [ { title: 'Oceanography', description: 'The study of the physical and biological properties of the sea.' }, { title: 'Ecology', description: 'The study of how organisms interact with each other and their environment.' }, { title: 'Conservation Biology', description: 'The science of protecting and managing biodiversity.' } ] }, { title: 'Job Roles', description: 'Careers in this field.', children: [ { title: 'Marine Biologist', description: 'Studies marine organisms and their environment.' }, { title: 'Environmental Consultant', description: 'Advises organizations on environmental policies.' }, { title: 'Conservation Scientist', description: 'Manages and protects natural resources.' } ] } ] } ] },
+            { title: 'Skills', description: 'Necessary skills for a career in this field.', children: [ { title: 'Technical Skills', description: 'Practical skills needed for the job.', children: [ { title: 'Field Research & Data Collection', description: 'Gathering data from natural environments.' }, { title: 'GIS Software', description: 'Software for analyzing and visualizing geographical data.' }, { title: 'Statistical Analysis', description: 'Using statistics to interpret experimental data.' } ] }, { title: 'Soft Skills', description: 'Personal qualities for success.', children: [ { title: 'Observation', description: 'The ability to notice details in the environment.' }, { title: 'Analytical Skills', description: 'Interpreting data and drawing logical conclusions.' }, { title: 'Patience & Perseverance', description: 'Essential qualities for long-term research projects.' } ] } ] },
+            { title: 'Future Scope', description: 'Future directions in marine and environmental science.', children: [ { title: 'Higher Studies', description: 'Advanced academic paths.', children: [ { title: 'M.Sc. in relevant fields', description: 'A master\'s degree for specialization.' }, { title: 'PhD', description: 'The highest academic degree for a career in research.' } ] }, { title: 'Emerging Trends', description: 'New areas of focus in the field.', children: [ { title: 'Climate Change Research', description: 'Studying the impacts of climate change on ecosystems.' }, { title: 'Deep-Sea Exploration', description: 'Exploring the largely unknown deep-sea environment.' }, { title: 'Blue Economy', description: 'Sustainable use of ocean resources for economic growth.' } ] } ] }
         ]
     },
-    'Marketing/Sales': {
-        name: 'Marketing & Sales',
-        description: 'The functions of a business responsible for promoting and selling products or services. Marketing creates demand, and sales fulfills it.',
+    renewable_tech: {
+        title: 'Environmental & Renewable Technologies',
+        description: 'Focuses on sustainable energy generation and environmental protection technologies.',
         children: [
-            { name: 'Educational Path', description: 'Degrees that prepare students for careers in marketing and sales.', children: [
-                { name: 'BBA (Marketing)', description: 'Undergraduate business degree with a marketing focus.' },
-                { name: 'MBA (Marketing)', description: 'Postgraduate degree for strategic marketing roles.' }
-            ]},
-            { name: 'Marketing', description: 'The process of creating and communicating value to customers.', children: [
-                { name: 'Digital Marketing', description: 'Marketing through online channels.', children: [{name: 'SEO/SEM', description: 'Improving visibility on search engines.'}, {name: 'Social Media Marketing', description: 'Using social platforms to connect with customers.'}] },
-                { name: 'Brand Management', description: 'Managing the reputation and identity of a brand.' },
-                { name: 'Market Research', description: 'Understanding consumer behavior and market trends.' }
-            ]},
-            { name: 'Sales', description: 'The process of selling products or services to customers.', children: [{name: 'Business Development', description: 'Identifying new business opportunities.'}, {name: 'Key Account Management', description: 'Managing relationships with important clients.'}, {name: 'Sales Strategy', description: 'Planning how to achieve sales targets.'}] }
+            { title: 'Academics', description: 'Educational routes to a career in green tech.', children: [ { title: 'B.Tech in Energy/Environmental Eng.', description: 'An engineering degree focused on sustainable technologies.', children: [ { title: 'Core Subjects', description: 'Key courses in the program.', children: [ { title: 'Solar/Wind Energy Systems', description: 'The technology behind solar and wind power generation.' }, { title: 'Waste Management', description: 'Techniques for managing and recycling waste.' }, { title: 'Energy Policy', description: 'The laws and regulations governing energy use.' } ] }, { title: 'Job Roles', description: 'Careers in the renewable sector.', children: [ { title: 'Renewable Energy Engineer', description: 'Designs and implements renewable energy projects.' }, { title: 'Sustainability Analyst', description: 'Helps organizations become more environmentally sustainable.' }, { title: 'Environmental Engineer', description: 'Uses engineering principles to solve environmental problems.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for a career in renewable technologies.', children: [ { title: 'Technical Skills', description: 'The practical abilities required.', children: [ { title: 'Energy Modeling Software (HOMER, PVSyst)', description: 'Software for simulating and optimizing energy systems.' }, { title: 'Environmental Impact Assessment', description: 'Evaluating the environmental consequences of a project.' }, { title: 'Project Management', description: 'Managing renewable energy projects from start to finish.' } ] }, { title: 'Soft Skills', description: 'Key interpersonal skills.', children: [ { title: 'Problem Solving', description: 'Finding solutions to complex technical challenges.' }, { title: 'Policy Awareness', description: 'Understanding the regulatory landscape for renewable energy.' }, { title: 'Interdisciplinary Collaboration', description: 'Working with experts from different fields.' } ] } ] },
+            { title: 'Future Scope', description: 'What\'s next for renewable and environmental tech.', children: [ { title: 'Higher Studies', description: 'Advanced degrees in the field.', children: [ { title: 'M.Tech in Renewable Energy', description: 'A master\'s degree focused on renewable energy technologies.' } ] }, { title: 'Emerging Trends', description: 'The future of green technology.', children: [ { title: 'Green Hydrogen', description: 'Producing hydrogen using renewable energy.' }, { title: 'Energy Storage Solutions', description: 'Technologies like batteries for storing renewable energy.' }, { title: 'Circular Economy', description: 'An economic model based on minimizing waste.' } ] } ] }
         ]
     },
-    // --- ARTS FIELDS ---
-    'Design/Fine Arts': {
-        name: 'Design & Fine Arts',
-        description: 'A creative field focused on visual communication and expression. Design solves problems visually, while fine arts explores aesthetics and concepts.',
+    space_aerospace: {
+        title: 'Space Science & Aerospace',
+        description: 'The science and engineering of aircraft and spacecraft.',
         children: [
-            { name: 'Educational Path', description: 'The academic route to becoming a professional designer or artist.', children: [
-                { name: 'B.Des (Bachelor of Design)', description: 'A 4-year degree from top design institutes.', children: [{name: 'NID'}, {name: 'NIFT'}, {name: 'UCEED'}] },
-                { name: 'BFA (Bachelor of Fine Arts)', description: 'A degree focused on artistic creation and theory.' }
-            ]},
-            { name: 'Design Fields', description: 'Applied creative fields that solve specific visual problems.', children: [
-                { name: 'Graphic Design', description: 'Creating visual content for branding and media.' },
-                { name: 'UI/UX Design', description: 'Designing user-friendly digital products.' },
-                { name: 'Fashion Design', description: 'Creating clothing and accessories.' },
-                { name: 'Product Design', description: 'Designing physical products for consumers.' }
-            ]},
-            { name: 'Fine Arts', description: 'Creative expression for its own sake.', children: [{name: 'Painting', description: 'Creating art with paint.'}, {name: 'Sculpture', description: 'Creating three-dimensional art.'}, {name: 'Animator', description: 'Creating moving images for film and games.'}] }
+            { title: 'Academics', description: 'Educational pathways to a career in space and aerospace.', children: [ { title: 'B.Tech in Aerospace/Aeronautical Eng.', description: 'An engineering degree focused on aircraft and spacecraft.', children: [ { title: 'Core Subjects', description: 'Fundamental courses in the curriculum.', children: [ { title: 'Aerodynamics', description: 'The study of how air flows around objects.' }, { title: 'Propulsion', description: 'The science of creating thrust to move aircraft and rockets.' }, { title: 'Orbital Mechanics', description: 'The study of the motion of objects in orbit.' } ] }, { title: 'Job Roles', description: 'Careers in the aerospace industry.', children: [ { title: 'Aerospace Engineer', description: 'Designs and builds aircraft and spacecraft.' }, { title: 'Avionics Engineer', description: 'Works on the electronic systems of aircraft.' }, { title: 'Systems Engineer at ISRO/NASA', description: 'Integrates complex aerospace systems.' } ] } ] } ] },
+            { title: 'Skills', description: 'Key skills for aerospace professionals.', children: [ { title: 'Technical Skills', description: 'The technical tools and knowledge required.', children: [ { title: 'MATLAB, Simulink', description: 'Software for mathematical modeling and simulation.' }, { title: 'CFD Software', description: 'Software for simulating fluid dynamics.' }, { title: 'CATIA/SolidWorks', description: 'CAD software for designing complex parts.' } ] }, { title: 'Soft Skills', description: 'Essential personal attributes.', children: [ { title: 'Precision', description: 'A high degree of accuracy and attention to detail.' }, { title: 'Analytical Skills', description: 'The ability to solve complex engineering problems.' }, { title: 'Teamwork', description: 'Collaborating effectively on large-scale projects.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of the space and aerospace industry.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'M.Tech/MS in Aerospace', description: 'A master\'s degree for advanced study in aerospace engineering.' } ] }, { title: 'Emerging Trends', description: 'New frontiers in aerospace.', children: [ { title: 'Satellite Technology (SmallSats)', description: 'The development of small, low-cost satellites.' }, { title: 'Space Exploration (Privatization)', description: 'The growing role of private companies in space.' }, { title: 'Hypersonic Travel', description: 'Developing aircraft that can travel at extreme speeds.' } ] } ] }
         ]
     },
-    'Journalism/Writing': {
-        name: 'Journalism & Writing',
-        description: 'This field revolves around storytelling and communication. Journalism informs the public, while writing entertains, persuades, or educates through various media.',
+    innovation_tech: {
+        title: 'Innovation & Technology Development',
+        description: 'Focuses on creating new products, services, or processes and bringing them to market.',
         children: [
-            { name: 'Educational Path', description: 'Degrees that build strong communication and writing skills.', children: [
-                { name: 'BAJMC (Journalism & Mass Comm.)', description: 'A degree focused on media and communication.' },
-                { name: 'BA in English Literature', description: 'A degree that hones analytical and writing skills.' }
-            ]},
-            { name: 'Journalism', description: 'The work of gathering and reporting news.', children: [{name: 'Print Media', description: 'Newspapers and magazines.'}, {name: 'Broadcast Media (TV/Radio)', description: 'Television and radio news.'}, {name: 'Digital Media', description: 'Online news platforms.'}] },
-            { name: 'Writing', description: 'Crafting written content for various purposes.', children: [{name: 'Content Writer', description: 'Creates articles, blogs, and web content.'}, {name: 'Copywriter', description: 'Writes persuasive text for advertising.'}, {name: 'Technical Writer', description: 'Creates instruction manuals and documentation.'}, {name: 'Author', description: 'Writes books.'}] }
+            { title: 'Academics', description: 'Education for a career in innovation.', children: [ { title: 'B.Tech/BBA with specialization in Innovation', description: 'A degree combining technology or business with innovation principles.', children: [ { title: 'Core Subjects', description: 'Key areas of study.', children: [ { title: 'Product Management', description: 'Managing a product throughout its lifecycle.' }, { title: 'Design Thinking', description: 'A user-centered approach to problem-solving.' }, { title: 'Entrepreneurship', description: 'The process of starting and running a business.' } ] }, { title: 'Job Roles', description: 'Careers focused on innovation.', children: [ { title: 'Product Manager', description: 'Defines the vision and strategy for a product.' }, { title: 'Innovation Consultant', description: 'Helps organizations develop new products and services.' }, { title: 'Venture Analyst', description: 'Evaluates startups for investment potential.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for innovation professionals.', children: [ { title: 'Technical Skills', description: 'Practical abilities for innovation.', children: [ { title: 'Market Research', description: 'Understanding customer needs and market trends.' }, { title: 'Prototyping', description: 'Creating early models of a product to test ideas.' }, { title: 'Agile Methodologies', description: 'An iterative approach to project management.' } ] }, { title: 'Soft Skills', description: 'Personal qualities that drive innovation.', children: [ { title: 'Creativity', description: 'The ability to generate new and valuable ideas.' }, { title: 'Strategic Thinking', description: 'Seeing the big picture and planning for the future.' }, { title: 'Communication', description: 'Articulating ideas and inspiring others.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of innovation and technology.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for leadership roles.', children: [ { title: 'MBA', description: 'A Master of Business Administration to develop leadership skills.' } ] }, { title: 'Emerging Trends', description: 'New approaches to innovation.', children: [ { title: 'Lean Startup Methodologies', description: 'A process for building businesses with minimal waste.' }, { title: 'Open Innovation', description: 'Collaborating with external partners to innovate.' }, { title: 'Corporate Venturing', description: 'Large companies investing in or acquiring startups.' } ] } ] }
         ]
     },
-    'Sociology/Civil Services': {
-        name: 'Sociology & Civil Services',
-        description: 'A path for those who want to understand and improve society. Sociology studies social behavior, while civil services involves public administration.',
+    robotics_automation: {
+        title: 'Robotics & Automation',
+        description: 'Design, construction, operation, and use of robots and automated systems.',
         children: [
-            { name: 'Civil Services (UPSC)', description: 'A career in the Indian government\'s administrative machinery.', children: [
-                { name: 'Core Services', description: 'The most prestigious roles in the Indian bureaucracy.', children: [{name: 'IAS (Admin)', description: 'Indian Administrative Service.'}, {name: 'IPS (Police)', description: 'Indian Police Service.'}, {name: 'IFS (Foreign)', description: 'Indian Foreign Service.'}] },
-                { name: 'Exam Stages', description: 'The three stages of the competitive UPSC exam.', children: [{name: 'Prelims'}, {name: 'Mains'}, {name: 'Interview'}] }
-            ]},
-            { name: 'Sociology & Social Work', description: 'Careers focused on understanding and addressing social issues.', children: [
-                { name: 'BA/MA in Sociology', description: 'Academic study of social structures.' },
-                { name: 'MSW (Master of Social Work)', description: 'A professional degree for social workers.' },
-                { name: 'Job Roles', description: 'Careers in the social sector.', children: [{name: 'NGO Worker', description: 'Works for a non-governmental organization.'}, {name: 'Policy Analyst', description: 'Researches and influences public policy.'}, {name: 'CSR Manager', description: 'Manages a company\'s social responsibility initiatives.'}] }
-            ]}
+            { title: 'Academics', description: 'Education in robotics and automation.', children: [ { title: 'B.Tech in Mechatronics/Robotics', description: 'An engineering degree combining mechanics, electronics, and computing.', children: [ { title: 'Core Subjects', description: 'Key courses in a robotics program.', children: [ { title: 'Control Systems', description: 'The theory of how to control dynamic systems.' }, { title: 'Kinematics & Dynamics', description: 'The study of motion in robotic systems.' }, { title: 'Machine Vision', description: 'Allowing computers to "see" and interpret images.' } ] }, { title: 'Job Roles', description: 'Careers in the robotics industry.', children: [ { title: 'Robotics Engineer', description: 'Designs, builds, and tests robots.' }, { title: 'Automation Specialist', description: 'Implements automated systems in factories and warehouses.' }, { title: 'Controls Engineer', description: 'Develops the control systems for robots and machines.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for robotics professionals.', children: [ { title: 'Technical Skills', description: 'The hands-on abilities required.', children: [ { title: 'ROS (Robot Operating System)', description: 'A flexible framework for writing robot software.' }, { title: 'PLC Programming', description: 'Programming controllers for industrial automation.' }, { title: 'Python/C++', description: 'Common programming languages used in robotics.' } ] }, { title: 'Soft Skills', description: 'Key interpersonal skills.', children: [ { title: 'Systems Integration', description: 'Making different technical systems work together.' }, { title: 'Problem Solving', description: 'Diagnosing and fixing issues with complex systems.' }, { title: 'Mechanical Aptitude', description: 'An intuitive understanding of how machines work.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of robotics and automation.', children: [ { title: 'Higher Studies', description: 'Advanced degrees in the field.', children: [ { title: 'M.Tech in Robotics', description: 'A master\'s degree for specialization in robotics.' } ] }, { title: 'Emerging Trends', description: 'The next generation of robotics.', children: [ { title: 'Collaborative Robots (Cobots)', description: 'Robots designed to work alongside humans.' }, { title: 'AI in Robotics', description: 'Making robots smarter and more autonomous.' }, { title: 'Autonomous Systems', description: 'Robots and vehicles that can operate without human intervention.' } ] } ] }
         ]
     },
-    'Psychology': {
-        name: 'Psychology',
-        description: 'The scientific study of the mind and behavior. It seeks to understand and explain how people think, act, and feel.',
+    comm_media_tech: {
+        title: 'Communication & Media Technologies',
+        description: 'Focuses on the technology behind media, broadcasting, and digital communication.',
         children: [
-            { name: 'Educational Path', description: 'The academic journey to become a qualified psychologist.', children: [
-                { name: 'BA/B.Sc. in Psychology', description: 'Undergraduate degrees in psychology.' },
-                { name: 'MA/M.Sc. in Psychology', description: 'Postgraduate degrees for specialization.' },
-                { name: 'M.Phil / Ph.D. for specialization', description: 'Advanced degrees for clinical practice and research.' }
-            ]},
-            { name: 'Specializations', description: 'Different areas of focus within the field of psychology.', children: [
-                { name: 'Clinical Psychology', description: 'Assesses and treats mental, emotional, and behavioral disorders.', children: [{name: 'Therapist'}] },
-                { name: 'Organizational Psychology', description: 'Applies psychological principles to the workplace.', children: [{name: 'Corporate Trainer'}] },
-                { name: 'Counselling Psychology', description: 'Helps people with personal and interpersonal functioning.', children: [{name: 'School Counselor'}, {name: 'Career Counselor'}] }
-            ]}
+            { title: 'Academics', description: 'Education in media technology.', children: [ { title: 'B.Tech in ECE / B.A. in Mass Comm.', description: 'Degrees combining engineering with communication.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Signal Processing', description: 'The manipulation of signals like audio and video.' }, { title: 'Broadcasting Tech', description: 'The technology behind radio and television broadcasting.' }, { title: 'Digital Media', description: 'The study of media in a digital format.' } ] }, { title: 'Job Roles', description: 'Careers in media technology.', children: [ { title: 'Broadcast Engineer', description: 'Manages the technical aspects of broadcasting.' }, { title: 'Media Technologist', description: 'Works with the technology behind media production.' }, { title: 'Network Engineer', description: 'Manages the networks that deliver media content.' } ] } ] } ] },
+            { title: 'Skills', description: 'Key skills for media tech professionals.', children: [ { title: 'Technical Skills', description: 'The practical abilities needed.', children: [ { title: 'Video/Audio Editing Software', description: 'Tools like Adobe Premiere and Audition.' }, { title: 'Network Protocols', description: 'The rules that govern how data is transmitted over networks.' }, { title: 'Content Delivery Networks (CDNs)', description: 'Systems for delivering web content quickly to users.' } ] }, { title: 'Soft Skills', description: 'Important interpersonal skills.', children: [ { title: 'Communication', description: 'Effectively conveying technical information.' }, { title: 'Troubleshooting', description: 'Diagnosing and solving technical problems.' }, { title: 'Adaptability', description: 'Keeping up with rapidly changing technology.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of media technology.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'M.Sc. in Media Technology', description: 'A master\'s focused on the tech behind media.' } ] }, { title: 'Emerging Trends', description: 'New frontiers in media delivery.', children: [ { title: '5G Broadcasting', description: 'Using 5G networks for broadcasting.' }, { title: 'Streaming Technologies', description: 'The technology behind services like Netflix and YouTube.' }, { title: 'Immersive Media (AR/VR)', description: 'Creating immersive media experiences.' } ] } ] }
+        ]
+    },
+    chem_process_eng: {
+        title: 'Chemical & Process Engineering',
+        description: 'Branch of engineering that uses principles of chemistry, physics, mathematics, and economics to efficiently use, produce, and transport chemicals, materials, and energy.',
+        children: [
+            { title: 'Academics', description: 'Education in chemical engineering.', children: [ { title: 'B.Tech in Chemical Eng.', description: 'An engineering degree focused on chemical processes.', children: [ { title: 'Core Subjects', description: 'Key courses in the program.', children: [ { title: 'Thermodynamics', description: 'The study of heat and energy.' }, { title: 'Fluid Mechanics', description: 'The study of fluids in motion.' }, { title: 'Mass Transfer', description: 'The movement of mass from one location to another.' } ] }, { title: 'Job Roles', description: 'Careers for chemical engineers.', children: [ { title: 'Process Engineer', description: 'Designs and manages chemical processes.' }, { title: 'Chemical Engineer', description: 'Works on the production of chemicals and materials.' }, { title: 'Plant Manager', description: 'Oversees the operations of a chemical plant.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for chemical engineers.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Process Simulation (ASPEN, HYSYS)', description: 'Software for modeling chemical processes.' }, { title: 'Plant Design', description: 'Designing the layout and equipment for chemical plants.' }, { title: 'Safety Engineering', description: 'Ensuring the safe operation of chemical processes.' } ] }, { title: 'Soft Skills', description: 'Key interpersonal skills.', children: [ { title: 'Analytical Skills', description: 'Solving complex engineering problems.' }, { title: 'Safety Consciousness', description: 'A strong commitment to safety.' }, { title: 'Problem Solving', description: 'Identifying and resolving issues in processes.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of chemical engineering.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'M.Tech in Chemical Eng.', description: 'A master\'s degree for advanced study.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Green Chemistry', description: 'Designing chemical products and processes that are environmentally friendly.' }, { title: 'Nanotechnology', description: 'Working with materials at the molecular scale.' }, { title: 'Biochemical Engineering', description: 'Applying engineering principles to biological systems.' } ] } ] }
+        ]
+    },
+    quant_data_analytics: {
+        title: 'Quantitative & Data Analytics',
+        description: 'Application of statistical and mathematical techniques to analyze business data.',
+        children: [
+            { title: 'Academics', description: 'Education for a career as a quant.', children: [ { title: 'B.Sc. in Statistics / B.Com (Hons)', description: 'Degrees with a strong mathematical focus.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Econometrics', description: 'The application of statistics to economic data.' }, { title: 'Statistical Modeling', description: 'Using statistical models to understand data.' }, { title: 'Time Series Analysis', description: 'Analyzing data points collected over time.' } ] }, { title: 'Job Roles', description: 'Careers for quantitative analysts.', children: [ { title: 'Quantitative Analyst (Quant)', description: 'Uses mathematical models to make financial decisions.' }, { title: 'Data Analyst', description: 'Analyzes data to find trends and insights.' }, { title: 'Financial Analyst', description: 'Evaluates investment opportunities.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for quantitative analysts.', children: [ { title: 'Technical Skills', description: 'The technical tools required.', children: [ { title: 'Python (NumPy, SciPy)', description: 'A programming language with powerful libraries for scientific computing.' }, { title: 'SQL', description: 'The standard language for database management.' }, { title: 'Advanced Excel', description: 'Using Excel for complex financial modeling.' }, { title: 'R', description: 'A programming language for statistical analysis.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Mathematical Aptitude', description: 'A strong ability in mathematics.' }, { title: 'Attention to Detail', description: 'A high level of accuracy and precision.' }, { title: 'Logical Reasoning', description: 'The ability to think logically and solve problems.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of quantitative analysis.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'Masters in Financial Engineering', description: 'A master\'s degree focused on quantitative finance.' }, { title: 'Masters in Quantitative Finance', description: 'Another specialized master\'s in the field.' } ] }, { title: 'Emerging Trends', description: 'New frontiers in quantitative finance.', children: [ { title: 'Algorithmic Trading', description: 'Using computer algorithms to trade stocks.' }, { title: 'Big Data Analytics in Finance', description: 'Applying big data techniques to financial markets.' }, { title: 'Risk Modeling', description: 'Developing models to manage financial risk.' } ] } ] }
+        ]
+    },
+    sci_data_research: {
+        title: 'Scientific & Data Research',
+        description: 'Involves conducting research, analyzing data, and publishing findings in academic or industrial settings.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in research.', children: [ { title: 'B.Sc/M.Sc in a specific science field', description: 'A science degree as a foundation for research.', children: [ { title: 'Core Path', description: 'The process of scientific research.', children: [ { title: 'Hypothesis Formulation', description: 'Developing a testable explanation for a phenomenon.' }, { title: 'Conducting Experiments', description: 'Testing a hypothesis through experimentation.' }, { title: 'Data Analysis & Interpretation', description: 'Analyzing experimental data to draw conclusions.' } ] }, { title: 'Job Roles', description: 'Careers in scientific research.', children: [ { title: 'Research Scientist', description: 'Conducts original research in a lab.' }, { title: 'Lab Technician', description: 'Assists with experiments and maintains lab equipment.' }, { title: 'Clinical Research Associate', description: 'Manages clinical trials for new drugs.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for researchers.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Statistical Analysis Software (SPSS, R)', description: 'Software for analyzing research data.' }, { title: 'Lab Techniques (e.g., PCR, chromatography)', description: 'Specialized techniques used in a lab.' }, { title: 'Scientific Writing', description: 'Writing research papers for publication.' } ] }, { title: 'Soft Skills', description: 'Key personal qualities.', children: [ { title: 'Curiosity', description: 'A strong desire to learn and discover.' }, { title: 'Critical Thinking', description: 'Analyzing information objectively to form a judgment.' }, { title: 'Patience', description: 'The ability to persevere through long research projects.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of scientific research.', children: [ { title: 'Higher Studies', description: 'The ultimate academic achievement.', children: [ { title: 'PhD', description: 'The highest degree, required for a career as an independent researcher.' }, { title: 'Post-Doctoral Fellowship', description: 'A temporary research position after a PhD.' } ] }, { title: 'Emerging Trends', description: 'New directions in research.', children: [ { title: 'Interdisciplinary Research', description: 'Research that combines multiple academic disciplines.' }, { title: 'Open Science & Data Sharing', description: 'Making scientific research more transparent and accessible.' }, { title: 'AI in Scientific Discovery', description: 'Using AI to accelerate scientific research.' } ] } ] }
+        ]
+    },
+    math_physics: {
+        title: 'Mathematics & Physics',
+        description: 'Fundamental sciences that form the basis for many other scientific and engineering fields.',
+        children: [
+            { title: 'Academics', description: 'Education in math and physics.', children: [ { title: 'B.Sc/M.Sc in Mathematics/Physics', description: 'A degree in these fundamental sciences.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Calculus, Linear Algebra', description: 'Fundamental branches of mathematics.' }, { title: 'Quantum Mechanics, Thermodynamics', description: 'Fundamental branches of physics.' }, { title: 'Classical Mechanics', description: 'The study of the motion of objects.' } ] }, { title: 'Job Roles', description: 'Careers for math and physics graduates.', children: [ { title: 'Teacher/Professor', description: 'Educating students in math and physics.' }, { title: 'Researcher', description: 'Conducting original research.' }, { title: 'Data Scientist', description: 'Applying mathematical skills to data analysis.' }, { title: 'Quantitative Analyst', description: 'Using math to solve financial problems.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for mathematicians and physicists.', children: [ { title: 'Technical Skills', description: 'The practical abilities required.', children: [ { title: 'Mathematical Modeling', description: 'Using math to represent real-world systems.' }, { title: 'Problem Solving', description: 'Solving complex abstract problems.' }, { title: 'Programming (Python, MATLAB)', description: 'Using code to solve mathematical problems.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Abstract Thinking', description: 'The ability to think about concepts that are not physically present.' }, { title: 'Logical Reasoning', description: 'The ability to think logically and systematically.' }, { title: 'Analytical Mindset', description: 'A structured approach to problem-solving.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of math and physics.', children: [ { title: 'Higher Studies', description: 'The highest academic degree.', children: [ { title: 'PhD', description: 'Required for a career in academic research.' } ] }, { title: 'Emerging Trends', description: 'New frontiers in math and physics.', children: [ { title: 'Quantum Computing', description: 'A new type of computing based on quantum mechanics.' }, { title: 'Mathematical Finance', description: 'Applying math to financial markets.' }, { title: 'Theoretical Physics', description: 'Developing new theories to explain the universe.' } ] } ] }
+        ]
+    },
+    earth_atmospheric: {
+        title: 'Earth & Atmospheric Sciences',
+        description: 'Study of the Earth, its oceans, atmosphere, and the processes that shape them.',
+        children: [
+            { title: 'Academics', description: 'Education in earth and atmospheric sciences.', children: [ { title: 'B.Sc in Geology/Meteorology', description: 'A science degree focused on the Earth\'s systems.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Geology', description: 'The study of the Earth\'s physical structure and substance.' }, { title: 'Climatology', description: 'The study of climate.' }, { title: 'Oceanography', description: 'The study of the ocean.' } ] }, { title: 'Job Roles', description: 'Careers in this field.', children: [ { title: 'Geologist', description: 'Studies the Earth\'s rocks and minerals.' }, { title: 'Meteorologist', description: 'Studies the atmosphere and forecasts weather.' }, { title: 'Environmental Scientist', description: 'Works to protect the environment.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for earth and atmospheric scientists.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'GIS, Remote Sensing', description: 'Tools for analyzing geographic data.' }, { title: 'Data Analysis', description: 'Interpreting data from observations and models.' }, { title: 'Fieldwork Techniques', description: 'Collecting data in the field.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Fieldwork', description: 'The ability to work outdoors in various conditions.' }, { title: 'Observation', description: 'Noticing details in the natural world.' }, { title: 'Data Interpretation', description: 'Making sense of complex data.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of earth and atmospheric sciences.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'M.Sc/PhD', description: 'For a career in research or specialized roles.' } ] }, { title: 'Emerging Trends', description: 'New areas of focus.', children: [ { title: 'Climate Modeling', description: 'Using computers to simulate the climate.' }, { title: 'Natural Hazard Prediction', description: 'Forecasting events like earthquakes and hurricanes.' }, { title: 'Sustainable Resource Management', description: 'Managing natural resources in a sustainable way.' } ] } ] }
+        ]
+    },
+
+    // --- BIOTECHNOLOGY & LIFE SCIENCES ---
+    biotech_life_sci: {
+        title: 'Biotechnology & Life Sciences',
+        description: 'Using biological systems to develop products and technologies.',
+        children: [
+            { title: 'Academics', description: 'Education in biotechnology.', children: [ { title: 'B.Tech/B.Sc in Biotechnology', description: 'A degree focused on the application of biology.', children: [ { title: 'Core Subjects', description: 'Key courses in the program.', children: [ { title: 'Genetics', description: 'The study of genes and heredity.' }, { title: 'Microbiology', description: 'The study of microorganisms.' }, { title: 'Immunology', description: 'The study of the immune system.' } ] }, { title: 'Job Roles', description: 'Careers in the biotech industry.', children: [ { title: 'Biotechnologist', description: 'Uses biological systems to create products.' }, { title: 'Research Scientist', description: 'Conducts research in a biotech lab.' }, { title: 'Quality Control Analyst', description: 'Ensures the quality of biotech products.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for biotech professionals.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'PCR, Electrophoresis', description: 'Common techniques in molecular biology.' }, { title: 'Cell Culture', description: 'Growing cells in a lab.' }, { title: 'Bioinformatics Tools', description: 'Using software to analyze biological data.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Analytical Skills', description: 'Interpreting experimental data.' }, { title: 'Patience', description: 'The ability to persevere through long experiments.' }, { title: 'Ethical Judgement', description: 'Understanding the ethical implications of biotech.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of biotechnology.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'M.Tech/M.Sc in Biotechnology', description: 'A master\'s degree for advanced study.' } ] }, { title: 'Emerging Trends', description: 'New frontiers in biotech.', children: [ { title: 'CRISPR Gene Editing', description: 'A powerful tool for editing DNA.' }, { title: 'Synthetic Biology', description: 'Designing and building new biological systems.' }, { title: 'Personalized Medicine', description: 'Tailoring medical treatment to individual patients.' } ] } ] }
+        ]
+    },
+    healthcare_edu: {
+        title: 'Healthcare & Education',
+        description: 'Involves providing medical services and educating future healthcare professionals.',
+        children: [
+            { title: 'Academics', description: 'Education in healthcare and education.', children: [ { title: 'MBBS, B.Sc Nursing, B.Ed', description: 'Degrees for careers as doctors, nurses, and teachers.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Anatomy', description: 'The study of the human body.' }, { title: 'Physiology', description: 'The study of how the body works.' }, { title: 'Pedagogy', description: 'The theory and practice of teaching.' } ] }, { title: 'Job Roles', description: 'Careers in healthcare and education.', children: [ { title: 'Doctor', description: 'Diagnoses and treats illnesses.' }, { title: 'Nurse', description: 'Provides patient care.' }, { title: 'Medical Professor', description: 'Teaches at a medical school.' }, { title: 'Health Educator', description: 'Teaches people about health and wellness.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Clinical Skills', description: 'The skills needed to provide patient care.' }, { title: 'Diagnosis', description: 'Identifying diseases from symptoms.' }, { title: 'Curriculum Design', description: 'Creating educational programs.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Empathy', description: 'Understanding and sharing the feelings of others.' }, { title: 'Communication', description: 'Clearly communicating with patients and students.' }, { title: 'Patience', description: 'The ability to remain calm in stressful situations.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of healthcare and education.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'MD/MS Specialization', description: 'Advanced training for doctors in a specific area.' }, { title: 'PhD in Education', description: 'The highest degree for a career in education research.' } ] }, { title: 'Emerging Trends', description: 'New directions in the fields.', children: [ { title: 'Telemedicine', description: 'Providing healthcare remotely using technology.' }, { title: 'Personalized Medicine', description: 'Tailoring treatment to individual patients.' }, { title: 'EdTech in Healthcare', description: 'Using technology to improve healthcare education.' } ] } ] }
+        ]
+    },
+    medicine_pharmacy: {
+        title: 'Medicine & Pharmacy',
+        description: 'The science and practice of the diagnosis, treatment, and prevention of disease, and the discovery and manufacturing of drugs.',
+        children: [
+            { title: 'Academics', description: 'Education in medicine and pharmacy.', children: [ { title: 'MBBS / B.Pharm/Pharm.D', description: 'Degrees for careers as doctors and pharmacists.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Pharmacology', description: 'The study of drugs and their effects.' }, { title: 'Human Anatomy', description: 'The study of the human body.' }, { title: 'Medicinal Chemistry', description: 'The chemistry of medicines.' } ] }, { title: 'Job Roles', description: 'Careers in medicine and pharmacy.', children: [ { title: 'Physician', description: 'A medical doctor.' }, { title: 'Pharmacist', description: 'Dispenses medications and advises patients.' }, { title: 'Clinical Researcher', description: 'Conducts clinical trials for new drugs.' }, { title: 'Drug Safety Associate', description: 'Monitors the safety of drugs.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Diagnosis', description: 'Identifying diseases.' }, { title: 'Drug Dispensing', description: 'Preparing and giving out medications.' }, { title: 'Clinical Trials Management', description: 'Managing the process of testing new drugs.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Attention to Detail', description: 'A high level of accuracy.' }, { title: 'Ethical Practice', description: 'Adhering to ethical principles.' }, { title: 'Patient Counseling', description: 'Advising patients on their medications.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of medicine and pharmacy.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'MD/MS, M.Pharm', description: 'Advanced degrees for doctors and pharmacists.' } ] }, { title: 'Emerging Trends', description: 'New directions in the fields.', children: [ { title: 'Pharmacogenomics', description: 'The study of how genes affect a person\'s response to drugs.' }, { title: 'Biopharmaceuticals', description: 'Drugs produced using biotechnology.' }, { title: 'Digital Therapeutics', description: 'Using software to treat diseases.' } ] } ] }
+        ]
+    },
+    chem_life_sci: {
+        title: 'Chemistry & Life Sciences',
+        description: 'The study of matter, its properties, and the scientific study of life.',
+        children: [
+            { title: 'Academics', description: 'Education in chemistry and life sciences.', children: [ { title: 'B.Sc/M.Sc in Chemistry/Biology/Biochemistry', description: 'A science degree in these fundamental fields.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Organic Chemistry', description: 'The study of carbon-containing compounds.' }, { title: 'Molecular Biology', description: 'The study of biology at the molecular level.' }, { title: 'Cell Biology', description: 'The study of cells.' } ] }, { title: 'Job Roles', description: 'Careers for graduates.', children: [ { title: 'Chemist', description: 'Studies the properties of matter.' }, { title: 'Biologist', description: 'Studies living organisms.' }, { title: 'Lab Analyst', description: 'Analyzes samples in a lab.' }, { title: 'Research Assistant', description: 'Assists with research projects.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Spectroscopy, Chromatography', description: 'Techniques for analyzing substances.' }, { title: 'Microscopy', description: 'Using microscopes to view small objects.' }, { title: 'DNA Sequencing', description: 'Determining the order of DNA nucleotides.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Analytical Skills', description: 'Interpreting data and solving problems.' }, { title: 'Methodical Approach', description: 'A systematic way of working.' }, { title: 'Data Interpretation', description: 'Making sense of scientific data.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of chemistry and life sciences.', children: [ { title: 'Higher Studies', description: 'The highest academic degree.', children: [ { title: 'PhD', description: 'For a career in research.' } ] }, { title: 'Emerging Trends', description: 'New directions in the fields.', children: [ { title: 'Drug Discovery', description: 'The process of finding new medicines.' }, { title: 'Materials Science', description: 'Developing new materials with desired properties.' }, { title: 'Environmental Science', description: 'Studying the environment and solving its problems.' } ] } ] }
+        ]
+    },
+
+    // --- COMMERCE / BUSINESS ---
+    corp_biz_mgmt: {
+        title: 'Corporate & Business Management',
+        description: 'Overseeing and supervising business operations.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in business management.', children: [ { title: 'BBA/BMS/MBA', description: 'Degrees in business administration and management.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Organizational Behavior', description: 'The study of how people behave in organizations.' }, { title: 'Business Strategy', description: 'Planning to achieve business goals.' }, { title: 'Operations Management', description: 'Managing the production of goods and services.' } ] }, { title: 'Job Roles', description: 'Careers in business management.', children: [ { title: 'Manager', description: 'Leads a team or department.' }, { title: 'Business Consultant', description: 'Advises companies on how to improve.' }, { title: 'Operations Head', description: 'Manages a company\'s daily operations.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for managers.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Project Management', description: 'Planning and executing projects.' }, { title: 'Financial Literacy', description: 'Understanding financial statements.' }, { title: 'Data Analysis', description: 'Using data to make decisions.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Leadership', description: 'Inspiring and guiding a team.' }, { title: 'Decision Making', description: 'Making effective choices.' }, { title: 'Negotiation', description: 'Reaching agreements with others.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of business management.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for leadership roles.', children: [ { title: 'Executive MBA', description: 'An MBA for experienced professionals.' }, { title: 'PhD in Management', description: 'For a career in management research.' } ] }, { title: 'Emerging Trends', description: 'New directions in management.', children: [ { title: 'Digital Transformation', description: 'Using digital technology to change business processes.' }, { title: 'Sustainable Business Practices', description: 'Operating a business in an environmentally and socially responsible way.' }, { title: 'Agile Management', description: 'An iterative approach to managing projects.' } ] } ] }
+        ]
+    },
+    startups_entrepreneurship: {
+        title: 'Startups & Entrepreneurship',
+        description: 'The activity of setting up a business or businesses, taking on financial risks in the hope of profit.',
+        children: [
+            { title: 'Academics', description: 'Education for entrepreneurs.', children: [ { title: 'BBA in Entrepreneurship / Any Degree', description: 'A business degree or any degree combined with entrepreneurial skills.', children: [ { title: 'Core Concepts', description: 'Key ideas in entrepreneurship.', children: [ { title: 'Business Model Canvas', description: 'A tool for developing business models.' }, { title: 'Venture Capital Funding', description: 'Funding for startups from investors.' }, { title: 'Lean Startup', description: 'A methodology for building businesses with minimal waste.' } ] }, { title: 'Job Roles', description: 'Careers in the startup world.', children: [ { title: 'Founder/Co-founder', description: 'Starts a new business.' }, { title: 'Product Manager', description: 'Manages a product in a startup.' }, { title: 'Business Development Manager', description: 'Finds new business opportunities.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for entrepreneurs.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Fundraising', description: 'Raising money for a startup.' }, { title: 'Digital Marketing', description: 'Marketing online.' }, { title: 'Financial Projections', description: 'Forecasting a company\'s financial future.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Resilience', description: 'Bouncing back from setbacks.' }, { title: 'Risk-taking', description: 'Willingness to take calculated risks.' }, { title: 'Networking', description: 'Building relationships with other people.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of entrepreneurship.', children: [ { title: 'Growth', description: 'Paths for entrepreneurial growth.', children: [ { title: 'Scaling the Business', description: 'Growing a startup into a large company.' }, { title: 'Serial Entrepreneurship', description: 'Starting multiple businesses.' }, { title: 'Angel Investing', description: 'Investing in other startups.' } ] }, { title: 'Emerging Trends', description: 'New types of startups.', children: [ { title: 'Tech Startups (SaaS, FinTech)', description: 'Startups in technology sectors.' }, { title: 'Social Entrepreneurship', description: 'Businesses with a social mission.' }, { title: 'D2C Brands', description: 'Brands that sell directly to consumers online.' } ] } ] }
+        ]
+    },
+    accounting_financial: {
+        title: 'Accounting & Financial Analysis',
+        description: 'Recording, summarizing, analyzing, and reporting financial transactions.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in accounting and finance.', children: [ { title: 'B.Com/M.Com/CA/CFA', description: 'Degrees and certifications for this field.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Financial Accounting', description: 'Recording and reporting financial transactions.' }, { title: 'Investment Analysis', description: 'Evaluating investment opportunities.' }, { title: 'Corporate Finance', description: 'Managing the finances of a corporation.' } ] }, { title: 'Job Roles', description: 'Careers in accounting and finance.', children: [ { title: 'Accountant', description: 'Manages financial records.' }, { title: 'Financial Analyst', description: 'Analyzes financial data to make recommendations.' }, { title: 'Auditor', description: 'Examines financial records for accuracy.' }, { title: 'Investment Banker', description: 'Helps companies raise money.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Financial Modeling (Excel)', description: 'Using Excel to build financial models.' }, { title: 'Accounting Software (Tally, QuickBooks)', description: 'Software for managing financial records.' }, { title: 'Valuation Methods', description: 'Techniques for determining the value of a company.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Attention to Detail', description: 'A high level of accuracy.' }, { title: 'Ethical Judgement', description: 'Making ethical decisions.' }, { title: 'Analytical Skills', description: 'Analyzing complex financial data.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of accounting and finance.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'MBA in Finance', description: 'A master\'s degree focused on finance.' } ] }, { title: 'Emerging Trends', description: 'New directions in the fields.', children: [ { title: 'FinTech', description: 'The use of technology in finance.' }, { title: 'Forensic Accounting', description: 'Investigating financial fraud.' }, { title: 'Robotic Process Automation (RPA) in Accounting', description: 'Using software robots to automate accounting tasks.' } ] } ] }
+        ]
+    },
+    marketing_corp_comm: {
+        title: 'Marketing & Corporate Communication',
+        description: 'Managing a company\'s internal and external communications and promoting products/services.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in marketing and communications.', children: [ { title: 'BBA/MBA in Marketing', description: 'Business degrees with a focus on marketing.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Brand Management', description: 'Managing a company\'s brand.' }, { title: 'Public Relations', description: 'Managing a company\'s public image.' }, { title: 'Digital Marketing', description: 'Marketing online.' } ] }, { title: 'Job Roles', description: 'Careers in marketing and communications.', children: [ { title: 'Marketing Manager', description: 'Manages a company\'s marketing efforts.' }, { title: 'Corporate Comms Specialist', description: 'Manages a company\'s communications.' }, { title: 'Public Relations Officer', description: 'Works with the media to promote a company.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'SEO/SEM', description: 'Optimizing websites for search engines.' }, { title: 'Content Creation', description: 'Creating marketing content.' }, { title: 'Social Media Management', description: 'Managing a company\'s social media presence.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Communication', description: 'Clearly conveying messages.' }, { title: 'Creativity', description: 'Generating new ideas.' }, { title: 'Storytelling', description: 'Creating compelling narratives.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of marketing and communications.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'Masters in Mass Communication', description: 'An advanced degree in communications.' } ] }, { title: 'Emerging Trends', description: 'New directions in the fields.', children: [ { title: 'Influencer Marketing', description: 'Using social media influencers to promote products.' }, { title: 'AI in Marketing', description: 'Using AI to personalize marketing.' }, { title: 'Video Marketing', description: 'Using video to promote products.' } ] } ] }
+        ]
+    },
+    accounting_compliance: {
+        title: 'Accounting & Compliance',
+        description: 'Ensuring a company adheres to outside rules and internal policies related to finance.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in accounting and compliance.', children: [ { title: 'B.Com / M.Com / CA / CS', description: 'Degrees and certifications for this field.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Auditing', description: 'Examining financial records.' }, { title: 'Corporate Law', description: 'The laws governing corporations.' }, { title: 'Taxation', description: 'The laws related to taxes.' } ] }, { title: 'Job Roles', description: 'Careers in accounting and compliance.', children: [ { title: 'Compliance Officer', description: 'Ensures a company follows the law.' }, { title: 'Internal Auditor', description: 'Examines a company\'s internal controls.' }, { title: 'Risk Manager', description: 'Manages a company\'s risks.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Regulatory Knowledge (e.g., SEBI, RBI)', description: 'Understanding financial regulations.' }, { title: 'Risk Assessment', description: 'Identifying and evaluating risks.' }, { title: 'Legal Interpretation', description: 'Understanding and applying laws.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Meticulousness', description: 'A high level of attention to detail.' }, { title: 'Integrity', description: 'Honesty and strong moral principles.' }, { title: 'Analytical Skills', description: 'Analyzing complex information.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of accounting and compliance.', children: [ { title: 'Higher Studies', description: 'Advanced certifications.', children: [ { title: 'Certified Compliance & Ethics Professional (CCEP)', description: 'A certification for compliance professionals.' } ] }, { title: 'Emerging Trends', description: 'New directions in the fields.', children: [ { title: 'RegTech (Regulatory Technology)', description: 'Using technology to improve compliance.' }, { title: 'Data Privacy Laws (GDPR, etc.)', description: 'Laws protecting personal data.' }, { title: 'ESG Reporting', description: 'Reporting on environmental, social, and governance factors.' } ] } ] }
+        ]
+    },
+    hr_org_dev: {
+        title: 'HR & Organizational Development',
+        description: 'Managing employee lifecycle and improving an organization\'s effectiveness.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in HR.', children: [ { title: 'BBA/MBA in HR', description: 'Business degrees with a focus on human resources.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Talent Management', description: 'Attracting and retaining talented employees.' }, { title: 'Change Management', description: 'Managing organizational change.' }, { title: 'Industrial Relations', description: 'Managing relationships with unions.' } ] }, { title: 'Job Roles', description: 'Careers in HR.', children: [ { title: 'HR Manager', description: 'Manages a company\'s HR functions.' }, { title: 'OD Consultant', description: 'Helps organizations improve their effectiveness.' }, { title: 'Talent Acquisition Specialist', description: 'Recruits new employees.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for HR professionals.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'HRIS Software (e.g., Workday)', description: 'Software for managing HR data.' }, { title: 'Performance Management Systems', description: 'Systems for evaluating employee performance.' }, { title: 'Labor Law Knowledge', description: 'Understanding employment laws.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Interpersonal Skills', description: 'The ability to interact effectively with others.' }, { title: 'Empathy', description: 'Understanding the feelings of others.' }, { title: 'Conflict Resolution', description: 'Resolving disputes between people.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of HR.', children: [ { title: 'Higher Studies', description: 'Advanced certifications.', children: [ { title: 'Specialized HR Certifications (e.g., SHRM)', description: 'Certifications for HR professionals.' } ] }, { title: 'Emerging Trends', description: 'New directions in HR.', children: [ { title: 'People Analytics', description: 'Using data to make HR decisions.' }, { title: 'Future of Work (Remote/Hybrid)', description: 'The changing nature of work.' }, { title: 'Employee Experience', description: 'Creating a positive experience for employees.' } ] } ] }
+        ]
+    },
+    law_corp_gov: {
+        title: 'Law & Corporate Governance',
+        description: 'Legal aspects of business and the system of rules, practices, and processes by which a company is directed and controlled.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in corporate law.', children: [ { title: 'LLB / Company Secretary (CS)', description: 'Degrees and certifications for this field.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Company Law', description: 'The laws governing companies.' }, { title: 'Securities Law', description: 'The laws governing stocks and bonds.' }, { title: 'Contract Law', description: 'The laws governing agreements.' } ] }, { title: 'Job Roles', description: 'Careers in corporate law.', children: [ { title: 'Corporate Lawyer', description: 'Advises companies on legal matters.' }, { title: 'Company Secretary', description: 'Ensures a company complies with the law.' }, { title: 'Legal Advisor', description: 'Provides legal advice to a company.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for corporate lawyers.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Legal Drafting', description: 'Writing legal documents.' }, { title: 'Regulatory Filings', description: 'Filing documents with government agencies.' }, { title: 'Litigation Research', description: 'Researching legal issues for lawsuits.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Analytical Ability', description: 'Analyzing complex legal issues.' }, { title: 'Integrity', description: 'Honesty and strong moral principles.' }, { title: 'Negotiation', description: 'Reaching agreements with others.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of corporate law.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'LLM in Corporate Law', description: 'A master\'s degree in corporate law.' } ] }, { title: 'Emerging Trends', description: 'New directions in corporate law.', children: [ { title: 'ESG (Environmental, Social, Governance)', description: 'Considering ESG factors in business decisions.' }, { title: 'Data Privacy & Cybersecurity Law', description: 'Laws protecting data and computer systems.' }, { title: 'Insolvency & Bankruptcy Code', description: 'The laws governing bankruptcy.' } ] } ] }
+        ]
+    },
+    marketing_brand_strategy: {
+        title: 'Marketing & Brand Strategy',
+        description: 'Developing long-term plans for a brand to achieve specific goals.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in brand strategy.', children: [ { title: 'BBA/MBA in Marketing', description: 'Business degrees with a focus on marketing.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Brand Management', description: 'Managing a company\'s brand.' }, { title: 'Consumer Behavior', description: 'The study of how people make purchasing decisions.' }, { title: 'Marketing Research', description: 'Gathering information about customers.' } ] }, { title: 'Job Roles', description: 'Careers in brand strategy.', children: [ { title: 'Brand Manager', description: 'Manages a company\'s brand.' }, { title: 'Marketing Strategist', description: 'Develops marketing plans.' }, { title: 'Product Marketing Manager', description: 'Markets a specific product.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for brand strategists.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Market Research Analysis', description: 'Analyzing market data.' }, { title: 'Digital Marketing Analytics', description: 'Analyzing online marketing data.' }, { title: 'Competitive Analysis', description: 'Analyzing competitors.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Strategic Thinking', description: 'Thinking long-term.' }, { title: 'Creativity', description: 'Generating new ideas.' }, { title: 'Leadership', description: 'Leading a marketing team.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of brand strategy.', children: [ { title: 'Higher Studies', description: 'Advanced courses.', children: [ { title: 'Specialized courses in branding', description: 'Courses focused on specific aspects of branding.' } ] }, { title: 'Emerging Trends', description: 'New directions in branding.', children: [ { title: 'Personalized Marketing', description: 'Tailoring marketing to individual customers.' }, { title: 'Purpose-driven Branding', description: 'Brands that have a social mission.' }, { title: 'MarTech', description: 'The use of technology in marketing.' } ] } ] }
+        ]
+    },
+    entrepreneurship_small_biz: {
+        title: 'Entrepreneurship & Small Business',
+        description: 'Focuses on building and managing a small-scale business venture.',
+        children: [
+            { title: 'Academics', description: 'Education for small business owners.', children: [ { title: 'BBA/Diploma in Entrepreneurship', description: 'Degrees and diplomas focused on starting a business.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Business Plan Development', description: 'Creating a plan for a new business.' }, { title: 'Small Business Finance', description: 'Managing the finances of a small business.' } ] }, { title: 'Job Roles', description: 'Careers in small business.', children: [ { title: 'Small Business Owner', description: 'Runs their own business.' }, { title: 'Franchisee', description: 'Owns a franchise of a larger company.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for small business owners.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Bookkeeping', description: 'Keeping financial records.' }, { title: 'Sales & Customer Service', description: 'Selling products and helping customers.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Multitasking', description: 'Handling multiple tasks at once.' }, { title: 'Adaptability', description: 'Adjusting to changing circumstances.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of small business.', children: [ { title: 'Growth', description: 'Paths for growing a small business.', children: [ { title: 'Scaling Operations', description: 'Expanding a business.' }, { title: 'Exploring New Markets', description: 'Selling products in new places.' } ] }, { title: 'Emerging Trends', description: 'New opportunities for small businesses.', children: [ { title: 'E-commerce for Small Business', description: 'Selling products online.' }, { title: 'Local Sourcing', description: 'Buying products from local suppliers.' } ] } ] }
+        ]
+    },
+     intl_biz_trade: {
+        title: 'International Business & Trade',
+        description: 'Business activities that take place across national borders.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in international business.', children: [ { title: 'BBA/MBA in International Business', description: 'Business degrees with a global focus.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Export-Import Management', description: 'Managing the process of exporting and importing goods.' }, { title: 'Foreign Exchange', description: 'The exchange of one currency for another.' } ] }, { title: 'Job Roles', description: 'Careers in international business.', children: [ { title: 'Export Manager', description: 'Manages a company\'s exports.' }, { title: 'Global Supply Chain Manager', description: 'Manages a company\'s global supply chain.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for international business professionals.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Knowledge of Incoterms', description: 'International rules for the interpretation of trade terms.' }, { title: 'Trade Finance', description: 'Financing for international trade.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Cross-cultural Communication', description: 'Communicating effectively with people from different cultures.' }, { title: 'Negotiation', description: 'Reaching agreements with international partners.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of international business.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'Masters in International Trade', description: 'A master\'s degree focused on international trade.' } ] }, { title: 'Emerging Trends', description: 'New directions in international business.', children: [ { title: 'Geopolitical Risk Analysis', description: 'Analyzing political risks in different countries.' }, { title: 'Blockchain in Supply Chain', description: 'Using blockchain to improve supply chain transparency.' } ] } ] }
+        ]
+    },
+    finance_investment: {
+        title: 'Finance & Investment',
+        description: 'Managing money and the process of investing it in various assets.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in finance and investment.', children: [ { title: 'B.Com/MBA Finance/CFA', description: 'Degrees and certifications for this field.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Portfolio Management', description: 'Managing a portfolio of investments.' }, { title: 'Financial Derivatives', description: 'Financial instruments whose value is derived from other assets.' } ] }, { title: 'Job Roles', description: 'Careers in finance and investment.', children: [ { title: 'Investment Analyst', description: 'Analyzes investments.' }, { title: 'Portfolio Manager', description: 'Manages an investment portfolio.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for investment professionals.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Financial Modeling', description: 'Building financial models.' }, { title: 'Equity Research', description: 'Researching stocks.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Analytical Skills', description: 'Analyzing financial data.' }, { title: 'Risk Assessment', description: 'Evaluating investment risks.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of finance and investment.', children: [ { title: 'Higher Studies', description: 'Advanced certifications.', children: [ { title: 'FRM/CAIA Certifications', description: 'Certifications for risk and alternative investment professionals.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Robo-advisors', description: 'Automated investment advice.' }, { title: 'Impact Investing', description: 'Investing to create social and environmental impact.' } ] } ] }
+        ]
+    },
+    mgmt_leadership: {
+        title: 'Management & Leadership Studies',
+        description: 'The study of how to organize and lead teams and organizations effectively.',
+        children: [
+            { title: 'Academics', description: 'Education in management and leadership.', children: [ { title: 'BBA/MBA', description: 'Business degrees that teach leadership skills.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Leadership Theories', description: 'Different approaches to leadership.' }, { title: 'Strategic Management', description: 'Planning to achieve organizational goals.' } ] }, { title: 'Job Roles', description: 'Careers in management and leadership.', children: [ { title: 'Team Lead', description: 'Leads a team of employees.' }, { title: 'Management Consultant', description: 'Advises companies on management issues.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for leaders.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Performance Management', description: 'Managing employee performance.' }, { title: 'Strategic Planning', description: 'Developing long-term plans.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Motivation', description: 'Inspiring others to do their best.' }, { title: 'Communication', description: 'Clearly communicating a vision.' }, { title: 'Decision Making', description: 'Making effective decisions.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of leadership.', children: [ { title: 'Higher Studies', description: 'Continuing education for leaders.', children: [ { title: 'Executive Education Programs', description: 'Programs for experienced managers.' } ] }, { title: 'Emerging Trends', description: 'New approaches to leadership.', children: [ { title: 'Agile Leadership', description: 'A flexible and adaptive leadership style.' }, { title: 'Leading Remote Teams', description: 'Managing teams that work remotely.' } ] } ] }
+        ]
+    },
+    tax_accounting: {
+        title: 'Taxation & Accounting',
+        description: 'Focuses on tax laws and compliance alongside general accounting practices.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in tax and accounting.', children: [ { title: 'B.Com/M.Com/CA', description: 'Degrees and certifications for this field.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Direct & Indirect Taxation', description: 'The different types of taxes.' }, { title: 'Financial Accounting', description: 'Recording and reporting financial transactions.' } ] }, { title: 'Job Roles', description: 'Careers in tax and accounting.', children: [ { title: 'Tax Consultant', description: 'Advises on tax matters.' }, { title: 'Accountant', description: 'Manages financial records.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for tax and accounting professionals.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Tax Software', description: 'Software for preparing tax returns.' }, { title: 'Statutory Compliance', description: 'Complying with tax laws.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Attention to Detail', description: 'A high level of accuracy.' }, { title: 'Ethical Conduct', description: 'Acting with integrity.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of tax and accounting.', children: [ { title: 'Higher Studies', description: 'Advanced qualifications.', children: [ { title: 'Diploma in Taxation Law', description: 'A specialized diploma in tax law.' } ] }, { title: 'Emerging Trends', description: 'New developments in the field.', children: [ { title: 'GST Regulations', description: 'The Goods and Services Tax in India.' }, { title: 'International Taxation', description: 'Tax laws that apply across borders.' } ] } ] }
+        ]
+    },
+    sales_growth: {
+        title: 'Sales & Business Growth',
+        description: 'Driving revenue by selling products or services and expanding the business.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in sales.', children: [ { title: 'BBA/MBA in Sales & Marketing', description: 'Business degrees with a focus on sales.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Sales Techniques', description: 'Methods for selling products effectively.' }, { title: 'Customer Relationship Management', description: 'Managing relationships with customers.' } ] }, { title: 'Job Roles', description: 'Careers in sales.', children: [ { title: 'Sales Executive', description: 'Sells products to customers.' }, { title: 'Business Development Manager', description: 'Finds new business opportunities.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for sales professionals.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'CRM Software (Salesforce)', description: 'Software for managing customer relationships.' }, { title: 'Lead Generation', description: 'Finding potential customers.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Persuasion', description: 'Convincing people to buy products.' }, { title: 'Negotiation', description: 'Reaching agreements with customers.' }, { title: 'Resilience', description: 'Bouncing back from rejection.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of sales.', children: [ { title: 'Career Growth', description: 'Paths for advancement in sales.', children: [ { title: 'Sales Manager', description: 'Manages a team of sales people.' }, { title: 'Head of Sales', description: 'Leads a company\'s sales department.' } ] }, { title: 'Emerging Trends', description: 'New approaches to sales.', children: [ { title: 'Social Selling', description: 'Using social media to sell products.' }, { title: 'AI in Sales', description: 'Using AI to improve sales.' } ] } ] }
+        ]
+    },
+    finance_mgmt: {
+        title: 'Finance & Management',
+        description: 'An integrated field combining financial expertise with management principles.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in finance and management.', children: [ { title: 'MBA in Finance', description: 'A business degree with a focus on finance.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Corporate Finance', description: 'Managing the finances of a corporation.' }, { title: 'Strategic Management', description: 'Planning to achieve organizational goals.' } ] }, { title: 'Job Roles', description: 'Careers in finance and management.', children: [ { title: 'Finance Manager', description: 'Manages a company\'s finances.' }, { title: 'Management Consultant', description: 'Advises companies on financial and management issues.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Financial Planning & Analysis (FP&A)', description: 'Planning and analyzing a company\'s finances.' }, { title: 'Budgeting', description: 'Creating and managing a budget.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Leadership', description: 'Leading a team.' }, { title: 'Strategic Thinking', description: 'Thinking long-term.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of finance and management.', children: [ { title: 'Career Paths', description: 'Paths for advancement.', children: [ { title: 'Chief Financial Officer (CFO)', description: 'The top financial position in a company.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'FinTech Integration', description: 'Integrating new financial technologies.' }, { title: 'Data-Driven Financial Decisions', description: 'Using data to make financial decisions.' } ] } ] }
+        ]
+    },
+    marketing_analytics_research: {
+        title: 'Marketing Analytics & Research',
+        description: 'Analyzing marketing data to understand performance and inform strategy.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in marketing analytics.', children: [ { title: 'MBA in Marketing / B.Sc Statistics', description: 'Degrees with a focus on data and marketing.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Market Research', description: 'Gathering information about customers.' }, { title: 'Data Analytics', description: 'Analyzing data to find insights.' } ] }, { title: 'Job Roles', description: 'Careers in marketing analytics.', children: [ { title: 'Market Research Analyst', description: 'Analyzes market data.' }, { title: 'Marketing Analyst', description: 'Analyzes marketing campaign data.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for marketing analysts.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Google Analytics, SQL', description: 'Tools for analyzing web and database data.' }, { title: 'Statistical Software (R, Python)', description: 'Software for statistical analysis.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Analytical Mindset', description: 'A structured approach to problem-solving.' }, { title: 'Data Storytelling', description: 'Communicating data insights in a compelling way.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of marketing analytics.', children: [ { title: 'Higher Studies', description: 'Advanced certifications.', children: [ { title: 'Certifications in Digital Marketing Analytics', description: 'Certifications to demonstrate expertise.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Predictive Analytics for Marketing', description: 'Using data to predict future marketing outcomes.' }, { title: 'Customer Lifetime Value Analysis', description: 'Analyzing the value of a customer over time.' } ] } ] }
+        ]
+    },
+    financial_risk: {
+        title: 'Financial Risk & Analysis',
+        description: 'Identifying, analyzing, and mitigating financial risks within an organization.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in financial risk.', children: [ { title: 'MBA Finance / FRM Certification', description: 'Degrees and certifications for this field.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Risk Management', description: 'Managing financial risks.' }, { title: 'Financial Derivatives', description: 'Financial instruments used to manage risk.' } ] }, { title: 'Job Roles', description: 'Careers in financial risk.', children: [ { title: 'Risk Analyst', description: 'Analyzes financial risks.' }, { title: 'Credit Risk Manager', description: 'Manages the risk of customers not paying back loans.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for risk professionals.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Risk Modeling', description: 'Building models to quantify risk.' }, { title: 'Value at Risk (VaR) analysis', description: 'A technique to measure financial risk.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Analytical Skills', description: 'Analyzing complex financial data.' }, { title: 'Prudence', description: 'Acting with caution and good judgment.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of financial risk management.', children: [ { title: 'Higher Studies', description: 'Advanced certifications.', children: [ { title: 'PRM Certification', description: 'A certification for professional risk managers.' } ] }, { title: 'Emerging Trends', description: 'New types of financial risks.', children: [ { title: 'Cybersecurity Risk', description: 'The risk of financial loss from cyberattacks.' }, { title: 'Climate Risk Analysis', description: 'The risk of financial loss from climate change.' } ] } ] }
+        ]
+    },
+    hr_comm: {
+        title: 'HR & Communication',
+        description: 'Focuses on the communication aspect within Human Resources.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in HR communications.', children: [ { title: 'MBA in HR / MA in Communication', description: 'Degrees combining HR and communication.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Internal Communication', description: 'Communicating with employees.' }, { title: 'Employee Engagement', description: 'Keeping employees motivated and engaged.' } ] }, { title: 'Job Roles', description: 'Careers in HR communications.', children: [ { title: 'Internal Communications Manager', description: 'Manages a company\'s internal communications.' }, { title: 'HR Business Partner', description: 'Works with business leaders on HR issues.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Content Creation', description: 'Creating communications materials.' }, { title: 'Survey Tools', description: 'Using surveys to gather employee feedback.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Interpersonal Skills', description: 'The ability to interact effectively with others.' }, { title: 'Clarity in Communication', description: 'Communicating clearly and concisely.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of HR communications.', children: [ { title: 'Career Growth', description: 'Paths for advancement.', children: [ { title: 'Head of HR Communication', description: 'Leads a company\'s HR communications function.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Digital Employee Experience Platforms', description: 'Platforms for improving the employee experience.' }, { title: 'Change Management Communication', description: 'Communicating about organizational change.' } ] } ] }
+        ]
+    },
+    investment_capital: {
+        title: 'Investment & Capital Markets',
+        description: 'Deals with the functioning of capital markets and investment strategies.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in this field.', children: [ { title: 'MBA Finance / CFA', description: 'Degrees and certifications for this field.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Capital Markets', description: 'The markets where stocks and bonds are traded.' }, { title: 'Securities Analysis', description: 'Analyzing stocks and bonds.' } ] }, { title: 'Job Roles', description: 'Careers in this field.', children: [ { title: 'Equity Research Analyst', description: 'Researches stocks.' }, { title: 'Investment Banker', description: 'Helps companies raise money.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Financial Modeling', description: 'Building financial models.' }, { title: 'Valuation', description: 'Determining the value of a company.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Market Awareness', description: 'Understanding what is happening in the markets.' }, { title: 'Analytical Skills', description: 'Analyzing financial data.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of investment and capital markets.', children: [ { title: 'Higher Studies', description: 'Advanced certifications.', children: [ { title: 'NISM Certifications', description: 'Certifications from the National Institute of Securities Markets.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Algorithmic Trading', description: 'Using computer algorithms to trade stocks.' }, { title: 'FinTech', description: 'The use of technology in finance.' } ] } ] }
+        ]
+    },
+    marketing_analytics_insights: {
+        title: 'Marketing Analytics & Insights',
+        description: 'Goes beyond data to provide actionable insights for marketing decisions.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in marketing insights.', children: [ { title: 'MBA Marketing', description: 'A business degree with a focus on marketing.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Consumer Behavior', description: 'The study of how people make purchasing decisions.' }, { title: 'Marketing Analytics', description: 'Analyzing marketing data.' } ] }, { title: 'Job Roles', description: 'Careers in marketing insights.', children: [ { title: 'Consumer Insights Manager', description: 'Manages research into consumer behavior.' }, { title: 'Marketing Strategist', description: 'Develops marketing plans based on insights.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Qualitative & Quantitative Research', description: 'Different methods for gathering data.' }, { title: 'Data Visualization', description: 'Creating visual representations of data.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Curiosity', description: 'A strong desire to learn and understand.' }, { title: 'Business Acumen', description: 'Understanding how a business works.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of marketing insights.', children: [ { title: 'Career Growth', description: 'Paths for advancement.', children: [ { title: 'Head of Marketing Insights', description: 'Leads a company\'s marketing insights function.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Neuromarketing', description: 'Using neuroscience to study marketing.' }, { title: 'AI for Insight Generation', description: 'Using AI to find insights in data.' } ] } ] }
+        ]
+    },
+    auditing_compliance: {
+        title: 'Auditing & Financial Compliance',
+        description: 'Examines financial records to ensure fairness and compliance with regulations.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in auditing and compliance.', children: [ { title: 'CA/ACCA', description: 'Certifications for accountants and auditors.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Auditing Standards', description: 'The rules for conducting an audit.' }, { title: 'Corporate Law', description: 'The laws governing corporations.' } ] }, { title: 'Job Roles', description: 'Careers in auditing and compliance.', children: [ { title: 'Auditor', description: 'Examines financial records.' }, { title: 'Forensic Accountant', description: 'Investigates financial fraud.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Statutory Audit', description: 'An audit required by law.' }, { title: 'Internal Controls', description: 'The processes used to prevent fraud.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Skepticism', description: 'A questioning attitude.' }, { title: 'Integrity', description: 'Honesty and strong moral principles.' }, { title: 'Attention to Detail', description: 'A high level of accuracy.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of auditing and compliance.', children: [ { title: 'Higher Studies', description: 'Advanced certifications.', children: [ { title: 'CISA/DISA certifications', description: 'Certifications for information systems auditors.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Data Analytics in Auditing', description: 'Using data analytics to improve audits.' }, { title: 'Continuous Auditing', description: 'Auditing in real-time.' } ] } ] }
+        ]
+    },
+
+
+    // --- ARTS / HUMANITIES ---
+    history_archaeology: {
+        title: 'History & Archaeology',
+        description: 'The study of the human past through written documents and material remains.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in history and archaeology.', children: [ { title: 'B.A./M.A. in History/Archaeology', description: 'Degrees in these fields.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Historiography', description: 'The study of how history is written.' }, { title: 'Excavation Techniques', description: 'The methods used to excavate archaeological sites.' }, { title: 'Epigraphy', description: 'The study of ancient inscriptions.' } ] }, { title: 'Job Roles', description: 'Careers in history and archaeology.', children: [ { title: 'Historian', description: 'Studies and writes about the past.' }, { title: 'Archaeologist', description: 'Studies the past through material remains.' }, { title: 'Museum Curator', description: 'Manages a museum\'s collection.' }, { title: 'Archivist', description: 'Manages historical records.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Archival Research', description: 'Researching in historical archives.' }, { title: 'Artifact Analysis', description: 'Analyzing historical objects.' }, { title: 'Dating Techniques', description: 'Methods for determining the age of objects.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Research Skills', description: 'The ability to find and evaluate information.' }, { title: 'Critical Analysis', description: 'Analyzing information objectively.' }, { title: 'Patience', description: 'The ability to persevere through long research projects.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of history and archaeology.', children: [ { title: 'Higher Studies', description: 'The highest academic degree.', children: [ { title: 'PhD', description: 'For a career in academic research.' } ] }, { title: 'Emerging Trends', description: 'New directions in the fields.', children: [ { title: 'Digital Humanities', description: 'Using digital tools to study the humanities.' }, { title: 'Computational Archaeology', description: 'Using computers to analyze archaeological data.' }, { title: 'Public History', description: 'Making history accessible to the public.' } ] } ] }
+        ]
+    },
+    philosophy_politics: {
+        title: 'Philosophy & Political Studies',
+        description: 'Examines fundamental questions about existence, knowledge, values, reason, mind, and language, and the theory and practice of politics.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in philosophy and politics.', children: [ { title: 'B.A./M.A. in Philosophy/Political Science', description: 'Degrees in these fields.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Ethics', description: 'The study of moral principles.' }, { title: 'Political Theory', description: 'The study of political ideas.' }, { title: 'International Relations', description: 'The study of relationships between countries.' } ] }, { title: 'Job Roles', description: 'Careers for graduates.', children: [ { title: 'Policy Analyst', description: 'Analyzes public policy.' }, { title: 'Civil Servant (UPSC)', description: 'Works for the government.' }, { title: 'Journalist', description: 'Writes about politics and current events.' }, { title: 'Academic', description: 'Teaches and researches at a university.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Logical Reasoning', description: 'The ability to think logically.' }, { title: 'Argumentation', description: 'The ability to make a convincing argument.' }, { title: 'Qualitative Research', description: 'Research based on non-numerical data.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Critical Thinking', description: 'Analyzing information objectively.' }, { title: 'Persuasive Writing', description: 'Writing in a way that convinces others.' }, { title: 'Debating', description: 'Arguing a point of view.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of philosophy and politics.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'PhD, Law School (LLB)', description: 'Advanced degrees for careers in academia or law.' } ] }, { title: 'Emerging Trends', description: 'New directions in the fields.', children: [ { title: 'AI Ethics', description: 'The ethical implications of artificial intelligence.' }, { title: 'Global Governance', description: 'The way the world is governed.' }, { title: 'Public Policy', description: 'The study of how governments make decisions.' } ] } ] }
+        ]
+    },
+    performing_arts: {
+        title: 'Performing Arts & Theatre',
+        description: 'Art forms in which artists use their voices, bodies or inanimate objects to convey artistic expression.',
+        children: [
+            { title: 'Academics', description: 'Education in the performing arts.', children: [ { title: 'B.A./M.A. in Theatre Arts/Drama (e.g., National School of Drama)', description: 'Degrees from prestigious drama schools.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Acting', description: 'The art of performing a role.' }, { title: 'Directing', description: 'The art of guiding a performance.' }, { title: 'Stagecraft', description: 'The technical aspects of a theatrical production.' } ] }, { title: 'Job Roles', description: 'Careers in the performing arts.', children: [ { title: 'Actor', description: 'Performs a role in a play or film.' }, { title: 'Director', description: 'Leads the creative vision of a production.' }, { title: 'Stage Manager', description: 'Manages the production process.' }, { title: 'Set Designer', description: 'Designs the scenery for a production.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for performers.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Voice Modulation', description: 'Controlling the sound of your voice.' }, { title: 'Body Language', description: 'Communicating non-verbally.' }, { title: 'Improvisation', description: 'Acting without a script.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Creativity', description: 'The ability to generate new ideas.' }, { title: 'Collaboration', description: 'Working effectively with others.' }, { title: 'Empathy', description: 'Understanding and sharing the feelings of others.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of the performing arts.', children: [ { title: 'Career Paths', description: 'Paths for a career in the performing arts.', children: [ { title: 'Film & Television', description: 'Acting in films and television shows.' }, { title: 'Theatre Production', description: 'Working on theatrical productions.' }, { title: 'Voice Acting', description: 'Providing voices for animated characters and commercials.' } ] }, { title: 'Emerging Trends', description: 'New directions in the performing arts.', children: [ { title: 'Immersive Theatre', description: 'Theatre that involves the audience.' }, { title: 'Digital Performance', description: 'Performing online.' }, { title: 'Site-specific Theatre', description: 'Theatre that is performed in a specific location.' } ] } ] }
+        ]
+    },
+    film_media_prod: {
+        title: 'Film & Media Production',
+        description: 'The process of creating video content for television, social media, corporate marketing, and other platforms.',
+        children: [
+            { title: 'Academics', description: 'Education in film and media production.', children: [ { title: 'B.A. in Film Making/Mass Media (e.g., FTII, SRFTI)', description: 'Degrees from top film schools in India.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Screenwriting', description: 'Writing scripts for films.' }, { title: 'Cinematography', description: 'The art of filmmaking.' }, { title: 'Editing', description: 'Putting a film together.' } ] }, { title: 'Job Roles', description: 'Careers in film and media production.', children: [ { title: 'Director', description: 'Leads the creative vision of a film.' }, { title: 'Cinematographer', description: 'The person in charge of the camera and lighting.' }, { title: 'Video Editor', description: 'Edits the film.' }, { title: 'Screenwriter', description: 'Writes the script.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for filmmakers.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Adobe Premiere Pro, Final Cut Pro, DaVinci Resolve', description: 'Software for editing films.' }, { title: 'Camera Operation', description: 'Knowing how to use a camera.' }, { title: 'Lighting', description: 'Knowing how to light a scene.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Storytelling', description: 'The ability to tell a compelling story.' }, { title: 'Visual Aesthetics', description: 'A good sense of what looks good on screen.' }, { title: 'Project Management', description: 'Managing a film production.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of film and media production.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'M.A. in Film Production', description: 'A master\'s degree in film production.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'OTT Content Creation', description: 'Creating content for streaming services like Netflix.' }, { title: 'Virtual Production', description: 'Using virtual reality to create films.' }, { title: 'Documentary Filmmaking', description: 'Making non-fiction films.' } ] } ] }
+        ]
+    },
+    visual_arts: {
+        title: 'Visual Arts & Crafts',
+        description: 'Art forms such as painting, drawing, printmaking, sculpture, ceramics, photography, video, filmmaking, design, crafts, and architecture.',
+        children: [
+            { title: 'Academics', description: 'Education in the visual arts.', children: [ { title: 'BFA/MFA (Bachelor/Master of Fine Arts)', description: 'Degrees in the fine arts.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Painting', description: 'The art of painting.' }, { title: 'Sculpture', description: 'The art of creating three-dimensional objects.' }, { title: 'Art History', description: 'The study of the history of art.' } ] }, { title: 'Job Roles', description: 'Careers in the visual arts.', children: [ { title: 'Fine Artist', description: 'Creates original works of art.' }, { title: 'Illustrator', description: 'Creates images for books, magazines, etc.' }, { title: 'Art Teacher', description: 'Teaches art to students.' }, { title: 'Animator', description: 'Creates animated films and videos.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for artists.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Drawing & Composition', description: 'The ability to draw and arrange elements in a picture.' }, { title: 'Color Theory', description: 'The science of color.' }, { title: 'Digital Art Software (Photoshop, Procreate)', description: 'Software for creating digital art.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Creativity', description: 'The ability to generate new ideas.' }, { title: 'Patience', description: 'The ability to persevere through long projects.' }, { title: 'Attention to Detail', description: 'A high level of accuracy.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of the visual arts.', children: [ { title: 'Career Paths', description: 'Paths for a career in the visual arts.', children: [ { title: 'Gallery Exhibitions', description: 'Showing your work in art galleries.' }, { title: 'Commercial Art & Illustration', description: 'Creating art for businesses.' }, { title: 'Art Curation', description: 'Organizing art exhibitions.' } ] }, { title: 'Emerging Trends', description: 'New directions in the visual arts.', children: [ { title: 'Digital Art & NFTs', description: 'Creating and selling digital art.' }, { title: 'Installation Art', description: 'Art that is created for a specific space.' }, { title: 'AR Art', description: 'Art that is viewed through augmented reality.' } ] } ] }
+        ]
+    },
+     literature_writing: {
+        title: 'Literature & Writing',
+        description: 'The study of written works and the practice of creating them.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in writing.', children: [ { title: 'B.A./M.A. in English/Literature/Journalism', description: 'Degrees in these fields.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Literary Theory', description: 'The study of the principles of literary criticism.' }, { title: 'Creative Writing', description: 'The practice of writing fiction, poetry, etc.' }, { title: 'Editing and Proofreading', description: 'Correcting and improving written work.' } ] }, { title: 'Job Roles', description: 'Careers in writing.', children: [ { title: 'Author', description: 'Writes books.' }, { title: 'Editor', description: 'Edits written work.' }, { title: 'Content Writer/Strategist', description: 'Creates content for websites and other media.' }, { title: 'Copywriter', description: 'Writes advertising copy.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for writers.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Grammar & Syntax', description: 'The rules of language.' }, { title: 'Storytelling', description: 'The ability to tell a compelling story.' }, { title: 'SEO Writing', description: 'Writing content that will rank high in search engines.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Creativity', description: 'The ability to generate new ideas.' }, { title: 'Critical Thinking', description: 'Analyzing information objectively.' }, { title: 'Research', description: 'Finding and evaluating information.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of writing.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'MFA in Creative Writing', description: 'A master\'s degree in creative writing.' } ] }, { title: 'Emerging Trends', description: 'New directions in writing.', children: [ { title: 'Digital Publishing', description: 'Publishing books and other content online.' }, { title: 'Podcast Scriptwriting', description: 'Writing scripts for podcasts.' }, { title: 'Technical Writing', description: 'Writing technical documents.' } ] } ] }
+        ]
+    },
+    creative_media_mgmt: {
+        title: 'Creative & Media Management',
+        description: 'Managing the business side of creative industries like film, music, and publishing.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in media management.', children: [ { title: 'BMS/MBA in Media Management', description: 'Business degrees with a focus on the media industry.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Media Economics', description: 'The economics of the media industry.' }, { title: 'Intellectual Property Rights', description: 'The laws protecting creative works.' } ] }, { title: 'Job Roles', description: 'Careers in media management.', children: [ { title: 'Producer', description: 'Manages a film or television production.' }, { title: 'Media Manager', description: 'Manages a media company.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for media managers.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Budgeting', description: 'Creating and managing a budget.' }, { title: 'Project Management', description: 'Planning and executing projects.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Negotiation', description: 'Reaching agreements with others.' }, { title: 'Networking', description: 'Building relationships with people in the industry.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of media management.', children: [ { title: 'Career Paths', description: 'Paths for a career in media management.', children: [ { title: 'Production Houses', description: 'Companies that produce films and television shows.' }, { title: 'Broadcasting Companies', description: 'Companies that broadcast television and radio programs.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Digital Media Monetization', description: 'Making money from digital media.' }, { title: 'Artist Management', description: 'Managing the careers of artists.' } ] } ] }
+        ]
+    },
+    visual_media_design: {
+        title: 'Visual Media & Design',
+        description: 'Creating visual content to communicate messages, often combining art and technology.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in visual design.', children: [ { title: 'B.Des/M.Des in Communication Design', description: 'Design degrees with a focus on communication.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Graphic Design', description: 'Creating visual content for communication.' }, { title: 'Typography', description: 'The art of arranging type.' }, { title: 'Illustration', description: 'Creating images for communication.' } ] }, { title: 'Job Roles', description: 'Careers in visual design.', children: [ { title: 'Graphic Designer', description: 'Creates visual concepts.' }, { title: 'UI/UX Designer', description: 'Designs user interfaces and experiences.' }, { title: 'Art Director', description: 'Leads the visual style of a project.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for visual designers.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Adobe Creative Suite (Photoshop, Illustrator, InDesign)', description: 'Software for creating visual content.' }, { title: 'UI/UX Prototyping Tools', description: 'Tools for creating interactive mockups.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Creativity', description: 'The ability to generate new ideas.' }, { title: 'Visual Communication', description: 'Effectively conveying messages visually.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of visual design.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'Specialization in Motion Graphics or UI/UX', description: 'Focusing on a specific area of design.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Motion Graphics', description: 'Animated graphic design.' }, { title: 'AR Filters', description: 'Creating augmented reality filters for social media.' }, { title: 'Data Visualization Design', description: 'Creating visual representations of data.' } ] } ] }
+        ]
+    },
+     law_political_studies: {
+        title: 'Law & Political Studies',
+        description: 'The study of legal systems and political behavior.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in law and politics.', children: [ { title: 'B.A. LLB / M.A. in Political Science', description: 'Degrees in law and political science.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Constitutional Law', description: 'The laws of a country\'s constitution.' }, { title: 'International Relations', description: 'The study of relationships between countries.' } ] }, { title: 'Job Roles', description: 'Careers in law and politics.', children: [ { title: 'Lawyer', description: 'Represents clients in legal matters.' }, { title: 'Policy Analyst', description: 'Analyzes public policy.' }, { title: 'Diplomat', description: 'Represents a country abroad.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Legal Research', description: 'Researching legal issues.' }, { title: 'Policy Analysis', description: 'Analyzing public policy.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Argumentation', description: 'Making a convincing argument.' }, { title: 'Critical Thinking', description: 'Analyzing information objectively.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of law and politics.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'LLM, PhD', description: 'Advanced degrees in law and political science.' } ] }, { title: 'Emerging Trends', description: 'New directions in the fields.', children: [ { title: 'Cyber Law', description: 'The laws governing the internet.' }, { title: 'Public Policy Advocacy', description: 'Advocating for changes in public policy.' } ] } ] }
+        ]
+    },
+    pr_event_mgmt: {
+        title: 'PR & Event Management',
+        description: 'Managing public image and organizing professional events.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in PR and event management.', children: [ { title: 'B.A. in Mass Media / Diploma in Event Management', description: 'Degrees and diplomas for this field.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Public Relations', description: 'Managing a company\'s public image.' }, { title: 'Event Planning & Logistics', description: 'Planning and organizing events.' } ] }, { title: 'Job Roles', description: 'Careers in PR and event management.', children: [ { title: 'PR Executive', description: 'Works in a public relations agency.' }, { title: 'Event Manager', description: 'Manages events.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Media Relations', description: 'Working with the media.' }, { title: 'Budgeting & Vendor Management', description: 'Managing event budgets and vendors.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Organizational Skills', description: 'The ability to plan and organize.' }, { title: 'Communication', description: 'Communicating effectively with clients and vendors.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of PR and event management.', children: [ { title: 'Career Growth', description: 'Paths for advancement.', children: [ { title: 'PR Head', description: 'Leads a company\'s PR department.' }, { title: 'Owning an Event Agency', description: 'Starting your own event management company.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Digital PR', description: 'Using digital channels for PR.' }, { title: 'Virtual & Hybrid Events', description: 'Events that are held online or in a combination of online and in-person.' } ] } ] }
+        ]
+    },
+    anthropology_culture: {
+        title: 'Anthropology & Culture',
+        description: 'The study of human societies and their cultures.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in anthropology.', children: [ { title: 'B.A./M.A. in Anthropology/Sociology', description: 'Degrees in these fields.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Cultural Anthropology', description: 'The study of human cultures.' }, { title: 'Social Theory', description: 'The study of social behavior.' } ] }, { title: 'Job Roles', description: 'Careers for graduates.', children: [ { title: 'User Researcher (UX)', description: 'Researches user behavior for product design.' }, { title: 'Policy Analyst', description: 'Analyzes public policy.' }, { title: 'CSR Manager', description: 'Manages a company\'s corporate social responsibility program.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for anthropologists.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Ethnographic Research', description: 'The study of people in their own environment.' }, { title: 'Qualitative Data Analysis', description: 'Analyzing non-numerical data.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Observation', description: 'The ability to notice details.' }, { title: 'Empathy', description: 'Understanding and sharing the feelings of others.' }, { title: 'Cultural Sensitivity', description: 'Being aware of and respecting cultural differences.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of anthropology.', children: [ { title: 'Higher Studies', description: 'The highest academic degree.', children: [ { title: 'PhD', description: 'For a career in academic research.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Corporate Anthropology', description: 'Applying anthropology to business.' }, { title: 'Digital Ethnography', description: 'Studying online communities.' } ] } ] }
+        ]
+    },
+    linguistics_comm: {
+        title: 'Linguistics & Communication Studies',
+        description: 'The scientific study of language and human communication.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in linguistics.', children: [ { title: 'B.A./M.A. in Linguistics/Communication', description: 'Degrees in these fields.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Phonetics', description: 'The study of speech sounds.' }, { title: 'Syntax', description: 'The study of sentence structure.' }, { title: 'Interpersonal Communication', description: 'The study of how people communicate with each other.' } ] }, { title: 'Job Roles', description: 'Careers for graduates.', children: [ { title: 'Computational Linguist', description: 'Works on computer programs that can understand language.' }, { title: 'Speech Therapist', description: 'Helps people with speech problems.' }, { title: 'Corporate Communications', description: 'Manages a company\'s communications.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for linguists.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Language Analysis', description: 'Analyzing the structure of language.' }, { title: 'Discourse Analysis', description: 'Analyzing language in use.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Analytical Skills', description: 'Analyzing complex data.' }, { title: 'Communication', description: 'Communicating complex ideas clearly.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of linguistics.', children: [ { title: 'Higher Studies', description: 'The highest academic degree.', children: [ { title: 'PhD', description: 'For a career in academic research.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Natural Language Processing (NLP)', description: 'The ability of computers to understand human language.' }, { title: 'Voice Assistant Development', description: 'Developing voice assistants like Alexa and Siri.' } ] } ] }
+        ]
+    },
+    music_performing_arts: {
+        title: 'Music & Performing Arts',
+        description: 'Encompasses various forms of artistic expression including music, dance, and theatre.',
+        children: [
+            { title: 'Academics', description: 'Education in music and the performing arts.', children: [ { title: 'Bachelor/Master of Music/Performing Arts', description: 'Degrees in these fields.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Music Theory', description: 'The study of the principles of music.' }, { title: 'Performance Practice', description: 'The study of how to perform music.' } ] }, { title: 'Job Roles', description: 'Careers in music and the performing arts.', children: [ { title: 'Musician', description: 'Plays a musical instrument or sings.' }, { title: 'Dancer', description: 'Dances professionally.' }, { title: 'Music Composer', description: 'Writes music.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for performers.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Instrumental/Vocal Proficiency', description: 'The ability to play an instrument or sing well.' }, { title: 'Choreography', description: 'The art of creating dances.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Discipline', description: 'The ability to practice regularly.' }, { title: 'Creativity', description: 'The ability to generate new ideas.' }, { title: 'Stage Presence', description: 'The ability to command the attention of an audience.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of music and the performing arts.', children: [ { title: 'Career Paths', description: 'Paths for a career in these fields.', children: [ { title: 'Live Performance', description: 'Performing for a live audience.' }, { title: 'Music Production', description: 'Producing music recordings.' }, { title: 'Teaching', description: 'Teaching music or dance.' } ] }, { title: 'Emerging Trends', description: 'New directions in the fields.', children: [ { title: 'Digital Music Production', description: 'Producing music using computers.' }, { title: 'Online Performances', description: 'Performing online for a virtual audience.' } ] } ] }
+        ]
+    },
+    writing_script_dev: {
+        title: 'Writing & Script Development',
+        description: 'The art of writing scripts for film, television, and other media.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in screenwriting.', children: [ { title: 'M.A. in Screenwriting / Film School Diploma', description: 'Advanced degrees and diplomas for screenwriters.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Screenplay Structure', description: 'The structure of a screenplay.' }, { title: 'Character Development', description: 'Creating believable characters.' } ] }, { title: 'Job Roles', description: 'Careers in screenwriting.', children: [ { title: 'Screenwriter', description: 'Writes scripts for films and television.' }, { title: 'Script Consultant', description: 'Helps writers improve their scripts.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for screenwriters.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Script Formatting Software (Final Draft)', description: 'Software for formatting screenplays.' }, { title: 'Storytelling', description: 'The ability to tell a compelling story.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Creativity', description: 'The ability to generate new ideas.' }, { title: 'Discipline', description: 'The ability to write regularly.' }, { title: 'Resilience', description: 'The ability to bounce back from rejection.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of screenwriting.', children: [ { title: 'Career Paths', description: 'Paths for a career in screenwriting.', children: [ { title: 'Writer\'s Rooms for TV Shows', description: 'Working as a writer on a television show.' }, { title: 'Feature Film Writing', description: 'Writing scripts for movies.' } ] }, { title: 'Emerging Trends', description: 'New directions in screenwriting.', children: [ { title: 'Writing for OTT Platforms', description: 'Writing for streaming services like Netflix.' }, { title: 'Interactive Narrative Writing', description: 'Writing stories where the audience can make choices.' } ] } ] }
+        ]
+    },
+    politics_intl_studies: {
+        title: 'Politics & International Studies',
+        description: 'The study of political systems and relations between countries.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in politics and international studies.', children: [ { title: 'B.A./M.A. in Political Science/International Relations', description: 'Degrees in these fields.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Comparative Politics', description: 'The study of different political systems.' }, { title: 'International Law', description: 'The laws governing relationships between countries.' } ] }, { title: 'Job Roles', description: 'Careers in politics and international studies.', children: [ { title: 'Diplomat (IFS)', description: 'Represents India abroad.' }, { title: 'Foreign Policy Analyst', description: 'Analyzes foreign policy.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Policy Analysis', description: 'Analyzing public policy.' }, { title: 'Foreign Language Proficiency', description: 'The ability to speak a foreign language.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Cross-cultural Understanding', description: 'Understanding different cultures.' }, { title: 'Negotiation', description: 'Reaching agreements with others.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of politics and international studies.', children: [ { title: 'Higher Studies', description: 'The highest academic degree.', children: [ { title: 'PhD', description: 'For a career in academic research.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Cyber Diplomacy', description: 'Diplomacy in the digital age.' }, { title: 'Global Health Security', description: 'Protecting the world from health threats.' } ] } ] }
+        ]
+    },
+    social_work_counseling: {
+        title: 'Social Work & Counseling',
+        description: 'A profession dedicated to helping individuals, families, and communities to enhance their well-being.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in social work and counseling.', children: [ { title: 'BSW/MSW (Bachelor/Master of Social Work)', description: 'Degrees in social work.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Human Behavior', description: 'The study of how people behave.' }, { title: 'Counseling Theories', description: 'Different approaches to counseling.' } ] }, { title: 'Job Roles', description: 'Careers in social work and counseling.', children: [ { title: 'Social Worker', description: 'Helps people with problems.' }, { title: 'Counselor', description: 'Provides guidance to people.' }, { title: 'Therapist', description: 'Provides mental health treatment.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Case Management', description: 'Managing a client\'s case.' }, { title: 'Therapeutic Techniques', description: 'Different methods of therapy.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Empathy', description: 'Understanding and sharing the feelings of others.' }, { title: 'Active Listening', description: 'Listening carefully to what others are saying.' }, { title: 'Patience', description: 'The ability to remain calm in stressful situations.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of social work and counseling.', children: [ { title: 'Higher Studies', description: 'Advanced degrees for specialization.', children: [ { title: 'M.Phil/PhD', description: 'Advanced degrees for a career in research or academia.' } ] }, { title: 'Emerging Trends', description: 'New directions in the fields.', children: [ { title: 'Online Counseling', description: 'Providing counseling online.' }, { title: 'Trauma-informed Care', description: 'An approach to care that recognizes the impact of trauma.' } ] } ] }
+        ]
+    },
+    digital_media_design: {
+        title: 'Digital Media & Design',
+        description: 'Creating content using digital tools, including graphics, animation, and video.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in digital media.', children: [ { title: 'B.Des/M.Des in Digital Media', description: 'Design degrees with a focus on digital media.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Motion Graphics', description: 'Animated graphic design.' }, { title: '3D Modeling', description: 'Creating three-dimensional models.' }, { title: 'UI/UX Design', description: 'Designing user interfaces and experiences.' } ] }, { title: 'Job Roles', description: 'Careers in digital media.', children: [ { title: 'Motion Graphics Artist', description: 'Creates animated graphics.' }, { title: '3D Animator', description: 'Creates 3D animations.' }, { title: 'UI/UX Designer', description: 'Designs user interfaces and experiences.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for digital media designers.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Adobe After Effects, Cinema 4D, Figma', description: 'Software for creating digital media.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Creativity', description: 'The ability to generate new ideas.' }, { title: 'Visual Storytelling', description: 'Telling stories visually.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of digital media.', children: [ { title: 'Career Growth', description: 'Paths for advancement.', children: [ { title: 'Art Director', description: 'Leads the visual style of a project.' }, { title: 'Creative Director', description: 'Leads the creative vision of a project.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Real-time 3D (Unreal Engine)', description: 'Creating 3D graphics in real time.' }, { title: 'Augmented Reality (AR) Design', description: 'Designing for augmented reality.' } ] } ] }
+        ]
+    },
+    history_archival_research: {
+        title: 'History & Archival Research',
+        description: 'Focuses on the preservation and study of historical documents and records.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in archival research.', children: [ { title: 'M.A. in History with specialization in Archival Studies', description: 'A master\'s degree focused on archival work.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Archival Management', description: 'Managing historical archives.' }, { title: 'Preservation Techniques', description: 'Preserving historical documents.' } ] }, { title: 'Job Roles', description: 'Careers in archival research.', children: [ { title: 'Archivist', description: 'Manages historical records.' }, { title: 'Records Manager', description: 'Manages a company\'s records.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for archivists.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Cataloging Systems', description: 'Systems for organizing archival materials.' }, { title: 'Digital Archiving', description: 'Preserving digital records.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Meticulousness', description: 'A high level of attention to detail.' }, { title: 'Organizational Skills', description: 'The ability to plan and organize.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of archival research.', children: [ { title: 'Career Paths', description: 'Paths for a career in archival research.', children: [ { title: 'National Archives, Museums, Libraries', description: 'Working in these institutions.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Digitization of Archives', description: 'Making archives available online.' }, { title: 'AI in Archival Research', description: 'Using AI to analyze archival materials.' } ] } ] }
+        ]
+    },
+    philosophy_ethics: {
+        title: 'Philosophy & Ethics',
+        description: 'Concentrates on the moral principles that govern behavior and the fundamental nature of knowledge, reality, and existence.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in philosophy and ethics.', children: [ { title: 'B.A./M.A. in Philosophy', description: 'Degrees in philosophy.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Moral Philosophy', description: 'The study of moral principles.' }, { title: 'Applied Ethics', description: 'The application of ethics to real-world problems.' }, { title: 'Logic', description: 'The study of reasoning.' } ] }, { title: 'Job Roles', description: 'Careers for philosophy graduates.', children: [ { title: 'Ethics Officer', description: 'Ensures a company acts ethically.' }, { title: 'Academic', description: 'Teaches and researches at a university.' }, { title: 'Policy Advisor', description: 'Advises on public policy.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for these professions.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Ethical Analysis Frameworks', description: 'Frameworks for analyzing ethical problems.' }, { title: 'Logical Reasoning', description: 'The ability to think logically.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Critical Thinking', description: 'Analyzing information objectively.' }, { title: 'Clear Communication', description: 'Communicating complex ideas clearly.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of philosophy and ethics.', children: [ { title: 'Higher Studies', description: 'The highest academic degree.', children: [ { title: 'PhD', description: 'For a career in academic research.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'AI Ethics', description: 'The ethical implications of artificial intelligence.' }, { title: 'Bioethics', description: 'The ethical implications of biology and medicine.' }, { title: 'Environmental Ethics', description: 'The ethical relationship between humans and the environment.' } ] } ] }
+        ]
+    },
+    linguistics_lang_studies: {
+        title: 'Linguistics & Language Studies',
+        description: 'The study of human language in all its aspects, including its structure, history, and social context.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in linguistics.', children: [ { title: 'B.A./M.A. in Linguistics', description: 'Degrees in linguistics.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Phonology', description: 'The study of speech sounds.' }, { title: 'Sociolinguistics', description: 'The study of language in society.' } ] }, { title: 'Job Roles', description: 'Careers for linguists.', children: [ { title: 'Translator', description: 'Translates from one language to another.' }, { title: 'Computational Linguist', description: 'Works on computer programs that can understand language.' }, { title: 'Foreign Language Teacher', description: 'Teaches a foreign language.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for linguists.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Language Proficiency', description: 'The ability to speak a language fluently.' }, { title: 'Corpus Linguistics', description: 'The study of large collections of text.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Analytical Skills', description: 'Analyzing complex data.' }, { title: 'Cultural Awareness', description: 'Understanding different cultures.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of linguistics.', children: [ { title: 'Higher Studies', description: 'The highest academic degree.', children: [ { title: 'PhD', description: 'For a career in academic research.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Natural Language Processing (NLP)', description: 'The ability of computers to understand human language.' }, { title: 'Language Documentation', description: 'Preserving endangered languages.' } ] } ] }
+        ]
+    },
+    literature_creative_writing: {
+        title: 'Literature & Creative Writing',
+        description: 'Focuses on the practice of imaginative writing and the critical analysis of literary works.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in writing.', children: [ { title: 'MFA in Creative Writing / M.A. in Literature', description: 'Advanced degrees for writers.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Fiction/Poetry Workshops', description: 'Workshops where students critique each other\'s work.' }, { title: 'Literary Criticism', description: 'The study of literary works.' } ] }, { title: 'Job Roles', description: 'Careers for writers.', children: [ { title: 'Author', description: 'Writes books.' }, { title: 'Creative Writing Professor', description: 'Teaches creative writing at a university.' }, { title: 'Publisher', description: 'Publishes books.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for writers.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Narrative Structure', description: 'The structure of a story.' }, { title: 'Editing & Revision', description: 'Improving written work.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Creativity', description: 'The ability to generate new ideas.' }, { title: 'Discipline', description: 'The ability to write regularly.' }, { title: 'Empathy', description: 'Understanding and sharing the feelings of others.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of writing.', children: [ { title: 'Career Paths', description: 'Paths for a career in writing.', children: [ { title: 'Publishing Novels', description: 'Publishing your own books.' }, { title: 'Teaching', description: 'Teaching writing to others.' } ] }, { title: 'Emerging Trends', description: 'New directions in writing.', children: [ { title: 'Self-publishing', description: 'Publishing your own books without a traditional publisher.' }, { title: 'Writing for Digital Platforms', description: 'Writing for websites, blogs, etc.' } ] } ] }
+        ]
+    },
+    social_activism_ngo: {
+        title: 'Social Activism & NGO Work',
+        description: 'Working for non-governmental organizations to bring about social or political change.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in social activism.', children: [ { title: 'Master of Social Work (MSW)', description: 'A master\'s degree in social work.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Community Development', description: 'Working with communities to improve their lives.' }, { title: 'Social Policy', description: 'The study of social problems and how to solve them.' } ] }, { title: 'Job Roles', description: 'Careers in social activism.', children: [ { title: 'Program Manager', description: 'Manages a program at an NGO.' }, { title: 'Advocacy Officer', description: 'Advocates for social change.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for social activists.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Fundraising & Grant Writing', description: 'Raising money for an NGO.' }, { title: 'Community Mobilization', description: 'Getting people to take action.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Passion', description: 'A strong belief in a cause.' }, { title: 'Communication', description: 'Communicating effectively with others.' }, { title: 'Resilience', description: 'Bouncing back from setbacks.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of social activism.', children: [ { title: 'Career Growth', description: 'Paths for advancement.', children: [ { title: 'Leading an NGO', description: 'Becoming the head of an NGO.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Online Activism', description: 'Using the internet to promote social change.' }, { title: 'Corporate Social Responsibility (CSR) partnerships', description: 'Working with companies to promote social good.' } ] } ] }
+        ]
+    },
+    media_comm_studies: {
+        title: 'Media & Communication Studies',
+        description: 'The academic study of the media, its institutions, and its effects on society.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in media studies.', children: [ { title: 'B.A./M.A. in Mass Communication/Media Studies', description: 'Degrees in these fields.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Media Theory', description: 'The study of the principles of media.' }, { title: 'Journalism', description: 'The practice of gathering and reporting news.' }, { title: 'Public Relations', description: 'Managing a company\'s public image.' } ] }, { title: 'Job Roles', description: 'Careers for graduates.', children: [ { title: 'Journalist', description: 'Reports the news.' }, { title: 'PR Specialist', description: 'Manages a company\'s public relations.' }, { title: 'Media Analyst', description: 'Analyzes media content.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for media professionals.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Writing & Reporting', description: 'The ability to write and report news.' }, { title: 'Video Production', description: 'The ability to create videos.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Critical Thinking', description: 'Analyzing information objectively.' }, { title: 'Communication', description: 'Communicating effectively with others.' }, { title: 'Ethical Judgement', description: 'Making ethical decisions.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of media studies.', children: [ { title: 'Higher Studies', description: 'The highest academic degree.', children: [ { title: 'PhD', description: 'For a career in academic research.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Digital Journalism', description: 'Journalism in the digital age.' }, { title: 'Fact-checking & Media Literacy', description: 'Helping people to identify fake news.' } ] } ] }
+        ]
+    },
+    literature_classical: {
+        title: 'Literature & Classical Studies',
+        description: 'The study of the literature, languages, and cultures of ancient Greece and Rome.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in classical studies.', children: [ { title: 'B.A./M.A. in Classical Studies', description: 'Degrees in this field.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Latin/Greek Language', description: 'The languages of ancient Rome and Greece.' }, { title: 'Classical Mythology', description: 'The myths of ancient Greece and Rome.' } ] }, { title: 'Job Roles', description: 'Careers for graduates.', children: [ { title: 'Academic/Professor', description: 'Teaches and researches at a university.' }, { title: 'Archivist', description: 'Manages historical records.' }, { title: 'Museum Curator', description: 'Manages a museum\'s collection.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for classicists.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Translation', description: 'Translating from Latin and Greek.' }, { title: 'Textual Analysis', description: 'Analyzing ancient texts.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Analytical Skills', description: 'Analyzing complex information.' }, { title: 'Historical Contextualization', description: 'Understanding the historical context of texts.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of classical studies.', children: [ { title: 'Higher Studies', description: 'The highest academic degree.', children: [ { title: 'PhD', description: 'For a career in academic research.' } ] }, { title: 'Emerging Trends', description: 'New directions in the field.', children: [ { title: 'Digital Classics', description: 'Using digital tools to study the classics.' }, { title: 'Reception Studies', description: 'The study of how classical texts have been received over time.' } ] } ] }
+        ]
+    },
+    fashion_textile_design: {
+        title: 'Fashion & Textile Design',
+        description: 'The art of applying design, aesthetics, and natural beauty to clothing and textiles.',
+        children: [
+            { title: 'Academics', description: 'Education for a career in fashion design.', children: [ { title: 'B.Des/M.Des from NIFT, NID', description: 'Degrees from top design schools in India.', children: [ { title: 'Core Subjects', description: 'Key courses in the curriculum.', children: [ { title: 'Pattern Making', description: 'Creating patterns for clothing.' }, { title: 'Textile Science', description: 'The study of textiles.' }, { title: 'Fashion History', description: 'The study of the history of fashion.' } ] }, { title: 'Job Roles', description: 'Careers in fashion design.', children: [ { title: 'Fashion Designer', description: 'Designs clothing.' }, { title: 'Textile Designer', description: 'Designs textiles.' }, { title: 'Fashion Merchandiser', description: 'Buys and sells fashion.' } ] } ] } ] },
+            { title: 'Skills', description: 'Essential skills for fashion designers.', children: [ { title: 'Technical Skills', description: 'Practical abilities required.', children: [ { title: 'Sketching & Illustration', description: 'The ability to draw and illustrate designs.' }, { title: 'Sewing & Garment Construction', description: 'The ability to sew and make clothes.' }, { title: 'CAD Software (Adobe Illustrator, Lectra)', description: 'Software for designing fashion.' } ] }, { title: 'Soft Skills', description: 'Key personal attributes.', children: [ { title: 'Creativity', description: 'The ability to generate new ideas.' }, { title: 'Trend Awareness', description: 'Knowing what is fashionable.' }, { title: 'Attention to Detail', description: 'A high level of accuracy.' } ] } ] },
+            { title: 'Future Scope', description: 'The future of fashion design.', children: [ { title: 'Career Paths', description: 'Paths for a career in fashion design.', children: [ { title: 'Starting a Label', description: 'Starting your own fashion brand.' }, { title: 'Working for Design Houses', description: 'Working for an established fashion brand.' } ] }, { title: 'Emerging Trends', description: 'New directions in fashion design.', children: [ { title: 'Sustainable Fashion', description: 'Fashion that is environmentally friendly.' }, { title: '3D Fashion Design', description: 'Designing fashion in 3D.' }, { title: 'Wearable Technology', description: 'Fashion that incorporates technology.' } ] } ] }
         ]
     }
 };
+
+// NEW: Maps the long-form quiz result to the short key used in the mind map data object.
+const quizResultToMindMapKey = {
+    'Science & Engineering / Applied Sciences': 'sci_eng_applied',
+    'Engineering & Technology': 'eng_tech',
+    'Software Development & IT': 'sw_dev_it',
+    'Data Science & Analytics': 'data_science',
+    'Design & Human-Computer Interaction': 'design_hci',
+    'Industrial & Manufacturing Engineering': 'industrial_manufacturing',
+    'Marine & Environmental Sciences': 'marine_environmental',
+    'Environmental & Renewable Technologies': 'renewable_tech',
+    'Space Science & Aerospace': 'space_aerospace',
+    'Innovation & Technology Development': 'innovation_tech',
+    'Robotics & Automation': 'robotics_automation',
+    'Communication & Media Technologies': 'comm_media_tech',
+    'Chemical & Process Engineering': 'chem_process_eng',
+    'Quantitative & Data Analytics': 'quant_data_analytics',
+    'Scientific & Data Research': 'sci_data_research',
+    'Mathematics & Physics': 'math_physics',
+    'Earth & Atmospheric Sciences': 'earth_atmospheric',
+    'Biotechnology & Life Sciences': 'biotech_life_sci',
+    'Healthcare & Education': 'healthcare_edu',
+    'Medicine & Pharmacy': 'medicine_pharmacy',
+    'Chemistry & Life Sciences': 'chem_life_sci',
+    'Corporate & Business Management': 'corp_biz_mgmt',
+    'Startups & Entrepreneurship': 'startups_entrepreneurship',
+    'Accounting & Financial Analysis': 'accounting_financial',
+    'Marketing & Corporate Communication': 'marketing_corp_comm',
+    'Accounting & Compliance': 'accounting_compliance',
+    'HR & Organizational Development': 'hr_org_dev',
+    'Law & Corporate Governance': 'law_corp_gov',
+    'Marketing & Brand Strategy': 'marketing_brand_strategy',
+    'Entrepreneurship & Small Business': 'entrepreneurship_small_biz',
+    'International Business & Trade': 'intl_biz_trade',
+    'Finance & Investment': 'finance_investment',
+    'Management & Leadership Studies': 'mgmt_leadership',
+    'Taxation & Accounting': 'tax_accounting',
+    'Sales & Business Growth': 'sales_growth',
+    'Finance & Management': 'finance_mgmt',
+    'Marketing Analytics & Research': 'marketing_analytics_research',
+    'Financial Risk & Analysis': 'financial_risk',
+    'HR & Communication': 'hr_comm',
+    'Investment & Capital Markets': 'investment_capital',
+    'Marketing Analytics & Insights': 'marketing_analytics_insights',
+    'Auditing & Financial Compliance': 'auditing_compliance',
+    'History & Archaeology': 'history_archaeology',
+    'Philosophy & Political Studies': 'philosophy_politics',
+    'Performing Arts & Theatre': 'performing_arts',
+    'Film & Media Production': 'film_media_prod',
+    'Visual Arts & Crafts': 'visual_arts',
+    'Literature & Writing': 'literature_writing',
+    'Creative & Media Management': 'creative_media_mgmt',
+    'Visual Media & Design': 'visual_media_design',
+    'Law & Political Studies': 'law_political_studies',
+    'PR & Event Management': 'pr_event_mgmt',
+    'Anthropology & Culture': 'anthropology_culture',
+    'Linguistics & Communication Studies': 'linguistics_comm',
+    'Music & Performing Arts': 'music_performing_arts',
+    'Writing & Script Development': 'writing_script_dev',
+    'Politics & International Studies': 'politics_intl_studies',
+    'Social Work & Counseling': 'social_work_counseling',
+    'Digital Media & Design': 'digital_media_design',
+    'History & Archival Research': 'history_archival_research',
+    'Philosophy & Ethics': 'philosophy_ethics',
+    'Linguistics & Language Studies': 'linguistics_lang_studies',
+    'Literature & Creative Writing': 'literature_creative_writing',
+    'Social Activism & NGO Work': 'social_activism_ngo',
+    'Media & Communication Studies': 'media_comm_studies',
+    'Literature & Classical Studies': 'literature_classical',
+    'Fashion & Textile Design': 'fashion_textile_design',
+};
+
 
 const mockUpcomingEvents = [
     { date: "Oct 15, 2025", title: "JEE Advanced 2026 Registration Opens", description: "Registration for the next Joint Entrance Examination (Advanced) begins." },
@@ -2180,14 +2677,9 @@ const QuizPage = () => {
 };
 
 const ResultsPage = () => {
-    const { quizResult, quizType, setPage } = useNavigation();
+    const { quizResult, quizType, setPage, setSelectedMindMapKey } = useNavigation();
     const [aiContent, setAiContent] = useState('');
     const [isLoadingAi, setIsLoadingAi] = useState(false);
-
-    // State for the mind map modal
-    const [isInteractiveMapOpen, setInteractiveMapOpen] = useState(false);
-    const [currentMapData, setCurrentMapData] = useState(null);
-    const [currentMapTitle, setCurrentMapTitle] = useState('');
 
     // State to toggle visibility of other stream options
     const [showOtherStreams, setShowOtherStreams] = useState(false);
@@ -2199,18 +2691,13 @@ const ResultsPage = () => {
 
     // Function to open the mind map modal with specific data
     const openMapForStream = (streamKey) => {
-        let data, title;
         if (quizType.level === 'class10') {
-            data = mockMindMapData[streamKey];
-            title = `Interactive Map for ${streamKey} Stream`;
+            setSelectedMindMapKey(streamKey); // Uses 'Science', 'Commerce', etc.
         } else { // For Class 12
-            data = mockFieldMindMapData[streamKey];
-            title = `Interactive Map for ${streamKey}`;
+            const mindMapKey = quizResultToMindMapKey[streamKey];
+            setSelectedMindMapKey(mindMapKey);
         }
-       
-        setCurrentMapData(data);
-        setCurrentMapTitle(title);
-        setInteractiveMapOpen(true);
+       setPage('mindMap');
     };
 
 
@@ -2333,7 +2820,7 @@ const ResultsPage = () => {
                                 transition={{ duration: 0.3, ease: "easeInOut" }}
                                 className="flex justify-center flex-wrap gap-4"
                             >
-                                {Object.keys(mockFieldMindMapData)
+                                {Object.keys(quizResultToMindMapKey)
                                     .map(field => (
                                         <Button
                                             key={field}
@@ -2380,160 +2867,190 @@ const ResultsPage = () => {
                 )}
             </Card>
         </div>
-
-        <InteractiveMindMap
-            isOpen={isInteractiveMapOpen}
-            onClose={() => setInteractiveMapOpen(false)}
-            data={currentMapData}
-            title={currentMapTitle}
-        />
         </>
     );
 };
 
 
 // --- NEW: INTERACTIVE MIND MAP COMPONENTS ---
-const InteractiveMindMapNode = ({ node, level = 0, parentId = 'root', onHover, onLeave }) => {
-    const [isExpanded, setIsExpanded] = useState(level < 2);
-    const hasChildren = node.children && node.children.length > 0;
-    const nodeId = `${parentId}-${node.name.replace(/\s+/g, '-')}`;
-    const hoverTimeoutRef = useRef(null);
-    const nodeRef = useRef(null);
-
-    const colors = [
-        "bg-teal-600 border-teal-500",
-        "bg-sky-600 border-sky-500",
-        "bg-indigo-600 border-indigo-500",
-        "bg-purple-600 border-purple-500",
-        "bg-pink-600 border-pink-500",
-    ];
-    const nodeColor = colors[level % colors.length];
+const MindMapNode = ({ node, onToggle, openNodes, path }) => {
+    const { title, children, description } = node;
+    const isExpanded = openNodes.has(path);
+    const hasChildren = children && children.length > 0;
 
     const handleToggle = () => {
         if (hasChildren) {
-            setIsExpanded(!isExpanded);
+            onToggle(path);
         }
     };
 
-    const handleMouseEnter = () => {
-        clearTimeout(hoverTimeoutRef.current); // Clear any existing timeout
-        hoverTimeoutRef.current = setTimeout(() => {
-            if (node.description) {
-                onHover(node, nodeRef);
-            }
-        }, 2000); // 2-second delay
-    };
+    const nodeColors = [
+        "bg-gradient-to-br from-slate-600 to-slate-800 border-slate-500", // Level 0
+        "bg-gradient-to-br from-sky-600 to-sky-800 border-sky-500",     // Level 1
+        "bg-gradient-to-br from-teal-600 to-teal-800 border-teal-500",    // Level 2
+        "bg-gradient-to-br from-indigo-600 to-indigo-800 border-indigo-500",// Level 3
+        "bg-gradient-to-br from-purple-600 to-purple-800 border-purple-500" // Level 4
+    ];
+    const level = path.split('>').length - 1;
+    const colorClass = nodeColors[level % nodeColors.length];
 
-    const handleMouseLeave = () => {
-        clearTimeout(hoverTimeoutRef.current);
-        onLeave();
-    };
-   
     return (
-        <motion.div 
-            className="relative flex items-start my-2"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3, delay: level * 0.05 }}
-        >
-            <div 
-                className={`node-connector ${level > 0 ? 'border-l-2' : ''} border-gray-700 absolute h-full left-5 top-0 -z-10`}
-                style={{ marginLeft: '1.25rem' }} // Align with center of node
-            ></div>
-            <div className="flex-shrink-0" ref={nodeRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                <motion.div
-                    id={nodeId}
+        <div className="flex items-start">
+            {/* --- Node and toggle button --- */}
+            <div className="flex-shrink-0 flex items-center">
+                 <div
+                    className={`group relative text-white text-sm font-semibold px-4 py-2 rounded-xl shadow-lg border transition-all duration-300 hover:scale-105 hover:shadow-xl ${colorClass} ${hasChildren ? 'cursor-pointer' : ''}`}
                     onClick={handleToggle}
-                    className={`${nodeColor} text-white rounded-lg px-4 py-2 z-10 border-2 cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-white/10 flex items-center`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.98 }}
                 >
-                    {hasChildren && <span className="mr-2 font-mono text-lg">{isExpanded ? '-' : '+'}</span>}
-                    {node.name}
-                </motion.div>
-            </div>
-           
-            <AnimatePresence>
-                {isExpanded && hasChildren && (
-                    <motion.div 
-                        className="pl-12 pt-0 flex flex-col items-start"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
-                    >
-                        {node.children.map((child, index) => (
-                           <InteractiveMindMapNode key={index} node={child} level={level + 1} parentId={nodeId} onHover={onHover} onLeave={onLeave}/>
-                        ))}
-                    </motion.div>
+                    {title}
+                     {description && (
+                        <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-max max-w-xs p-3 bg-slate-900 border border-slate-600 text-white text-xs rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-50">
+                            {description}
+                        </div>
+                    )}
+                </div>
+                {hasChildren && (
+                    <button onClick={handleToggle} className="ml-3 p-1 rounded-full bg-slate-700 hover:bg-slate-600 text-slate-300 transition-all duration-300" style={{ transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)'}}>
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
                 )}
-            </AnimatePresence>
-        </motion.div>
+            </div>
+
+            {/* --- Children --- */}
+            {isExpanded && hasChildren && (
+                <div className="ml-10 pl-10 border-l-2 border-slate-700 space-y-6">
+                    {children.map((child, index) => (
+                         <MindMapNode
+                            key={index}
+                            node={child}
+                            onToggle={onToggle}
+                            openNodes={openNodes}
+                            path={`${path}>${child.title}`}
+                        />
+                    ))}
+                </div>
+            )}
+        </div>
     );
 };
 
-const InteractiveMindMap = ({ isOpen, onClose, data, title }) => {
-    const [tooltip, setTooltip] = useState({ visible: false, content: '', x: 0, y: 0 });
-
-    const handleNodeHover = (node, elementRef) => {
-        if (elementRef.current) {
-            const rect = elementRef.current.getBoundingClientRect();
-            setTooltip({
-                visible: true,
-                content: node.description,
-                x: rect.right + 15, // Position to the right of the node
-                y: rect.top + (rect.height / 2) // Center vertically
-            });
+const MindMapPage = () => {
+    const { selectedMindMapKey, setPage, quizType } = useNavigation();
+    const [selectedField, setSelectedField] = useState(selectedMindMapKey);
+    const [openNodes, setOpenNodes] = useState(new Set());
+    
+    // Determine which dataset to use
+    const isClass10 = quizType?.level === 'class10';
+    const currentDataSet = isClass10 ? mockMindMapData : mindMapData;
+    
+    useEffect(() => {
+        // When the page loads with a key, open the first level
+        const currentMindMap = currentDataSet[selectedField];
+        if (currentMindMap) {
+            setOpenNodes(new Set([currentMindMap.title]));
         }
+    }, [selectedField, currentDataSet]);
+
+
+    const handleToggleNode = (path) => {
+        setOpenNodes(prevOpenNodes => {
+            const newOpenNodes = new Set(prevOpenNodes);
+            if (newOpenNodes.has(path)) {
+                // If the node is already open, close it and all its children
+                newOpenNodes.forEach(openPath => {
+                    if (openPath.startsWith(path)) {
+                        newOpenNodes.delete(openPath);
+                    }
+                });
+            } else {
+                // If the node is closed, open it
+                newOpenNodes.add(path);
+            }
+            return newOpenNodes;
+        });
+    };
+    
+    const fullFieldsByCategory = {
+      "Engineering & Technology": ["sw_dev_it", "data_science", "design_hci", "industrial_manufacturing", "marine_environmental", "renewable_tech", "space_aerospace", "innovation_tech", "robotics_automation", "comm_media_tech", "chem_process_eng", "quant_data_analytics", "sci_data_research", "math_physics", "earth_atmospheric"],
+      "Biotechnology & Life Sciences": ["biotech_life_sci", "healthcare_edu", "medicine_pharmacy", "chem_life_sci"],
+      "Commerce / Business": ["corp_biz_mgmt", "startups_entrepreneurship", "accounting_financial", "marketing_corp_comm", "accounting_compliance", "hr_org_dev", "law_corp_gov", "marketing_brand_strategy", "entrepreneurship_small_biz", "intl_biz_trade", "finance_investment", "mgmt_leadership", "tax_accounting", "sales_growth", "finance_mgmt", "marketing_analytics_research", "financial_risk", "hr_comm", "investment_capital", "marketing_analytics_insights", "auditing_compliance"],
+      "Arts / Humanities": ["history_archaeology", "philosophy_politics", "performing_arts", "film_media_prod", "visual_arts", "literature_writing", "creative_media_mgmt", "visual_media_design", "law_political_studies", "pr_event_mgmt", "anthropology_culture", "linguistics_comm", "music_performing_arts", "writing_script_dev", "politics_intl_studies", "social_work_counseling", "digital_media_design", "history_archival_research", "philosophy_ethics", "linguistics_lang_studies", "literature_creative_writing", "social_activism_ngo", "media_comm_studies", "literature_classical", "fashion_textile_design"]
     };
 
-    const handleNodeLeave = () => {
-        setTooltip(prev => ({ ...prev, visible: false }));
-    };
+    const currentMindMap = currentDataSet[selectedField];
 
     return (
-        <AnimatePresence>
-            {isOpen && (
-                <>
-                <motion.div
-                    className="fixed inset-0 bg-gray-950/90 backdrop-blur-sm z-[100] flex flex-col p-4 sm:p-8"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                >
-                    <div className="flex-shrink-0 flex justify-between items-start mb-4">
-                        <div>
-                            <h2 className="text-2xl sm:text-3xl font-bold text-teal-400 mb-2">{title}</h2>
-                            <p className="text-sm text-gray-400 max-w-lg">
-                                Click nodes to expand/collapse. Hover over a node for 2 seconds to see a brief description.
-                            </p>
-                        </div>
-                        <button onClick={onClose} className="text-gray-400 hover:text-white text-4xl ml-4 flex-shrink-0">&times;</button>
-                    </div>
+        <div className="flex-grow bg-gradient-to-b from-slate-900 to-gray-900 min-h-screen font-sans text-slate-300">
+             <div className="max-w-7xl mx-auto px-4 sm:px-8">
+                 <header className="text-center pt-8 sm:pt-12 mb-12">
+                     <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-2">Interactive Career Map</h1>
+                     <p className="text-lg text-slate-400">
+                         Click a node to expand/collapse. Hover for a brief description.
+                     </p>
+                 </header>
 
-                    <div className="flex-grow bg-black/30 border border-gray-800 rounded-lg p-6 overflow-auto">
-                        {data && <InteractiveMindMapNode node={data} onHover={handleNodeHover} onLeave={handleNodeLeave} />}
-                    </div>
-                </motion.div>
-                <AnimatePresence>
-                    {tooltip.visible && tooltip.content && (
-                        <motion.div
-                            className="fixed bg-gray-800 text-white p-3 rounded-lg shadow-lg max-w-xs border border-gray-700 z-[110] text-sm pointer-events-none"
-                            style={{ top: tooltip.y, left: tooltip.x, transform: 'translateY(-50%)' }}
-                            initial={{ opacity: 0, x: 10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: 10 }}
-                            transition={{ duration: 0.2 }}
+                <div className="mb-6 flex justify-start">
+                    <Button onClick={() => setPage('results')} variant="secondary">
+                        &larr; Back to Results
+                    </Button>
+                </div>
+
+                 <div className="mb-10 max-w-2xl mx-auto">
+                    {isClass10 ? (
+                        <select
+                            id="field-select"
+                            className="w-full p-4 text-lg bg-slate-800 border-2 border-slate-600 text-white rounded-lg shadow-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition duration-300"
+                            value={selectedField}
+                            onChange={(e) => setSelectedField(e.target.value)}
                         >
-                            {tooltip.content}
-                        </motion.div>
+                            {Object.keys(currentDataSet).map(key => (
+                                <option key={key} value={key}>{currentDataSet[key].title}</option>
+                            ))}
+                        </select>
+                    ) : (
+                         <select
+                            id="field-select"
+                            className="w-full p-4 text-lg bg-slate-800 border-2 border-slate-600 text-white rounded-lg shadow-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition duration-300"
+                            value={selectedField}
+                            onChange={(e) => setSelectedField(e.target.value)}
+                        >
+                           {Object.entries(fullFieldsByCategory).map(([category, fields]) => (
+                               <optgroup label={category} key={category} style={{ backgroundColor: '#1e293b', color: '#cbd5e1' }}>
+                                   {fields.map(fieldKey => {
+                                       if (mindMapData[fieldKey]) {
+                                           return (
+                                               <option key={fieldKey} value={fieldKey} style={{ backgroundColor: '#334155'}}>
+                                                   {mindMapData[fieldKey].title}
+                                               </option>
+                                           )
+                                       }
+                                       return null;
+                                   })}
+                               </optgroup>
+                           ))}
+                        </select>
                     )}
-                </AnimatePresence>
-                </>
-            )}
-        </AnimatePresence>
+                 </div>
+             </div>
+
+             <main className="w-full overflow-x-auto p-4 sm:p-8 pt-12">
+                  <div className="inline-block min-w-full">
+                      {currentMindMap ? (
+                          <MindMapNode
+                              node={currentMindMap}
+                              onToggle={handleToggleNode}
+                              openNodes={openNodes}
+                              path={currentMindMap.title}
+                          />
+                      ) : (
+                          <p className="text-center">Select a field to begin.</p>
+                      )}
+                  </div>
+             </main>
+        </div>
     );
 };
+
 // --- END: INTERACTIVE MIND MAP COMPONENTS ---
 
 const CollegesPage = () => {
@@ -3309,6 +3826,7 @@ const NavigationProvider = ({ children }) => {
     const [selectedCollegeId, setSelectedCollegeId] = useState(null);
     const [selectedMentorId, setSelectedMentorId] = useState(null); // For booking from college page
     const [mentorFlowState, setMentorFlowState] = useState(null); // For mentor registration flow data
+    const [selectedMindMapKey, setSelectedMindMapKey] = useState(null); // NEW for mind map page
 
     const contextValue = {
         page,
@@ -3323,6 +3841,8 @@ const NavigationProvider = ({ children }) => {
         setSelectedMentorId,
         mentorFlowState,
         setMentorFlowState,
+        selectedMindMapKey, 
+        setSelectedMindMapKey
     };
 
     return (
@@ -3424,6 +3944,7 @@ const App = () => {
             case 'pathways': return <PathwaysPage />;
             case 'quiz': return <QuizPage />;
             case 'results': return <ResultsPage />;
+            case 'mindMap': return <MindMapPage />;
             case 'colleges': return <CollegesPage />;
             case 'collegeDetail': return <CollegeDetailPage />;
             case 'mentors': return <MentorsPage />;
@@ -3527,6 +4048,10 @@ export default function NextStepGuideApp() {
         </>
     );
 };
+
+
+
+
 
 
 
