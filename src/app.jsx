@@ -1925,7 +1925,7 @@ const HomePage = () => {
                     <div className="max-w-4xl mx-auto">
                         <Card className="p-8 text-center flex flex-col md:flex-row items-center justify-between gap-6 bg-gray-900/50">
                              <div className="text-center md:text-left">
-                                <h3 className="font-bold text-2xl text-teal-300 flex items-center gap-3 justify-center md:justify-start"><AwardIcon/> Explore Financial Aid</h3>
+                                <h3 className="font-bold text-2xl text-teal-300 flex items-center gap-3 justify-center md:justify-start"><AwardIcon/>Dont Dropout!</h3>
                                 <p className="text-gray-400 mt-2">Browse a curated list of national and regional scholarships to help fund your studies.</p>
                             </div>
                             <Button onClick={() => setPage('scholarships')} className="w-full md:w-auto flex-shrink-0">
