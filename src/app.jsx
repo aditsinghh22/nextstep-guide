@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext, useContext, useRef } from 'react';
 import { motion, useInView, AnimatePresence, useScroll, useTransform, useMotionValue } from 'framer-motion';
 import axios from 'axios'; // Make sure this import is at the top with the others
-
+import SplashScreen from './SplashScreen.jsx';
 // --- API HELPER ---
 // A centralized place to configure axios, especially for our backend URL.
 const api = axios.create({
@@ -1347,7 +1347,7 @@ const LogOutIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" heig
 const ArrowRightIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>;
 const StarIcon = ({ filled = true }) => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={filled ? "text-yellow-400" : "text-gray-300"}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>;
 const SparkleIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>;
-const LogoIcon = () => <svg height="30" viewBox="0 0 41 39" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.5 0L41 19.5L20.5 39L0 19.5L20.5 0Z" fill="currentColor"/></svg>;
+export const LogoIcon = () => <svg height="30" viewBox="0 0 41 39" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.5 0L41 19.5L20.5 39L0 19.5L20.5 0Z" fill="currentColor"/></svg>;
 const ChatBubbleIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>;
 const CheckCircleIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>;
 const ThumbsUpIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z"/></svg>;
@@ -1357,7 +1357,11 @@ const BriefcaseIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" h
 const CalendarIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>;
 const AwardIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 17 17 23 15.79 13.88"></polyline></svg>;
 const BookmarkIcon = ({ filled = false }) => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m19 21-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>;
+// --- START OF NEW CODE TO PASTE ---
 
+
+
+// --- END OF NEW CODE ---
 // --- CUSTOM CURSOR COMPONENT ---
 const CustomCursor = () => {
     const cursorDotRef = useRef(null);
@@ -2859,9 +2863,11 @@ const ResultsPage = () => {
                 </div>
             )}
 
+            {quizType.level === 'class12' && (
             <div className="text-center mb-12">
                 <Button onClick={() => setPage('colleges')}>Explore Colleges for {quizResult}</Button>
             </div>
+            )}
 
             <Card className="p-8 text-center bg-gray-900/50">
                 <h2 className="text-3xl font-bold text-teal-400 mb-4">Go Deeper with AI</h2>
@@ -3172,8 +3178,7 @@ const CollegeCard = ({ college, onSelect }) => {
                 </motion.button>
             )}
             <div className="h-48 bg-gray-950 flex items-center justify-center overflow-hidden">
-                <img src={college.image} alt={college.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
-            </div>
+                <img src={college.photoUrl || college.image || `https://placehold.co/600x400/131314/ffffff?text=${encodeURIComponent(college.name)}`} alt={college.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>            </div>
             <div className="p-6">
                 <h3 className="text-xl font-bold mb-2 text-gray-100">{college.name}</h3>
                 <p className="text-gray-400 mb-2 text-sm">{college.location}</p>
@@ -3233,122 +3238,126 @@ const MentorReviewCard = ({ mentor }) => {
     );
 };
 
+// --- PASTE THIS ENTIRE CORRECTED COMPONENT ---
+
 const CollegeDetailPage = () => {
-    const { selectedCollegeId, setPage } = useNavigation();
-    const { user, updateUserProfile, isAuthenticated } = useAuth(); // FIX: Added this line to get user context
-    const [college, setCollege] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
+    const { selectedCollegeId, setPage } = useNavigation();
+    const { user, updateUserProfile, isAuthenticated } = useAuth();
+    const [college, setCollege] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
-    useEffect(() => {
-        const fetchCollegeDetails = async () => {
-            if (!selectedCollegeId) return;
+    useEffect(() => {
+        const fetchCollegeDetails = async () => {
+            if (!selectedCollegeId) return;
+            setLoading(true);
+            setError('');
+            try {
+                const res = await api.get(`/places/details?placeId=${selectedCollegeId}`);
+                setCollege(res.data);
+            } catch (err) {
+                setError('Failed to fetch college details.');
+                console.error(err);
+            }
+            setLoading(false);
+        };
+        fetchCollegeDetails();
+    }, [selectedCollegeId]);
 
-            setLoading(true);
-            setError('');
-            try {
-                const res = await api.get(`/places/details?placeId=${selectedCollegeId}`);
-                setCollege(res.data);
-            } catch (err) {
-                setError('Failed to fetch college details.');
-                console.error(err);
-            }
-            setLoading(false);
-        };
+    if (loading) {
+        return <div className="flex-grow flex items-center justify-center"><LoadingSpinner /></div>;
+    }
+    if (error) {
+        return <div className="flex-grow flex items-center justify-center text-red-500">{error}</div>;
+    }
+    if (!college) {
+        return <div className="flex-grow flex items-center justify-center">College details could not be loaded.</div>;
+    }
 
-        fetchCollegeDetails();
-    }, [selectedCollegeId]);
+    const isBookmarked = user?.bookmarks?.includes(college.id);
 
-    if (loading) {
-        return <div className="flex-grow flex items-center justify-center"><LoadingSpinner /></div>;
-    }
-    if (error) {
-        return <div className="flex-grow flex items-center justify-center text-red-500">{error}</div>;
-    }
-    if (!college) {
-        return <div className="flex-grow flex items-center justify-center">College details could not be loaded.</div>;
-    }
+    const handleBookmark = () => {
+        if (!isAuthenticated) { 
+            alert('Please log in to bookmark colleges.');
+            return;
+        }
+        const currentBookmarks = user.bookmarks || [];
+        const newBookmarks = isBookmarked
+            ? currentBookmarks.filter(id => id !== college.id)
+            : [...currentBookmarks, college.id];
+        updateUserProfile({ bookmarks: newBookmarks });
+    };
 
-    const isBookmarked = user?.bookmarks?.includes(college.id);
+    return (
+       <div className="flex-grow bg-black">
+            <div className="container mx-auto px-6 py-12">
+                <Button onClick={() => setPage('colleges')} variant="secondary" className="mb-8">
+                    &larr; Back to Search
+                </Button>
 
-    const handleBookmark = () => {
-        if (!isAuthenticated) { 
-            alert('Please log in to bookmark colleges.');
-            return;
-        }
-        const currentBookmarks = user.bookmarks || [];
-        const newBookmarks = isBookmarked
-            ? currentBookmarks.filter(id => id !== college.id)
-            : [...currentBookmarks, college.id];
-        updateUserProfile({ bookmarks: newBookmarks });
-    };
+                {/* This grid now ONLY contains the top two columns */}
+                <div className="grid lg:grid-cols-3 gap-8">
+                    <div className="lg:col-span-2">
+                        <img src={college.photoUrl || college.image || `https://placehold.co/600x400/131314/ffffff?text=${encodeURIComponent(college.name)}`} alt={college.name} className="w-full h-auto object-cover rounded-lg mb-6 shadow-2xl"/>
+                        <div className="flex justify-between items-start">
+                            <div>
+                                <h1 className="text-4xl font-bold text-teal-400 mb-2">{college.name}</h1>
+                                <p className="text-lg text-gray-400 mb-6">{college.location}</p>
+                            </div>
+                            {isAuthenticated && (
+                                <Button onClick={handleBookmark} variant="secondary" className="flex-shrink-0">
+                                    <BookmarkIcon filled={isBookmarked} />
+                                    {isBookmarked ? 'Bookmarked' : 'Bookmark'}
+                                </Button>
+                            )}
+                        </div>
+                        <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+                            <h2 className="text-2xl font-bold text-gray-100 mb-4">Courses & Speciality (Sample)</h2>
+                            <p className="text-gray-300 mb-4"><strong>Speciality:</strong> {college.specialty}</p>
+                            <div className="flex flex-wrap gap-2">
+                                {college.courses.map(course => (
+                                    <span key={course} className="bg-gray-800 text-teal-300 text-sm font-medium px-3 py-1 rounded-full">{course}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="lg:col-span-1">
+                        <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 sticky top-24">
+                            <h3 className="text-2xl font-bold text-gray-100 mb-4">Google Info</h3>
+                            <div className="flex items-center mb-4 text-xl">
+                                <StarIcon/>
+                                <span className="ml-2 text-yellow-400 font-bold">{college.rating} / 5.0</span>
+                            </div>
+                            {college.website && <a href={college.website} target="_blank" rel="noopener noreferrer"><Button className="w-full">Visit Website</Button></a>}
+                        </div>
+                    </div>
+                </div> {/* <-- KEY CHANGE: The grid layout for the top section ends here. */}
 
-    return (
-       <div className="flex-grow bg-black">
-            <div className="container mx-auto px-6 py-12">
-                <Button onClick={() => setPage('colleges')} variant="secondary" className="mb-8">
-                    &larr; Back to Search
-                </Button>
-                <div className="grid lg:grid-cols-3 gap-8">
-                    <div className="lg:col-span-2">
-                        <img src={college.image} alt={college.name} className="w-full h-auto object-cover rounded-lg mb-6 shadow-2xl"/>
-                        <div className="flex justify-between items-start">
-                            <div>
-                                <h1 className="text-4xl font-bold text-teal-400 mb-2">{college.name}</h1>
-                                <p className="text-lg text-gray-400 mb-6">{college.location}</p>
-                            </div>
-                            {isAuthenticated && (
-                                <Button onClick={handleBookmark} variant="secondary" className="flex-shrink-0">
-                                    <BookmarkIcon filled={isBookmarked} />
-                                    {isBookmarked ? 'Bookmarked' : 'Bookmark'}
-                                </Button>
-                            )}
-                        </div>
-                        <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
-                            <h2 className="text-2xl font-bold text-gray-100 mb-4">Courses & Speciality (Sample)</h2>
-                            <p className="text-gray-300 mb-4"><strong>Speciality:</strong> {college.specialty}</p>
-                            <div className="flex flex-wrap gap-2">
-                                {college.courses.map(course => (
-                                    <span key={course} className="bg-gray-800 text-teal-300 text-sm font-medium px-3 py-1 rounded-full">{course}</span>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="lg:col-span-1">
-                        <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 sticky top-24">
-                            <h3 className="text-2xl font-bold text-gray-100 mb-4">Google Info</h3>
-                            <div className="flex items-center mb-4 text-xl">
-                                <StarIcon/>
-                                <span className="ml-2 text-yellow-400 font-bold">{college.rating} / 5.0</span>
-                            </div>
-                            {college.website && <a href={college.website} target="_blank" rel="noopener noreferrer"><Button className="w-full">Visit Website</Button></a>}
-                        </div>
-                    </div>
-                </div>
-                <div className="mt-16">
-                    <h2 className="text-3xl font-bold text-center text-teal-400 mb-8">Reviews from Google</h2>
-                    <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                        {college.reviews && college.reviews.length > 0 ? (
-                            college.reviews.map(review => (
-                                <Card key={review.time} className="p-6">
-                                    <div className="flex items-center gap-4 mb-4">
-                                        <img src={review.profile_photo_url} alt={review.author_name} className="w-12 h-12 rounded-full" />
-                                        <div>
-                                            <h4 className="font-bold text-gray-100">{review.author_name}</h4>
-                                            <p className="text-sm text-gray-400">{review.relative_time_description}</p>
-                                        </div>
-                                    </div>
-                                    <p className="text-gray-300 italic">"{review.text}"</p>
-                                </Card>
-                            ))
-                        ) : (
-                            <p className="text-center col-span-2 text-gray-500">No reviews available for this college on Google.</p>
-                        )}
-                    </div>
-                </div>
-            </div>
-       </div>
-    );
+                {/* This "Reviews" section is now outside and below the grid, so it will be full-width. */}
+                <div className="mt-16">
+                    <h2 className="text-3xl font-bold text-center text-teal-400 mb-8">Reviews from Google</h2>
+                    <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        {college.reviews && college.reviews.length > 0 ? (
+                            college.reviews.map(review => (
+                                <Card key={review.time} className="p-6">
+                                    <div className="flex items-center gap-4 mb-4">
+                                        <img src={review.profile_photo_url} alt={review.author_name} className="w-12 h-12 rounded-full" />
+                                        <div>
+                                            <h4 className="font-bold text-gray-100">{review.author_name}</h4>
+                                            <p className="text-sm text-gray-400">{review.relative_time_description}</p>
+                                        </div>
+                                    </div>
+                                    <p className="text-gray-300 italic">"{review.text}"</p>
+                                </Card>
+                            ))
+                        ) : (
+                            <p className="text-center col-span-2 text-gray-500">No reviews available for this college on Google.</p>
+                        )}
+                    </div>
+      _           </div>
+            </div>
+       </div>
+    );
 };
 
 const MentorsPage = () => {
@@ -3586,7 +3595,30 @@ const AiMentorChatModal = ({ isOpen, onClose }) => {
 const DashboardPage = () => {
     const { user, logout, updateUserProfile } = useAuth();
     const { setPage, setSelectedCollegeId } = useNavigation();
+    const [bookmarkedCollegeData, setBookmarkedCollegeData] = useState([]);
+    const [bookmarksLoading, setBookmarksLoading] = useState(true);
 
+    useEffect(() => {
+        const fetchBookmarkedColleges = async () => {
+            if (!user?.bookmarks || user.bookmarks.length === 0) {
+                setBookmarksLoading(false);
+                return;
+            }
+            try {
+                const collegePromises = user.bookmarks.map(id =>
+                    api.get(`/places/details?placeId=${id}`)
+                );
+                const responses = await Promise.all(collegePromises);
+                const colleges = responses.map(res => res.data);
+                setBookmarkedCollegeData(colleges);
+            } catch (error) {
+                console.error("Failed to fetch bookmarked colleges:", error);
+            } finally {
+                setBookmarksLoading(false);
+            }
+        };
+        fetchBookmarkedColleges();
+    }, [user?.bookmarks]);
     if (!user) {
         return (
             <div className="flex-grow flex items-center justify-center text-center bg-gray-950">
@@ -3621,132 +3653,105 @@ const DashboardPage = () => {
     })).filter(group => group.dates.length > 0);
     const bookmarkedColleges = mockColleges.filter(c => user.bookmarks?.includes(c.id));
 
-    return (
-        <div className="flex-grow bg-black">
-            <div className="container mx-auto px-6 py-12">
-                <h1 className="text-4xl font-bold text-teal-400 mb-8">Welcome, {user.name}!</h1>
-               
-                <div className="grid lg:grid-cols-3 gap-8">
-                    {/* Main content */}
-                    <div className="lg:col-span-2 space-y-8">
-                        {/* Recommendations */}
-                        <DashboardSection title="Your Progress">
-                            <div className="text-center bg-gray-900/50 p-6 rounded-lg">
-                               <p className="text-lg text-gray-300">You are on the <span className="font-bold text-teal-400">{user.level === 'class10' ? 'Class 10' : `Class 12 - ${user.stream}`}</span> pathway.</p>
-                               {user.quizHistory.length > 0 ? (
-                                   <p className="mt-2 text-gray-300">Your latest quiz result suggests a focus on <span className="font-bold text-teal-400">{user.quizHistory[user.quizHistory.length - 1].result}</span>.</p>
-                               ) : (
-                                   <div className="mt-4">
-                                       <p className="text-gray-400">You haven't taken a quiz yet. Find your path now!</p>
-                                       <Button onClick={() => setPage('pathways')} className="mt-2">Take a Quiz</Button>
-                                   </div>
-                               )}
-                            </div>
-                        </DashboardSection>
-                       
-                        {/* Upcoming Sessions */}
-                        <DashboardSection title="Upcoming Mentorship Sessions">
-                            {user.sessions && user.sessions.length > 0 ? (
-                                <ul className="space-y-3">
-                                {user.sessions.map((session, i) => (
-                                    <li key={i} className="bg-gray-800 p-4 rounded-lg flex justify-between items-center border border-gray-700">
-                                        <div>
-                                            <p className="font-semibold text-gray-100">{session.mentorName} ({session.field})</p>
-                                            <p className="text-sm text-gray-400">Booked on {session.date}</p>
-                                        </div>
-                                        <span className={`text-sm px-3 py-1 rounded-full ${session.status === 'Upcoming' ? 'bg-green-900/50 text-green-300' : 'bg-yellow-900/50 text-yellow-300'}`}>{session.status}</span>
-                                    </li>
-                                ))}
-                                </ul>
-                            ) : (
-                                <p className="text-gray-400">No upcoming sessions. <a onClick={() => setPage('mentors')} className="text-teal-500 cursor-pointer hover:underline">Find a mentor</a>.</p>
-                            )}
-                        </DashboardSection>
+    // --- REPLACE YOUR ENTIRE 'return' BLOCK WITH THIS ---
 
-                         {/* Quiz History */}
-                        <DashboardSection title="Quiz History">
-                           {user.quizHistory && user.quizHistory.length > 0 ? (
-                                <ul className="space-y-3">
-                                {user.quizHistory.map((quiz, i) => (
-                                    <li key={i} className="bg-gray-800 p-4 rounded-lg flex justify-between items-center border border-gray-700">
-                                        <div>
-                                            <p className="font-semibold text-gray-100">{quiz.type}</p>
-                                            <p className="text-sm text-gray-400">Taken on {new Date(quiz.date).toLocaleDateString()}</p>
-                                        </div>
-                                        <span className="font-bold text-teal-400">{quiz.result}</span>
-                                    </li>
-                                ))}
-                                </ul>
-                            ) : (
-                                <p className="text-gray-400">You have no quiz history yet.</p>
-                            )}
-                        </DashboardSection>
-                    </div>
+    return (
+        <div className="flex-grow bg-black">
+            <div className="container mx-auto px-6 py-12">
+                <h1 className="text-4xl font-bold text-teal-400 mb-8">Welcome, {user.name}!</h1>
+                
+                <div className="grid lg:grid-cols-3 gap-8">
+                    {/* Main content (The larger left column) */}
+                    <div className="lg:col-span-2 space-y-8">
+                        <DashboardSection title="Your Progress">
+                            <div className="text-center bg-gray-900/50 p-6 rounded-lg">
+                               <p className="text-lg text-gray-300">You are on the <span className="font-bold text-teal-400">{user.level === 'class10' ? 'Class 10' : `Class 12 - ${user.stream}`}</span> pathway.</p>
+                               {user.quizHistory.length > 0 ? (
+                                   <p className="mt-2 text-gray-300">Your latest quiz result suggests a focus on <span className="font-bold text-teal-400">{user.quizHistory[user.quizHistory.length - 1].result}</span>.</p>
+                               ) : (
+                                   <div className="mt-4">
+                                       <p className="text-gray-400">You haven't taken a quiz yet. Find your path now!</p>
+                                       <Button onClick={() => setPage('pathways')} className="mt-2">Take a Quiz</Button>
+                                   </div>
+                               )}
+                            </div>
+                        </DashboardSection>
+                        
+                        <DashboardSection title="Upcoming Mentorship Sessions">
+                            {user.sessions && user.sessions.length > 0 ? (
+                                <ul className="space-y-3">
+                                {user.sessions.map((session, i) => (
+                                    <li key={i} className="bg-gray-800 p-4 rounded-lg flex justify-between items-center border border-gray-700">
+                                        <div>
+                                            <p className="font-semibold text-gray-100">{session.mentorName} ({session.field})</p>
+                                            <p className="text-sm text-gray-400">Booked on {session.date}</p>
+                                        </div>
+                                        <span className={`text-sm px-3 py-1 rounded-full ${session.status === 'Upcoming' ? 'bg-green-900/50 text-green-300' : 'bg-yellow-900/50 text-yellow-300'}`}>{session.status}</span>
+                                    </li>
+                                ))}
+                                </ul>
+                            ) : (
+                                <p className="text-gray-400">No upcoming sessions. <a onClick={() => setPage('mentors')} className="text-teal-500 cursor-pointer hover:underline">Find a mentor</a>.</p>
+                            )}
+                        </DashboardSection>
 
-                    {/* Sidebar */}
-                    <div className="space-y-8">
-                        <DashboardSection title="Profile">
-                            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-gray-300">
-                                <p><strong>Name:</strong> {user.name}</p>
-                                <p><strong>Email:</strong> {user.email}</p>
-                                <button className="text-sm text-teal-500 hover:underline mt-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 rounded px-1">Edit Profile</button>
-                            </div>
-                        </DashboardSection>
-                       
-                         {/* NEW: Upcoming Dates Timeline */}
-                        <DashboardSection title="Important Dates">
-                             {allRelevantDates.length > 0 ? (
-                                <div className="space-y-6 max-h-[400px] overflow-y-auto pr-2">
-                                    {allRelevantDates.map(group => (
-                                        <div key={group.interest}>
-                                            <h3 className="text-lg font-semibold text-gray-200 mb-3 border-b border-gray-700 pb-2">
-                                                For your interest in <span className="text-teal-400">{group.interest}</span>
-                                            </h3>
-                                            <div className="space-y-4">
-                                                {group.dates.map((event, index) => (
-                                                    <div key={index} className="flex gap-4">
-                                                        <div className="flex flex-col items-center">
-                                                            <div className="w-10 h-10 rounded-full bg-teal-600/20 border border-teal-800 flex-shrink-0 flex items-center justify-center font-bold text-teal-300 text-xs text-center leading-tight">
-                                                                {event.date.split(',')[0]}
-                                                            </div>
-                                                            {index < group.dates.length - 1 && <div className="w-px h-full bg-gray-700"></div>}
-                                                        </div>
-                                                        <div>
-                                                            <p className="font-semibold text-gray-200">{event.title}</p>
-                                                            <p className="text-sm text-gray-400">{event.description}</p>
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            ) : (
-                                <p className="text-gray-400">Take a quiz to see relevant exam dates here.</p>
-                            )}
-                        </DashboardSection>
+                        <DashboardSection title="Quiz History">
+                           {user.quizHistory && user.quizHistory.length > 0 ? (
+                                <ul className="space-y-3">
+                                {user.quizHistory.map((quiz, i) => (
+                                    <li key={i} className="bg-gray-800 p-4 rounded-lg flex justify-between items-center border border-gray-700">
+                                        <div>
+                                            <p className="font-semibold text-gray-100">{quiz.type}</p>
+                                            <p className="text-sm text-gray-400">Taken on {new Date(quiz.date).toLocaleDateString()}</p>
+                                        </div>
+                                        <span className="font-bold text-teal-400">{quiz.result}</span>
+                                    </li>
+                                ))}
+                                </ul>
+                            ) : (
+                                <p className="text-gray-400">You have no quiz history yet.</p>
+                            )}
+                        </DashboardSection>
+                    </div>
 
-                        {/* Bookmarked Colleges - Feature to be implemented */}
-                        <DashboardSection title="My Bookmarked Colleges">
-                           {bookmarkedColleges.length > 0 ? (
-                                <div className="space-y-3">
-                                    {bookmarkedColleges.map(college => (
-                                        <div key={college.id} onClick={() => { setSelectedCollegeId(college.id); setPage('collegeDetail'); }} className="bg-gray-800 p-3 rounded-lg flex items-center justify-between border border-gray-700 cursor-pointer hover:bg-gray-700 transition-colors">
-                                            <p className="font-semibold text-gray-100">{college.name}</p>
-                                            <ArrowRightIcon className="w-4 h-4 text-gray-500" />
-                                        </div>
-                                    ))}
-                                </div>
-                            ) : (
-                                <p className="text-gray-400">You haven't bookmarked any colleges yet. <a onClick={() => setPage('colleges')} className="text-teal-500 cursor-pointer hover:underline">Explore colleges now</a>.</p>
-                            )}
-                        </DashboardSection>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+                    {/* Sidebar (The smaller right column) */}
+                    <div className="space-y-8">
+                        <DashboardSection title="Profile">
+                            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-gray-300">
+                                <p><strong>Name:</strong> {user.name}</p>
+                                <p><strong>Email:</strong> {user.email}</p>
+                                <button className="text-sm text-teal-500 hover:underline mt-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 rounded px-1">Edit Profile</button>
+                            </div>
+                        </DashboardSection>
+                        
+                        <DashboardSection title="Important Dates">
+                            {/* ... This section for dates is unchanged ... */}
+                        </DashboardSection>
+
+                        {/* CORRECTLY PLACED BOOKMARKS SECTION */}
+                        <DashboardSection title="My Bookmarked Colleges">
+                            {bookmarksLoading ? (
+                                <LoadingSpinner size="sm" />
+                            ) : bookmarkedCollegeData.length > 0 ? (
+                                <div className="space-y-3">
+                                    {bookmarkedCollegeData.map(college => (
+                                        <div key={college.id} onClick={() => { setSelectedCollegeId(college.id); setPage('collegeDetail'); }} className="bg-gray-800 p-3 rounded-lg flex items-center justify-between border border-gray-700 cursor-pointer hover:bg-gray-700 transition-colors">
+                                            <p className="font-semibold text-gray-100">{college.name}</p>
+                                            <ArrowRightIcon className="w-4 h-4 text-gray-500" />
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <p className="text-gray-400">You haven't bookmarked any colleges yet. <a onClick={() => setPage('colleges')} className="text-teal-500 cursor-pointer hover:underline">Explore colleges now</a>.</p>
+                            )}
+                        </DashboardSection>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 };
+
 
 const DashboardSection = ({ title, children }) => (
     <Card className="p-6">
@@ -3889,6 +3894,7 @@ const NavigationProvider = ({ children }) => {
 const useNavigation = () => useContext(NavigationContext);
 
 const App = () => {
+    const [isAnimating, setIsAnimating] = useState(true);
     const { page } = useNavigation();
     const { loading, isAuthenticated } = useAuth();
    
@@ -3992,46 +3998,59 @@ const App = () => {
         }
     };
 
-    return (
-        <div className="flex flex-col min-h-screen bg-gray-950 text-gray-300 font-sans custom-cursor-area">
-            <Header />
-            <main className="flex-grow">
-                {renderPage()}
-            </main>
-            <Footer />
-            <Modal isOpen={isBookingModalOpen} onClose={closeBookingModal} title="Book a Session">
-                {selectedMentor && (
-                    <div>
-                        <p className="text-lg mb-4 text-gray-300">You are booking a one-on-one mentorship session with:</p>
-                        <div className="flex items-center gap-4 bg-gray-800 p-4 rounded-lg mb-6">
-                            <img src={selectedMentor.image} alt={selectedMentor.name} className="w-16 h-16 rounded-full" />
-                            <div>
-                                <h4 className="font-bold text-xl text-gray-100">{selectedMentor.name}</h4>
-                                <p className="text-gray-400">{selectedMentor.field} @ {selectedMentor.college}</p>
+    // --- REPLACE the original 'return' block of the App component with THIS ---
+return (
+    <AnimatePresence mode="wait">
+        {isAnimating ? (
+            <SplashScreen key="splash" onAnimationComplete={() => setIsAnimating(false)} />
+        ) : (
+            <motion.div
+                key="main-app"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { duration: 0.5 } }}
+                className="flex flex-col min-h-screen bg-gray-950 text-gray-300 font-sans custom-cursor-area"
+            >
+                <Header />
+                <main className="flex-grow">
+                    {renderPage()}
+                </main>
+                <Footer />
+                <Modal isOpen={isBookingModalOpen} onClose={closeBookingModal} title="Book a Session">
+                    {selectedMentor && (
+                        <div>
+                            <p className="text-lg mb-4 text-gray-300">You are booking a one-on-one mentorship session with:</p>
+                            <div className="flex items-center gap-4 bg-gray-800 p-4 rounded-lg mb-6">
+                                <img src={selectedMentor.image} alt={selectedMentor.name} className="w-16 h-16 rounded-full" />
+                                <div>
+                                    <h4 className="font-bold text-xl text-gray-100">{selectedMentor.name}</h4>
+                                    <p className="text-gray-400">{selectedMentor.field} @ {selectedMentor.college}</p>
+                                </div>
                             </div>
-                        </div>
-                        {mentorReview && (
-                            <div className="text-gray-300 mb-6 bg-gray-900/50 p-4 rounded-lg border border-gray-700">
-                               <p className="font-semibold text-gray-200 mb-2">Mentor's Review of {selectedMentor.college}:</p>
-                               <div className={`flex items-center mb-2 gap-2 font-bold ${mentorReview.reviewType === 'positive' ? 'text-green-400' : 'text-red-400'}`}>
-                                    {mentorReview.reviewType === 'positive' ? <ThumbsUpIcon /> : <ThumbsDownIcon />}
-                                    <h5>{mentorReview.reviewTitle}</h5>
-                               </div>
-                               <p className="italic text-gray-400">"{mentorReview.reviewText}"</p>
+                            {mentorReview && (
+                                <div className="text-gray-300 mb-6 bg-gray-900/50 p-4 rounded-lg border border-gray-700">
+                                   <p className="font-semibold text-gray-200 mb-2">Mentor's Review of {selectedMentor.college}:</p>
+                                   <div className={`flex items-center mb-2 gap-2 font-bold ${mentorReview.reviewType === 'positive' ? 'text-green-400' : 'text-red-400'}`}>
+                                       {mentorReview.reviewType === 'positive' ? <ThumbsUpIcon /> : <ThumbsDownIcon />}
+                                       <h5>{mentorReview.reviewTitle}</h5>
+                                   </div>
+                                   <p className="italic text-gray-400">"{mentorReview.reviewText}"</p>
+                                </div>
+                            )}
+                            <div className="text-gray-300 mb-6 bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                               <p className="font-semibold text-gray-200 mb-2">Mentor's Availability:</p>
+                               <p><strong>Days:</strong> {selectedMentor.availability.days.join(', ')}</p>
+                               <p><strong>Time:</strong> {selectedMentor.availability.time}</p>
                             </div>
-                        )}
-                        <div className="text-gray-300 mb-6 bg-gray-800/50 p-4 rounded-lg border border-gray-700">
-                           <p className="font-semibold text-gray-200 mb-2">Mentor's Availability:</p>
-                           <p><strong>Days:</strong> {selectedMentor.availability.days.join(', ')}</p>
-                           <p><strong>Time:</strong> {selectedMentor.availability.time}</p>
+                            <p className="text-gray-400 text-sm mb-6">You will be able to choose a specific time slot after the mentor confirms your request.</p>
+                            <Button onClick={handleBooking} className="w-full">Send Session Request</Button>
                         </div>
-                        <p className="text-gray-400 text-sm mb-6">You will be able to choose a specific time slot after the mentor confirms your request.</p>
-                        <Button onClick={handleBooking} className="w-full">Send Session Request</Button>
-                    </div>
-                )}
-            </Modal>
-        </div>
-    );
+                    )}
+                </Modal>
+            </motion.div>
+        )}
+    </AnimatePresence>
+);
+// --- END OF REPLACEMENT ---
 }
 
 // The root component that wraps the app in providers
