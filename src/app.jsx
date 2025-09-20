@@ -966,9 +966,9 @@ const mockColleges = [
 ];
 
 const mockCollegeMentors = {
-  1: [ // IIT Delhi
+  1: [ // Corresponds to IIT Delhi (id: 1)
     {
-      id: 1, // Link to mockMentors
+      id: 1, // Link to a bookable profile in mockMentors
       name: "Akash Singh",
       status: "Alumnus, Class of 2021",
       branch: "Mechanical Engineering",
@@ -980,7 +980,7 @@ const mockCollegeMentors = {
       image: "https://i.pravatar.cc/150?u=akash"
     },
     {
-      id: 5, // Example of a review without a bookable mentor profile
+      id: 5, 
       name: "Priya Sharma",
       status: "4th Year Student",
       branch: "Textile Technology",
@@ -992,9 +992,9 @@ const mockCollegeMentors = {
       image: "https://i.pravatar.cc/150?u=priyas"
     }
   ],
-  2: [ // AIIMS Delhi
+  2: [ // Corresponds to AIIMS Delhi (id: 2)
     {
-      id: 2, // Link to mockMentors
+      id: 2,
       name: "Dr. Sameer Joshi",
       status: "Alumnus, Class of 2018",
       branch: "MBBS",
@@ -1018,7 +1018,7 @@ const mockCollegeMentors = {
       image: "https://i.pravatar.cc/150?u=anjali"
     }
   ],
-  3: [ // St. Stephen's College
+  3: [ // Corresponds to St. Stephen's College (id: 3)
     {
         id: null,
         name: "Arjun Khanna",
@@ -1044,9 +1044,9 @@ const mockCollegeMentors = {
         image: "https://i.pravatar.cc/150?u=meera"
     }
   ],
-    4: [ // IIM Ahmedabad
+    4: [ // Corresponds to IIM Ahmedabad (id: 4)
     {
-      id: 3, // Link to mockMentors
+      id: 3,
       name: "Nikhil Batra",
       status: "Alumnus, Class of 2019",
       branch: "PGP in Management",
@@ -1070,9 +1070,9 @@ const mockCollegeMentors = {
       image: "https://i.pravatar.cc/150?u=riya"
     }
   ],
-  5: [ // NLSIU Bangalore
+  5: [ // Corresponds to NLSIU Bangalore (id: 5)
     {
-        id: 4, // Link to mockMentors
+        id: 4,
         name: "Aditya Verma",
         status: "5th Year Student",
         branch: "B.A. LL.B. (Hons.)",
@@ -1096,7 +1096,7 @@ const mockCollegeMentors = {
         image: "https://i.pravatar.cc/150?u=sanjana"
     }
   ],
-  6: [ // Christ University
+  6: [ // Corresponds to Christ University (id: 6)
     {
         id: null,
         name: "David Mathews",
@@ -3239,7 +3239,6 @@ const CollegeDetailPage = () => {
     const [college, setCollege] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-
     useEffect(() => {
         const fetchCollegeDetails = async () => {
             if (!selectedCollegeId) return;
@@ -3268,6 +3267,63 @@ const CollegeDetailPage = () => {
     if (!college) {
         return <div className="flex-grow flex items-center justify-center">College details could not be loaded.</div>;
     }
+
+    // --- START: DYNAMIC MENTOR GENERATION LOGIC ---
+
+    // Helper function to generate generic, placeholder mentors for any college
+    const generateGenericMentors = (collegeName) => {
+        return [
+            {
+                id: null, // No ID, so no "Book Session" button will appear
+                name: "Rohan Verma",
+                status: "Alumnus",
+                branch: "Computer Science",
+                qualifications: "Working as a Software Engineer at a top tech firm.",
+                achievements: "Was the president of the coding club during my time.",
+                reviewType: 'positive',
+                reviewTitle: "A Place of Growth and Opportunity",
+                reviewText: `${collegeName} provided a fantastic learning environment. The professors are knowledgeable, and the campus life is vibrant. I made lifelong friends and got great career opportunities from here.`,
+                image: "https://i.pravatar.cc/150?u=generic_rohan"
+            },
+            {
+                id: null,
+                name: "Priya Singh",
+                status: "4th Year Student",
+                branch: "Electronics Engineering",
+                qualifications: "Currently interning at a leading tech company.",
+                achievements: "Active member of the college's entrepreneurship cell.",
+                reviewType: 'negative',
+                reviewTitle: "Has Its Pros and Cons",
+                reviewText: `While the faculty at ${collegeName} is decent, the administration can be slow and the infrastructure needs an update. It's a good college, but be prepared to be proactive about finding your own opportunities.`,
+                image: "https://i.pravatar.cc/150?u=generic_priya"
+            }
+        ];
+    };
+
+    // Helper to clean up names for matching
+    const normalizeName = (name) => {
+        if (!name) return '';
+        return name.toLowerCase().replace(/[,.]/g, '').replace(/\s+/g, ' ').trim();
+    };
+
+    let mentors = [];
+    const normalizedApiName = normalizeName(college.name);
+    
+    // First, try to find a match in our curated mock data
+    const mockCollegeEntry = mockColleges.find(c => {
+        const normalizedMockName = normalizeName(c.name);
+        return normalizedApiName.includes(normalizedMockName) || normalizedMockName.includes(normalizedApiName);
+    });
+
+    if (mockCollegeEntry) {
+        // If we find a specific entry, use its curated mentors
+        mentors = mockCollegeMentors[mockCollegeEntry.id];
+    } else {
+        // If it's a new college from the API, generate generic mentors on the fly
+        mentors = generateGenericMentors(college.name);
+    }
+
+    // --- END: DYNAMIC MENTOR GENERATION LOGIC ---
 
     const isBookmarked = user?.bookmarks?.includes(college.id);
 
@@ -3346,6 +3402,17 @@ const CollegeDetailPage = () => {
                         )}
                     </div>
                 </div>
+                {/* NEW: Mentor Reviews Section */}
+          <div className="mt-16">
+            <h2 className="text-3xl font-bold text-center text-teal-400 mb-8">Mentor Reviews from Our Community</h2>
+            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {mentors && mentors.length > 0 ? (
+                mentors.map(mentor => <MentorReviewCard key={mentor.name} mentor={mentor}/>)
+              ) : (
+                <p className="text-center col-span-2 text-gray-500">No mentor reviews available for this college yet.</p>
+              )}
+            </div>
+          </div>
             </div>
        </div>
     );
@@ -4039,6 +4106,14 @@ export default function NextStepGuideApp() {
     return (
         <>
             <style>{`
+                /* Force hide scrollbar on all elements */
+*::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+* {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
                 :root {
                     --background: #020617;
                 }
