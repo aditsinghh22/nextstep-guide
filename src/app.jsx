@@ -3255,6 +3255,8 @@ const MentorReviewCard = ({ mentor }) => {
 
 // --- In src/app.jsx, replace your existing CollegeDetailPage component ---
 
+// PASTE THIS ENTIRE BLOCK TO REPLACE THE OLD CollegeDetailPage
+
 const CollegeDetailPage = () => {
     const { selectedCollegeId, setPage } = useNavigation();
     const { user, updateUserProfile, isAuthenticated } = useAuth();
@@ -3291,123 +3293,32 @@ const CollegeDetailPage = () => {
 
     const isBookmarked = user?.bookmarks?.includes(college.id);
 
-    const handleBookmark = () => {
-        if (!isAuthenticated) { 
-            alert('Please log in to bookmark colleges.');
-            return;
-        }
-        const currentBookmarks = user.bookmarks || [];
-        const newBookmarks = isBookmarked
-            ? currentBookmarks.filter(id => id !== college.id)
-            : [...currentBookmarks, college.id];
-        updateUserProfile({ bookmarks: newBookmarks });
-    };
-
-    // --- START: DYNAMIC MENTOR GENERATION LOGIC ---
-
-    // Helper function to generate generic, placeholder mentors for any college
-    const generateGenericMentors = (collegeName) => {
-        return [
-            {
-                id: null, // No ID, so no "Book Session" button will appear
-                name: "Rohan Verma",
-                status: "Alumnus",
-                branch: "Computer Science",
-                qualifications: "Working as a Software Engineer at a top tech firm.",
-                achievements: "Was the president of the coding club during my time.",
-                reviewType: 'positive',
-                reviewTitle: "A Place of Growth and Opportunity",
-                reviewText: `${collegeName} provided a fantastic learning environment. The professors are knowledgeable, and the campus life is vibrant. I made lifelong friends and got great career opportunities from here.`,
-                image: "https://i.pravatar.cc/150?u=generic_rohan"
-            },
-            {
-                id: null,
-                name: "Priya Singh",
-                status: "4th Year Student",
-                branch: "Electronics Engineering",
-                qualifications: "Currently interning at a leading tech company.",
-                achievements: "Active member of the college's entrepreneurship cell.",
-                reviewType: 'negative',
-                reviewTitle: "Has Its Pros and Cons",
-                reviewText: `While the faculty at ${collegeName} is decent, the administration can be slow and the infrastructure needs an update. It's a good college, but be prepared to be proactive about finding your own opportunities.`,
-                image: "https://i.pravatar.cc/150?u=generic_priya"
-            }
-        ];
+    const handleBookmark = () => {
+        if (!isAuthenticated) {
+            alert('Please log in to bookmark colleges.');
+            return;
+        }
+        const currentBookmarks = user.bookmarks || [];
+        const newBookmarks = isBookmarked
+            ? currentBookmarks.filter(id => id !== college.id)
+            : [...currentBookmarks, college.id];
+        updateUserProfile({ bookmarks: newBookmarks });
     };
 
-    // Helper to clean up names for matching
-    const normalizeName = (name) => {
-        if (!name) return '';
-        return name.toLowerCase().replace(/[,.]/g, '').replace(/\s+/g, ' ').trim();
-    };
-
-    let mentors = [];
-    const normalizedApiName = normalizeName(college.name);
-    
-    // First, try to find a match in our curated mock data
-    const mockCollegeEntry = mockColleges.find(c => {
-        const normalizedMockName = normalizeName(c.name);
-        return normalizedApiName.includes(normalizedMockName) || normalizedMockName.includes(normalizedApiName);
-    });
-
-    if (mockCollegeEntry) {
-        // If we find a specific entry, use its curated mentors
-        mentors = mockCollegeMentors[mockCollegeEntry.id];
-    } else {
-        // If it's a new college from the API, generate generic mentors on the fly
-        mentors = generateGenericMentors(college.name);
-    }
-
-    // --- END: DYNAMIC MENTOR GENERATION LOGIC ---
-
-
-                {/* This grid now ONLY contains the top two columns */}
-                <div className="grid lg:grid-cols-3 gap-8">
-                    <div className="lg:col-span-2">
-                        <img src={college.photoUrl || college.image || `https://placehold.co/600x400/131314/ffffff?text=${encodeURIComponent(college.name)}`} alt={college.name} className="w-full h-auto object-cover rounded-lg mb-6 shadow-2xl"/>
-                        <div className="flex justify-between items-start">
-                            <div>
-                                <h1 className="text-4xl font-bold text-teal-400 mb-2">{college.name}</h1>
-                                <p className="text-lg text-gray-400 mb-6">{college.location}</p>
-                            </div>
-                            {isAuthenticated && (
-                                <Button onClick={handleBookmark} variant="secondary" className="flex-shrink-0">
-                                    <BookmarkIcon filled={isBookmarked} />
-                                    {isBookmarked ? 'Bookmarked' : 'Bookmark'}
-                                </Button>
-                            )}
-                        </div>
-                        <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
-                            <h2 className="text-2xl font-bold text-gray-100 mb-4">Courses & Speciality (Sample)</h2>
-                            <p className="text-gray-300 mb-4"><strong>Speciality:</strong> {college.specialty}</p>
-                            <div className="flex flex-wrap gap-2">
-                                {college.courses.map(course => (
-                                    <span key={course} className="bg-gray-800 text-teal-300 text-sm font-medium px-3 py-1 rounded-full">{course}</span>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="lg:col-span-1">
-                        <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 sticky top-24">
-                            <h3 className="text-2xl font-bold text-gray-100 mb-4">Google Info</h3>
-                            <div className="flex items-center mb-4 text-xl">
-                                <StarIcon/>
-                                <span className="ml-2 text-yellow-400 font-bold">{college.rating} / 5.0</span>
-                            </div>
-                            {college.website && <a href={college.website} target="_blank" rel="noopener noreferrer"><Button className="w-full">Visit Website</Button></a>}
-                        </div>
-                    </div>
-                </div> 
+    const placeholderImage = `https://placehold.co/600x400/131314/ffffff?text=${encodeURIComponent(college.name)}`;
 
     return (
-       <div className="flex-grow bg-black">
+        <div className="flex-grow bg-black">
             <div className="container mx-auto px-6 py-12">
                 <Button onClick={() => setPage('colleges')} variant="secondary" className="mb-8">
                     &larr; Back to Search
                 </Button>
+
                 <div className="grid lg:grid-cols-3 gap-8">
                     <div className="lg:col-span-2">
-                        <img src={college.image} alt={college.name} className="w-full h-auto object-cover rounded-lg mb-6 shadow-2xl"/>
+                        {/* THIS IS THE CORRECTED IMAGE LINE */}
+                        <img src={college.photoUrl || placeholderImage} alt={college.name} className="w-full h-auto object-cover rounded-lg mb-6 shadow-2xl"/>
+                        
                         <div className="flex justify-between items-start">
                             <div>
                                 <h1 className="text-4xl font-bold text-teal-400 mb-2">{college.name}</h1>
@@ -3420,61 +3331,20 @@ const CollegeDetailPage = () => {
                                 </Button>
                             )}
                         </div>
-                        <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
-                            <h2 className="text-2xl font-bold text-gray-100 mb-4">Courses & Speciality (Sample)</h2>
-                            <p className="text-gray-300 mb-4"><strong>Speciality:</strong> {college.specialty}</p>
-                            <div className="flex flex-wrap gap-2">
-                                {college.courses.map(course => (
-                                    <span key={course} className="bg-gray-800 text-teal-300 text-sm font-medium px-3 py-1 rounded-full">{course}</span>
-                                ))}
-                            </div>
-                        </div>
                     </div>
                     <div className="lg:col-span-1">
-                        <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 sticky top-24">
+                         <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 sticky top-24">
                             <h3 className="text-2xl font-bold text-gray-100 mb-4">Google Info</h3>
                             <div className="flex items-center mb-4 text-xl">
                                 <StarIcon/>
-                                <span className="ml-2 text-yellow-400 font-bold">{college.rating} / 5.0</span>
+                                <span className="ml-2 text-yellow-400 font-bold">{college.rating || 'N/A'} / 5.0</span>
                             </div>
                             {college.website && <a href={college.website} target="_blank" rel="noopener noreferrer"><Button className="w-full">Visit Website</Button></a>}
                         </div>
                     </div>
                 </div>
-                <div className="mt-16">
-                    <h2 className="text-3xl font-bold text-center text-teal-400 mb-8">Reviews from Google</h2>
-                    <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                        {college.reviews && college.reviews.length > 0 ? (
-                            college.reviews.map(review => (
-                                <Card key={review.time} className="p-6">
-                                    <div className="flex items-center gap-4 mb-4">
-                                        <img src={review.profile_photo_url} alt={review.author_name} className="w-12 h-12 rounded-full" />
-                                        <div>
-                                            <h4 className="font-bold text-gray-100">{review.author_name}</h4>
-                                            <p className="text-sm text-gray-400">{review.relative_time_description}</p>
-                                        </div>
-                                    </div>
-                                    <p className="text-gray-300 italic">"{review.text}"</p>
-                                </Card>
-                            ))
-                        ) : (
-                            <p className="text-center col-span-2 text-gray-500">No reviews available for this college on Google.</p>
-                        )}
-                    </div>
-                </div>
-                {/* NEW: Mentor Reviews Section */}
-          <div className="mt-16">
-            <h2 className="text-3xl font-bold text-center text-teal-400 mb-8">Mentor Reviews from Our Community</h2>
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {mentors && mentors.length > 0 ? (
-                mentors.map(mentor => <MentorReviewCard key={mentor.name} mentor={mentor}/>)
-              ) : (
-                <p className="text-center col-span-2 text-gray-500">No mentor reviews available for this college yet.</p>
-              )}
             </div>
-          </div>
-            </div>
-       </div>
+        </div>
     );
 };
 
