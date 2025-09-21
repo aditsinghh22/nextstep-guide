@@ -32,43 +32,39 @@ const createTokenPayload = (user) => {
 // File: backend/routes/auth.js
 
 // === SIGNUP ROUTE ===
+// File: backend/routes/auth.js
+
+// REPLACE your '/register' route with this test version
 router.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
     try {
         let user = await User.findOne({ email });
-        if (user && user.isVerified) {
-            return res.status(400).json({ msg: 'User with this email already exists' });
+        if (user) {
+            return res.status(400).json({ msg: 'For this test, please use a brand new email address.' });
         }
         
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-        const otp = Math.floor(100000 + Math.random() * 900000).toString();
-        const otpExpires = Date.now() + 10 * 60 * 1000; // 10 minutes
+        
+        user = new User({ name, email, password: hashedPassword });
 
-        if (user) { // If user exists but is not verified, update them
-            user.password = hashedPassword;
-            user.otp = otp;
-            user.otpExpires = otpExpires;
-            await user.save();
-        } else { // Otherwise, create a new user
-            user = new User({ name, email, password: hashedPassword, otp, otpExpires });
-            await user.save();
-        }
+        // --- TEMPORARY TEST: Auto-verify user and log them in immediately ---
+        console.log('--- SIGNUP TEST ACTIVE: Bypassing email sending. ---');
+        user.isVerified = true; 
+        await user.save();
 
-        // The line below is likely where the error is happening.
-        await transporter.sendMail({
-            from: `"NextStepGuide" <${process.env.EMAIL_USER}>`,
-            to: email,
-            subject: 'Your Verification Code',
-            html: `<h3>Welcome to NextStepGuide!</h3><p>Your OTP is: <h1>${otp}</h1></p><p>It will expire in 10 minutes.</p>`,
+        const payload = createTokenPayload(user);
+        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5h' }, (err, token) => {
+            if (err) throw err;
+            const userToReturn = { ...user.toObject() };
+            delete userToReturn.password;
+            res.status(200).json({ token, user: userToReturn });
         });
-
-        res.status(200).json({ msg: 'OTP sent to your email. Please verify.' });
+        // --- END OF TEST ---
 
     } catch (err) {
-        // IMPROVED ERROR LOGGING: This will show the exact email error in your terminal.
-        console.error("ERROR IN REGISTER ROUTE:", err); 
-        res.status(500).send('Server Error: Could not send verification email.');
+        console.error("ERROR IN REGISTER ROUTE:", err);
+        res.status(500).send('Server Error');
     }
 });
 
