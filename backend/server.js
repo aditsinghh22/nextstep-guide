@@ -1,30 +1,53 @@
+// --- PASTE THIS ENTIRE CODE INTO backend/server.js ---
+
 const express = require('express');
 const dotenv = require('dotenv');
-const cors = require('cors'); // You'll need this to allow your React app to talk to the backend
-const connectDB = require('./config/db');
+const cors = require('cors');
 
 // Load env vars
 dotenv.config();
+
+// Require your other files
+const connectDB = require('./config/db');
 
 // Connect to database
 connectDB();
 
 const app = express();
 
-// Body parser
+// --- CORS CONFIGURATION ---
+// This is the critical fix. It tells your backend to accept requests
+// from your local machine and your future live frontend.
+const whitelist = [
+    'http://localhost:3000', // Your local React dev server
+    'http://localhost:5173', // Another common port for Vite/React
+    'https://nextstep-guide.netlify.app' // **IMPORTANT: Replace this later with your live frontend's URL**
+];
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (!origin || whitelist.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+};
+app.use(cors(corsOptions));
+// --- END OF CORS CONFIGURATION ---
+
+
+// Body parser middleware
 app.use(express.json());
 
-// Enable CORS
-app.use(cors()); // This allows requests from your React app (which runs on a different port)
+// --- Mount all routers here ---
+app.get('/', (req, res) => res.send('API is Running...'));
 
-// Mount routers
 app.use('/api/auth', require('./routes/auth'));
-app.use('/api/colleges', require('./routes/colleges'));
-app.use('/api/mentors', require('./routes/mentors'));
-app.use('/api/quizzes', require('./routes/quizzes'));
-app.use('/api/places', require('./routes/places')); // <-- THIS IS THE NEW LINE
+app.use('/api/user', require('./routes/user'));
+app.use('/api/places', require('./routes/places'));
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-

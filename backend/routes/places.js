@@ -1,95 +1,89 @@
+// --- PASTE THIS ENTIRE CODE INTO backend/routes/places.js ---
+
 const express = require('express');
 const router = express.Router();
-const { Client } = require('@googlemaps/google-maps-services-js');
+const axios = require('axios');
 
-const client = new Client({});
+// Helper function to build the photo URL safely
+const getPhotoUrl = (photoReference) => {
+    if (!photoReference) {
+        return null;
+    }
+    return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=${photoReference}&key=${process.env.GOOGLE_PLACES_API_KEY}`;
+};
 
-// @route   GET /api/places/colleges
-// @desc    Search for colleges in a location
-// @access  Public
+// ROUTE 1: For searching colleges in a location
 router.get('/colleges', async (req, res) => {
     const { location } = req.query;
     if (!location) {
         return res.status(400).json({ msg: 'Location query is required' });
     }
-    const apiKey = process.env.GOOGLE_PLACES_API_KEY;
-    if (!apiKey) {
-        return res.status(500).json({ msg: 'Google API key not configured' });
-    }
+
+    // This line is the critical fix. Make sure it's present.
+    const fields = 'place_id,name,photos,formatted_address,rating,user_ratings_total';
+    const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=colleges in ${location}&fields=${fields}&key=${process.env.GOOGLE_PLACES_API_KEY}`;
 
     try {
-        const response = await client.textSearch({
-            params: {
-                query: `colleges in ${location}`,
-                key: apiKey,
-            },
+        const response = await axios.get(url);
+        
+        const formattedResults = response.data.results.map(place => {
+            const photoReference = (place.photos && place.photos.length > 0) 
+                ? place.photos[0].photo_reference 
+                : null;
+
+            return {
+                id: place.place_id,
+                name: place.name,
+                address: place.formatted_address,
+                rating: place.rating,
+                totalRatings: place.user_ratings_total,
+                photoUrl: getPhotoUrl(photoReference)
+            };
         });
 
-        const formattedColleges = response.data.results.map(place => ({
-            id: place.place_id,
-            name: place.name,
-            address: place.formatted_address,
-            rating: place.rating,
-            totalRatings: place.user_ratings_total,
-            photoUrl: place.photos && place.photos.length > 0
-                ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference=${place.photos[0].photo_reference}&key=${apiKey}`
-                : `https://placehold.co/600x400/131314/ffffff?text=${encodeURIComponent(place.name)}`
-        }));
-        res.json(formattedColleges);
-
-    } catch (err) {
-        console.error('Google Places Text Search Error:', err.message);
-        res.status(500).send('Server Error fetching from Google');
+        res.json(formattedResults);
+    } catch (error) {
+        console.error("Error fetching colleges from Google:", error.message);
+        res.status(500).send('Server Error while fetching from Google API');
     }
 });
 
-// --- NEW ROUTE ADDED BELOW ---
 
-// @route   GET /api/places/details
-// @desc    Get detailed information for a specific place using its Place ID
-// @access  Public
+// ROUTE 2: For getting details of a single college
 router.get('/details', async (req, res) => {
     const { placeId } = req.query;
     if (!placeId) {
-        return res.status(400).json({ msg: 'Place ID is required' });
-    }
-    const apiKey = process.env.GOOGLE_PLACES_API_KEY;
-    if (!apiKey) {
-        return res.status(500).json({ msg: 'Google API key not configured' });
+        return res.status(400).json({ msg: 'placeId query is required' });
     }
 
+    const fields = 'name,place_id,formatted_address,website,rating,user_ratings_total,reviews,photos';
+    const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=${fields}&key=${process.env.GOOGLE_PLACES_API_KEY}`;
+    
     try {
-        const response = await client.placeDetails({
-            params: {
-                place_id: placeId,
-                fields: ['name', 'formatted_address', 'website', 'rating', 'user_ratings_total', 'reviews', 'photos'],
-                key: apiKey,
-            },
-        });
-
-        const details = response.data.result;
+        const response = await axios.get(url);
+        const place = response.data.result;
         
-        // We now process the data here and build the photo URL on the backend
-        const formattedDetails = {
-            id: placeId,
-            name: details.name,
-            location: details.formatted_address,
-            website: details.website,
-            rating: details.rating,
-            reviews: details.reviews || [],
-            image: details.photos && details.photos.length > 0
-                ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photoreference=${details.photos[0].photo_reference}&key=${apiKey}`
-                : `https://placehold.co/1200x600/131314/ffffff?text=${encodeURIComponent(details.name)}`,
-            // Add default values for fields Google doesn't provide
-            specialty: 'University / College',
-            courses: ['B.Tech', 'M.Tech', 'B.Sc', 'M.Sc', 'Ph.D'],
+        const photoReference = (place.photos && place.photos.length > 0) 
+            ? place.photos[0].photo_reference 
+            : null;
+            
+        const formattedResult = {
+            id: place.place_id,
+            name: place.name,
+            location: place.formatted_address,
+            website: place.website,
+            rating: place.rating,
+            reviews: place.reviews,
+            photoUrl: getPhotoUrl(photoReference),
+            // Adding sample data as your frontend expects it
+            specialty: 'Multidisciplinary',
+            courses: ['Computer Science', 'Business Admin', 'Arts & Humanities', 'Law', 'Medical Prep']
         };
-        
-        res.json(formattedDetails);
 
-    } catch (err) {
-        console.error('Google Place Details Error:', err.message);
-        res.status(500).send('Server Error fetching details from Google');
+        res.json(formattedResult);
+    } catch (error) {
+        console.error("Error fetching college details from Google:", error.message);
+        res.status(500).send('Server Error while fetching from Google API');
     }
 });
 
