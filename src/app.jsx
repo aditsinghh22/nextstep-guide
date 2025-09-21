@@ -2,12 +2,25 @@ import React, { useState, useEffect, createContext, useContext, useRef } from 'r
 import { motion, useInView, AnimatePresence, useScroll, useTransform, useMotionValue } from 'framer-motion';
 import axios from 'axios'; // Make sure this import is at the top with the others
 import SplashScreen from './SplashScreen.jsx';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
+import { LoginPage } from './LoginPage.jsx';
+import { SignupPage } from './SignupPage.jsx';
+import { OtpPage } from "./OtpPage.jsx";
 // --- API HELPER ---
 // A centralized place to configure axios, especially for our backend URL.
 const api = axios.create({
     baseURL: 'https://nextstep-guide.onrender.com/api', // The base URL for all our backend requests
 });
-
+api.interceptors.request.use(config => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        config.headers['x-auth-token'] = token;
+    }
+    return config;
+}, error => {
+    return Promise.reject(error);
+});
 // --- MOCK DATA ---
 // In a real application, this data would come from a backend API.
 
@@ -1438,65 +1451,156 @@ const CustomCursor = () => {
 // --- AUTHENTICATION CONTEXT ---
 // Manages user state throughout the application.
 
+// --- AUTHENTICATION CONTEXT ---
+// Manages user state throughout the application.
+
+// In src/app.jsx
+
+// --- PASTE THIS ENTIRE CORRECTED COMPONENT ---
+// --- PASTE THIS ENTIRE BLOCK INTO app.jsx ---
+
+
+
+// --- PASTE THIS ENTIRE BLOCK INTO app.jsx to replace the broken Auth section ---
+
+// File: src/app.jsx
+
+// --- PASTE THIS ENTIRE REPLACEMENT FOR YOUR AuthProvider ---
+
+// --- PASTE THIS ENTIRE REPLACEMENT FOR YOUR AuthProvider in src/app.jsx ---
+
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Simulate checking for an existing session
-    const storedUser = localStorage.getItem('careerPathUser');
-    if (storedUser) {
-        setUser(JSON.parse(storedUser));
-    }
-    setTimeout(() => setLoading(false), 500);
-  }, []);
+    useEffect(() => {
+        const loadUser = async () => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                try {
+                    // On page load, we must fetch fresh user data
+                    const res = await api.get('/auth/me');
+                    setUser(res.data);
+                } catch (err) {
+                    // Token is invalid or expired, so remove it
+                    localStorage.removeItem('token');
+                    console.error("Could not load user from token:", err.response?.data?.msg || err.message);
+                }
+            }
+            setLoading(false);
+        };
+        loadUser();
+    }, []);
 
-  const login = (userData, userType = 'student') => {
-    const fakeUser = {
-      name: userData.name || "Student",
-      email: userData.email,
-      userType: userType, // 'student' or 'mentor'
-      level: null, // 'class10' or 'class12'
-      stream: null, // For class 12
-      quizHistory: [],
-      bookmarks: [],
-      backgroundInfo: '',
-      sessions: [],
-      sessionRequests: userType === 'mentor' ? [
-          { studentName: "Rohan Patel", studentImage: "https://i.pravatar.cc/150?u=rohanp", date: new Date().toLocaleDateString(), status: 'Pending' },
-          { studentName: "Sneha Reddy", studentImage: "https://i.pravatar.cc/150?u=sneha", date: new Date().toLocaleDateString(), status: 'Pending' }
-      ] : [],
+    const setAuthData = (data) => {
+        localStorage.setItem('token', data.token);
+        setUser(data.user);
+        setError(null);
+        return true;
     };
-    setUser(fakeUser);
-    localStorage.setItem('careerPathUser', JSON.stringify(fakeUser));
-  };
- 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('careerPathUser');
-  };
- 
-  const updateUserProfile = (updatedData) => {
-      if (user) {
-          const updatedUser = { ...user, ...updatedData };
-          setUser(updatedUser);
-          localStorage.setItem('careerPathUser', JSON.stringify(updatedUser));
-      }
-  };
 
-  return (
-    <AuthContext.Provider value={{ user, login, logout, updateUserProfile, isAuthenticated: !!user, loading }}>
-      {children}
-    </AuthContext.Provider>
-  );
+    const login = async (credentials) => {
+        setError(null);
+        try {
+            const res = await api.post('/auth/login', credentials);
+            return setAuthData(res.data);
+        } catch (err) {
+            setError(err.response?.data?.msg || 'Login failed.');
+            return false;
+        }
+    };
+
+    const signup = async (userData) => {
+        setError(null);
+        try {
+            await api.post('/auth/register', userData);
+            return true;
+        } catch (err) {
+            setError(err.response?.data?.msg || 'Sign up failed.');
+            return false;
+        }
+    };
+
+    const verifyOtp = async (verificationData) => {
+        setError(null);
+        try {
+            const res = await api.post('/auth/verify', verificationData);
+            return setAuthData(res.data);
+        } catch (err) {
+            setError(err.response?.data?.msg || 'OTP verification failed.');
+            return false;
+        }
+    };
+
+    const googleLogin = async (credentialResponse) => {
+        setError(null);
+        try {
+            const res = await api.post('/auth/google', { 
+                credential: credentialResponse.credential 
+            });
+            return setAuthData(res.data);
+        } catch (err) {
+            setError(err.response?.data?.msg || 'Google login failed.');
+            return false;
+        }
+    };
+
+    const logout = () => {
+        setUser(null);
+        localStorage.removeItem('token');
+    };
+    
+    const updateUserProfile = async (updatedData) => {
+        if (!user) return;
+        try {
+            const res = await api.put('/user/profile', updatedData);
+            setUser(res.data); // Update state with the response
+        } catch (err) {
+            console.error('Failed to update profile:', err.response?.data?.msg || err.message);
+        }
+    };
+
+    const isAuthenticated = !!user;
+
+    return (
+        <AuthContext.Provider value={{ 
+            user, 
+            isAuthenticated, 
+            error, 
+            setError, 
+            loading, 
+            login, 
+            logout, 
+            signup, 
+            verifyOtp, 
+            googleLogin, 
+            updateUserProfile 
+        }}>
+            {!loading && children}
+        </AuthContext.Provider>
+    );
 };
 
-const useAuth = () => useContext(AuthContext);
+export const useAuth = () => useContext(AuthContext);
+
+// --- END OF REPLACEMENT BLOCK ---
+
+// --- END OF REPLACEMENT BLOCK ---
+
+// --- END OF THE BLOCK TO PASTE ---
+
+
+
+
+
 
 // --- NEW DATA CONTEXT ---
 // Manages shared application data like mentor reviews.
+
+// --- DATA CONTEXT (For non-user specific mock data) ---
 
 const DataContext = createContext();
 
@@ -1504,35 +1608,31 @@ const DataProvider = ({ children }) => {
     const [collegeMentors, setCollegeMentors] = useState(mockCollegeMentors);
 
     const addMentorReview = (reviewData) => {
-        // Find the college by name (case-insensitive)
+        // ... (This function's logic remains unchanged)
         const college = mockColleges.find(c => c.name.toLowerCase() === reviewData.college.toLowerCase());
-        
         if (!college) {
-            // In a real app, provide user feedback for an invalid college name
             console.error("College not found:", reviewData.college);
-            alert("Sorry, we couldn't find that college in our database. Please check the spelling.");
+            alert("Sorry, we couldn't find that college in our database.");
             return false;
         }
-
         const newMentorReview = {
-            id: mockMentors.length + 1, // Create a new ID
+            id: mockMentors.length + 1,
             name: reviewData.name,
             status: reviewData.academicYear === 'Pass Out' ? `Alumnus` : `${reviewData.academicYear} Year Student`,
             branch: reviewData.qualifications,
             qualifications: reviewData.job ? `Working as a ${reviewData.job}.` : 'Currently pursuing higher studies.',
             achievements: `CGPA: ${reviewData.cgpa}`,
-            reviewType: 'positive', // Defaulting new reviews to 'positive' for this example
+            reviewType: 'positive',
             reviewTitle: reviewData.reviewTitle,
             reviewText: reviewData.reviewText,
-            image: `https://i.pravatar.cc/150?u=${reviewData.name.replace(/\s+/g, '')}` // Generate a unique avatar
+            image: `https://i.pravatar.cc/150?u=${reviewData.name.replace(/\s+/g, '')}`
         };
-
         const newMentorProfile = {
             id: newMentorReview.id,
             name: reviewData.name,
             college: reviewData.college,
             field: reviewData.qualifications,
-            rating: 5.0, // Default new mentor rating
+            rating: 5.0,
             reviews: 1,
             image: newMentorReview.image,
             availability: {
@@ -1540,19 +1640,14 @@ const DataProvider = ({ children }) => {
                 time: reviewData.availability.time
             }
         };
-
-        // This is a mock update. In a real app, this would be an API call.
         mockMentors.push(newMentorProfile);
-
         setCollegeMentors(prevMentors => {
             const updatedMentors = { ...prevMentors };
-            // Ensure there's an array for the college ID
             const collegeIdMentors = updatedMentors[college.id] ? [...updatedMentors[college.id]] : [];
             collegeIdMentors.push(newMentorReview);
             updatedMentors[college.id] = collegeIdMentors;
             return updatedMentors;
         });
-
         return true;
     };
 
@@ -1654,7 +1749,7 @@ const Header = () => {
           <NavItem onClick={() => setPage('ebooks')}>eBooks</NavItem>
         </div>
         <div>
-          {isAuthenticated ? (
+          {isAuthenticated ? ( // --- THIS CHECK WILL NOW WORK ON REFRESH ---
             <div className="flex items-center gap-4">
               <span className="font-semibold hidden sm:block text-gray-300">Welcome, {user.name}!</span>
               <Button onClick={() => setPage('dashboard')} variant="outline" className="py-2 px-4">Dashboard</Button>
@@ -2011,105 +2106,8 @@ const TestimonialCard = ({ quote, name, class: studentClass, index }) => {
     );
 };
 
-const LoginPage = () => {
-    const { login } = useAuth();
-    const { setPage } = useNavigation();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleLogin = (e) => {
-        e.preventDefault();
-        // In a real app, you'd call an API here.
-        if(email && password) {
-            login({ email });
-            setPage('dashboard');
-        } else {
-            alert("Please enter email and password.");
-        }
-    };
-   
-    return (
-        <div className="flex-grow flex items-center justify-center bg-gray-950 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8">
-                <div>
-                    <h2 className="mt-6 text-center text-3xl font-bold text-teal-400">Sign in to your account</h2>
-                </div>
-                <form className="mt-8 space-y-6" onSubmit={handleLogin}>
-                    <div className="rounded-md -space-y-px">
-                        <div>
-                            <input id="email-address" name="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required className="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-700 bg-gray-900 placeholder-gray-500 text-white rounded-t-md focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 focus:z-10 sm:text-sm" placeholder="Email address" />
-                        </div>
-                        <div>
-                            <input id="password" name="password" type="password" value={password} onChange={e => setPassword(e.target.value)} required className="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-700 bg-gray-900 placeholder-gray-500 text-white rounded-b-md focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 focus:z-10 sm:text-sm" placeholder="Password" />
-                        </div>
-                    </div>
-
-                    <div>
-                        <Button type="submit" className="w-full">Sign in</Button>
-                    </div>
-                </form>
-                <p className="text-center text-sm text-gray-500">
-                    Don't have an account?{' '}
-                    <a onClick={() => setPage('signup')} className="font-medium text-teal-500 hover:underline cursor-pointer">
-                        Sign up
-                    </a>
-                </p>
-            </div>
-        </div>
-    );
-};
 
 
-const SignupPage = () => {
-    const { login } = useAuth();
-    const { setPage } = useNavigation();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleSignup = (e) => {
-        e.preventDefault();
-        if(name && email && password) {
-            login({ name, email });
-            setPage('dashboard');
-        } else {
-            alert("Please fill all fields.");
-        }
-    };
-   
-    return (
-        <div className="flex-grow flex items-center justify-center bg-gray-950 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8">
-                <div>
-                    <h2 className="mt-6 text-center text-3xl font-bold text-teal-400">Create a new account</h2>
-                </div>
-                <form className="mt-8 space-y-6" onSubmit={handleSignup}>
-                    <div className="rounded-md -space-y-px">
-                         <div>
-                            <input id="name" name="name" type="text" value={name} onChange={e => setName(e.target.value)} required className="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-700 bg-gray-900 placeholder-gray-500 text-white rounded-t-md focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 focus:z-10 sm:text-sm" placeholder="Full Name" />
-                        </div>
-                        <div>
-                            <input id="email-address" name="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required className="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-700 bg-gray-900 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 focus:z-10 sm:text-sm" placeholder="Email address" />
-                        </div>
-                        <div>
-                            <input id="password" name="password" type="password" value={password} onChange={e => setPassword(e.target.value)} required className="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-700 bg-gray-900 placeholder-gray-500 text-white rounded-b-md focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 focus:z-10 sm:text-sm" placeholder="Password" />
-                        </div>
-                    </div>
-
-                    <div>
-                        <Button type="submit" className="w-full">Sign up</Button>
-                    </div>
-                </form>
-                 <p className="text-center text-sm text-gray-500">
-                    Already have an account?{' '}
-                    <a onClick={() => setPage('login')} className="font-medium text-teal-500 hover:underline cursor-pointer">
-                        Sign in
-                    </a>
-                </p>
-            </div>
-        </div>
-    );
-};
 
 const WhyGraduationPage = () => {
     const { setPage } = useNavigation();
@@ -2651,6 +2649,9 @@ const QuizPage = () => {
         }
     };
 
+   // In src/App.jsx, inside the QuizPage component...
+// Replace your existing calculateResults function with this one.
+
     const calculateResults = (finalAnswers) => {
         const counts = {};
         Object.values(finalAnswers).forEach(value => {
@@ -2658,14 +2659,17 @@ const QuizPage = () => {
         });
 
         const result = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
-       
+        
         const quizRecord = {
             date: new Date().toISOString(),
             type: `${quizType.level} - ${quizType.stream || ''}`,
             result: result
         };
 
-        updateUserProfile({ quizHistory: [...user.quizHistory, quizRecord] });
+        // THE FIX IS HERE: `(user.quizHistory || [])`
+        // This provides a default empty array if quizHistory doesn't exist, preventing a crash.
+        updateUserProfile({ quizHistory: [...(user.quizHistory || []), quizRecord] });
+
         setQuizResult(result);
         setPage('results');
     };
@@ -3146,9 +3150,11 @@ const CollegesPage = () => {
     );
 };
 
+// --- In src/app.jsx, replace your existing CollegeCard component ---
+
 const CollegeCard = ({ college, onSelect }) => {
     const { user, updateUserProfile, isAuthenticated } = useAuth();
-    const collegeId = college.id; // Google's Place ID
+    const collegeId = college.id; 
     const isBookmarked = user?.bookmarks?.includes(collegeId);
 
     const handleBookmark = (e) => {
@@ -3164,6 +3170,9 @@ const CollegeCard = ({ college, onSelect }) => {
         updateUserProfile({ bookmarks: newBookmarks });
     };
 
+    // This is the placeholder URL that will be used when no image is found
+    const placeholderImage = `https://placehold.co/600x400/131314/ffffff?text=${encodeURIComponent(college.name)}`;
+
     return (
         <Card className="cursor-pointer group relative" onClick={() => onSelect(collegeId)}>
             {isAuthenticated && (
@@ -3178,7 +3187,9 @@ const CollegeCard = ({ college, onSelect }) => {
                 </motion.button>
             )}
             <div className="h-48 bg-gray-950 flex items-center justify-center overflow-hidden">
-                <img src={college.photoUrl || college.image || `https://placehold.co/600x400/131314/ffffff?text=${encodeURIComponent(college.name)}`} alt={college.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>            </div>
+                {/* FIXED: Simplified image source logic. It now directly uses photoUrl or falls back to our placeholder. */}
+                <img src={college.photoUrl || placeholderImage} alt={college.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
+            </div>
             <div className="p-6">
                 <h3 className="text-xl font-bold mb-2 text-gray-100">{college.name}</h3>
                 <p className="text-gray-400 mb-2 text-sm">{college.location}</p>
@@ -3240,41 +3251,43 @@ const MentorReviewCard = ({ mentor }) => {
 
 // --- PASTE THIS ENTIRE CORRECTED COMPONENT ---
 
+// --- In src/app.jsx, replace your existing CollegeDetailPage component ---
+
 const CollegeDetailPage = () => {
-    const { selectedCollegeId, setPage } = useNavigation();
-    const { user, updateUserProfile, isAuthenticated } = useAuth();
-    const [college, setCollege] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
+    const { selectedCollegeId, setPage } = useNavigation();
+    const { user, updateUserProfile, isAuthenticated } = useAuth();
+    const [college, setCollege] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
-    useEffect(() => {
-        const fetchCollegeDetails = async () => {
-            if (!selectedCollegeId) return;
-            setLoading(true);
-            setError('');
-            try {
-                const res = await api.get(`/places/details?placeId=${selectedCollegeId}`);
-                setCollege(res.data);
-            } catch (err) {
-                setError('Failed to fetch college details.');
-                console.error(err);
-            }
-            setLoading(false);
-        };
-        fetchCollegeDetails();
-    }, [selectedCollegeId]);
+    useEffect(() => {
+        const fetchCollegeDetails = async () => {
+            if (!selectedCollegeId) return;
+            setLoading(true);
+            setError('');
+            try {
+                const res = await api.get(`/places/details?placeId=${selectedCollegeId}`);
+                setCollege(res.data);
+            } catch (err) {
+                setError('Failed to fetch college details.');
+                console.error(err);
+            }
+            setLoading(false);
+        };
+        fetchCollegeDetails();
+    }, [selectedCollegeId]);
 
-    if (loading) {
-        return <div className="flex-grow flex items-center justify-center"><LoadingSpinner /></div>;
-    }
-    if (error) {
-        return <div className="flex-grow flex items-center justify-center text-red-500">{error}</div>;
-    }
-    if (!college) {
-        return <div className="flex-grow flex items-center justify-center">College details could not be loaded.</div>;
-    }
+    if (loading) {
+        return <div className="flex-grow flex items-center justify-center"><LoadingSpinner /></div>;
+    }
+    if (error) {
+        return <div className="flex-grow flex items-center justify-center text-red-500">{error}</div>;
+    }
+    if (!college) {
+        return <div className="flex-grow flex items-center justify-center">College details could not be loaded.</div>;
+    }
 
-    const isBookmarked = user?.bookmarks?.includes(college.id);
+    const isBookmarked = user?.bookmarks?.includes(college.id);
 
     const handleBookmark = () => {
         if (!isAuthenticated) { 
@@ -3695,166 +3708,180 @@ const AiMentorChatModal = ({ isOpen, onClose }) => {
     );
 };
 
+// --- PASTE THIS ENTIRE CORRECTED COMPONENT ---
+
+// File: src/App.jsx
+
+// File: src/App.jsx
+
 const DashboardPage = () => {
-    const { user, logout, updateUserProfile } = useAuth();
+    const { user } = useAuth();
     const { setPage, setSelectedCollegeId } = useNavigation();
     const [bookmarkedCollegeData, setBookmarkedCollegeData] = useState([]);
     const [bookmarksLoading, setBookmarksLoading] = useState(true);
 
     useEffect(() => {
-        const fetchBookmarkedColleges = async () => {
-            if (!user?.bookmarks || user.bookmarks.length === 0) {
-                setBookmarksLoading(false);
-                return;
-            }
-            try {
-                const collegePromises = user.bookmarks.map(id =>
-                    api.get(`/places/details?placeId=${id}`)
-                );
-                const responses = await Promise.all(collegePromises);
-                const colleges = responses.map(res => res.data);
-                setBookmarkedCollegeData(colleges);
-            } catch (error) {
-                console.error("Failed to fetch bookmarked colleges:", error);
-            } finally {
-                setBookmarksLoading(false);
-            }
-        };
-        fetchBookmarkedColleges();
-    }, [user?.bookmarks]);
+        if (user) {
+            const fetchBookmarkedColleges = async () => {
+                setBookmarksLoading(true);
+                if (!user.bookmarks || user.bookmarks.length === 0) {
+                    setBookmarkedCollegeData([]);
+                    setBookmarksLoading(false);
+                    return;
+                }
+                try {
+                    const collegePromises = user.bookmarks.map(id =>
+                        api.get(`/places/details?placeId=${id}`) 
+                    );
+                    const responses = await Promise.all(collegePromises);
+                    setBookmarkedCollegeData(responses.map(res => res.data));
+                } catch (error) {
+                    console.error("Failed to fetch bookmarked colleges:", error);
+                    setBookmarkedCollegeData([]);
+                } finally {
+                    setBookmarksLoading(false);
+                }
+            };
+            fetchBookmarkedColleges();
+        }
+    }, [user]);
+
     if (!user) {
         return (
             <div className="flex-grow flex items-center justify-center text-center bg-gray-950">
-                <div>
-                    <h2 className="text-2xl font-bold text-gray-100 mb-4">Please log in to view your dashboard.</h2>
-                    <Button onClick={() => setPage('login')}>Login</Button>
-                </div>
+                <Button onClick={() => setPage('login')}>Please Login</Button>
             </div>
         );
     }
 
-    if (user.userType === 'mentor') {
-        return <MentorDashboardPage />;
-    }
-
-    const allInterests = user.quizHistory.flatMap(q => {
-        const interests = [q.result]; // Always include the specific result, e.g., "Engineering"
+    const allInterests = (user.quizHistory || []).flatMap(q => {
+        const interests = [q.result];
         if (q.type.startsWith('class12')) {
-            // e.g., "class12 - Science"
             const stream = q.type.split(' - ')[1];
-            if (stream) {
-                interests.push(stream); // Also include the parent stream, e.g., "Science"
-            }
+            if (stream) interests.push(stream);
         }
         return interests;
     });
     const uniqueInterests = [...new Set(allInterests)];
-
     const allRelevantDates = uniqueInterests.map(interest => ({
         interest,
         dates: mockExamDates[interest] || []
     })).filter(group => group.dates.length > 0);
-    const bookmarkedColleges = mockColleges.filter(c => user.bookmarks?.includes(c.id));
 
-    // --- REPLACE YOUR ENTIRE 'return' BLOCK WITH THIS ---
+    return (
+        <div className="flex-grow bg-black">
+            <div className="container mx-auto px-6 py-12">
+                <div className="grid lg:grid-cols-3 gap-8">
+                    {/* Main content */}
+                    <div className="lg:col-span-2 space-y-8">
+                        {/* THIS SECTION WAS MISSING */}
+                        <DashboardSection title="Your Progress">
+                            <div className="text-center bg-gray-900/50 p-6 rounded-lg">
+                                <p className="text-lg text-gray-300">
+                                    You are on the <span className="font-bold text-teal-400">{user.level ? (user.level === 'class10' ? 'Class 10' : `Class 12 - ${user.stream}`) : 'General'}</span> pathway.
+                                </p>
+                                {(user.quizHistory || []).length > 0 ? (
+                                    <p className="mt-2 text-gray-300">Your latest quiz result suggests a focus on <span className="font-bold text-teal-400">{user.quizHistory[user.quizHistory.length - 1].result}</span>.</p>
+                                ) : (
+                                    <div className="mt-4">
+                                        <p className="text-gray-400">You haven't taken a quiz yet. Find your path now!</p>
+                                        <Button onClick={() => setPage('pathways')} className="mt-2">Take a Quiz</Button>
+                                    </div>
+                                )}
+                            </div>
+                        </DashboardSection>
+                        
+                        <DashboardSection title="Upcoming Mentorship Sessions">
+                            {(user.sessions || []).length > 0 ? (
+                                <ul className="space-y-3">
+                                    {user.sessions.map((session, i) => (
+                                        <li key={i} className="bg-gray-800 p-4 rounded-lg flex justify-between items-center border border-gray-700">
+                                            <div>
+                                                <p className="font-semibold text-gray-100">{session.mentorName} ({session.field})</p>
+                                                <p className="text-sm text-gray-400">Booked on {session.date}</p>
+                                            </div>
+                                            <span className={`text-sm px-3 py-1 rounded-full ${session.status === 'Upcoming' ? 'bg-green-900/50 text-green-300' : 'bg-yellow-900/50 text-yellow-300'}`}>{session.status}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p className="text-gray-400">No upcoming sessions. <a onClick={() => setPage('mentors')} className="text-teal-500 cursor-pointer hover:underline">Find a mentor</a>.</p>
+                            )}
+                        </DashboardSection>
 
-    return (
-        <div className="flex-grow bg-black">
-            <div className="container mx-auto px-6 py-12">
-                <h1 className="text-4xl font-bold text-teal-400 mb-8">Welcome, {user.name}!</h1>
-                
-                <div className="grid lg:grid-cols-3 gap-8">
-                    {/* Main content (The larger left column) */}
-                    <div className="lg:col-span-2 space-y-8">
-                        <DashboardSection title="Your Progress">
-                            <div className="text-center bg-gray-900/50 p-6 rounded-lg">
-                               <p className="text-lg text-gray-300">You are on the <span className="font-bold text-teal-400">{user.level === 'class10' ? 'Class 10' : `Class 12 - ${user.stream}`}</span> pathway.</p>
-                               {user.quizHistory.length > 0 ? (
-                                   <p className="mt-2 text-gray-300">Your latest quiz result suggests a focus on <span className="font-bold text-teal-400">{user.quizHistory[user.quizHistory.length - 1].result}</span>.</p>
-                               ) : (
-                                   <div className="mt-4">
-                                       <p className="text-gray-400">You haven't taken a quiz yet. Find your path now!</p>
-                                       <Button onClick={() => setPage('pathways')} className="mt-2">Take a Quiz</Button>
-                                   </div>
-                               )}
-                            </div>
-                        </DashboardSection>
-                        
-                        <DashboardSection title="Upcoming Mentorship Sessions">
-                            {user.sessions && user.sessions.length > 0 ? (
-                                <ul className="space-y-3">
-                                {user.sessions.map((session, i) => (
-                                    <li key={i} className="bg-gray-800 p-4 rounded-lg flex justify-between items-center border border-gray-700">
-                                        <div>
-                                            <p className="font-semibold text-gray-100">{session.mentorName} ({session.field})</p>
-                                            <p className="text-sm text-gray-400">Booked on {session.date}</p>
-                                        </div>
-                                        <span className={`text-sm px-3 py-1 rounded-full ${session.status === 'Upcoming' ? 'bg-green-900/50 text-green-300' : 'bg-yellow-900/50 text-yellow-300'}`}>{session.status}</span>
-                                    </li>
-                                ))}
-                                </ul>
-                            ) : (
-                                <p className="text-gray-400">No upcoming sessions. <a onClick={() => setPage('mentors')} className="text-teal-500 cursor-pointer hover:underline">Find a mentor</a>.</p>
-                            )}
-                        </DashboardSection>
+                        <DashboardSection title="Quiz History">
+                            {(user.quizHistory || []).length > 0 ? (
+                                <ul className="space-y-3">
+                                    {user.quizHistory.map((quiz, i) => (
+                                        <li key={i} className="bg-gray-800 p-4 rounded-lg flex justify-between items-center border border-gray-700">
+                                            <div>
+                                                <p className="font-semibold text-gray-100">{quiz.type}</p>
+                                                <p className="text-sm text-gray-400">Taken on {new Date(quiz.date).toLocaleDateString()}</p>
+                                            </div>
+                                            <span className="font-bold text-teal-400">{quiz.result}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p className="text-gray-400">You have no quiz history yet.</p>
+                            )}
+                        </DashboardSection>
+                    </div>
 
-                        <DashboardSection title="Quiz History">
-                           {user.quizHistory && user.quizHistory.length > 0 ? (
-                                <ul className="space-y-3">
-                                {user.quizHistory.map((quiz, i) => (
-                                    <li key={i} className="bg-gray-800 p-4 rounded-lg flex justify-between items-center border border-gray-700">
-                                        <div>
-                                            <p className="font-semibold text-gray-100">{quiz.type}</p>
-                                            <p className="text-sm text-gray-400">Taken on {new Date(quiz.date).toLocaleDateString()}</p>
-                                        </div>
-                                        <span className="font-bold text-teal-400">{quiz.result}</span>
-                                    </li>
-                                ))}
-                                </ul>
-                            ) : (
-                                <p className="text-gray-400">You have no quiz history yet.</p>
-                            )}
-                        </DashboardSection>
-                    </div>
+                    {/* Sidebar */}
+                    <div className="space-y-8">
+                        {/* THIS SECTION WAS MISSING */}
+                        <DashboardSection title="Profile">
+                            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-gray-300">
+                                <p><strong>Name:</strong> {user.name}</p>
+                                <p><strong>Email:</strong> {user.email}</p>
+                                <button className="text-sm text-teal-500 hover:underline mt-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 rounded px-1">Edit Profile</button>
+                            </div>
+                        </DashboardSection>
 
-                    {/* Sidebar (The smaller right column) */}
-                    <div className="space-y-8">
-                        <DashboardSection title="Profile">
-                            <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-gray-300">
-                                <p><strong>Name:</strong> {user.name}</p>
-                                <p><strong>Email:</strong> {user.email}</p>
-                                <button className="text-sm text-teal-500 hover:underline mt-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-500 rounded px-1">Edit Profile</button>
-                            </div>
-                        </DashboardSection>
-                        
-                        <DashboardSection title="Important Dates">
-                            {/* ... This section for dates is unchanged ... */}
-                        </DashboardSection>
-
-                        {/* CORRECTLY PLACED BOOKMARKS SECTION */}
-                        <DashboardSection title="My Bookmarked Colleges">
-                            {bookmarksLoading ? (
-                                <LoadingSpinner size="sm" />
-                            ) : bookmarkedCollegeData.length > 0 ? (
-                                <div className="space-y-3">
-                                    {bookmarkedCollegeData.map(college => (
-                                        <div key={college.id} onClick={() => { setSelectedCollegeId(college.id); setPage('collegeDetail'); }} className="bg-gray-800 p-3 rounded-lg flex items-center justify-between border border-gray-700 cursor-pointer hover:bg-gray-700 transition-colors">
-                                            <p className="font-semibold text-gray-100">{college.name}</p>
-                                            <ArrowRightIcon className="w-4 h-4 text-gray-500" />
-                                        </div>
-                                    ))}
-                                </div>
-                            ) : (
-                                <p className="text-gray-400">You haven't bookmarked any colleges yet. <a onClick={() => setPage('colleges')} className="text-teal-500 cursor-pointer hover:underline">Explore colleges now</a>.</p>
-                            )}
-                        </DashboardSection>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+                        <DashboardSection title="Important Dates">
+                            {allRelevantDates.length > 0 ? (
+                                 <div className="space-y-4">
+                                     {allRelevantDates.map(group => (
+                                         <div key={group.interest}>
+                                             <h4 className="font-semibold text-teal-300 mb-2">{group.interest}-Related Exams:</h4>
+                                             <ul className="space-y-3 pl-4 border-l-2 border-gray-700">
+                                                 {group.dates.map((event, i) => (
+                                                     <li key={i} className="text-sm">
+                                                         <p className="font-bold text-gray-200">{event.date}: {event.title}</p>
+                                                         <p className="text-gray-400">{event.description}</p>
+                                                     </li>
+                                                 ))}
+                                             </ul>
+                                         </div>
+                                     ))}
+                                 </div>
+                            ) : (
+                                <p className="text-gray-400">Take a quiz to see relevant exam dates.</p>
+                            )}
+                        </DashboardSection>
+                        <DashboardSection title="My Bookmarked Colleges">
+                            {bookmarksLoading ? (
+                                <LoadingSpinner size="sm" />
+                            ) : (bookmarkedCollegeData.length > 0 ? (
+                                <div className="space-y-3">
+                                    {bookmarkedCollegeData.map(college => (
+                                        <div key={college.id} onClick={() => { setSelectedCollegeId(college.id); setPage('collegeDetail'); }} className="bg-gray-800 p-3 rounded-lg flex items-center justify-between border border-gray-700 cursor-pointer hover:bg-gray-700 transition-colors">
+                                            <p className="font-semibold text-gray-100">{college.name}</p>
+                                            <ArrowRightIcon className="w-4 h-4 text-gray-500" />
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <p className="text-gray-400">You haven't bookmarked any colleges. <a onClick={() => setPage('colleges')} className="text-teal-500 cursor-pointer hover:underline">Explore now</a>.</p>
+                            ))}
+                        </DashboardSection>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 };
-
 
 const DashboardSection = ({ title, children }) => (
     <Card className="p-6">
@@ -3969,6 +3996,7 @@ const NavigationProvider = ({ children }) => {
     const [selectedMentorId, setSelectedMentorId] = useState(null); // For booking from college page
     const [mentorFlowState, setMentorFlowState] = useState(null); // For mentor registration flow data
     const [selectedMindMapKey, setSelectedMindMapKey] = useState(null); // NEW for mind map page
+    const [emailForVerification, setEmailForVerification] = useState('');
 
     const contextValue = {
         page,
@@ -3984,7 +4012,9 @@ const NavigationProvider = ({ children }) => {
         mentorFlowState,
         setMentorFlowState,
         selectedMindMapKey, 
-        setSelectedMindMapKey
+        setSelectedMindMapKey,
+        emailForVerification,
+        setEmailForVerification,
     };
 
     return (
@@ -3994,7 +4024,7 @@ const NavigationProvider = ({ children }) => {
     );
 };
 
-const useNavigation = () => useContext(NavigationContext);
+export const useNavigation = () => useContext(NavigationContext);
 
 const App = () => {
     const [isAnimating, setIsAnimating] = useState(true);
@@ -4082,6 +4112,7 @@ const App = () => {
         switch (page) {
             case 'login': return <LoginPage />;
             case 'signup': return <SignupPage />;
+            case 'otp': return <OtpPage />;
             case 'whyGraduation': return <WhyGraduationPage />;
             case 'userTypeSelection': return <UserTypeSelectionPage />;
             case 'pathways': return <PathwaysPage />;
@@ -4157,6 +4188,7 @@ return (
 }
 
 // The root component that wraps the app in providers
+// The root component that wraps the app in providers
 export default function NextStepGuideApp() {
     return (
         <>
@@ -4196,10 +4228,7 @@ export default function NextStepGuideApp() {
                     50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.2); }
                     100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
                 }
-
-                .animate-aurora {
-                    animation: aurora 20s linear infinite;
-                }
+                .animate-aurora { animation: aurora 20s linear infinite; }
             `}</style>
             <AuthProvider>
                 <DataProvider>

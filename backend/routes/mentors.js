@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Mentor = require('../models/Mentor');
 const User = require('../models/User');
-const authMiddleware = require('../middleware/authMiddleware');
+const authMiddleware = require('../middleware/auth');
 
 // @route   GET /api/mentors
 // @desc    Get all bookable mentor profiles
