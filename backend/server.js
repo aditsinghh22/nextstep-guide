@@ -19,22 +19,27 @@ const app = express();
 // This is the critical fix. It tells your backend to accept requests
 // from your local machine and your future live frontend.
 const whitelist = [
-    'http://localhost:3000', // Your local React dev server
-    'http://localhost:5173', // Another common port for Vite/React
-    'https://nextstep-guide.netlify.app' // **IMPORTANT: Replace this later with your live frontend's URL**
+  "http://localhost:3000",
+  "http://localhost:5173",
+  "https://nextstep-guide.netlify.app"
 ];
 
 const corsOptions = {
-    origin: function (origin, callback) {
-        if (!origin || whitelist.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    credentials: true,
+  origin: function (origin, callback) {
+    if (!origin || whitelist.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
 };
+
 app.use(cors(corsOptions));
+
+
+
+
 // --- END OF CORS CONFIGURATION ---
 
 
