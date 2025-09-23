@@ -42,7 +42,7 @@ router.post('/register', async (req, res) => {
 
         // --- THIS IS THE REPLACED EMAIL LOGIC ---
         await resend.emails.send({
-            from: 'NextStepGuide <onboarding@resend.dev>', // This is a temporary sending address from Resend
+            from: 'Nextstep-guide support <verify@nextstep-guide.netlify.app>', // This is a temporary sending address from Resend
             to: email,
             subject: 'Your Verification Code',
             html: `<h3>Welcome to NextStepGuide!</h3><p>Your OTP is: <h1>${otp}</h1></p><p>It will expire in 10 minutes.</p>`,
