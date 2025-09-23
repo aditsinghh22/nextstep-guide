@@ -1,37 +1,22 @@
-// --- PASTE THIS ENTIRE CODE INTO backend/routes/auth.js ---
+// --- PASTE THIS ENTIRE UPDATED CODE INTO backend/routes/auth.js ---
 
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const nodemailer = require('nodemailer');
+const jwt =require('jsonwebtoken');
+const { Resend } = require('resend'); // <-- Import Resend
 const { OAuth2Client } = require('google-auth-library');
-const auth = require('../middleware/auth'); // Make sure you have this middleware
+const auth = require('../middleware/auth');
+
+// Initialize Resend with the API key from your environment variables
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
-});
+const createTokenPayload = (user) => ({ user: { id: user._id } });
 
-// Helper function to create a consistent and correct token payload
-const createTokenPayload = (user) => {
-    return {
-        user: {
-            id: user._id,
-        }
-    };
-};
-
-// === SIGNUP ROUTE ===
-// File: backend/routes/auth.js
-
-// === SIGNUP ROUTE ===
+// === SIGNUP ROUTE (Now using Resend) ===
 router.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
     try {
@@ -45,32 +30,34 @@ router.post('/register', async (req, res) => {
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
         const otpExpires = Date.now() + 10 * 60 * 1000; // 10 minutes
 
-        if (user) { // If user exists but is not verified, update them
+        if (user) {
             user.password = hashedPassword;
             user.otp = otp;
             user.otpExpires = otpExpires;
             await user.save();
-        } else { // Otherwise, create a new user
+        } else {
             user = new User({ name, email, password: hashedPassword, otp, otpExpires });
             await user.save();
         }
 
-        // The line below is likely where the error is happening.
-        await transporter.sendMail({
-            from: `"NextStepGuide" <${process.env.EMAIL_USER}>`,
+        // --- THIS IS THE REPLACED EMAIL LOGIC ---
+        await resend.emails.send({
+            from: 'NextStepGuide <onboarding@resend.dev>', // This is a temporary sending address from Resend
             to: email,
             subject: 'Your Verification Code',
             html: `<h3>Welcome to NextStepGuide!</h3><p>Your OTP is: <h1>${otp}</h1></p><p>It will expire in 10 minutes.</p>`,
         });
+        // --- END OF REPLACED EMAIL LOGIC ---
 
         res.status(200).json({ msg: 'OTP sent to your email. Please verify.' });
 
     } catch (err) {
-        // IMPROVED ERROR LOGGING: This will show the exact email error in your terminal.
-        console.error("ERROR IN REGISTER ROUTE:", err); 
-        res.status(500).send('Server Error: Could not send verification email.');
+        console.error("ERROR IN REGISTER ROUTE:", err);
+        return res.status(500).json({ msg: 'Server Error: Could not send verification email.' });
     }
 });
+
+// ... (THE REST OF YOUR FILE REMAINS EXACTLY THE SAME) ...
 
 // === VERIFY OTP ROUTE ===
 router.post('/verify', async (req, res) => {
@@ -90,7 +77,6 @@ router.post('/verify', async (req, res) => {
         const payload = createTokenPayload(user);
         jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5h' }, (err, token) => {
             if (err) throw err;
-            // FIXED: Return both token and the full user object (minus password)
             const userToReturn = { ...user.toObject() };
             delete userToReturn.password;
             res.status(200).json({ token, user: userToReturn });
@@ -124,7 +110,6 @@ router.post('/login', async (req, res) => {
         const payload = createTokenPayload(user);
         jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5h' }, (err, token) => {
             if (err) throw err;
-            // FIXED: Return both token and the full user object (minus password)
             const userToReturn = { ...user.toObject() };
             delete userToReturn.password;
             res.json({ token, user: userToReturn });
@@ -149,13 +134,12 @@ router.post('/google', async (req, res) => {
 
         if (!user) {
             user = new User({ name, email, isVerified: true, provider: 'google' });
-            await user.save(); // This line is correct from our previous fix
+            await user.save();
         }
 
         const payload = createTokenPayload(user);
         jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5h' }, (err, token) => {
             if (err) throw err;
-            // FIXED: Return both token and the full user object (minus password)
             const userToReturn = { ...user.toObject() };
             delete userToReturn.password;
             res.json({ token, user: userToReturn });
@@ -180,6 +164,5 @@ router.get('/me', auth, async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
-
 
 module.exports = router;
