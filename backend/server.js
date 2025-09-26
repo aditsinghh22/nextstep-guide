@@ -24,7 +24,7 @@ const whitelist = [
   "https://nextstep-guide.netlify.app",
   "https://nextstep-guide.vercel.app",
   "https://nextstepguide.me",
-  "https://www.nextstepguide.me/"
+  "https://www.nextstepguide.me"
 ];
 
 const corsOptions = {
