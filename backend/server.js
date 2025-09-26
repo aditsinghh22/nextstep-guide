@@ -22,7 +22,8 @@ const whitelist = [
   "http://localhost:3000",
   "http://localhost:5173",
   "https://nextstep-guide.netlify.app",
-  "https://nextstep-guide.vercel.app"
+  "https://nextstep-guide.vercel.app",
+  "https://nextstepguide.me"
 ];
 
 const corsOptions = {
