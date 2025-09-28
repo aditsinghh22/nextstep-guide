@@ -10,7 +10,7 @@ const { OAuth2Client } = require('google-auth-library');
 const auth = require('../middleware/auth');
 
 // Initialize Resend with the API key from your environment variables
-const resend = new Resend(process.env.re_Wr2iST2u_JzjrzvnuK7z6Nr1gnt71stJF);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
