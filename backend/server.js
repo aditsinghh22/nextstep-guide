@@ -1,11 +1,11 @@
 // --- PASTE THIS ENTIRE CODE INTO backend/server.js ---
-
+require('dotenv').config();
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
 // Load env vars
-dotenv.config();
+
 
 // Require your other files
 const connectDB = require('./config/db');
