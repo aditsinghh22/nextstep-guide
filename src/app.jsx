@@ -1872,24 +1872,116 @@ const useData = () => useContext(DataContext);
 // --- REUSABLE UI COMPONENTS ---
 
 const Card = ({ children, className = '', onClick }) => (
-  <motion.div 
-    className={`bg-gray-900 rounded-lg border border-gray-800 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-teal-900/20 hover:border-teal-800 ${className}`}
-    whileHover={{ y: -5, transition: { duration: 0.2 } }}
+  <motion.div
     onClick={onClick}
+    whileHover={{ y: -5, transition: { duration: 0.2 } }}
+    className={`
+      bg-gray-900
+      rounded-lg
+      border
+      border-gray-800
+      overflow-hidden
+      transition-all
+      duration-300
+      hover:shadow-xl
+      hover:shadow-teal-900/20
+      hover:border-teal-800
+      w-full
+      p-4
+      sm:p-6
+      ${className}
+    `}
   >
     {children}
   </motion.div>
 );
 
-const Button = ({ children, onClick, variant = 'primary', className = '', disabled = false, animate, transition, type = 'button' }) => {
-  const baseClasses = 'px-6 py-3 font-semibold rounded-md transition-all duration-300 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950';
+
+
+
+const Button = ({
+  children,
+  onClick,
+  variant = 'primary',
+  className = '',
+  disabled = false,
+  animate,
+  transition,
+  type = 'button'
+}) => {
+  // Base styles now adjust padding/gap for mobile vs desktop
+  const baseClasses = [
+    'font-semibold',
+    'rounded-md',
+    'transition-all',
+    'duration-300',
+    'flex',
+    'items-center',
+    'justify-center',
+    'focus-visible:outline-none',
+    'focus-visible:ring-2',
+    'focus-visible:ring-offset-2',
+    'focus-visible:ring-offset-gray-950',
+    'disabled:cursor-not-allowed',
+    'disabled:transform-none',
+    'disabled:bg-gray-700',
+    'disabled:text-gray-500',
+    // Mobile padding
+    'px-4',
+    'py-2',
+    'gap-1',
+    // Tablet and up
+    'sm:px-6',
+    'sm:py-3',
+    'sm:gap-2'
+  ].join(' ');
+
   const variants = {
-    primary: 'bg-teal-600 text-white hover:bg-teal-500 focus-visible:ring-teal-500 shadow-lg shadow-teal-900/20 hover:shadow-teal-800/40',
-    secondary: 'bg-gray-800 text-gray-200 border border-gray-700 hover:bg-gray-700 hover:border-gray-600 focus-visible:ring-gray-500',
-    outline: 'border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white focus-visible:ring-teal-500'
+    primary: [
+      'bg-teal-600',
+      'text-white',
+      'hover:bg-teal-500',
+      'focus-visible:ring-teal-500',
+      'shadow-lg',
+      'shadow-teal-900/20',
+      'hover:shadow-teal-800/40'
+    ].join(' '),
+    secondary: [
+      'bg-gray-800',
+      'text-gray-200',
+      'border',
+      'border-gray-700',
+      'hover:bg-gray-700',
+      'hover:border-gray-600',
+      'focus-visible:ring-gray-500'
+    ].join(' '),
+    outline: [
+      'border',
+      'border-teal-500',
+      'text-teal-500',
+      'hover:bg-teal-500',
+      'hover:text-white',
+      'focus-visible:ring-teal-500'
+    ].join(' ')
   };
-  return <motion.button type={type} whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} animate={animate} transition={transition} onClick={onClick} disabled={disabled} className={`${baseClasses} ${variants[variant]} ${className} disabled:bg-gray-700 disabled:text-gray-500 disabled:cursor-not-allowed disabled:transform-none`}>{children}</motion.button>;
+
+  return (
+    <motion.button
+      type={type}
+      whileHover={{ y: -2 }}
+      whileTap={{ scale: 0.98 }}
+      animate={animate}
+      transition={transition}
+      onClick={onClick}
+      disabled={disabled}
+      className={`${baseClasses} ${variants[variant]} ${className}`}
+    >
+      {children}
+    </motion.button>
+  );
 };
+
+
 
 const Modal = ({ isOpen, onClose, title, children }) => {
     return (
@@ -1933,21 +2025,29 @@ const LoadingSpinner = ({ size = 'md' }) => {
 
 // --- LAYOUT COMPONENTS ---
 
+
 const Header = () => {
   const { isAuthenticated, user, logout } = useAuth();
   const { setPage } = useNavigation();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <motion.header 
+    <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className="bg-gray-950/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-40"
     >
       <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <motion.div whileHover={{ scale: 1.05 }} className="text-2xl font-bold text-teal-500 cursor-pointer flex items-center gap-3" onClick={() => setPage('home')}>
-            <LogoIcon /> NextStepGuide
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          className="text-2xl font-bold text-teal-500 cursor-pointer flex items-center gap-3"
+          onClick={() => setPage('home')}
+        >
+          <LogoIcon /> NextStepGuide
         </motion.div>
+
+        {/* Desktop menu */}
         <div className="hidden md:flex items-center space-x-8">
           <NavItem onClick={() => setPage('home')}>Home</NavItem>
           <NavItem onClick={() => setPage('pathways')}>Pathways</NavItem>
@@ -1956,23 +2056,95 @@ const Header = () => {
           <NavItem onClick={() => setPage('scholarships')}>Scholarships</NavItem>
           <NavItem onClick={() => setPage('ebooks')}>eBooks</NavItem>
         </div>
-        <div>
-          {isAuthenticated ? ( // --- THIS CHECK WILL NOW WORK ON REFRESH ---
-            <div className="flex items-center gap-4">
-              <span className="font-semibold hidden sm:block text-gray-300">Welcome, {user.name}!</span>
-              <Button onClick={() => setPage('dashboard')} variant="outline" className="py-2 px-4">Dashboard</Button>
-              <Button onClick={() => { logout(); setPage('home'); }} variant="secondary" className="py-2 px-4"><LogOutIcon/></Button>
-            </div>
+
+        {/* Auth buttons (desktop) */}
+        <div className="hidden md:flex items-center gap-4">
+          {isAuthenticated ? (
+            <>
+              <span className="font-semibold text-gray-300">Welcome, {user.name}!</span>
+              <Button onClick={() => setPage('dashboard')} variant="outline">
+                Dashboard
+              </Button>
+              <Button
+                onClick={() => {
+                  logout();
+                  setPage('home');
+                }}
+                variant="secondary"
+              >
+                <LogOutIcon />
+              </Button>
+            </>
           ) : (
-             <Button onClick={() => setPage('login')} className="py-2 px-4">
-                Login <LogInIcon className="w-5 h-5" />
-             </Button>
+            <Button onClick={() => setPage('login')}>
+              Login <LogInIcon className="w-5 h-5 inline-block ml-1" />
+            </Button>
           )}
         </div>
+
+        {/* Mobile menu button */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden p-2 text-gray-300 hover:text-white"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
       </nav>
+
+      {/* Mobile menu dropdown */}
+      {mobileOpen && (
+        <div className="md:hidden bg-gray-950/90 backdrop-blur-md border-t border-gray-800">
+          <nav className="flex flex-col py-4 space-y-2">
+            <NavItem onClick={() => { setPage('home'); setMobileOpen(false); }}>
+              Home
+            </NavItem>
+            <NavItem onClick={() => { setPage('pathways'); setMobileOpen(false); }}>
+              Pathways
+            </NavItem>
+            <NavItem onClick={() => { setPage('colleges'); setMobileOpen(false); }}>
+              Colleges
+            </NavItem>
+            <NavItem onClick={() => { setPage('mentors'); setMobileOpen(false); }}>
+              Mentors
+            </NavItem>
+            <NavItem onClick={() => { setPage('scholarships'); setMobileOpen(false); }}>
+              Scholarships
+            </NavItem>
+            <NavItem onClick={() => { setPage('ebooks'); setMobileOpen(false); }}>
+              eBooks
+            </NavItem>
+            <div className="border-t border-gray-800 mt-2 pt-2 flex flex-col space-y-2">
+              {isAuthenticated ? (
+                <>
+                  <NavItem onClick={() => { setPage('dashboard'); setMobileOpen(false); }}>
+                    Dashboard
+                  </NavItem>
+                  <NavItem onClick={() => { logout(); setPage('home'); setMobileOpen(false); }}>
+                    Logout
+                  </NavItem>
+                </>
+              ) : (
+                <NavItem onClick={() => { setPage('login'); setMobileOpen(false); }}>
+                  Login
+                </NavItem>
+              )}
+            </div>
+          </nav>
+        </div>
+      )}
     </motion.header>
   );
 };
+
+
+
 
 const NavItem = ({ onClick, children }) => (
     <motion.a 
