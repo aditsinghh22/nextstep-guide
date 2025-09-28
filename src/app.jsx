@@ -8,6 +8,9 @@ import { LoginPage } from './LoginPage.jsx';
 import { SignupPage } from './SignupPage.jsx';
 import { OtpPage } from "./OtpPage.jsx";
 import { SkillsPage } from './SkillsPage.jsx';
+import './i18n';
+import { useTranslation } from 'react-i18next'; 
+import LanguageSwitcher from './LanguageSwitcher.jsx';
 // --- API HELPER ---
 // ...
 // --- API HELPER ---
@@ -3888,6 +3891,9 @@ const Header = () => {
 
         {/* Auth buttons (desktop) */}
         <div className="hidden md:flex items-center gap-4">
+          {/* --> PLACE IT HERE FOR DESKTOP VIEW <-- */}
+          <LanguageSwitcher />
+          
           {isAuthenticated ? (
             <>
               <span className="font-semibold text-gray-300">Welcome, {user.name}!</span>
@@ -3930,39 +3936,25 @@ const Header = () => {
       {/* Mobile menu dropdown */}
       {mobileOpen && (
         <div className="md:hidden bg-gray-950/90 backdrop-blur-md border-t border-gray-800">
-          <nav className="flex flex-col py-4 space-y-2">
-            <NavItem onClick={() => { setPage('home'); setMobileOpen(false); }}>
-              Home
-            </NavItem>
-            <NavItem onClick={() => { setPage('pathways'); setMobileOpen(false); }}>
-              Pathways
-            </NavItem>
-            <NavItem onClick={() => { setPage('colleges'); setMobileOpen(false); }}>
-              Colleges
-            </NavItem>
-            <NavItem onClick={() => { setPage('mentors'); setMobileOpen(false); }}>
-              Mentors
-            </NavItem>
-            <NavItem onClick={() => { setPage('scholarships'); setMobileOpen(false); }}>
-              Scholarships
-            </NavItem>
-            <NavItem onClick={() => { setPage('ebooks'); setMobileOpen(false); }}>
-              eBooks
-            </NavItem>
-            <div className="border-t border-gray-800 mt-2 pt-2 flex flex-col space-y-2">
+          <nav className="flex flex-col py-4 px-4 space-y-2">
+            <NavItem onClick={() => { setPage('home'); setMobileOpen(false); }}>Home</NavItem>
+            <NavItem onClick={() => { setPage('pathways'); setMobileOpen(false); }}>Pathways</NavItem>
+            <NavItem onClick={() => { setPage('colleges'); setMobileOpen(false); }}>Colleges</NavItem>
+            <NavItem onClick={() => { setPage('mentors'); setMobileOpen(false); }}>Mentors</NavItem>
+            <NavItem onClick={() => { setPage('scholarships'); setMobileOpen(false); }}>Scholarships</NavItem>
+            <NavItem onClick={() => { setPage('ebooks'); setMobileOpen(false); }}>eBooks</NavItem>
+            <div className="border-t border-gray-800 mt-2 pt-4 flex flex-col items-center space-y-4">
+              
+              {/* --> PLACE IT HERE FOR MOBILE VIEW <-- */}
+              <LanguageSwitcher />
+
               {isAuthenticated ? (
                 <>
-                  <NavItem onClick={() => { setPage('dashboard'); setMobileOpen(false); }}>
-                    Dashboard
-                  </NavItem>
-                  <NavItem onClick={() => { logout(); setPage('home'); setMobileOpen(false); }}>
-                    Logout
-                  </NavItem>
+                  <NavItem onClick={() => { setPage('dashboard'); setMobileOpen(false); }}>Dashboard</NavItem>
+                  <NavItem onClick={() => { logout(); setPage('home'); setMobileOpen(false); }}>Logout</NavItem>
                 </>
               ) : (
-                <NavItem onClick={() => { setPage('login'); setMobileOpen(false); }}>
-                  Login
-                </NavItem>
+                <NavItem onClick={() => { setPage('login'); setMobileOpen(false); }}>Login</NavItem>
               )}
             </div>
           </nav>
@@ -3971,7 +3963,6 @@ const Header = () => {
     </motion.header>
   );
 };
-
 
 
 
@@ -4033,7 +4024,7 @@ const AnimatedSection = ({ children, className = '', delay = 0 }) => {
 // ...rest of the HomePage component...
 // --- PAGE COMPONENTS ---
 
-const HowItWorksStep = ({ stepNumber, title, description, imageUrl, imageSide = 'right' }) => {
+const HowItWorksStep = ({ t, stepNumber, titleKey, descriptionKey, imageUrl, imageSide = 'right' }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.4 });
 
@@ -4060,8 +4051,9 @@ const HowItWorksStep = ({ stepNumber, title, description, imageUrl, imageSide = 
                         Step {stepNumber}
                     </span>
                 </div>
-                <h3 className="text-3xl font-bold text-gray-100 mb-4">{title}</h3>
-                <p className="text-lg text-gray-400">{description}</p>
+                {/* Text is now translated */}
+                <h3 className="text-3xl font-bold text-gray-100 mb-4">{t(titleKey)}</h3>
+                <p className="text-lg text-gray-400">{t(descriptionKey)}</p>
             </motion.div>
             <motion.div 
                 className="flex items-center justify-center"
@@ -4069,7 +4061,8 @@ const HowItWorksStep = ({ stepNumber, title, description, imageUrl, imageSide = 
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
             >
-                <img src={imageUrl} alt={title} className="rounded-lg shadow-2xl shadow-teal-950/20 w-full h-auto object-cover border-2 border-gray-800"/>
+                {/* The titleKey is used for the alt text as well */}
+                <img src={imageUrl} alt={t(titleKey)} className="rounded-lg shadow-2xl shadow-teal-950/20 w-full h-auto object-cover border-2 border-gray-800"/>
             </motion.div>
         </div>
     );
@@ -4141,11 +4134,13 @@ const FloatingCareerTags = () => {
     );
 };
 
+// --- [START] PASTE THIS ENTIRE COMPONENT TO REPLACE THE EXISTING HomePage ---
 
 const HomePage = () => {
     const { setPage } = useNavigation();
+    const { t } = useTranslation(); 
    
-    const subheadlineText = "Navigate from confusion to clarity. Personalized guidance for Class 10 & 12 students in India.";
+    const subheadlineText = t('heroSubtitle');
 
     const textRevealVariant = {
         hidden: { y: "110%", opacity: 0.8 },
@@ -4166,13 +4161,13 @@ const HomePage = () => {
 
                 <div className="container mx-auto px-6 relative z-10">
                     <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tighter text-gray-100" style={{lineHeight: 1.2}}>
-                        <span className="overflow-hidden inline-block"><motion.span className="inline-block" variants={textRevealVariant} initial="hidden" animate="visible">Your Compass for the</motion.span></span>
+                        <span className="overflow-hidden inline-block"><motion.span className="inline-block" variants={textRevealVariant} initial="hidden" animate="visible">{t('heroTitlePart1')}</motion.span></span>
                         <br/>
-                        <span className="overflow-hidden inline-block"><motion.span className="inline-block text-teal-400" variants={textRevealVariant} initial="hidden" animate="visible" transition={{delay: 0.15}}>Crossroads of Career.</motion.span></span>
+                        <span className="overflow-hidden inline-block"><motion.span className="inline-block text-teal-400" variants={textRevealVariant} initial="hidden" animate="visible" transition={{delay: 0.15}}>{t('heroTitlePart2')}</motion.span></span>
                     </h1>
                    
                     <AnimatedWords 
-                        text={subheadlineText} 
+                        text={subheadlineText}
                         el="p" 
                         className="text-lg text-gray-400 mb-10 max-w-2xl mx-auto"
                         variants={{
@@ -4194,28 +4189,33 @@ const HomePage = () => {
             <section className="bg-black py-20">
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-teal-400 mb-4">A Clear Path in 3 Simple Steps</h2>
-                        <p className="text-lg text-gray-500 max-w-2xl mx-auto">We've streamlined the complex process of career discovery into a journey you can trust.</p>
+                        {/* Text is now translated */}
+                        <h2 className="text-4xl font-bold text-teal-400 mb-4">{t('howItWorksTitle')}</h2>
+                        <p className="text-lg text-gray-500 max-w-2xl mx-auto">{t('howItWorksSubtitle')}</p>
                     </div>
                     <div className="space-y-20 md:space-y-28">
+                        {/* The t function and keys are passed as props */}
                         <HowItWorksStep
+                            t={t}
                             stepNumber={1}
-                            title="Discover Your Aptitude"
-                            description="Take our quick, insightful quiz to understand your unique strengths and interests. We analyze your responses to recommend the stream that best fits your personality and skills."
+                            titleKey="step1Title"
+                            descriptionKey="step1Desc"
                             imageUrl="https://placehold.co/600x400/131314/ffffff?text=Aptitude+Quiz"
                             imageSide="right"
                         />
                         <HowItWorksStep
+                            t={t}
                             stepNumber={2}
-                            title="Explore Your Pathways"
-                            description="Receive a personalized roadmap of streams, courses, and potential careers. Our AI-powered insights and visual mind maps make complex information easy to understand."
+                            titleKey="step2Title"
+                            descriptionKey="step2Desc"
                             imageUrl="https://placehold.co/600x400/131314/ffffff?text=Career+Roadmap"
                             imageSide="left"
                         />
                         <HowItWorksStep
+                            t={t}
                             stepNumber={3}
-                            title="Connect with Mentors & Colleges"
-                            description="Chat with our AI mentor, book one-on-one sessions with experienced seniors, and browse our detailed college directory to find your perfect fit."
+                            titleKey="step3Title"
+                            descriptionKey="step3Desc"
                             imageUrl="https://placehold.co/600x400/131314/ffffff?text=Mentors+%26+Colleges"
                             imageSide="right"
                         />
@@ -4271,7 +4271,7 @@ const HomePage = () => {
         </div>
     );
 };
-
+// --- [END] REPLACEMENT COMPONENT ---
 const MentorProfileCard = ({ mentor, index }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
