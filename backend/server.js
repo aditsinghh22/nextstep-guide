@@ -21,7 +21,10 @@ const app = express();
 const whitelist = [
   "http://localhost:3000",
   "http://localhost:5173",
-  "https://nextstep-guide.netlify.app"
+  "https://nextstep-guide.netlify.app",
+  "https://nextstep-guide.vercel.app",
+  "https://nextstepguide.me",
+  "https://www.nextstepguide.me"
 ];
 
 const corsOptions = {
