@@ -1184,47 +1184,250 @@ const whyGraduationData = [
 ];
 
 const mockEbooksData = {
-    class10: [
-        { subject: "Mathematics", name: "Mathematics Textbook", url: "https://ncert.nic.in/textbook.php?jemh1=0-15" },
-        { subject: "Science", name: "Science Textbook", url: "https://ncert.nic.in/textbook.php?jesc1=0-16" },
-        { subject: "Social Science", name: "History: India and the Contemporary World – II", url: "https://ncert.nic.in/textbook.php?jess3=0-8" },
-        { subject: "Social Science", name: "Geography: Contemporary India – II", url: "https://ncert.nic.in/textbook.php?jess2=0-7" },
-        { subject: "Social Science", name: "Political Science: Democratic Politics – II", url: "https://ncert.nic.in/textbook.php?jess4=0-8" },
-        { subject: "Social Science", name: "Economics: Understanding Economic Development", url: "https://ncert.nic.in/textbook.php?jess1=0-5" },
-        { subject: "English", name: "First Flight", url: "https://ncert.nic.in/textbook.php?jeen1=0-11" },
-        { subject: "English", name: "Footprints Without Feet", url: "https://ncert.nic.in/textbook.php?jeft1=0-10" },
+  class10: [
+    { subject: "Mathematics", name: "Mathematics Textbook", url: "https://ncert.nic.in/textbook.php?jemh1=0-15" },
+    { subject: "Science", name: "Science Textbook", url: "https://ncert.nic.in/textbook.php?jesc1=0-16" },
+    { subject: "Social Science", name: "History: India and the Contemporary World – II", url: "https://ncert.nic.in/textbook.php?jess3=0-8" },
+    { subject: "Social Science", name: "Geography: Contemporary India – II", url: "https://ncert.nic.in/textbook.php?jess2=0-7" },
+    { subject: "Social Science", name: "Political Science: Democratic Politics – II", url: "https://ncert.nic.in/textbook.php?jess4=0-8" },
+    { subject: "Social Science", name: "Economics: Understanding Economic Development", url: "https://ncert.nic.in/textbook.php?jess1=0-5" },
+    { subject: "English", name: "First Flight", url: "https://ncert.nic.in/textbook.php?jeen1=0-11" },
+    { subject: "English", name: "Footprints Without Feet", url: "https://ncert.nic.in/textbook.php?jeft1=0-10" },
+  ],
+  class12: {
+    "Science Stream": [
+      { subject: "Physics", name: "Physics Part I", url: "https://ncert.nic.in/textbook.php?leph1=0-8" },
+      { subject: "Physics", name: "Physics Part II", url: "https://ncert.nic.in/textbook.php?leph2=0-7" },
+      { subject: "Chemistry", name: "Chemistry Part I", url: "https://ncert.nic.in/textbook.php?lech1=0-9" },
+      { subject: "Chemistry", name: "Chemistry Part II", url: "https://ncert.nic.in/textbook.php?lech2=0-7" },
+      { subject: "Biology", name: "Biology", url: "https://ncert.nic.in/textbook.php?lebo1=0-16" },
+      { subject: "Mathematics", name: "Mathematics Part I", url: "https://ncert.nic.in/textbook.php?lemh1=0-6" },
+      { subject: "Mathematics", name: "Mathematics Part II", url: "https://ncert.nic.in/textbook.php?lemh2=0-7" },
     ],
-    class12: {
-        "Science Stream": [
-            { subject: "Physics", name: "Physics Part I", url: "https://ncert.nic.in/textbook.php?leph1=0-8" },
-            { subject: "Physics", name: "Physics Part II", url: "https://ncert.nic.in/textbook.php?leph2=0-7" },
-            { subject: "Chemistry", name: "Chemistry Part I", url: "https://ncert.nic.in/textbook.php?lech1=0-9" },
-            { subject: "Chemistry", name: "Chemistry Part II", url: "https://ncert.nic.in/textbook.php?lech2=0-7" },
-            { subject: "Biology", name: "Biology", url: "https://ncert.nic.in/textbook.php?lebo1=0-16" },
-            { subject: "Mathematics", name: "Mathematics Part I", url: "https://ncert.nic.in/textbook.php?lemh1=0-6" },
-            { subject: "Mathematics", name: "Mathematics Part II", url: "https://ncert.nic.in/textbook.php?lemh2=0-7" },
-        ],
-        "Commerce Stream": [
-            { subject: "Accountancy", name: "Accountancy Part I", url: "https://ncert.nic.in/textbook.php?leac1=0-7" },
-            { subject: "Accountancy", name: "Accountancy Part II", url: "https://ncert.nic.in/textbook.php?leac2=0-6" },
-            { subject: "Business Studies", name: "Business Studies Part I", url: "https://ncert.nic.in/textbook.php?lebs1=0-8" },
-            { subject: "Business Studies", name: "Business Studies Part II", url: "https://ncert.nic.in/textbook.php?lebs2=0-4" },
-            { subject: "Economics", name: "Introductory Microeconomics", url: "https://ncert.nic.in/textbook.php?leec1=0-6" },
-            { subject: "Economics", name: "Introductory Macroeconomics", url: "https://ncert.nic.in/textbook.php?leec2=0-6" },
-        ],
-        "Arts / Humanities Stream": [
-            { subject: "History", name: "Themes in Indian History Part I", url: "https://ncert.nic.in/textbook.php?lehs1=0-4" },
-            { subject: "History", name: "Themes in Indian History Part II", url: "https://ncert.nic.in/textbook.php?lehs2=0-5" },
-            { subject: "History", name: "Themes in Indian History Part III", url: "https://ncert.nic.in/textbook.php?lehs3=0-6" },
-            { subject: "Political Science", name: "Contemporary World Politics", url: "https://ncert.nic.in/textbook.php?leps1=0-9" },
-            { subject: "Political Science", name: "Politics in India Since Independence", url: "https://ncert.nic.in/textbook.php?leps2=0-9" },
-            { subject: "Geography", name: "Fundamentals of Human Geography", url: "https://ncert.nic.in/textbook.php?legy1=0-10" },
-            { subject: "Geography", name: "India: People and Economy", url: "https://ncert.nic.in/textbook.php?legy2=0-12" },
-            { subject: "Psychology", name: "Psychology", url: "https://ncert.nic.in/textbook.php?lepy1=0-9" },
-            { subject: "English", name: "Flamingo", url: "https://ncert.nic.in/textbook.php?lefl1=0-14" },
-            { subject: "English", name: "Vistas", url: "https://ncert.nic.in/textbook.php?levs1=0-8" },
-        ]
+    "Commerce Stream": [
+      { subject: "Accountancy", name: "Accountancy Part I", url: "https://ncert.nic.in/textbook.php?leac1=0-7" },
+      { subject: "Accountancy", name: "Accountancy Part II", url: "https://ncert.nic.in/textbook.php?leac2=0-6" },
+      { subject: "Business Studies", name: "Business Studies Part I", url: "https://ncert.nic.in/textbook.php?lebs1=0-8" },
+      { subject: "Business Studies", name: "Business Studies Part II", url: "https://ncert.nic.in/textbook.php?lebs2=0-4" },
+      { subject: "Economics", name: "Introductory Microeconomics", url: "https://ncert.nic.in/textbook.php?leec1=0-6" },
+      { subject: "Economics", name: "Introductory Macroeconomics", url: "https://ncert.nic.in/textbook.php?leec2=0-6" },
+    ],
+    "Arts/Humanities Stream": [
+      { subject: "History", name: "Themes in Indian History Part I", url: "https://ncert.nic.in/textbook.php?lehs1=0-4" },
+      { subject: "History", name: "Themes in Indian History Part II", url: "https://ncert.nic.in/textbook.php?lehs2=0-5" },
+      { subject: "History", name: "Themes in Indian History Part III", url: "https://ncert.nic.in/textbook.php?lehs3=0-6" },
+      { subject: "Political Science", name: "Contemporary World Politics", url: "https://ncert.nic.in/textbook.php?leps1=0-9" },
+      { subject: "Political Science", name: "Politics in India Since Independence", url: "https://ncert.nic.in/textbook.php?leps2=0-9" },
+      { subject: "Geography", name: "Fundamentals of Human Geography", url: "https://ncert.nic.in/textbook.php?legy1=0-10" },
+      { subject: "Geography", name: "India: People and Economy", url: "https://ncert.nic.in/textbook.php?legy2=0-12" },
+      { subject: "Psychology", name: "Psychology", url: "https://ncert.nic.in/textbook.php?lepy1=0-9" },
+      { subject: "English", name: "Flamingo", url: "https://ncert.nic.in/textbook.php?lefl1=0-14" },
+      { subject: "English", name: "Vistas", url: "https://ncert.nic.in/textbook.php?levs1=0-8" },
+    ]
+  },
+  // Academic Resource Library with Top World Institutes
+  academicResourceLibrary: {
+    "🔬 Science": {
+      "Engineering & Technology": [
+        { subject: "Engineering", name: "MIT Introduction to Engineering", url: "https://ocw.mit.edu/courses/1-00-introduction-to-computers-and-engineering-problem-solving-spring-2012/" },
+        { subject: "Engineering", name: "Stanford Engineering Fundamentals", url: "https://www.edx.org/learn/engineering" }
+      ],
+      "Computer Science & Software Development": [
+        { subject: "Computer Science", name: "Harvard CS50: Introduction to Computer Science", url: "https://pll.harvard.edu/course/cs50-introduction-computer-science" },
+        { subject: "Computer Science", name: "MIT Introduction to Computer Science and Programming", url: "https://www.edx.org/course/introduction-to-computer-science-and-programming-using-python" }
+      ],
+      "Data Science, AI & Analytics": [
+        { subject: "Data Science", name: "Harvard Data Science Course", url: "https://pll.harvard.edu/subject/data-science" },
+        { subject: "AI", name: "Stanford Machine Learning Course", url: "https://www.coursera.org/learn/machine-learning" }
+      ],
+      "Mathematics & Statistics": [
+        { subject: "Mathematics", name: "MIT Calculus with Single Variable", url: "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/" },
+        { subject: "Statistics", name: "Stanford Introduction to Statistics", url: "https://www.coursera.org/learn/stanford-statistics" }
+      ],
+      "Physical Sciences": [
+        { subject: "Physics", name: "MIT Classical Mechanics", url: "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/" },
+        { subject: "Physics", name: "Harvard Introduction to Physics", url: "https://www.edx.org/course/introduction-to-mechanics" }
+      ],
+      "Chemistry & Chemical Engineering": [
+        { subject: "Chemistry", name: "MIT Principles of Chemical Science", url: "https://ocw.mit.edu/courses/5-111sc-principles-of-chemical-science-fall-2014/" },
+        { subject: "Chemistry", name: "Stanford Chemical Engineering", url: "https://www.edx.org/learn/chemical-engineering" }
+      ],
+      "Biotechnology & Biomedical Sciences": [
+        { subject: "Biotechnology", name: "Harvard Biomedical Sciences", url: "https://pll.harvard.edu/subject/life-sciences" },
+        { subject: "Biotechnology", name: "MIT Biological Engineering", url: "https://ocw.mit.edu/courses/biological-engineering/" }
+      ],
+      "Medicine & Healthcare": [
+        { subject: "Medicine", name: "Harvard Medical School Courses", url: "https://pll.harvard.edu/subject/health-medicine" },
+        { subject: "Healthcare", name: "Stanford AI in Healthcare", url: "https://www.coursera.org/specializations/ai-healthcare" }
+      ],
+      "Pharmacy & Drug Development": [
+        { subject: "Pharmacy", name: "Harvard Pharmacology", url: "https://pll.harvard.edu/subject/health-medicine" },
+        { subject: "Drug Development", name: "MIT Drug Discovery", url: "https://ocw.mit.edu/courses/biological-engineering/" }
+      ],
+      "Earth & Environmental Sciences": [
+        { subject: "Earth Sciences", name: "MIT Earth, Atmospheric Science", url: "https://ocw.mit.edu/courses/earth-atmospheric-and-planetary-sciences/" },
+        { subject: "Environmental Science", name: "Harvard Environmental Science", url: "https://pll.harvard.edu/subject/environmental-science" }
+      ],
+      "Marine & Ocean Sciences": [
+        { subject: "Marine Science", name: "MIT Ocean Systems", url: "https://ocw.mit.edu/courses/2-611-marine-power-and-propulsion-spring-2019/" },
+        { subject: "Oceanography", name: "Harvard Ocean Sciences", url: "https://pll.harvard.edu/subject/environmental-science" }
+      ],
+      "Space, Aerospace & Robotics": [
+        { subject: "Aerospace", name: "MIT Aerospace Engineering", url: "https://ocw.mit.edu/courses/aeronautics-and-astronautics/" },
+        { subject: "Robotics", name: "Stanford Robotics Course", url: "https://www.edx.org/learn/robotics" }
+      ]
+    },
+    "💼 Commerce": {
+      "Business & Management": [
+        { subject: "Business", name: "Harvard Business School Online", url: "https://pll.harvard.edu/subject/business/free" },
+        { subject: "Management", name: "Stanford Organizational Leadership", url: "https://www.coursera.org/learn/organizational-analysis" }
+      ],
+      "Finance, Accounting & Auditing": [
+        { subject: "Finance", name: "MIT Finance Theory", url: "https://ocw.mit.edu/courses/15-401-finance-theory-i-fall-2008/" },
+        { subject: "Finance", name: "Yale Financial Markets", url: "https://www.coursera.org/learn/financial-markets" }
+      ],
+      "Banking, Insurance & Financial Services": [
+        { subject: "Banking", name: "Harvard Financial Services", url: "https://pll.harvard.edu/subject/business" },
+        { subject: "Insurance", name: "MIT Financial Engineering", url: "https://ocw.mit.edu/courses/sloan-school-of-management/" }
+      ],
+      "Investment, Capital Markets & Risk Management": [
+        { subject: "Investment", name: "Yale Investment Management", url: "https://www.coursera.org/learn/financial-markets" },
+        { subject: "Risk Management", name: "Stanford Risk Analytics", url: "https://www.coursera.org/learn/financial-risk-management" }
+      ],
+      "Marketing, Advertising & Brand Strategy": [
+        { subject: "Marketing", name: "Harvard Marketing Strategy", url: "https://pll.harvard.edu/subject/business" },
+        { subject: "Digital Marketing", name: "MIT Digital Marketing", url: "https://ocw.mit.edu/courses/sloan-school-of-management/" }
+      ],
+      "Sales, E-Commerce & Digital Business": [
+        { subject: "E-Commerce", name: "Stanford Digital Business", url: "https://www.coursera.org/learn/digital-business" },
+        { subject: "Sales", name: "Harvard Sales Management", url: "https://pll.harvard.edu/subject/business/free" }
+      ],
+      "Entrepreneurship & Startups": [
+        { subject: "Entrepreneurship", name: "MIT Entrepreneurship Course", url: "https://ocw.mit.edu/courses/15-390-new-enterprises-fall-2013/" },
+        { subject: "Startups", name: "Stanford Startup Engineering", url: "https://www.coursera.org/learn/startup-engineering" }
+      ],
+      "International Business & Trade": [
+        { subject: "International Business", name: "Harvard Global Business", url: "https://pll.harvard.edu/subject/business" },
+        { subject: "Trade", name: "MIT International Trade", url: "https://ocw.mit.edu/courses/14-581-international-economics-i-spring-2013/" }
+      ],
+      "Supply Chain, Logistics & Operations": [
+        { subject: "Supply Chain", name: "MIT Supply Chain Analytics", url: "https://www.edx.org/course/supply-chain-analytics" },
+        { subject: "Operations", name: "Stanford Operations Management", url: "https://www.coursera.org/learn/operations-management" }
+      ],
+      "Tourism, Hospitality & Event Management": [
+        { subject: "Tourism", name: "Harvard Tourism Management", url: "https://pll.harvard.edu/subject/business" },
+        { subject: "Hospitality", name: "Cornell Hotel Management", url: "https://www.edx.org/school/cornellx" }
+      ],
+      "Law, Corporate Governance & Compliance": [
+        { subject: "Law", name: "Harvard Law School Free Courses", url: "https://pll.harvard.edu/subject/law" },
+        { subject: "Corporate Law", name: "Yale Corporate Finance Law", url: "https://www.coursera.org/learn/corporate-finance-law" }
+      ],
+      "Real Estate, Retail & Consumer Business": [
+        { subject: "Real Estate", name: "MIT Real Estate Finance", url: "https://ocw.mit.edu/courses/urban-studies-and-planning/" },
+        { subject: "Retail", name: "Harvard Retail Strategy", url: "https://pll.harvard.edu/subject/business/free" }
+      ]
+    },
+    "🎭 Arts": {
+      "Political Science, Public Policy & International Relations": [
+        { subject: "Political Science", name: "Harvard Government Courses", url: "https://pll.harvard.edu/subject/government" },
+        { subject: "International Relations", name: "MIT International Relations", url: "https://ocw.mit.edu/courses/political-science/" }
+      ],
+      "History, Archaeology & Heritage Studies": [
+        { subject: "History", name: "Harvard Ancient History", url: "https://pll.harvard.edu/subject/history" },
+        { subject: "History", name: "Yale History Courses", url: "https://www.edx.org/school/yalex" }
+      ],
+      "Philosophy, Ethics & Religion Studies": [
+        { subject: "Philosophy", name: "Harvard Philosophy Courses", url: "https://pll.harvard.edu/subject/philosophy-religion" },
+        { subject: "Ethics", name: "MIT Ethics in Science", url: "https://ocw.mit.edu/courses/philosophy/" }
+      ],
+      "Sociology, Anthropology & Culture Studies": [
+        { subject: "Sociology", name: "Harvard Sociology", url: "https://pll.harvard.edu/subject/social-sciences" },
+        { subject: "Anthropology", name: "MIT Cultural Studies", url: "https://ocw.mit.edu/courses/anthropology/" }
+      ],
+      "Psychology, Counseling & Human Behavior": [
+        { subject: "Psychology", name: "Harvard Psychology Courses", url: "https://pll.harvard.edu/subject/psychology" },
+        { subject: "Behavioral Science", name: "Stanford Behavioral Economics", url: "https://www.coursera.org/learn/behavioral-economics" }
+      ],
+      "Literature, Creative Writing & Languages": [
+        { subject: "Literature", name: "Harvard Literature Courses", url: "https://pll.harvard.edu/subject/literature" },
+        { subject: "Writing", name: "MIT Writing Courses", url: "https://ocw.mit.edu/courses/writing-and-humanistic-studies/" }
+      ],
+      "Media, Journalism & Communication Studies": [
+        { subject: "Media Studies", name: "Harvard Media Courses", url: "https://pll.harvard.edu/subject/media" },
+        { subject: "Communication", name: "Stanford Communication", url: "https://www.edx.org/learn/communication" }
+      ],
+      "Film, Theatre & Performing Arts": [
+        { subject: "Film Studies", name: "Harvard Film Courses", url: "https://pll.harvard.edu/subject/arts" },
+        { subject: "Theatre", name: "MIT Theatre Arts", url: "https://ocw.mit.edu/courses/music-and-theater-arts/" }
+      ],
+      "Visual Arts, Design & Fashion": [
+        { subject: "Visual Arts", name: "Harvard Art History", url: "https://pll.harvard.edu/subject/arts" },
+        { subject: "Design", name: "MIT Design Courses", url: "https://ocw.mit.edu/courses/architecture/" }
+      ],
+      "Music, Dance & Fine Arts": [
+        { subject: "Music", name: "Harvard Music Courses", url: "https://pll.harvard.edu/subject/arts" },
+        { subject: "Music Theory", name: "Yale Music Theory", url: "https://www.coursera.org/learn/music-theory" }
+      ],
+      "Social Work, NGO & Activism": [
+        { subject: "Social Work", name: "Harvard Social Work", url: "https://pll.harvard.edu/subject/social-sciences" },
+        { subject: "Public Service", name: "MIT Public Service", url: "https://ocw.mit.edu/courses/urban-studies-and-planning/" }
+      ],
+      "Education, Teaching & Learning Sciences": [
+        { subject: "Education", name: "Harvard Education Courses", url: "https://pll.harvard.edu/subject/education" },
+        { subject: "Teaching", name: "MIT Teaching Methods", url: "https://ocw.mit.edu/courses/education/" }
+      ]
+    },
+    "🚀 Unconventional": {
+      "Gaming & Esports (Competitive)": [
+        { subject: "Game Theory", name: "Stanford Game Theory", url: "https://www.coursera.org/learn/game-theory-1" },
+        { subject: "Gaming", name: "MIT Game Design", url: "https://ocw.mit.edu/courses/cms-611j-creating-video-games-fall-2014/" }
+      ],
+      "Gaming & Esports (Creative)": [
+        { subject: "Game Development", name: "Harvard Game Development", url: "https://pll.harvard.edu/course/cs50s-introduction-game-development" },
+        { subject: "Interactive Media", name: "MIT Interactive Media", url: "https://ocw.mit.edu/courses/comparative-media-studies-writing/" }
+      ],
+      "Aviation & Drone Operations": [
+        { subject: "Aviation", name: "MIT Aerospace Systems", url: "https://ocw.mit.edu/courses/aeronautics-and-astronautics/" },
+        { subject: "Drones", name: "Stanford Autonomous Systems", url: "https://www.edx.org/learn/autonomous-systems" }
+      ],
+      "Culinary Arts & Gastronomy": [
+        { subject: "Food Science", name: "Harvard Food Science", url: "https://pll.harvard.edu/course/introduction-food-and-health" },
+        { subject: "Nutrition", name: "Stanford Food and Health", url: "https://www.coursera.org/learn/food-and-health" }
+      ],
+      "Creative Technology (VR/AR)": [
+        { subject: "Virtual Reality", name: "Stanford VR Development", url: "https://www.edx.org/learn/virtual-reality" },
+        { subject: "Augmented Reality", name: "MIT AR Technology", url: "https://ocw.mit.edu/courses/media-arts-and-sciences/" }
+      ],
+      "Creative Technology (UX/UI)": [
+        { subject: "UX Design", name: "Harvard UX Design", url: "https://pll.harvard.edu/course/introduction-digital-humanities" },
+        { subject: "Human-Computer Interaction", name: "Stanford HCI", url: "https://www.coursera.org/specializations/human-computer-interaction" }
+      ],
+      "Content Creation & Digital Media": [
+        { subject: "Digital Media", name: "MIT Digital Media", url: "https://ocw.mit.edu/courses/comparative-media-studies-writing/" },
+        { subject: "Content Strategy", name: "Harvard Digital Strategy", url: "https://pll.harvard.edu/subject/media" }
+      ],
+      "Public Service & Civil Services": [
+        { subject: "Public Administration", name: "Harvard Kennedy School", url: "https://pll.harvard.edu/subject/government" },
+        { subject: "Policy Analysis", name: "MIT Policy Research", url: "https://ocw.mit.edu/courses/urban-studies-and-planning/" }
+      ],
+      "Wellness (Physical Fitness)": [
+        { subject: "Exercise Science", name: "Harvard Health Science", url: "https://pll.harvard.edu/subject/health-medicine" },
+        { subject: "Sports Medicine", name: "Stanford Sports Science", url: "https://www.edx.org/learn/sports-science" }
+      ],
+      "Wellness (Mindfulness)": [
+        { subject: "Mindfulness", name: "Harvard Mindfulness Course", url: "https://pll.harvard.edu/course/de-mystifying-mindfulness" },
+        { subject: "Mental Health", name: "Yale Psychology of Well-Being", url: "https://www.coursera.org/learn/the-science-of-well-being" }
+      ],
+      "Niche Event Management": [
+        { subject: "Event Planning", name: "Cornell Event Management", url: "https://www.edx.org/school/cornellx" },
+        { subject: "Project Management", name: "MIT Project Management", url: "https://ocw.mit.edu/courses/engineering-systems-division/" }
+      ],
+      "Cybersecurity": [
+        { subject: "Cybersecurity", name: "Harvard Cybersecurity", url: "https://pll.harvard.edu/course/cybersecurity-managing-risk-information-age" },
+        { subject: "Information Security", name: "MIT Cybersecurity", url: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/" }
+      ]
     }
+  }
 };
 
 const mockScholarships = [
@@ -1666,24 +1869,116 @@ const useData = () => useContext(DataContext);
 // --- REUSABLE UI COMPONENTS ---
 
 const Card = ({ children, className = '', onClick }) => (
-  <motion.div 
-    className={`bg-gray-900 rounded-lg border border-gray-800 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-teal-900/20 hover:border-teal-800 ${className}`}
-    whileHover={{ y: -5, transition: { duration: 0.2 } }}
+  <motion.div
     onClick={onClick}
+    whileHover={{ y: -5, transition: { duration: 0.2 } }}
+    className={`
+      bg-gray-900
+      rounded-lg
+      border
+      border-gray-800
+      overflow-hidden
+      transition-all
+      duration-300
+      hover:shadow-xl
+      hover:shadow-teal-900/20
+      hover:border-teal-800
+      w-full
+      p-4
+      sm:p-6
+      ${className}
+    `}
   >
     {children}
   </motion.div>
 );
 
-const Button = ({ children, onClick, variant = 'primary', className = '', disabled = false, animate, transition, type = 'button' }) => {
-  const baseClasses = 'px-6 py-3 font-semibold rounded-md transition-all duration-300 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950';
+
+
+
+const Button = ({
+  children,
+  onClick,
+  variant = 'primary',
+  className = '',
+  disabled = false,
+  animate,
+  transition,
+  type = 'button'
+}) => {
+  // Base styles now adjust padding/gap for mobile vs desktop
+  const baseClasses = [
+    'font-semibold',
+    'rounded-md',
+    'transition-all',
+    'duration-300',
+    'flex',
+    'items-center',
+    'justify-center',
+    'focus-visible:outline-none',
+    'focus-visible:ring-2',
+    'focus-visible:ring-offset-2',
+    'focus-visible:ring-offset-gray-950',
+    'disabled:cursor-not-allowed',
+    'disabled:transform-none',
+    'disabled:bg-gray-700',
+    'disabled:text-gray-500',
+    // Mobile padding
+    'px-4',
+    'py-2',
+    'gap-1',
+    // Tablet and up
+    'sm:px-6',
+    'sm:py-3',
+    'sm:gap-2'
+  ].join(' ');
+
   const variants = {
-    primary: 'bg-teal-600 text-white hover:bg-teal-500 focus-visible:ring-teal-500 shadow-lg shadow-teal-900/20 hover:shadow-teal-800/40',
-    secondary: 'bg-gray-800 text-gray-200 border border-gray-700 hover:bg-gray-700 hover:border-gray-600 focus-visible:ring-gray-500',
-    outline: 'border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white focus-visible:ring-teal-500'
+    primary: [
+      'bg-teal-600',
+      'text-white',
+      'hover:bg-teal-500',
+      'focus-visible:ring-teal-500',
+      'shadow-lg',
+      'shadow-teal-900/20',
+      'hover:shadow-teal-800/40'
+    ].join(' '),
+    secondary: [
+      'bg-gray-800',
+      'text-gray-200',
+      'border',
+      'border-gray-700',
+      'hover:bg-gray-700',
+      'hover:border-gray-600',
+      'focus-visible:ring-gray-500'
+    ].join(' '),
+    outline: [
+      'border',
+      'border-teal-500',
+      'text-teal-500',
+      'hover:bg-teal-500',
+      'hover:text-white',
+      'focus-visible:ring-teal-500'
+    ].join(' ')
   };
-  return <motion.button type={type} whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} animate={animate} transition={transition} onClick={onClick} disabled={disabled} className={`${baseClasses} ${variants[variant]} ${className} disabled:bg-gray-700 disabled:text-gray-500 disabled:cursor-not-allowed disabled:transform-none`}>{children}</motion.button>;
+
+  return (
+    <motion.button
+      type={type}
+      whileHover={{ y: -2 }}
+      whileTap={{ scale: 0.98 }}
+      animate={animate}
+      transition={transition}
+      onClick={onClick}
+      disabled={disabled}
+      className={`${baseClasses} ${variants[variant]} ${className}`}
+    >
+      {children}
+    </motion.button>
+  );
 };
+
+
 
 const Modal = ({ isOpen, onClose, title, children }) => {
     return (
@@ -1727,21 +2022,29 @@ const LoadingSpinner = ({ size = 'md' }) => {
 
 // --- LAYOUT COMPONENTS ---
 
+
 const Header = () => {
   const { isAuthenticated, user, logout } = useAuth();
   const { setPage } = useNavigation();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <motion.header 
+    <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className="bg-gray-950/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-40"
     >
       <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <motion.div whileHover={{ scale: 1.05 }} className="text-2xl font-bold text-teal-500 cursor-pointer flex items-center gap-3" onClick={() => setPage('home')}>
-            <LogoIcon /> NextStepGuide
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          className="text-2xl font-bold text-teal-500 cursor-pointer flex items-center gap-3"
+          onClick={() => setPage('home')}
+        >
+          <LogoIcon /> NextStepGuide
         </motion.div>
+
+        {/* Desktop menu */}
         <div className="hidden md:flex items-center space-x-8">
           <NavItem onClick={() => setPage('home')}>Home</NavItem>
           <NavItem onClick={() => setPage('pathways')}>Pathways</NavItem>
@@ -1750,23 +2053,95 @@ const Header = () => {
           <NavItem onClick={() => setPage('scholarships')}>Scholarships</NavItem>
           <NavItem onClick={() => setPage('ebooks')}>eBooks</NavItem>
         </div>
-        <div>
-          {isAuthenticated ? ( // --- THIS CHECK WILL NOW WORK ON REFRESH ---
-            <div className="flex items-center gap-4">
-              <span className="font-semibold hidden sm:block text-gray-300">Welcome, {user.name}!</span>
-              <Button onClick={() => setPage('dashboard')} variant="outline" className="py-2 px-4">Dashboard</Button>
-              <Button onClick={() => { logout(); setPage('home'); }} variant="secondary" className="py-2 px-4"><LogOutIcon/></Button>
-            </div>
+
+        {/* Auth buttons (desktop) */}
+        <div className="hidden md:flex items-center gap-4">
+          {isAuthenticated ? (
+            <>
+              <span className="font-semibold text-gray-300">Welcome, {user.name}!</span>
+              <Button onClick={() => setPage('dashboard')} variant="outline">
+                Dashboard
+              </Button>
+              <Button
+                onClick={() => {
+                  logout();
+                  setPage('home');
+                }}
+                variant="secondary"
+              >
+                <LogOutIcon />
+              </Button>
+            </>
           ) : (
-             <Button onClick={() => setPage('login')} className="py-2 px-4">
-                Login <LogInIcon className="w-5 h-5" />
-             </Button>
+            <Button onClick={() => setPage('login')}>
+              Login <LogInIcon className="w-5 h-5 inline-block ml-1" />
+            </Button>
           )}
         </div>
+
+        {/* Mobile menu button */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden p-2 text-gray-300 hover:text-white"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
       </nav>
+
+      {/* Mobile menu dropdown */}
+      {mobileOpen && (
+        <div className="md:hidden bg-gray-950/90 backdrop-blur-md border-t border-gray-800">
+          <nav className="flex flex-col py-4 space-y-2">
+            <NavItem onClick={() => { setPage('home'); setMobileOpen(false); }}>
+              Home
+            </NavItem>
+            <NavItem onClick={() => { setPage('pathways'); setMobileOpen(false); }}>
+              Pathways
+            </NavItem>
+            <NavItem onClick={() => { setPage('colleges'); setMobileOpen(false); }}>
+              Colleges
+            </NavItem>
+            <NavItem onClick={() => { setPage('mentors'); setMobileOpen(false); }}>
+              Mentors
+            </NavItem>
+            <NavItem onClick={() => { setPage('scholarships'); setMobileOpen(false); }}>
+              Scholarships
+            </NavItem>
+            <NavItem onClick={() => { setPage('ebooks'); setMobileOpen(false); }}>
+              eBooks
+            </NavItem>
+            <div className="border-t border-gray-800 mt-2 pt-2 flex flex-col space-y-2">
+              {isAuthenticated ? (
+                <>
+                  <NavItem onClick={() => { setPage('dashboard'); setMobileOpen(false); }}>
+                    Dashboard
+                  </NavItem>
+                  <NavItem onClick={() => { logout(); setPage('home'); setMobileOpen(false); }}>
+                    Logout
+                  </NavItem>
+                </>
+              ) : (
+                <NavItem onClick={() => { setPage('login'); setMobileOpen(false); }}>
+                  Login
+                </NavItem>
+              )}
+            </div>
+          </nav>
+        </div>
+      )}
     </motion.header>
   );
 };
+
+
+
 
 const NavItem = ({ onClick, children }) => (
     <motion.a 
