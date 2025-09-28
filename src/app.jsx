@@ -5358,7 +5358,11 @@ const CollegeCard = ({ college, onSelect }) => {
                 </motion.button>
             )}
             <div className="h-48 bg-gray-950 flex items-center justify-center overflow-hidden">
-                <img src={college.image} alt={college.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
+                <img 
+                    src={college.image || `https://placehold.co/600x400/131314/ffffff?text=${encodeURIComponent(college.name)}`}
+                    alt={college.name} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
             </div>
             <div className="p-6">
                 <h3 className="text-xl font-bold mb-2 text-gray-100">{college.name}</h3>
